@@ -12,6 +12,7 @@ Website for Human-AI Co-Discovery, exploring how people and AI discover new ques
 | `chi2027/index.html` | *Whose Eureka? Human-AI Co-Discovery of Knowledge*, the proposed CHI 2027 workshop |
 | `assets/style.css` | Shared styles for all pages |
 | `assets/people/` | Organizer photos (320 px JPEG), from each organizer's homepage or the UbiComp/ISWC 2026 tutorial site |
+| `assets/brand/` | Organization avatar: `avatar-teal` (used on GitHub) and `avatar-light`, as 1024 px PNG and editable SVG |
 | `.nojekyll` | Serves the files as plain static HTML (no Jekyll processing) |
 
 The site is plain HTML and CSS with no build step: edit a file and push to `main`. Fonts (Fraunces, Atkinson Hyperlegible, IBM Plex Mono) load from Google Fonts. Colors are CSS variables at the top of `assets/style.css`, following the palette of agentlab.zhihanjiang.com (deep teal with a coral accent), with a dark-mode set under `prefers-color-scheme: dark`. Coral text uses darker shades so it meets contrast requirements.
