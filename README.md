@@ -2,7 +2,7 @@
 
 Website for Human-AI Co-Discovery, exploring how people and AI discover new questions, patterns, connections, and explanations.
 
-Published with GitHub Pages from the `main` branch root at <https://human-ai-co-discovery.github.io/>.
+**Status: private, not published.** The repository is private and GitHub Pages is off, so the site is visible only to organization members. The organization is on the GitHub Free plan, where Pages sites are always public and private repositories cannot publish Pages. To publish, make the repository public and enable Pages from the `main` branch root; the site will then appear at <https://human-ai-co-discovery.github.io/>.
 
 ## Structure
 
@@ -11,9 +11,10 @@ Published with GitHub Pages from the `main` branch root at <https://human-ai-co-
 | `index.html` | Community home page, with links to events |
 | `chi2027/index.html` | *Whose Eureka? Human-AI Co-Discovery of Knowledge*, the proposed CHI 2027 workshop |
 | `assets/style.css` | Shared styles for all pages |
+| `assets/people/` | Organizer photos (320 px JPEG), from each organizer's homepage or the UbiComp/ISWC 2026 tutorial site |
 | `.nojekyll` | Serves the files as plain static HTML (no Jekyll processing) |
 
-The site is plain HTML and CSS with no build step: edit a file and push to `main`. Fonts (Fraunces, Atkinson Hyperlegible, IBM Plex Mono) load from Google Fonts. Colors are CSS variables at the top of `assets/style.css`, with a dark-mode set under `prefers-color-scheme: dark`.
+The site is plain HTML and CSS with no build step: edit a file and push to `main`. Fonts (Fraunces, Atkinson Hyperlegible, IBM Plex Mono) load from Google Fonts. Colors are CSS variables at the top of `assets/style.css`, following the palette of agentlab.zhihanjiang.com (deep teal with a coral accent), with a dark-mode set under `prefers-color-scheme: dark`. Coral text uses darker shades so it meets contrast requirements.
 
 ## Preview locally
 
@@ -34,6 +35,10 @@ The page currently describes the workshop as **proposed and under review**. It d
 3. Add the invited speaker and program committee once confirmed, and post accepted papers (with permission) and the arXiv index.
 
 Keep the text consistent with the organizers' workshop proposal, especially the call for participation.
+
+## Organizer photos
+
+Each organizer should confirm their photo before the site is made public. To replace one, save a square or portrait image as `assets/people/<name>.jpg`, about 320 px on the long side.
 
 ## Accessibility
 

@@ -9,3 +9,4 @@ Thumbs.db
 # Local tooling, if any is added later
 node_modules/
 .env
+.gstack/
