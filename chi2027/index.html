@@ -11,107 +11,117 @@
   <meta property="og:url" content="https://human-ai-co-discovery.github.io/chi2027/">
   <meta name="theme-color" content="#f9fafb" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#11191d" media="(prefers-color-scheme: dark)">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='9' fill='%23e07856'/%3E%3Ccircle cx='16' cy='16' r='14' fill='none' stroke='%23e07856' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="../assets/brand/avatar-teal.svg">
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..700,0..100,0..1;1,9..144,400..700,0..100,0..1&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="../assets/style.css?v=20260926d">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+
+  <!-- Tailwind CSS (Play CDN) with the Typography plugin, then our theme -->
+  <script src="https://cdn.tailwindcss.com/3.4.16?plugins=typography"></script>
+  <script src="../assets/js/tailwind.config.js"></script>
+
+  <!-- Tokens and illustration styles -->
+  <link rel="stylesheet" href="../assets/css/workshop.css">
 </head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
+<body class="text-ink antialiased font-sans font-medium text-base leading-relaxed selection:bg-ember-200 selection:text-tide-900">
+  <a class="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[60] focus:rounded-lg focus:bg-tide-900 focus:px-4 focus:py-2 focus:text-paper focus:font-semibold" href="#main">Skip to content</a>
 
-  <header class="topbar">
-    <a class="brand" href="../">Human-AI Co-Discovery</a>
-    <nav aria-label="Page sections">
-      <a href="#about">About</a>
-      <a href="#questions">Questions</a>
-      <a href="#participate">Participate</a>
-      <a href="#program">Program</a>
-      <a href="#organizers">Organizers</a>
-    </nav>
-  </header>
+  <!-- Navigation -->
+  <nav id="navbar" class="sticky top-0 z-50 bg-paper/95 backdrop-blur border-b border-rule/50" aria-label="Page sections">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="flex justify-between h-16 items-center gap-4">
+        <a href="../" class="flex items-center gap-2.5 font-bold text-tide-900 text-lg sm:text-xl tracking-tight hover:text-ember-700 transition-colors whitespace-nowrap">
+          <img src="../assets/brand/avatar-teal.svg" alt="" width="28" height="28" class="w-7 h-7 rounded-md">
+          Human-AI Co-Discovery
+        </a>
 
-  <section class="hero" aria-labelledby="title">
-    <div>
-      <p class="kicker">Proposed workshop<span class="sep">/</span>CHI 2027<span class="sep">/</span>Pittsburgh, PA, USA</p>
-      <h1 id="title">Whose <span class="q">Eureka?</span></h1>
-      <p class="subtitle">Human-AI Co-Discovery of Knowledge</p>
+        <div class="hidden md:flex gap-5 lg:gap-7 text-sm font-semibold text-ink-soft whitespace-nowrap">
+          <a href="#about" data-nav-link class="relative py-5 hover:text-ember-700 transition-colors aria-[current=true]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform aria-[current=true]:after:scale-x-100">About</a>
+          <a href="#call-for-participation" data-nav-link class="relative py-5 hover:text-ember-700 transition-colors aria-[current=true]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform aria-[current=true]:after:scale-x-100">Call for Participation</a>
+          <a href="#program" data-nav-link class="relative py-5 hover:text-ember-700 transition-colors aria-[current=true]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform aria-[current=true]:after:scale-x-100">Program</a>
+          <a href="#organizers" data-nav-link class="relative py-5 hover:text-ember-700 transition-colors aria-[current=true]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform aria-[current=true]:after:scale-x-100">Organizers</a>
+        </div>
+
+        <a href="proposal.pdf" download aria-label="Download the workshop proposal (PDF)" class="flex items-center gap-2 text-sm font-bold text-tide-900 hover:text-ember-700 transition-colors bg-tide-50 px-3 py-1.5 rounded-lg border border-tide-100 hover:border-ember-200 shrink-0">
+          <i data-lucide="download" class="w-4 h-4" aria-hidden="true"></i>
+          <span class="hidden min-[360px]:inline">Proposal</span>
+        </a>
+      </div>
+
+      <!-- Section links on small screens -->
+      <div class="md:hidden flex flex-wrap gap-x-5 gap-y-1 pb-3 -mt-1 text-sm font-semibold text-ink-soft">
+        <a href="#about" data-nav-link class="hover:text-ember-700 aria-[current=true]:text-ember-700 aria-[current=true]:underline decoration-2 decoration-ember-400 underline-offset-4">About</a>
+        <a href="#call-for-participation" data-nav-link class="hover:text-ember-700 aria-[current=true]:text-ember-700 aria-[current=true]:underline decoration-2 decoration-ember-400 underline-offset-4">Call for Participation</a>
+        <a href="#program" data-nav-link class="hover:text-ember-700 aria-[current=true]:text-ember-700 aria-[current=true]:underline decoration-2 decoration-ember-400 underline-offset-4">Program</a>
+        <a href="#organizers" data-nav-link class="hover:text-ember-700 aria-[current=true]:text-ember-700 aria-[current=true]:underline decoration-2 decoration-ember-400 underline-offset-4">Organizers</a>
+      </div>
     </div>
-    <figure class="hero-figure" aria-hidden="true">
-      <svg viewBox="0 0 420 300" role="presentation">
-        <g class="fig-dots">
-          <circle class="fig-dot" cx="28" cy="40" r="3"/><circle class="fig-dot" cx="96" cy="22" r="2.5"/>
-          <circle class="fig-dot" cx="140" cy="82" r="3"/><circle class="fig-dot" cx="210" cy="30" r="2.5"/>
-          <circle class="fig-dot" cx="268" cy="118" r="3"/><circle class="fig-dot" cx="300" cy="22" r="2.5"/>
-          <circle class="fig-dot" cx="36" cy="138" r="2.5"/><circle class="fig-dot" cx="108" cy="120" r="3"/>
-          <circle class="fig-dot" cx="204" cy="112" r="2.5"/><circle class="fig-dot" cx="330" cy="168" r="3"/>
-          <circle class="fig-dot" cx="392" cy="140" r="2.5"/><circle class="fig-dot" cx="22" cy="270" r="3"/>
-          <circle class="fig-dot" cx="130" cy="262" r="2.5"/><circle class="fig-dot" cx="200" cy="286" r="3"/>
-          <circle class="fig-dot" cx="306" cy="252" r="2.5"/><circle class="fig-dot" cx="398" cy="262" r="3"/>
-          <circle class="fig-dot" cx="372" cy="214" r="2.5"/><circle class="fig-dot" cx="238" cy="236" r="3"/>
-          <circle class="fig-dot" cx="84" cy="192" r="2.5"/><circle class="fig-dot" cx="176" cy="210" r="2.5"/>
-          <circle class="fig-dot" cx="250" cy="66" r="2.5"/><circle class="fig-dot" cx="400" cy="30" r="2.5"/>
-        </g>
-        <path class="fig-path" d="M64 236 C 100 214, 128 186, 158 172 S 222 196, 250 196 S 318 126, 360 70"/>
-        <circle class="fig-node n1" cx="64" cy="236" r="6"/>
-        <circle class="fig-node n2" cx="158" cy="172" r="6"/>
-        <circle class="fig-node n3" cx="250" cy="196" r="6"/>
-        <circle class="fig-halo" cx="360" cy="70" r="10"/>
-        <circle class="fig-eureka" cx="360" cy="70" r="8"/>
-        <text class="fig-label l1" x="48" y="262">a question</text>
-        <text class="fig-label l2" x="118" y="156">a connection</text>
-        <text class="fig-label l3" x="222" y="224">an explanation</text>
-        <text class="fig-label l4" x="300" y="46">whose eureka?</text>
-      </svg>
-    </figure>
-  </section>
+  </nav>
 
-  <div class="status" role="note">
-    <p><strong>Status</strong>This workshop is proposed for CHI 2027 and is under review; decisions are expected in November 2026. If it is accepted, the call for participation, important dates, and submission instructions will be posted on this page.</p>
-  </div>
+  <!-- Main Content -->
+  <main id="main" class="max-w-4xl mx-auto px-6 py-10 sm:py-12">
 
-  <main id="main">
-    <section class="section" id="about" aria-labelledby="about-h">
-      <div class="margin-label"><span class="num">01</span>About</div>
-      <div class="content">
-        <h2 id="about-h">Finding something new is not the same as understanding it</h2>
-        <p class="lede">As AI systems take on more active roles in knowledge work, they create new opportunities to formulate questions, uncover unexpected connections, and develop explanations. Yet a plausible or useful finding does not necessarily deepen people's understanding of its evidence or implications.</p>
+    <!-- Header -->
+    <header class="mb-10 pb-5">
+      <div class="flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-2 mb-4 text-sm text-ink-soft">
+        <span>Proposed workshop @ CHI 2027</span>
+        <span class="hidden sm:block w-px h-4 bg-rule mx-1" aria-hidden="true"></span>
+        <span class="font-bold text-tide-900">Pittsburgh, PA, USA</span>
+      </div>
+
+      <div class="relative">
+        <h1 class="text-5xl sm:text-6xl font-black text-tide-900 mb-5 leading-tight tracking-tight">
+          Whose
+          <button type="button" data-gloss aria-expanded="false" aria-controls="title-gloss"
+            class="text-ember-500 italic cursor-help underline decoration-dashed decoration-ember-400/50 hover:decoration-ember-500 underline-offset-8 decoration-4 transition-all">Eureka?</button>
+        </h1>
+        <div id="title-gloss" hidden class="absolute left-0 top-full -mt-2 w-full max-w-md bg-surface border border-rule rounded-xl p-5 shadow-2xl z-40 text-ink-soft">
+          A <em class="not-italic font-bold text-tide-900">eureka</em> is the moment something new becomes clear. When people and AI make discoveries together, we ask whose moment it is: new to whom, whose understanding changed, and who steered the inquiry and gets the credit.
+        </div>
+      </div>
+      <p class="text-xl sm:text-2xl text-ink-soft leading-relaxed max-w-2xl font-medium">
+        Human-AI Co-Discovery of Knowledge
+      </p>
+    </header>
+
+    <!-- Information -->
+    <aside class="flex gap-4 bg-tide-50 border border-tide-100 rounded-xl p-6 my-8" aria-label="Workshop information">
+      <i data-lucide="info" class="w-6 h-6 text-tide-700 shrink-0 mt-0.5" aria-hidden="true"></i>
+      <div class="space-y-2">
+        <p>The workshop will be open to CHI 2027 attendees, with priority for authors of accepted contributions; participants without papers are welcome in all discussions, and no prior reading is required.</p>
+        <p><span class="font-bold">Contact:</span> <a href="mailto:zj2445@cumc.columbia.edu" class="text-tide-700 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 font-semibold break-words">zj2445@cumc.columbia.edu</a></p>
+      </div>
+    </aside>
+
+    <!-- About -->
+    <section id="about" class="mt-16 mb-20" aria-labelledby="about-h">
+      <h2 id="about-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">About</h2>
+      <div class="prose">
+        <p>As AI systems take on more active roles in knowledge work, they create new opportunities to formulate questions, uncover unexpected connections, and develop explanations. Yet a plausible or useful finding does not necessarily deepen people's understanding of its evidence or implications.</p>
         <p>This workshop explores human-AI co-discovery of knowledge: how people and AI shape inquiry, develop and challenge ideas, and make sense of emerging findings across scientific research and other forms of knowledge work, including design and learning. Our title question, <em>Whose Eureka?</em>, asks what is new and for whom, whose understanding changes, and how inquiry is directed and contributions are recognized.</p>
         <p>We bring together researchers and practitioners in human-AI interaction, visual analytics, AI for science, design, and learning to identify shared challenges, ethical considerations, and research priorities for designing and evaluating AI-supported discovery.</p>
+        <p>We hope to invite research, thoughts, or provocations on questions such as:</p>
+        <ul id="questions">
+          <li><strong>How do people and AI develop questions, connections, and explanations together?</strong> How interaction helps people recognize the significance of an unexpected connection and decide whether to pursue it, rather than simply receive a suggestion, and how explanations remain open to challenge as new evidence is considered.</li>
+          <li><strong>How do people guide co-discovery, and how are contributions recognized?</strong> When to intervene, change direction, or decline assistance; how records of key choices and evidence help people question the path to a finding; and how credit, intellectual ownership, and responsibility are negotiated.</li>
+          <li><strong>What do people come to understand through co-discovery?</strong> How inquiry with AI changes how people frame a problem, what they notice, and what they ask next, even when an investigation produces no finding, and how such changes in understanding can be recognized.</li>
+          <li><strong>What counts as a discovery, for whom, and on what evidence?</strong> How criteria for novelty, evidence, and value differ across research, design, learning, and everyday knowledge work, and whether AI-supported inquiry broadens or narrows the questions a community pursues.</li>
+        </ul>
       </div>
     </section>
 
-    <section class="section" id="questions" aria-labelledby="questions-h">
-      <div class="margin-label"><span class="num">02</span>Open questions</div>
-      <div class="content">
-        <h2 id="questions-h">Four connected questions for discussion</h2>
-        <ol class="questions">
-          <li>
-            <h3>How do people and AI develop questions, connections, and explanations together?</h3>
-            <p>How interaction helps people recognize the significance of an unexpected connection and decide whether to pursue it, rather than simply receive a suggestion, and how explanations remain open to challenge as new evidence is considered.</p>
-          </li>
-          <li>
-            <h3>How do people guide co-discovery, and how are contributions recognized?</h3>
-            <p>When to intervene, change direction, or decline assistance; how records of key choices and evidence help people question the path to a finding; and how credit, intellectual ownership, and responsibility are negotiated.</p>
-          </li>
-          <li>
-            <h3>What do people come to understand through co-discovery?</h3>
-            <p>How inquiry with AI changes how people frame a problem, what they notice, and what they ask next, even when an investigation produces no finding, and how such changes in understanding can be recognized.</p>
-          </li>
-          <li>
-            <h3>What counts as a discovery, for whom, and on what evidence?</h3>
-            <p>How criteria for novelty, evidence, and value differ across research, design, learning, and everyday knowledge work, and whether AI-supported inquiry broadens or narrows the questions a community pursues.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <section class="section" id="participate" aria-labelledby="participate-h">
-      <div class="margin-label"><span class="num">03</span>Participate</div>
-      <div class="content">
-        <h2 id="participate-h">Planned call for participation</h2>
+    <!-- Call for Participation -->
+    <section id="call-for-participation" class="mb-20" aria-labelledby="cfp-h">
+      <h2 id="cfp-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Call for Participation</h2>
+      <h3 id="topics" class="text-xl font-bold text-tide-900 mb-4">Topics</h3>
+      <div class="prose">
         <p>We plan to invite empirical studies, systems, design concepts, critical perspectives, and work in progress, especially concrete examples of discovery with AI, including unsuccessful ones. Topics include:</p>
-        <ul class="topics">
+        <ul class="sm:grid sm:grid-cols-2 sm:grid-rows-[repeat(4,auto)] sm:grid-flow-col sm:gap-x-10 sm:gap-y-2 sm:[&>li]:my-0">
           <li>Interpreting data and existing knowledge together</li>
           <li>Serendipity and unexpected connections</li>
           <li>Constructing and challenging explanations</li>
@@ -121,99 +131,198 @@
           <li>Contributions, credit, and responsibility</li>
           <li>Novelty and value across contexts</li>
         </ul>
-        <dl class="facts">
-          <dt>Submissions</dt><dd>Papers of 2–4 pages in ACM double-column format, excluding references.</dd>
-          <dt>Review</dt><dd>A program committee will review contributions for relevance, quality, and discussion potential.</dd>
-          <dt>Sharing</dt><dd>With permission, accepted papers and presentation materials will be shared on this website and, if authors choose, indexed on arXiv. There are no separate archival proceedings.</dd>
-          <dt>Dates &amp; submission</dt><dd>To be announced here if the workshop is accepted.</dd>
-        </dl>
       </div>
+
+      <h3 id="submission" class="text-xl font-bold text-tide-900 mt-12 mb-4">Submission Details</h3>
+      <dl class="space-y-3">
+        <div class="flex flex-col sm:flex-row gap-1 sm:gap-4">
+          <dt class="font-bold text-ink sm:w-40 shrink-0">Submissions</dt>
+          <dd>Papers of 2–4 pages in ACM double-column format, excluding references.</dd>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-1 sm:gap-4">
+          <dt class="font-bold text-ink sm:w-40 shrink-0">Review</dt>
+          <dd>A program committee will review contributions for relevance, quality, and discussion potential.</dd>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-1 sm:gap-4">
+          <dt class="font-bold text-ink sm:w-40 shrink-0">Sharing</dt>
+          <dd>With permission, accepted papers and presentation materials will be shared on this website and, if authors choose, indexed on arXiv. There are no separate archival proceedings.</dd>
+        </div>
+      </dl>
+
+      <h3 id="timeline" class="text-xl font-bold text-tide-900 mt-12 mb-4">Timeline</h3>
+      <dl class="space-y-3">
+        <div class="flex flex-col sm:flex-row gap-1 sm:gap-4">
+          <dt class="font-bold text-ember-700 sm:w-40 shrink-0">November 2026</dt>
+          <dd>Decisions on this workshop proposal expected</dd>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-1 sm:gap-4">
+          <dt class="font-bold text-ember-700 sm:w-40 shrink-0">To be announced</dt>
+          <dd>Dates and submission instructions, posted here if the workshop is accepted</dd>
+        </div>
+      </dl>
     </section>
 
-    <section class="section" id="program" aria-labelledby="program-h">
-      <div class="margin-label"><span class="num">04</span>Program</div>
-      <div class="content">
-        <h2 id="program-h">Two in-person sessions</h2>
-        <p>We expect about 35 participants. The workshop will be open to CHI 2027 attendees, with priority for authors of accepted contributions; participants without papers are welcome in all discussions, and no prior reading is required.</p>
-        <table class="program">
-          <caption>Proposed program</caption>
-          <thead><tr><th scope="col">Duration</th><th scope="col">Activity</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">5 min</th><td>Welcome, workshop goals, and overview of activities</td></tr>
-            <tr><th scope="row">20 min</th><td>Keynote (15 min) and questions (5 min)</td></tr>
-            <tr><th scope="row">30 min</th><td>Two invited talks (8 min each), each followed by 5 min of questions</td></tr>
-            <tr><th scope="row">25 min</th><td>Three-minute lightning talks by authors of accepted contributions</td></tr>
-          </tbody>
-          <tbody>
-            <tr class="break"><th scope="row">Break</th><td>Conference break</td></tr>
-            <tr><th scope="row">15 min</th><td>Poster exchange and roundtable topic selection</td></tr>
-            <tr><th scope="row">45 min</th><td>Facilitated thematic roundtables, each opened with a provocation</td></tr>
-            <tr><th scope="row">15 min</th><td>Group reports and collective discussion</td></tr>
-            <tr><th scope="row">5 min</th><td>Closing and next steps</td></tr>
-          </tbody>
-        </table>
-        <p class="program-note">If the workshop is accepted, we will invite a keynote and two invited speakers whose work spans areas such as AI for science, learning, visual analytics, and design; they will also join the roundtables as discussants. Facilitators will open each roundtable with a provocation for participants to agree or disagree with, for example:</p>
-        <ul class="provocations">
-          <li>Serendipity cannot survive an AI optimized for relevance.</li>
-          <li>If an AI proposed the key idea, the human “eureka” is mostly recognition.</li>
-          <li>A discovery that no one on the team can explain is not yet a discovery.</li>
-          <li>Co-discovery tools should sometimes make inquiry slower.</li>
-          <li>AI-assisted discovery will make research communities converge on the same questions.</li>
+    <!-- Program -->
+    <section id="program" class="mb-20" aria-labelledby="program-h">
+      <h2 id="program-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Program</h2>
+      <p class="mb-8">The proposed program runs across two in-person sessions.</p>
+
+      <h3 class="text-xl font-bold text-tide-900 mb-4">Session 1</h3>
+      <ol class="space-y-4">
+        <li class="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-8">
+          <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-sm tracking-wider">5 min</div>
+          <div>
+            <h4 class="font-bold text-tide-900">Welcome</h4>
+            <p class="text-ink-soft">Welcome, workshop goals, and overview of activities</p>
+          </div>
+        </li>
+        <li class="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-8">
+          <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-sm tracking-wider">20 min</div>
+          <div>
+            <h4 class="font-bold text-tide-900">Keynote</h4>
+            <p class="text-ink-soft">Keynote (15 min) and questions (5 min)</p>
+          </div>
+        </li>
+        <li class="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-8">
+          <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-sm tracking-wider">30 min</div>
+          <div>
+            <h4 class="font-bold text-tide-900">Invited Talks</h4>
+            <p class="text-ink-soft">Two invited talks (8 min each), each followed by 5 min of questions</p>
+          </div>
+        </li>
+        <li class="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-8">
+          <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-sm tracking-wider">25 min</div>
+          <div>
+            <h4 class="font-bold text-tide-900">Lightning Talks</h4>
+            <p class="text-ink-soft">Three-minute lightning talks by authors of accepted contributions</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="flex items-center gap-4 my-8 text-sm font-semibold italic text-ink-soft" role="separator" aria-label="Conference break">
+        <span class="h-px flex-1 border-t border-dashed border-rule"></span>
+        <span class="flex items-center gap-2"><i data-lucide="coffee" class="w-4 h-4" aria-hidden="true"></i>Conference break</span>
+        <span class="h-px flex-1 border-t border-dashed border-rule"></span>
+      </div>
+
+      <h3 class="text-xl font-bold text-tide-900 mb-4">Session 2</h3>
+      <ol class="space-y-4">
+        <li class="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-8">
+          <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-sm tracking-wider">15 min</div>
+          <div>
+            <h4 class="font-bold text-tide-900">Poster Exchange</h4>
+            <p class="text-ink-soft">Poster exchange and roundtable topic selection</p>
+          </div>
+        </li>
+        <li class="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-8">
+          <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-sm tracking-wider">45 min</div>
+          <div>
+            <h4 class="font-bold text-tide-900">Thematic Roundtables</h4>
+            <p class="text-ink-soft">Facilitated thematic roundtables, each opened with a provocation</p>
+          </div>
+        </li>
+        <li class="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-8">
+          <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-sm tracking-wider">15 min</div>
+          <div>
+            <h4 class="font-bold text-tide-900">Group Reports</h4>
+            <p class="text-ink-soft">Group reports and collective discussion</p>
+          </div>
+        </li>
+        <li class="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-8">
+          <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-sm tracking-wider">5 min</div>
+          <div>
+            <h4 class="font-bold text-tide-900">Closing</h4>
+            <p class="text-ink-soft">Closing and next steps</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="bg-tide-50 border border-tide-100 rounded-xl p-6 sm:p-8 mt-12">
+        <h3 class="flex items-center gap-2 text-xl font-bold text-tide-900 mb-3">
+          <i data-lucide="messages-square" class="w-5 h-5 text-ember-500" aria-hidden="true"></i>
+          Speakers and provocations
+        </h3>
+        <p class="text-ink">If the workshop is accepted, we will invite a keynote and two invited speakers whose work spans areas such as AI for science, learning, visual analytics, and design; they will also join the roundtables as discussants. Facilitators will open each roundtable with a provocation for participants to agree or disagree with, for example:</p>
+        <ul class="mt-5 space-y-3">
+          <li class="border-l-4 border-ember-400 pl-4 italic font-semibold text-tide-900">Serendipity cannot survive an AI optimized for relevance.</li>
+          <li class="border-l-4 border-ember-400 pl-4 italic font-semibold text-tide-900">If an AI proposed the key idea, the human “eureka” is mostly recognition.</li>
+          <li class="border-l-4 border-ember-400 pl-4 italic font-semibold text-tide-900">A discovery that no one on the team can explain is not yet a discovery.</li>
+          <li class="border-l-4 border-ember-400 pl-4 italic font-semibold text-tide-900">Co-discovery tools should sometimes make inquiry slower.</li>
+          <li class="border-l-4 border-ember-400 pl-4 italic font-semibold text-tide-900">AI-assisted discovery will make research communities converge on the same questions.</li>
         </ul>
       </div>
     </section>
 
-    <section class="section" id="organizers" aria-labelledby="organizers-h">
-      <div class="margin-label"><span class="num">05</span>Organizers</div>
-      <div class="content">
-        <h2 id="organizers-h">Organizing team</h2>
-        <ul class="people">
-          <li class="person">
-            <a class="avatar-link" href="https://zhihanjiang.com/" tabindex="-1" aria-hidden="true"><img class="avatar" src="../assets/people/zhihan.jpg" alt="" width="84" height="84" loading="lazy"></a>
-            <h3 class="name"><a href="https://zhihanjiang.com/">Zhihan Jiang</a></h3>
-            <p class="aff">Columbia University</p>
-          </li>
-          <li class="person">
-            <a class="avatar-link" href="https://wangyifang.top/" tabindex="-1" aria-hidden="true"><img class="avatar" src="../assets/people/yifang.jpg" alt="" width="84" height="84" loading="lazy"></a>
-            <h3 class="name"><a href="https://wangyifang.top/">Yifang Wang</a></h3>
-            <p class="aff">Florida State University</p>
-          </li>
-          <li class="person">
-            <a class="avatar-link" href="https://ruishizou.github.io/" tabindex="-1" aria-hidden="true"><img class="avatar" src="../assets/people/ruishi.jpg" alt="" width="84" height="84" loading="lazy"></a>
-            <h3 class="name"><a href="https://ruishizou.github.io/">Ruishi Zou</a></h3>
-            <p class="aff">Harvard University</p>
-          </li>
-          <li class="person">
-            <a class="avatar-link" href="https://shiyuxu.me/" tabindex="-1" aria-hidden="true"><img class="avatar" src="../assets/people/shiyu.jpg" alt="" width="84" height="84" loading="lazy"></a>
-            <h3 class="name"><a href="https://shiyuxu.me/">Shiyu Xu</a></h3>
-            <p class="aff">University of Michigan</p>
-          </li>
-          <li class="person">
-            <a class="avatar-link" href="https://dylansheng.github.io/" tabindex="-1" aria-hidden="true"><img class="avatar" src="../assets/people/rui.jpg" alt="" width="84" height="84" loading="lazy"></a>
-            <h3 class="name"><a href="https://dylansheng.github.io/">Rui Sheng</a></h3>
-            <p class="aff">Northeastern University</p>
-          </li>
-          <li class="person">
-            <a class="avatar-link" href="https://orsonxu.com/" tabindex="-1" aria-hidden="true"><img class="avatar" src="../assets/people/orson.jpg" alt="" width="84" height="84" loading="lazy"></a>
-            <h3 class="name"><a href="https://orsonxu.com/">Xuhai “Orson” Xu</a></h3>
-            <p class="aff">Columbia University</p>
-          </li>
-        </ul>
-      </div>
-    </section>
+    <!-- Organizers -->
+    <section id="organizers" class="mb-20" aria-labelledby="organizers-h">
+      <h2 id="organizers-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Organizers</h2>
+      <h3 class="text-xl font-bold text-tide-900 mb-6">Organizing team</h3>
 
-    <section class="section" id="contact" aria-labelledby="contact-h">
-      <div class="margin-label"><span class="num">06</span>Contact</div>
-      <div class="content">
-        <h2 id="contact-h">Questions and access needs</h2>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-7">
+        <li class="group flex items-center gap-4">
+          <a target="_blank" rel="noopener noreferrer" href="https://zhihanjiang.com/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/zhihan.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
+          <div class="min-w-0">
+            <h4 class="font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug"><a target="_blank" rel="noopener noreferrer" href="https://zhihanjiang.com/" class="hover:underline">Zhihan Jiang</a></h4>
+            <p class="text-sm text-ink-soft">Columbia University</p>
+          </div>
+        </li>
+        <li class="group flex items-center gap-4">
+          <a target="_blank" rel="noopener noreferrer" href="https://wangyifang.top/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/yifang.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
+          <div class="min-w-0">
+            <h4 class="font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug"><a target="_blank" rel="noopener noreferrer" href="https://wangyifang.top/" class="hover:underline">Yifang Wang</a></h4>
+            <p class="text-sm text-ink-soft">Florida State University</p>
+          </div>
+        </li>
+        <li class="group flex items-center gap-4">
+          <a target="_blank" rel="noopener noreferrer" href="https://ruishizou.github.io/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/ruishi.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
+          <div class="min-w-0">
+            <h4 class="font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug"><a target="_blank" rel="noopener noreferrer" href="https://ruishizou.github.io/" class="hover:underline">Ruishi Zou</a></h4>
+            <p class="text-sm text-ink-soft">Harvard University</p>
+          </div>
+        </li>
+        <li class="group flex items-center gap-4">
+          <a target="_blank" rel="noopener noreferrer" href="https://shiyuxu.me/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/shiyu.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
+          <div class="min-w-0">
+            <h4 class="font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug"><a target="_blank" rel="noopener noreferrer" href="https://shiyuxu.me/" class="hover:underline">Shiyu Xu</a></h4>
+            <p class="text-sm text-ink-soft">University of Michigan</p>
+          </div>
+        </li>
+        <li class="group flex items-center gap-4">
+          <a target="_blank" rel="noopener noreferrer" href="https://dylansheng.github.io/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/rui.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
+          <div class="min-w-0">
+            <h4 class="font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug"><a target="_blank" rel="noopener noreferrer" href="https://dylansheng.github.io/" class="hover:underline">Rui Sheng</a></h4>
+            <p class="text-sm text-ink-soft">Northeastern University</p>
+          </div>
+        </li>
+        <li class="group flex items-center gap-4">
+          <a target="_blank" rel="noopener noreferrer" href="https://orsonxu.com/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/orson.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
+          <div class="min-w-0">
+            <h4 class="font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug"><a target="_blank" rel="noopener noreferrer" href="https://orsonxu.com/" class="hover:underline">Xuhai “Orson” Xu</a></h4>
+            <p class="text-sm text-ink-soft">Columbia University</p>
+          </div>
+        </li>
+      </ul>
+
+      <h3 id="contact" class="text-xl font-bold text-tide-900 mt-12 mb-4">Questions and access needs</h3>
+      <div class="prose">
         <p>For questions about the workshop, or to share accessibility requirements, contact Zhihan Jiang at <a href="mailto:zj2445@cumc.columbia.edu">zj2445@cumc.columbia.edu</a>. Workshop materials will be available in accessible electronic formats and in print.</p>
       </div>
     </section>
+
+    <!-- Footer -->
+    <footer class="pt-8 border-t border-rule text-sm text-ink-soft flex flex-col sm:flex-row justify-between items-center gap-4 text-center">
+      <p class="font-medium">CHI 2027 Workshop on Human-AI Co-Discovery (Proposal)</p>
+      <div class="flex flex-wrap justify-center items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-ember-400" aria-hidden="true"></span>
+        <span class="font-bold text-tide-900">Pittsburgh, PA, USA</span>
+        <span class="text-rule" aria-hidden="true">&bull;</span>
+        <span>Part of <a href="../" class="font-semibold text-tide-700 underline decoration-tide-300 underline-offset-4 hover:text-ember-700">Human-AI Co-Discovery</a></span>
+      </div>
+    </footer>
+
   </main>
 
-  <footer class="site-footer">
-    <span>Whose Eureka? · a proposed CHI 2027 workshop</span>
-    <span>Part of <a href="../">Human-AI Co-Discovery</a></span>
-  </footer>
+  <!-- Main JavaScript -->
+  <script src="../assets/js/main.js"></script>
 </body>
 </html>

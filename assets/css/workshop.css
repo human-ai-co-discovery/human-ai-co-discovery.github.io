@@ -1,0 +1,78 @@
+/* Workshop pages — tokens and the few rules Tailwind utilities do not cover.
+   The retired hero banner lives in assets/archive/hero-banner.html.
+   Palette: cool off-white paper, deep cyan ink (tide), warm orange accent (ember).
+   Ember strengths: 400 for strokes and fills, 500 for large text, 700 for small text (AA). */
+
+:root {
+  --paper: 249 250 251;
+  --surface: 255 255 255;
+  --ink: 36 64 75;
+  --ink-soft: 88 102 115;
+  --rule: 213 219 224;
+  --line: 225 230 234;
+
+  --tide-50: 236 243 245;
+  --tide-100: 208 226 232;
+  --tide-300: 143 188 203;
+  --tide-700: 30 88 105;
+  --tide-900: 24 72 86;
+
+  --ember-50: 252 239 234;
+  --ember-200: 244 199 184;
+  --ember-400: 224 120 86;
+  --ember-500: 208 104 67;
+  --ember-700: 176 76 44;
+
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: 17 25 29;
+    --surface: 21 32 37;
+    --ink: 221 230 234;
+    --ink-soft: 159 176 187;
+    --rule: 52 67 75;
+    --line: 42 55 62;
+
+    --tide-50: 22 37 43;
+    --tide-100: 38 58 66;
+    --tide-300: 92 136 150;
+    --tide-700: 143 188 203;
+    --tide-900: 169 203 214;
+
+    --ember-50: 45 32 28;
+    --ember-200: 99 58 45;
+    --ember-400: 235 146 117;
+    --ember-500: 235 146 117;
+    --ember-700: 238 158 132;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: rgb(var(--paper));
+  -webkit-text-size-adjust: 100%;
+  font-size: 16px;
+}
+
+body {
+  background-color: rgb(var(--paper));
+}
+
+/* In-page links land just below the sticky nav; --nav-height is set by main.js. */
+section, [id] { scroll-margin-top: calc(var(--nav-height, 4rem) + 2rem); }
+
+:focus-visible { outline: 3px solid rgb(var(--tide-700)); outline-offset: 3px; border-radius: 3px; }
+
+#navbar { transition: border-color 0.2s, background-color 0.2s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-delay: 0ms !important; animation-iteration-count: 1 !important; transition: none !important; }
+}
+
+@media print {
+  body { background: #fff; }
+  #navbar, .skip-link { display: none !important; }
+}
