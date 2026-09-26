@@ -214,6 +214,14 @@ main { padding-bottom: 3rem; }
 .program thead th { font-family: var(--mono); font-size: 0.86rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
 .program tr.break td, .program tr.break th { color: var(--ink-soft); font-style: italic; }
 .program tbody + tbody tr:first-child th, .program tbody + tbody tr:first-child td { border-top: 2px solid var(--title); }
+.program-note { margin-top: 1.6rem; }
+
+/* Roundtable provocations */
+.provocations { list-style: none; padding: 0; margin: 0.9rem 0 0; display: grid; gap: 0.65rem; }
+.provocations li {
+  font-family: var(--display); font-style: italic; font-size: 1.14rem; line-height: 1.4; color: var(--title);
+  padding: 0.1rem 0 0.1rem 1rem; border-left: 3px solid var(--accent);
+}
 
 /* Facts list */
 .facts { display: grid; grid-template-columns: max-content 1fr; gap: 0.45rem 1.4rem; margin: 1.2rem 0 0; max-width: var(--measure); }

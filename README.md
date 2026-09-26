@@ -29,11 +29,11 @@ Then visit <http://localhost:8000/> and <http://localhost:8000/chi2027/>. After 
 
 ## Updating the CHI 2027 page
 
-The page currently describes the workshop as **proposed and under review**. It deliberately lists no dates, invited speaker, program committee, or submission link, since none are confirmed yet. If the workshop is accepted:
+The page currently describes the workshop as **proposed and under review**. It deliberately lists no dates, named speakers, program committee, or submission link, since none are confirmed yet. If the workshop is accepted:
 
 1. Replace the status note near the top of `chi2027/index.html` and remove "Proposed" from the kicker line.
 2. Add the submission link and important dates to the "Participate" section; participant decisions must reach authors at least seven days before CHI's early registration deadline.
-3. Add the invited speaker and program committee once confirmed, and post accepted papers (with permission) and the arXiv index.
+3. Add the keynote and invited speakers and the program committee once confirmed, and post accepted papers (with permission) and the arXiv index.
 
 Keep the text consistent with the organizers' workshop proposal, especially the call for participation.
 
