@@ -15,6 +15,16 @@ Published with GitHub Pages from the `main` branch root at <https://human-ai-co-
 
 The site is plain HTML and CSS with no build step: edit a file and push to `main`. Fonts (Fraunces, Atkinson Hyperlegible, IBM Plex Mono) load from Google Fonts. Colors are CSS variables at the top of `assets/style.css`, with a dark-mode set under `prefers-color-scheme: dark`.
 
+## Preview locally
+
+From the repository root, run a static server and open the pages before pushing:
+
+```sh
+python3 -m http.server 8000
+```
+
+Then visit <http://localhost:8000/> and <http://localhost:8000/chi2027/>. After a push to `main`, GitHub Pages usually updates within a few minutes.
+
 ## Updating the CHI 2027 page
 
 The page currently describes the workshop as **proposed and under review**. It deliberately lists no dates, invited speaker, program committee, or submission link, since none are confirmed yet. If the workshop is accepted:
@@ -23,7 +33,7 @@ The page currently describes the workshop as **proposed and under review**. It d
 2. Add the submission link and important dates to the "Participate" section; participant decisions must reach authors at least seven days before CHI's early registration deadline.
 3. Add the invited speaker and program committee once confirmed, and post accepted papers (with permission) and the arXiv index.
 
-Keep the text consistent with the proposal source in `zhihanjiang/chi2027-workshop-proposal`, especially the call for participation.
+Keep the text consistent with the organizers' workshop proposal, especially the call for participation.
 
 ## Accessibility
 
