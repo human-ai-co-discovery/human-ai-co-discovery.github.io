@@ -1,5 +1,5 @@
 // Tailwind (Play CDN) configuration for the workshop pages.
-// Colors resolve to CSS variables in assets/css/workshop.css, so dark mode
+// Colors resolve to CSS variables in ../css/workshop.css, so dark mode
 // follows prefers-color-scheme without dark: variants.
 // tide = deep cyan ink, ember = warm orange accent.
 const token = (name) => `rgb(var(--${name}) / <alpha-value>)`;
@@ -17,6 +17,7 @@ tailwind.config = {
         rule: token('rule'),
         line: token('line'),
         tide: {
+          25: token('tide-25'),
           50: token('tide-50'),
           100: token('tide-100'),
           300: token('tide-300'),
@@ -53,6 +54,8 @@ tailwind.config = {
               '&:hover': { color: 'rgb(var(--ember-700))', textDecorationColor: 'currentColor' },
             },
             em: { color: 'rgb(var(--tide-900))', fontWeight: '600' },
+            // Subsection headings match the pages' h3 scale: 20px bold, 48px above, 16px below.
+            h3: { fontSize: '1.25rem', lineHeight: '1.75rem', fontWeight: '700', marginTop: '3rem', marginBottom: '1rem' },
           },
         },
       },

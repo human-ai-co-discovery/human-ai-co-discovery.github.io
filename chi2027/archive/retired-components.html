@@ -1,0 +1,844 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Retired Components (archived)</title>
+  <!--
+    Components retired from the CHI 2027 pages on 2026-09-30, when the pages went back to
+    Ruishi's styling (commit 39f8f5c by Zhihan Jiang has the originals in place):
+      1. Home hero: eureka illustration (SVG) over the canvas discovery field
+      2. About: color-coded, expandable question cards (Q1-Q4)
+      3. Program: "At a glance" timeline with blocks proportional to their minutes
+      4. Call for Participation: topic cards grouped under the four questions
+    Everything below is copied verbatim. Open this file through a local server to preview it;
+    it reads the color tokens and Tailwind theme from ../assets, like the live pages.
+
+    To restore a component, copy its markup back into the page, its rules from the
+    <style> block below into ../assets/css/workshop.css (with the --q1..--q4 tokens for 2 and 4),
+    and, for the hero, the discovery-field script into ../assets/js/main.js.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+  <script src="https://cdn.tailwindcss.com/3.4.16?plugins=typography"></script>
+  <script src="../assets/js/tailwind.config.js"></script>
+  <link rel="stylesheet" href="../assets/css/workshop.css">
+  <style>
+    :root {
+  /* Workshop questions Q1-Q4 (pink, amber, green, blue, as in Figure 1).
+     --qN for badges, borders and text; --qN-soft for card fills. */
+  --q1: 184 58 87;
+  --q1-soft: 252 238 241;
+  --q2: 143 91 18;
+  --q2-soft: 251 243 228;
+  --q3: 47 122 91;
+  --q3-soft: 234 246 240;
+  --q4: 63 84 192;
+  --q4-soft: 237 240 252;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+    --q1: 240 150 172;
+    --q1-soft: 52 30 37;
+    --q2: 226 176 102;
+    --q2-soft: 50 40 24;
+    --q3: 128 206 168;
+    --q3-soft: 24 46 38;
+    --q4: 150 168 244;
+    --q4-soft: 30 36 62;
+      }
+    }
+
+/* --gutter is the side padding; the hero field reaches back across it to the viewport edges. */
+.page-container { --gutter: clamp(1.5rem, 8vw, 12rem); width: 100%; padding-inline: var(--gutter); }
+
+/* ------------------------------------------------------------------
+   Home hero: the eureka illustration with the discovery field behind it.
+   The illustration's default styles are its final frame; the animations
+   only run under prefers-reduced-motion: no-preference and play once.
+   ------------------------------------------------------------------ */
+.hero { position: relative; isolation: isolate; }
+.hero-field {
+  position: absolute; z-index: -1;
+  top: -3rem; bottom: 0; left: calc(-1 * var(--gutter)); right: calc(-1 * var(--gutter));
+  overflow: hidden; pointer-events: none;
+  /* Fades out under the nav and above the notice box. When the header is stacked,
+     the illustration sits at its bottom, so the lower fade starts later there. */
+  --fade-end: 85%;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 20%, #000 var(--fade-end), transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 20%, #000 var(--fade-end), transparent);
+}
+@media (min-width: 1024px) { .hero-field { --fade-end: 65%; } }
+.hero-field canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+
+.hero-eureka { position: relative; isolation: isolate; width: 100%; max-width: 30rem; }
+.hero-eureka::before {
+  content: ""; position: absolute; inset: 4% -4% 0 10%; z-index: -1; border-radius: 50%;
+  background:
+    radial-gradient(closest-side at 82% 26%, rgb(var(--ember-200) / 0.55), transparent 70%),
+    radial-gradient(closest-side at 40% 60%, rgb(var(--tide-100) / 0.7), transparent 80%);
+  filter: blur(18px);
+}
+.eh { display: block; width: 100%; height: auto; overflow: visible; }
+.eh-stop-tide { stop-color: rgb(var(--tide-700)); }
+.eh-stop-ember { stop-color: rgb(var(--ember-400)); }
+.eh-dot { fill: rgb(var(--tide-300)); opacity: 0.6; }
+.eh-dot--linked { fill: rgb(var(--tide-700)); opacity: 0.85; }
+.eh-link { fill: none; stroke: rgb(var(--tide-300)); stroke-width: 1.4; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 0; opacity: 0.9; }
+.eh-path { fill: none; stroke: url(#eh-grad); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.eh-pdot { fill: rgb(var(--tide-700)); stroke: rgb(var(--paper)); stroke-width: 2; }
+.eh-node, .eh-pdot, .eh-spark, .eh-spark-rays, .eh-spark-glow, .eh-dot { transform-box: fill-box; transform-origin: center; }
+.eh-node-ring { fill: rgb(var(--surface)); stroke: rgb(var(--tide-700)); stroke-width: 2.5; }
+.eh-glyph { fill: none; stroke: rgb(var(--tide-900)); stroke-width: 2.2; stroke-linecap: round; }
+.eh-glyph-text { fill: rgb(var(--tide-900)); font: 700 20px/1 Inter, system-ui, sans-serif; }
+.eh-label { fill: rgb(var(--ink-soft)); font: 600 14px/1 Inter, system-ui, sans-serif; letter-spacing: 0.04em; }
+.eh-label--eureka { fill: rgb(var(--ember-700)); font-weight: 700; letter-spacing: 0.08em; }
+/* Larger labels where the illustration scales down on phones. */
+@media (max-width: 479px) { .eh-label { font-size: 18px; } }
+.eh-spark-core { fill: rgb(var(--ember-400)); }
+.eh-spark-eye { fill: rgb(var(--surface)); }
+.eh-spark-rays { fill: none; stroke: rgb(var(--ember-400)); stroke-width: 2.5; stroke-linecap: round; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .eh-dot { animation: eh-scatter-in 0.9s ease-out var(--d, 0s) both; }
+  .eh-dot--linked { animation: eh-scatter-in 0.9s ease-out var(--d, 0s) both, eh-dot-link 0.5s ease-out var(--ld, 2s) both; }
+  .eh-pdot { animation: eh-gather 1.25s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s) both, eh-blip 0.45s ease-out var(--p, 2s); }
+  .eh-path { animation: eh-draw 1.8s linear 1.4s both; }
+  .eh-link { animation: eh-draw 0.6s ease-out var(--d, 2s) both; }
+  .eh-node { animation: eh-pop 0.55s cubic-bezier(0.3, 1.6, 0.5, 1) var(--d, 1.4s) both; }
+  .eh-label { animation: eh-fade-up 0.5s ease-out var(--d, 1.5s) both; }
+  .eh-spark { animation: eh-burst 0.7s cubic-bezier(0.3, 1.5, 0.5, 1) var(--d, 3.2s) both; }
+  .eh-spark-rays { animation: eh-rays 0.8s ease-out 3.3s both; }
+  .eh-spark-glow { animation: eh-glow 1.6s ease-in-out 3.4s; }
+  /* The title's "Eureka?" glows as the spark appears. */
+  .hero [data-gloss] { animation: eh-word 1.4s ease-out 3.3s; }
+}
+@keyframes eh-scatter-in { from { opacity: 0; transform: translate(var(--dx, 0), var(--dy, 0)); } }
+@keyframes eh-dot-link { from { fill: rgb(var(--tide-300)); } }
+@keyframes eh-gather { from { opacity: 0.3; fill: rgb(var(--tide-300)); transform: translate(var(--dx, 0), var(--dy, 0)) scale(0.7); } }
+@keyframes eh-blip { 40% { transform: scale(1.7); fill: rgb(var(--ember-400)); } }
+@keyframes eh-draw { from { stroke-dashoffset: 1; } }
+@keyframes eh-pop { from { opacity: 0; transform: scale(0.3); } }
+@keyframes eh-fade-up { from { opacity: 0; transform: translateY(6px); } }
+@keyframes eh-burst { 0% { opacity: 0; transform: scale(0) rotate(-45deg); } 60% { opacity: 1; transform: scale(1.3) rotate(8deg); } }
+@keyframes eh-rays { from { opacity: 0; transform: scale(0.4); } }
+@keyframes eh-glow { 50% { transform: scale(1.35); opacity: 0.35; } }
+@keyframes eh-word { 30% { text-shadow: 0 0 22px rgb(var(--ember-400) / 0.65), 0 0 2px rgb(var(--ember-400) / 0.4); } }
+
+/* Figure 1 is dark line art with white panels on a transparent background,
+   so it sits on a white plate in both themes (dimmed slightly in dark mode). */
+.figure-plate { background: #fff; }
+@media (prefers-color-scheme: dark) {
+  .figure-plate { filter: brightness(0.9); }
+}
+
+/* ------------------------------------------------------------------
+   Question cards (About). data-q on each card sets --qc and --qs.
+   ------------------------------------------------------------------ */
+#questions { display: grid; gap: 1rem; margin: 2.5rem 0 0; padding: 0; list-style: none; }
+@media (min-width: 768px) {
+  #questions { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+  /* Cards in a row share its height when both are closed or both are open. In a row with
+     one open card, neither stretches, so the closed card does not become an empty box. */
+  #questions > li:nth-child(odd):has(> details[open]):has(+ li > details:not([open])),
+  #questions > li:nth-child(odd):has(> details:not([open])):has(+ li > details[open]),
+  #questions > li:nth-child(odd):has(> details[open]) + li:has(> details:not([open])),
+  #questions > li:nth-child(odd):has(> details:not([open])) + li:has(> details[open]) { align-self: start; }
+}
+#questions > li { margin: 0; min-width: 0; }
+.q-card > details {
+  height: 100%;
+  background: rgb(var(--qs));
+  border: 1px solid rgb(var(--qc) / 0.3);
+  border-radius: 1rem;
+  box-shadow: inset 5px 0 0 rgb(var(--qc));
+}
+.q-card > details[open] {
+  border-color: rgb(var(--qc) / 0.55);
+  box-shadow: inset 5px 0 0 rgb(var(--qc)), 0 14px 32px -18px rgb(var(--qc) / 0.7);
+}
+/* Hover styles only where a pointer can hover, so they do not stick after a tap. */
+@media (hover: hover) {
+  .q-card > details:hover {
+    border-color: rgb(var(--qc) / 0.55);
+    box-shadow: inset 5px 0 0 rgb(var(--qc)), 0 14px 32px -18px rgb(var(--qc) / 0.7);
+  }
+}
+.q-card summary {
+  display: flex; flex-direction: column; gap: 0.85rem;
+  padding: 1.25rem 1.25rem 1.3rem 1.6rem;
+  border-radius: 1rem;
+  cursor: pointer; list-style: none;
+}
+.q-card summary::-webkit-details-marker { display: none; }
+.q-card__head { display: flex; align-items: center; gap: 0.75rem; }
+.q-card__icon {
+  display: grid; place-items: center; flex: none;
+  width: 2.5rem; height: 2.5rem; border-radius: 0.75rem;
+  background: rgb(var(--surface)); color: rgb(var(--qc));
+  box-shadow: 0 0 0 1px rgb(var(--qc) / 0.3);
+}
+.q-card__icon svg { width: 1.3rem; height: 1.3rem; stroke-width: 2; }
+.q-card__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 0.55rem; min-width: 0; }
+.q-card .q-badge { min-width: 0; height: auto; margin: 0; padding: 0.3rem 0.5rem; font-size: 0.75rem; font-weight: 800; line-height: 1; letter-spacing: 0.04em; }
+.q-card__tag { font-size: 0.75rem; font-weight: 700; line-height: 1.3; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(var(--qc)); }
+.q-card__toggle {
+  margin-left: auto; flex: none; display: grid; place-items: center;
+  width: 2rem; height: 2rem; border-radius: 999px;
+  color: rgb(var(--qc)); background: rgb(var(--surface) / 0.7);
+}
+.q-card__toggle svg { width: 1.1rem; height: 1.1rem; }
+.q-card > details[open] .q-card__toggle { transform: rotate(180deg); }
+.q-card__title { display: block; font-size: 1.05em; font-weight: 600; line-height: 1.45; color: rgb(var(--tide-900)); }
+.q-card details > p {
+  margin: 0 1.25rem 0 1.6rem; padding: 0.95rem 0 1.35rem;
+  border-top: 1px dashed rgb(var(--qc) / 0.35);
+  font-size: 0.95em; line-height: 1.65;
+}
+/* On phones every label sits under its badge, with a smaller icon and tighter
+   tracking so the labels keep to one line where they can. */
+@media (max-width: 479px) {
+  .q-card__head { gap: 0.6rem; }
+  .q-card__icon { width: 2.25rem; height: 2.25rem; }
+  .q-card__meta { flex-direction: column; align-items: flex-start; }
+  .q-card__tag { letter-spacing: 0.04em; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .q-card > details { transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
+  .q-card__icon { transition: transform 0.3s cubic-bezier(0.3, 1.6, 0.5, 1); }
+  .q-card__toggle { transition: transform 0.3s ease; }
+  @media (hover: hover) {
+    .q-card > details:hover { transform: translateY(-2px); }
+    .q-card > details:hover .q-card__icon { transform: rotate(-8deg) scale(1.06); }
+  }
+  /* Open and close smoothly where the browser can animate to height: auto. */
+  @supports (interpolate-size: allow-keywords) {
+    .q-card > details { interpolate-size: allow-keywords; }
+    .q-card > details::details-content {
+      height: 0; overflow: clip;
+      transition: height 0.4s cubic-bezier(0.2, 0.7, 0.2, 1), content-visibility 0.4s allow-discrete;
+    }
+    .q-card > details[open]::details-content { height: auto; }
+  }
+  .q-card > details[open] > p { animation: q-open 0.45s ease-out both; }
+}
+@keyframes q-open { from { opacity: 0; transform: translateY(-6px); } }
+
+/* data-q="1".."4" sets the question color (--qc) and soft fill (--qs) for its subtree. */
+[data-q="1"] { --qc: var(--q1); --qs: var(--q1-soft); }
+[data-q="2"] { --qc: var(--q2); --qs: var(--q2-soft); }
+[data-q="3"] { --qc: var(--q3); --qs: var(--q3-soft); }
+[data-q="4"] { --qc: var(--q4); --qs: var(--q4-soft); }
+
+/* CFP topics grouped under the four questions. */
+.topic-groups { display: grid; gap: 2.25rem; margin-top: 1.75rem; }
+.topic-question { display: flex; align-items: flex-start; gap: 0.75rem; margin: 0 0 1rem; font-size: 1.2rem; line-height: 1.4; font-weight: 700; color: rgb(var(--tide-900)); }
+.q-badge { flex: none; display: inline-grid; place-items: center; min-width: 2.4rem; height: 2rem; padding: 0 0.5rem; border-radius: 999px; background: rgb(var(--qc)); color: rgb(var(--paper)); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.02em; margin-top: 0.05rem; }
+.topic-cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.9rem; }
+@media (min-width: 640px) {
+  .topic-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.topic-card { background: rgb(var(--qs)); border: 1px solid rgb(var(--qc) / 0.25); border-left: 4px solid rgb(var(--qc)); border-radius: 0.75rem; padding: 1rem 1.15rem; }
+.topic-card h4 { margin: 0 0 0.35rem; font-size: 1.05rem; font-weight: 600; line-height: 1.35; color: rgb(var(--tide-900)); }
+.topic-card p { margin: 0; font-size: 1rem; line-height: 1.55; color: rgb(var(--ink-soft)); }
+
+/* ------------------------------------------------------------------
+   Program "At a glance" timeline. Block lengths come from their minutes
+   (--min): a height of --min units when vertical (below 1024px), and
+   flex-grow when horizontal (from 1024px up). Axis ticks sit at --at of 90.
+   ------------------------------------------------------------------ */
+.tl { --tl-unit: 0.32rem; --tl-h: calc(90 * var(--tl-unit)); position: relative; font-size: 0.95rem; line-height: 1.3; }
+.tl-track { display: flex; flex-direction: column; margin: 0 0 0 2.75rem; padding: 0; list-style: none; }
+.tl-block {
+  --tl-fill: var(--tide-100); --tl-bar: var(--tide-700); --tl-len: calc(var(--min) * var(--tl-unit));
+  display: flex; flex: none; height: var(--tl-len); min-width: 0; margin: 0;
+}
+/* The last block may grow to fit a label that wraps below a short bar; the bar keeps its length. */
+.tl-block:last-child { height: auto; min-height: var(--tl-len); }
+.tl-block[data-tone="discussion"] { --tl-fill: var(--ember-50); --tl-bar: var(--ember-400); }
+.tl-block[data-tone="quiet"] { --tl-fill: var(--tide-100); --tl-fill-alpha: 0.45; --tl-bar: var(--tide-300); }
+.tl-link {
+  --tl-accent: inset 4px 0 0 rgb(var(--tl-bar));
+  position: relative; isolation: isolate; display: flex; flex: 1 1 auto; min-width: 0;
+  padding: 0.15rem 0 0 3rem; color: rgb(var(--tide-900)); text-decoration: none; border-radius: 0.5rem;
+}
+.tl-link::before {
+  content: ""; position: absolute; z-index: -1; left: 0; top: 0; width: 2.25rem; height: calc(var(--tl-len) - 3px);
+  border-radius: 0.5rem; background: rgb(var(--tl-fill) / var(--tl-fill-alpha, 1)); box-shadow: var(--tl-accent);
+}
+.tl-block:last-child .tl-link::before { height: var(--tl-len); }
+@media (hover: hover) {
+  .tl-link:hover::before { box-shadow: var(--tl-accent), inset 0 0 0 2px rgb(var(--tl-bar)); }
+  .tl-link:hover .tl-name { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.2em; }
+}
+/* The focus ring stays inside its block, clear of the neighbors and the 5-minute connectors. */
+.tl-link:focus-visible { outline-offset: -3px; }
+.tl-link:focus-visible .tl-name { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.2em; }
+.tl-text { display: flex; flex-wrap: wrap; align-items: baseline; align-self: flex-start; gap: 0 0.5rem; min-width: 0; }
+.tl-name { font-weight: 700; }
+.tl-min { font-weight: 700; color: rgb(var(--ember-700)); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.tl-axis { position: absolute; left: 0; top: 0; width: 2.25rem; height: var(--tl-h); font-size: 0.75rem; font-weight: 600; line-height: 1; color: rgb(var(--ink-soft)); font-variant-numeric: tabular-nums; }
+.tl-axis span { position: absolute; right: 0.5rem; top: calc(var(--at) / 90 * 100%); transform: translateY(-50%); white-space: nowrap; }
+.tl-axis span::after { content: ""; position: absolute; left: calc(100% + 0.15rem); top: 50%; width: 0.3rem; border-top: 1px solid rgb(var(--rule)); }
+.tl-axis span:first-child { transform: none; }
+.tl-axis span:last-child { transform: translateY(-100%); }
+/* The break between the rows: dashed rules either side of a link to its section. */
+.tl-break { display: flex; align-items: center; gap: 0.9rem; margin: 1.75rem 0; font-size: 0.95rem; font-weight: 600; line-height: 1.35; color: rgb(var(--ink-soft)); }
+.tl-break::before, .tl-break::after { content: ""; flex: 1 1 1rem; border-top: 2px dashed rgb(var(--rule)); }
+.tl-break a { display: inline-flex; align-items: center; gap: 0.5rem; color: inherit; text-align: center; text-decoration: underline; text-decoration-color: rgb(var(--tide-300)); text-underline-offset: 0.2em; }
+.tl-break a:hover { color: rgb(var(--ember-700)); text-decoration-color: currentColor; }
+.tl-break svg { flex: none; width: 1.1rem; height: 1.1rem; color: rgb(var(--ember-700)); }
+
+@media (min-width: 1024px) {
+  .tl-track { flex-direction: row; margin: 0; padding-top: 2.25rem; }
+  .tl-block, .tl-block:last-child { flex: var(--min) 1 0; height: auto; min-height: 0; }
+  /* min-height, so a row grows (and its blocks with it) when its labels need more room. */
+  .tl-link { --tl-accent: inset 0 4px 0 rgb(var(--tl-bar)); min-height: 7.5rem; padding: 0.85rem 0.8rem 0.75rem; }
+  .tl-link::before { inset: 0 3px 0 0; width: auto; height: auto; }
+  .tl-block:last-child .tl-link::before { right: 0; height: auto; }
+  .tl-text { flex-direction: column; flex-wrap: nowrap; align-items: flex-start; align-self: stretch; justify-content: space-between; width: 100%; }
+  .tl-min { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+  /* 5-minute blocks are too narrow for their label, so it sits above the block with a short connector. */
+  .tl-block[data-narrow] .tl-text { position: absolute; left: 0; bottom: calc(100% + 0.55rem); width: max-content; flex-direction: row; align-items: baseline; gap: 0.5rem; }
+  .tl-block[data-narrow] .tl-min { font-size: inherit; font-weight: 700; letter-spacing: 0; line-height: inherit; }
+  .tl-block[data-narrow]:last-child .tl-text { left: auto; right: 0; }
+  .tl-block[data-narrow] .tl-link::after { content: ""; position: absolute; left: 0.6rem; bottom: 100%; height: 0.45rem; border-left: 2px solid rgb(var(--tl-bar)); }
+  .tl-block[data-narrow]:last-child .tl-link::after { left: auto; right: 0.6rem; }
+  .tl-axis { position: relative; width: auto; height: 1.5rem; margin-top: 0.5rem; }
+  .tl-axis span { top: 0.4rem; right: auto; left: calc(var(--at) / 90 * 100%); transform: translateX(-50%); }
+  .tl-axis span::after { left: 50%; top: -0.45rem; width: 0; height: 0.3rem; border-top: 0; border-left: 1px solid rgb(var(--rule)); }
+  .tl-axis span:first-child { transform: none; }
+  .tl-axis span:first-child::after { left: 0; }
+  .tl-axis span:last-child { transform: translateX(-100%); }
+  .tl-axis span:last-child::after { left: auto; right: 0; }
+}
+/* Forced colors drop backgrounds and shadows, so the bars get a border instead. */
+@media (forced-colors: active) {
+  .tl-link::before { border: 1px solid CanvasText; }
+}
+  </style>
+</head>
+<body class="text-ink antialiased font-sans font-normal text-lg sm:text-xl leading-relaxed">
+  <main class="page-container py-10 sm:py-12 space-y-16">
+    <h1 class="text-3xl font-bold text-tide-900">Retired components</h1>
+
+    <section>
+      <h2 class="text-sm font-bold uppercase tracking-widest text-ember-700 mb-6">1. Home hero</h2>
+    <!-- Header: title, eureka illustration, and the discovery field behind both -->
+    <header class="hero mb-10 pb-5 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between lg:gap-12" data-field-host>
+      <div class="hero-field" aria-hidden="true"><canvas data-field></canvas></div>
+      <div class="min-w-0 lg:w-fit" data-field-quiet="0.06" data-field-text>
+        <div class="flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-2 mb-4 text-sm text-ink-soft">
+          <span>Proposed workshop @ CHI 2027</span>
+          <span class="hidden sm:block w-px h-4 bg-rule mx-1" aria-hidden="true"></span>
+          <span class="font-bold text-tide-900">Pittsburgh, PA, USA</span>
+        </div>
+
+        <div class="relative">
+          <h1 class="text-5xl sm:text-6xl font-bold text-tide-900 mb-5 leading-tight tracking-tight">
+            Whose
+            <button type="button" data-gloss aria-expanded="false" aria-controls="title-gloss"
+              class="text-ember-500 cursor-help underline decoration-dashed decoration-ember-400/50 hover:decoration-ember-500 underline-offset-8 decoration-4 transition-all">Eureka?</button>
+          </h1>
+          <div id="title-gloss" hidden class="absolute left-0 top-full -mt-2 w-full max-w-md bg-surface border border-rule rounded-xl p-5 shadow-2xl z-40 text-ink-soft">
+            A <em class="not-italic font-bold text-tide-900">eureka</em> is the moment something new becomes clear. When people and AI make discoveries together, we ask whose moment it is: new to whom, whose understanding changed, and who steered the inquiry and gets the credit.
+          </div>
+        </div>
+        <p class="text-xl sm:text-2xl text-ink-soft leading-relaxed font-medium">
+          Human-AI Co-Discovery of Knowledge
+        </p>
+      </div>
+      <!-- Eureka illustration: question, connection, explanation, eureka (plays once; static under reduced motion) -->
+      <div class="hero-eureka lg:flex-1 lg:min-w-[18rem]" data-field-quiet="0.5" data-field-feather="120">
+        <svg class="eh" viewBox="0 0 480 300" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="eh-grad" gradientUnits="userSpaceOnUse" x1="56" y1="0" x2="428" y2="0">
+              <stop offset="0" class="eh-stop-tide"/><stop offset="0.55" class="eh-stop-tide"/><stop offset="1" class="eh-stop-ember"/>
+            </linearGradient>
+            <radialGradient id="eh-glow-fill"><stop offset="0" class="eh-stop-ember" stop-opacity="0.55"/><stop offset="1" class="eh-stop-ember" stop-opacity="0"/></radialGradient>
+          </defs>
+          <g class="eh-links">
+            <path class="eh-link" pathLength="1" d="M56 236L131 222" style="--d:1.5s"/>
+            <path class="eh-link" pathLength="1" d="M192 112L285 123" style="--d:2.14s"/>
+            <path class="eh-link" pathLength="1" d="M192 112L96 115" style="--d:2.14s"/>
+            <path class="eh-link" pathLength="1" d="M322 204L251 189" style="--d:2.71s"/>
+            <path class="eh-link" pathLength="1" d="M322 204L461 225" style="--d:2.71s"/>
+            <path class="eh-link" pathLength="1" d="M428 74L307 46" style="--d:3.3s"/>
+          </g>
+          <g class="eh-decoys">
+            <circle class="eh-dot" cx="220" cy="167" r="4" style="--d:0.0s;--dx:-7px;--dy:4px"/>
+            <circle class="eh-dot" cx="220" cy="248" r="3" style="--d:0.025s;--dx:3px;--dy:-10px"/>
+            <circle class="eh-dot" cx="59" cy="97" r="2.5" style="--d:0.05s;--dx:-3px;--dy:5px"/>
+            <circle class="eh-dot" cx="259" cy="258" r="2.5" style="--d:0.075s;--dx:1px;--dy:6px"/>
+            <circle class="eh-dot eh-dot--linked" cx="285" cy="123" r="4" style="--d:0.1s;--dx:4px;--dy:-12px;--ld:2.59s"/>
+            <circle class="eh-dot" cx="87" cy="18" r="2.5" style="--d:0.125s;--dx:5px;--dy:-14px"/>
+            <circle class="eh-dot" cx="43" cy="66" r="3" style="--d:0.15s;--dx:12px;--dy:1px"/>
+            <circle class="eh-dot" cx="163" cy="176" r="3" style="--d:0.175s;--dx:-6px;--dy:3px"/>
+            <circle class="eh-dot eh-dot--linked" cx="251" cy="189" r="4" style="--d:0.2s;--dx:-7px;--dy:-8px;--ld:3.16s"/>
+            <circle class="eh-dot" cx="18" cy="37" r="3.5" style="--d:0.225s;--dx:8px;--dy:1px"/>
+            <circle class="eh-dot eh-dot--linked" cx="131" cy="222" r="3.5" style="--d:0.25s;--dx:3px;--dy:12px;--ld:1.95s"/>
+            <circle class="eh-dot" cx="29" cy="168" r="2.5" style="--d:0.275s;--dx:3px;--dy:1px"/>
+            <circle class="eh-dot" cx="191" cy="277" r="2.5" style="--d:0.3s;--dx:-2px;--dy:6px"/>
+            <circle class="eh-dot" cx="113" cy="268" r="2.5" style="--d:0.325s;--dx:13px;--dy:-10px"/>
+            <circle class="eh-dot" cx="228" cy="283" r="4" style="--d:0.35s;--dx:-7px;--dy:6px"/>
+            <circle class="eh-dot" cx="23" cy="126" r="2.5" style="--d:0.375s;--dx:-10px;--dy:13px"/>
+            <circle class="eh-dot eh-dot--linked" cx="461" cy="225" r="4" style="--d:0.4s;--dx:2px;--dy:-2px;--ld:3.16s"/>
+            <circle class="eh-dot eh-dot--linked" cx="307" cy="46" r="4" style="--d:0.425s;--dx:9px;--dy:-14px;--ld:3.75s"/>
+            <circle class="eh-dot" cx="464" cy="14" r="3.5" style="--d:0.45s;--dx:7px;--dy:10px"/>
+            <circle class="eh-dot" cx="216" cy="17" r="3.5" style="--d:0.475s;--dx:-12px;--dy:-9px"/>
+            <circle class="eh-dot" cx="191" cy="146" r="2.5" style="--d:0.5s;--dx:10px;--dy:4px"/>
+            <circle class="eh-dot eh-dot--linked" cx="96" cy="115" r="3" style="--d:0.525s;--dx:-13px;--dy:-5px;--ld:2.59s"/>
+          </g>
+          <path class="eh-path" pathLength="1" d="M56 236 C 92 186, 128 118, 192 112 S 270 208, 322 204 S 398 120, 428 74"/>
+          <g class="eh-pdots">
+            <circle class="eh-pdot" cx="89.2" cy="188.3" r="4" style="--d:0.15s;--dx:-21px;--dy:41px;--p:1.6s"/>
+            <circle class="eh-pdot" cx="129.6" cy="141.3" r="4" style="--d:0.23s;--dx:-25px;--dy:-35px;--p:1.81s"/>
+            <circle class="eh-pdot" cx="232.0" cy="124.4" r="4" style="--d:0.31s;--dx:-53px;--dy:-12px;--p:2.19s"/>
+            <circle class="eh-pdot" cx="261.5" cy="157.2" r="4" style="--d:0.39s;--dx:56px;--dy:21px;--p:2.34s"/>
+            <circle class="eh-pdot" cx="288.8" cy="190.5" r="4" style="--d:0.47s;--dx:56px;--dy:13px;--p:2.49s"/>
+            <circle class="eh-pdot" cx="362.2" cy="182.8" r="4" style="--d:0.55s;--dx:39px;--dy:19px;--p:2.77s"/>
+            <circle class="eh-pdot" cx="394.5" cy="135.1" r="4" style="--d:0.63s;--dx:-65px;--dy:33px;--p:2.96s"/>
+          </g>
+          <g class="eh-node" style="--d:1.4s">
+            <circle class="eh-node-ring" cx="56" cy="236" r="17"/>
+            <text class="eh-glyph-text" x="56" y="242.5" text-anchor="middle">?</text>
+          </g>
+          <text class="eh-label" x="56" y="276" text-anchor="middle" style="--d:1.55s">question</text>
+          <g class="eh-node" style="--d:2.04s">
+            <circle class="eh-node-ring" cx="192" cy="112" r="17"/>
+            <circle class="eh-glyph" cx="187" cy="112" r="5.5"/>
+            <circle class="eh-glyph" cx="197" cy="112" r="5.5"/>
+          </g>
+          <text class="eh-label" x="192" y="80" text-anchor="middle" style="--d:2.19s">connection</text>
+          <g class="eh-node" style="--d:2.61s">
+            <circle class="eh-node-ring" cx="322" cy="204" r="17"/>
+            <path class="eh-glyph" d="M313 197.5h18M313 204h18M313 210.5h11"/>
+          </g>
+          <text class="eh-label" x="322" y="242" text-anchor="middle" style="--d:2.76s">explanation</text>
+          <g class="eh-spark" style="--d:3.2s">
+            <circle class="eh-spark-glow" cx="428" cy="74" r="44" fill="url(#eh-glow-fill)"/>
+            <path class="eh-spark-rays" d="M447.4 82.0L456.6 85.9M436.0 93.4L438.3 98.9M420.0 93.4L416.1 102.6M408.6 82.0L403.1 84.3M408.6 66.0L399.4 62.1M420.0 54.6L417.7 49.1M436.0 54.6L439.9 45.4M447.4 66.0L452.9 63.7"/>
+            <path class="eh-spark-core" d="M428 54 Q431.5 70.5 448 74 Q431.5 77.5 428 94 Q424.5 77.5 408 74 Q424.5 70.5 428 54 Z"/>
+            <circle class="eh-spark-eye" cx="428" cy="74" r="2.6"/>
+          </g>
+          <text class="eh-label eh-label--eureka" x="428" y="24" text-anchor="middle" style="--d:3.45s">eureka</text>
+        </svg>
+      </div>
+    </header>
+    </section>
+
+    <section>
+      <h2 class="text-sm font-bold uppercase tracking-widest text-ember-700 mb-6">2. Question cards</h2>
+      <ul id="questions">
+        <li class="q-card" data-q="1">
+          <details>
+            <summary>
+              <span class="q-card__head">
+                <span class="q-card__icon" aria-hidden="true"><i data-lucide="message-circle-question"></i></span>
+                <span class="q-card__meta"><span class="q-badge">Q1</span><span class="q-card__tag">Co-discovery process</span></span>
+                <span class="q-card__toggle" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+              </span>
+              <span class="q-card__title">How do people and AI develop questions, connections, and explanations together?</span>
+            </summary>
+            <p>People and AI can build on, challenge, or redirect one another's suggestions as they explore evidence and develop provisional conclusions. How can human-AI interaction help people recognize when an unexpected connection is worth pursuing, rather than simply accepting an AI suggestion?</p>
+          </details>
+        </li>
+        <li class="q-card" data-q="2">
+          <details>
+            <summary>
+              <span class="q-card__head">
+                <span class="q-card__icon" aria-hidden="true"><i data-lucide="hand-helping"></i></span>
+                <span class="q-card__meta"><span class="q-badge">Q2</span><span class="q-card__tag">Agency &amp; credit</span></span>
+                <span class="q-card__toggle" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+              </span>
+              <span class="q-card__title">How do people guide co-discovery, and how are contributions recognized?</span>
+            </summary>
+            <p>As people delegate work to AI, they decide when to intervene, revise a plan, or decline assistance, and records of decisions and revisions can make human and AI contributions visible. How should credit, intellectual ownership, and responsibility be understood and negotiated when discoveries emerge from human-AI collaboration?</p>
+          </details>
+        </li>
+        <li class="q-card" data-q="3">
+          <details>
+            <summary>
+              <span class="q-card__head">
+                <span class="q-card__icon" aria-hidden="true"><i data-lucide="lightbulb"></i></span>
+                <span class="q-card__meta"><span class="q-badge">Q3</span><span class="q-card__tag">Human understanding</span></span>
+                <span class="q-card__toggle" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+              </span>
+              <span class="q-card__title">What do people come to understand through co-discovery?</span>
+            </summary>
+            <p>Human-AI co-discovery may change how people frame a problem, what they notice, and what they ask next, even when an investigation remains inconclusive. How can reflection, learning, and changes in understanding be recognized alongside the findings that people and AI produce?</p>
+          </details>
+        </li>
+        <li class="q-card" data-q="4">
+          <details>
+            <summary>
+              <span class="q-card__head">
+                <span class="q-card__icon" aria-hidden="true"><i data-lucide="search-check"></i></span>
+                <span class="q-card__meta"><span class="q-badge">Q4</span><span class="q-card__tag">What counts as discovery</span></span>
+                <span class="q-card__toggle" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+              </span>
+              <span class="q-card__title">What counts as a discovery, for whom, and on what evidence?</span>
+            </summary>
+            <p>Is an insight new to an individual, a team, or a field, and do its claims hold up against counter-evidence or alternative explanations? Concerns about scientific monocultures also raise the question of whether co-discovery can broaden, rather than narrow, the questions a community pursues.</p>
+          </details>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-sm font-bold uppercase tracking-widest text-ember-700 mb-6">3. Program timeline</h2>
+    <!-- At a glance: each block's length is proportional to its minutes (--min); blocks link to the schedule below. -->
+    <section class="mb-12 rounded-2xl border border-rule bg-surface p-4 sm:p-6" aria-labelledby="glance-h">
+      <h2 id="glance-h" class="mb-5 text-xs font-bold uppercase tracking-widest text-ember-700">At a glance</h2>
+
+      <p id="tl-s1" class="flex flex-wrap items-baseline justify-between gap-x-4 mb-3 text-base"><span class="font-semibold text-tide-900">Session 1: Perspectives</span> <span class="text-ink-soft tabular-nums">90 min</span></p>
+      <div class="tl">
+        <ol class="tl-track" role="list" aria-labelledby="tl-s1">
+          <li class="tl-block" data-tone="quiet" data-narrow style="--min: 5"><a class="tl-link" href="#s1-welcome" aria-label="Welcome, 5 minutes"><span class="tl-text"><span class="tl-name">Welcome</span> <span class="tl-min">5 min</span></span></a></li>
+          <li class="tl-block" style="--min: 30"><a class="tl-link" href="#s1-keynote" aria-label="Keynote with Q&amp;A, 30 minutes"><span class="tl-text"><span class="tl-name">Keynote with Q&amp;A</span> <span class="tl-min">30 min</span></span></a></li>
+          <li class="tl-block" style="--min: 25"><a class="tl-link" href="#s1-lightning" aria-label="Lightning talks: first block, 25 minutes"><span class="tl-text"><span class="tl-name">Lightning talks: first block</span> <span class="tl-min">25 min</span></span></a></li>
+          <li class="tl-block" data-tone="discussion" style="--min: 30"><a class="tl-link" href="#s1-panel" aria-label="Human-AI panel discussion, 30 minutes"><span class="tl-text"><span class="tl-name">Human-AI panel discussion</span> <span class="tl-min">30 min</span></span></a></li>
+        </ol>
+        <div class="tl-axis" aria-hidden="true"><span style="--at: 0">0</span><span style="--at: 30">30</span><span style="--at: 60">60</span><span style="--at: 90">90 min</span></div>
+      </div>
+
+      <p class="tl-break"><a href="#break-h"><i data-lucide="coffee" aria-hidden="true"></i>Conference coffee break and poster exchange</a></p>
+
+      <p id="tl-s2" class="flex flex-wrap items-baseline justify-between gap-x-4 mb-3 text-base"><span class="font-semibold text-tide-900">Session 2: Co-Discovery</span> <span class="text-ink-soft tabular-nums">90 min</span></p>
+      <div class="tl">
+        <ol class="tl-track" role="list" aria-labelledby="tl-s2">
+          <li class="tl-block" style="--min: 20"><a class="tl-link" href="#s2-lightning" aria-label="Lightning talks: second block, 20 minutes"><span class="tl-text"><span class="tl-name">Lightning talks: second block</span> <span class="tl-min">20 min</span></span></a></li>
+          <li class="tl-block" data-tone="discussion" style="--min: 50"><a class="tl-link" href="#s2-roundtable" aria-label="Interactive roundtable activity, 50 minutes"><span class="tl-text"><span class="tl-name">Interactive roundtable activity</span> <span class="tl-min">50 min</span></span></a></li>
+          <li class="tl-block" data-tone="discussion" style="--min: 15"><a class="tl-link" href="#s2-reports" aria-label="Group reports and collective discussion, 15 minutes"><span class="tl-text"><span class="tl-name">Group reports and collective discussion</span> <span class="tl-min">15 min</span></span></a></li>
+          <li class="tl-block" data-tone="quiet" data-narrow style="--min: 5"><a class="tl-link" href="#s2-closing" aria-label="Closing and next steps, 5 minutes"><span class="tl-text"><span class="tl-name">Closing and next steps</span> <span class="tl-min">5 min</span></span></a></li>
+        </ol>
+        <div class="tl-axis" aria-hidden="true"><span style="--at: 0">0</span><span style="--at: 30">30</span><span style="--at: 60">60</span><span style="--at: 90">90 min</span></div>
+      </div>
+    </section>
+    </section>
+
+    <section>
+      <h2 class="text-sm font-bold uppercase tracking-widest text-ember-700 mb-6">4. Topic cards</h2>
+      <div class="topic-groups">
+        <div data-q="1">
+          <h3 class="topic-question"><span class="q-badge">Q1</span><span>How do people and AI develop questions, connections, and explanations together?</span></h3>
+          <ul class="topic-cards" role="list">
+            <li class="topic-card"><h4>Interpreting together</h4><p>How people and AI make sense of data and existing knowledge, formulate questions, and revise interpretations as evidence develops.</p></li>
+            <li class="topic-card"><h4>Serendipity and unexpected connections</h4><p>How interaction with AI shapes the recognition of unexpected patterns, relationships, and possibilities, and how people decide which connections are worth pursuing.</p></li>
+            <li class="topic-card"><h4>Developing and testing explanations</h4><p>How people and AI construct, compare, challenge, and revise explanations, models, and representations, including the assumptions that underpin them.</p></li>
+          </ul>
+        </div>
+        <div data-q="2">
+          <h3 class="topic-question"><span class="q-badge">Q2</span><span>How do people guide co-discovery, and how are contributions recognized?</span></h3>
+          <ul class="topic-cards" role="list">
+            <li class="topic-card"><h4>Human agency in co-discovery</h4><p>How people direct inquiry, work with proactive AI agents, delegate tasks, and decide when to intervene, redirect an exchange, or pursue another direction.</p></li>
+            <li class="topic-card"><h4>Whose contribution, whose discovery?</h4><p>How human and AI contributions become visible, and how credit, intellectual ownership, and responsibility are understood and negotiated.</p></li>
+          </ul>
+        </div>
+        <div data-q="3">
+          <h3 class="topic-question"><span class="q-badge">Q3</span><span>What do people come to understand through co-discovery?</span></h3>
+          <ul class="topic-cards" role="list">
+            <li class="topic-card"><h4>Human understanding and learning</h4><p>What people come to understand through co-discovery, how that understanding changes over time, and how reflection and further questioning develop even when an investigation remains inconclusive.</p></li>
+          </ul>
+        </div>
+        <div data-q="4">
+          <h3 class="topic-question"><span class="q-badge">Q4</span><span>What counts as a discovery, for whom, and on what evidence?</span></h3>
+          <ul class="topic-cards" role="list">
+            <li class="topic-card"><h4>Evidence, uncertainty, and failure</h4><p>How people and AI seek counter-evidence, recognize misleading patterns, work with uncertainty, and learn from unsuccessful inquiry.</p></li>
+            <li class="topic-card"><h4>What counts as a discovery?</h4><p>What makes a connection or finding new and worthwhile for an individual, a team, or a field, and how novelty and value vary across research and practice.</p></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+if (window.lucide) lucide.createIcons();
+
+// Discovery field behind the home hero: faint points that link up near the
+// pointer, or near a slow wandering probe when no pointer is present. Points
+// fade out behind [data-field-quiet] elements (the value is the opacity kept
+// there; data-field-feather sets the fade distance around them, and
+// data-field-text limits the quiet area to the element's lines of text), so
+// the title stays clear and the illustration stays in front.
+// The field drifts for a few seconds when the hero comes into view and while
+// the pointer moves over it, then settles into a still constellation, so no
+// motion runs longer than five seconds on its own (WCAG 2.2.2).
+// Reduced motion draws one static constellation; the loop pauses off-screen
+// and in hidden tabs.
+const fieldCanvas = document.querySelector('canvas[data-field]');
+const fieldHost = fieldCanvas && fieldCanvas.closest('[data-field-host]');
+const fieldCtx = fieldHost && fieldCanvas.getContext('2d');
+if (fieldCtx) {
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+  const onChange = (query, fn) => {
+    if (query.addEventListener) query.addEventListener('change', fn);
+    else if (query.addListener) query.addListener(fn);
+  };
+  const quietEls = [...fieldHost.querySelectorAll('[data-field-quiet]')];
+  const LINK = 120; // longest link, px
+  const REACH = 190; // radius lit by the pointer or probe, px
+  const FEATHER = 64; // default fade distance around quiet elements, px
+  const AUTO_MS = 3200; // drift after the hero comes into view; easing out ends before 5 s
+  const POINTER_MS = 1800; // drift kept after the last pointer movement
+  let W = 0;
+  let H = 0;
+  let points = [];
+  let quiet = [];
+  let colors = {};
+  let raf = 0;
+  let onScreen = true;
+  let t = 0;
+  let last = 0; // time of the previous frame
+  let awakeUntil = 0; // drift continues until this time
+  let energy = 1; // drift speed, easing between 1 (awake) and 0 (settled)
+  const pointer = { x: 0, y: 0, active: false, strength: 0, timer: 0 };
+
+  const rgbVar = (name) => getComputedStyle(document.documentElement)
+    .getPropertyValue(`--${name}`).trim().split(/\s+/).join(',');
+  const readColors = () => {
+    colors = { dot: rgbVar('tide-300'), link: rgbVar('tide-700'), spark: rgbVar('ember-400') };
+  };
+
+  // The boxes of an element's text, one per line, so space beside short lines stays open.
+  const textRects = (el) => {
+    const rects = [];
+    const range = document.createRange();
+    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+      if (!node.data.trim()) continue;
+      range.selectNodeContents(node);
+      rects.push(...range.getClientRects());
+    }
+    return rects;
+  };
+  // Quiet elements as boxes in canvas coordinates.
+  const measureQuiet = () => {
+    const origin = fieldCanvas.getBoundingClientRect();
+    quiet = quietEls.flatMap((el) => {
+      const floor = Number(el.dataset.fieldQuiet) || 0;
+      const feather = Number(el.dataset.fieldFeather) || FEATHER;
+      const rects = 'fieldText' in el.dataset ? textRects(el) : [el.getBoundingClientRect()];
+      return rects.map((r) => ({
+        left: r.left - origin.left, top: r.top - origin.top,
+        right: r.right - origin.left, bottom: r.bottom - origin.top,
+        floor, feather,
+      }));
+    });
+  };
+  // Opacity factor at (x, y): the lowest floor among quiet boxes, rising to 1 over each box's feather.
+  const calm = (x, y) => {
+    let k = 1;
+    for (const q of quiet) {
+      const d = Math.hypot(Math.max(q.left - x, 0, x - q.right), Math.max(q.top - y, 0, y - q.bottom));
+      k = Math.min(k, q.floor + (1 - q.floor) * Math.min(1, d / q.feather));
+    }
+    return k;
+  };
+
+  // Seeded random numbers, so the constellation is the same on every visit.
+  const seed = () => {
+    let s = 20270;
+    const rand = () => { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; };
+    const count = Math.round(Math.min(110, Math.max(28, (W * H) / 8000)));
+    points = [];
+    for (let i = 0; i < count; i += 1) {
+      points.push({
+        x: rand() * W, y: rand() * H,
+        vx: (rand() - 0.5) * 0.16, vy: (rand() - 0.5) * 0.16,
+        r: 1.1 + rand() * 1.5,
+        spark: rand() < 0.08,
+        calm: 1, near: 0,
+      });
+    }
+  };
+
+  const resize = () => {
+    const rect = fieldCanvas.getBoundingClientRect();
+    W = Math.max(1, rect.width);
+    H = Math.max(1, rect.height);
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    fieldCanvas.width = Math.round(W * dpr);
+    fieldCanvas.height = Math.round(H * dpr);
+    fieldCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    seed();
+    measureQuiet();
+  };
+
+  const line = (a, b, color, alpha) => {
+    fieldCtx.strokeStyle = `rgba(${color},${alpha})`;
+    fieldCtx.beginPath(); fieldCtx.moveTo(a.x, a.y); fieldCtx.lineTo(b.x, b.y); fieldCtx.stroke();
+  };
+  const dot = (p, radius, color, alpha) => {
+    fieldCtx.fillStyle = `rgba(${color},${alpha})`;
+    fieldCtx.beginPath(); fieldCtx.arc(p.x, p.y, radius, 0, Math.PI * 2); fieldCtx.fill();
+  };
+
+  const drawStatic = () => {
+    fieldCtx.clearRect(0, 0, W, H);
+    fieldCtx.lineWidth = 1;
+    for (const p of points) p.calm = calm(p.x, p.y);
+    for (let i = 0; i < points.length; i += 1) {
+      for (let j = i + 1; j < points.length; j += 1) {
+        const a = points[i]; const b = points[j];
+        const d = Math.hypot(a.x - b.x, a.y - b.y);
+        if (d < 95) line(a, b, colors.dot, (1 - d / 95) * 0.35 * Math.min(a.calm, b.calm));
+      }
+    }
+    for (const p of points) dot(p, p.r, p.spark ? colors.spark : colors.dot, 0.65 * p.calm);
+  };
+
+  const frame = (now) => {
+    raf = 0;
+    // Steps are measured in 60 Hz frames of elapsed time, so the speed does not
+    // depend on the display's refresh rate.
+    const dt = last ? Math.min(50, now - last) / (1000 / 60) : 1;
+    last = now;
+    energy += ((now < awakeUntil ? 1 : 0) - energy) * (1 - 0.93 ** dt);
+    const step = dt * energy;
+    t += step;
+    fieldCtx.clearRect(0, 0, W, H);
+    // Focus point: the visitor's pointer, or the probe drifting across the hero.
+    const probeX = W * (0.5 + 0.4 * Math.sin(t / 520));
+    const probeY = H * (0.5 + 0.3 * Math.sin(t / 310 + 1.3));
+    pointer.strength += ((pointer.active ? 1 : 0) - pointer.strength) * (1 - 0.92 ** dt);
+    const fx = pointer.x * pointer.strength + probeX * (1 - pointer.strength);
+    const fy = pointer.y * pointer.strength + probeY * (1 - pointer.strength);
+    const power = 0.55 + 0.45 * pointer.strength;
+
+    for (const p of points) {
+      p.x += p.vx * step; p.y += p.vy * step;
+      if (p.x < -10) p.x = W + 10; else if (p.x > W + 10) p.x = -10;
+      if (p.y < -10) p.y = H + 10; else if (p.y > H + 10) p.y = -10;
+      p.near = Math.max(0, 1 - Math.hypot(p.x - fx, p.y - fy) / REACH);
+      p.calm = calm(p.x, p.y);
+    }
+    fieldCtx.lineWidth = 1;
+    for (let i = 0; i < points.length; i += 1) {
+      const a = points[i];
+      for (let j = i + 1; j < points.length; j += 1) {
+        const b = points[j];
+        const dx = a.x - b.x; const dy = a.y - b.y;
+        if (dx > LINK || dx < -LINK || dy > LINK || dy < -LINK) continue;
+        const d = Math.hypot(dx, dy);
+        if (d > LINK) continue;
+        const ambient = d < 90 ? (1 - d / 90) * 0.22 : 0;
+        const lit = Math.min(a.near, b.near) * (1 - d / LINK) * 0.7 * power;
+        const alpha = Math.min(0.75, ambient + lit) * Math.min(a.calm, b.calm);
+        if (alpha < 0.02) continue;
+        const color = (a.spark || b.spark) && lit > 0.12 ? colors.spark : lit > ambient ? colors.link : colors.dot;
+        line(a, b, color, alpha);
+      }
+    }
+    for (const p of points) {
+      const glow = p.near * power;
+      const color = p.spark ? colors.spark : glow > 0.25 ? colors.link : colors.dot;
+      dot(p, p.r + glow * 1.6, color, (0.65 + glow * 0.35) * p.calm);
+    }
+    // Keep drawing while awake, easing out, or while the pointer glow fades in or out.
+    const fading = Math.abs((pointer.active ? 1 : 0) - pointer.strength) > 0.004;
+    if (now < awakeUntil || energy > 0.004 || fading) schedule();
+    else energy = 0;
+  };
+
+  const schedule = () => {
+    if (!raf && onScreen && !document.hidden && !reducedMotion.matches) raf = requestAnimationFrame(frame);
+  };
+  const wake = (ms) => {
+    awakeUntil = Math.max(awakeUntil, performance.now() + ms);
+    schedule();
+  };
+  const stop = () => {
+    if (raf) cancelAnimationFrame(raf);
+    raf = 0;
+    last = 0;
+  };
+  const render = () => {
+    stop();
+    if (reducedMotion.matches) drawStatic();
+    else schedule();
+  };
+
+  // The canvas ignores the pointer (so text stays selectable); the window listens
+  // instead, and the field follows the pointer while it is over the canvas area,
+  // which reaches into the page gutters.
+  const setPointer = (event) => {
+    if (!onScreen) return;
+    const rect = fieldCanvas.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    const inside = x >= 0 && y >= 0 && x <= rect.width && y <= rect.height;
+    clearTimeout(pointer.timer);
+    if (!inside) {
+      if (pointer.active) {
+        pointer.active = false;
+        schedule();
+      }
+      return;
+    }
+    pointer.x = x;
+    pointer.y = y;
+    pointer.active = true;
+    wake(POINTER_MS);
+    if (event.pointerType === 'touch') {
+      pointer.timer = setTimeout(() => {
+        pointer.active = false;
+        schedule();
+      }, 1600);
+    }
+  };
+  window.addEventListener('pointermove', setPointer, { passive: true });
+  window.addEventListener('pointerdown', setPointer, { passive: true });
+  // A mouse leaving the window hands the field back to the probe.
+  document.addEventListener('pointerout', (event) => {
+    if (!event.relatedTarget && event.pointerType !== 'touch' && pointer.active) {
+      pointer.active = false;
+      schedule();
+    }
+  });
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver((entries) => {
+      onScreen = entries[entries.length - 1].isIntersecting;
+      if (onScreen) {
+        wake(AUTO_MS);
+        render();
+      } else {
+        stop();
+        pointer.active = false;
+      }
+    }).observe(fieldCanvas);
+  }
+  document.addEventListener('visibilitychange', render);
+  onChange(reducedMotion, render);
+  onChange(darkScheme, () => {
+    readColors();
+    render();
+  });
+
+  // Re-seed when the hero changes size; re-measure once web fonts settle the title.
+  const onResize = () => {
+    resize();
+    render();
+  };
+  if ('ResizeObserver' in window) new ResizeObserver(onResize).observe(fieldCanvas);
+  else window.addEventListener('resize', onResize);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => {
+      measureQuiet();
+      render();
+    });
+  }
+
+  readColors();
+  resize();
+  wake(AUTO_MS);
+  render();
+}
+  </script>
+</body>
+</html>
