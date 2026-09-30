@@ -9,8 +9,9 @@ Website for Human-AI Co-Discovery, exploring how people and AI discover new ques
 | Path | Page |
 | --- | --- |
 | `index.html` | Community home page, with links to events |
-| `chi2027/index.html` | *Whose Eureka? Human-AI Co-Discovery of Knowledge*, the proposed CHI 2027 workshop. Overview, expandable questions, program, organizers, and Discord community status |
+| `chi2027/index.html` | *Whose Eureka? Human-AI Co-Discovery of Knowledge*, the proposed CHI 2027 workshop. Overview, expandable questions, CFP/program entry points, organizers, and Discord community status |
 | `chi2027/call-for-participation.html` | Dedicated CFP page with eight topic descriptions, contribution types, submission and review rules, sharing, timeline, and contact |
+| `chi2027/program.html` | Dedicated tentative program: two 90-minute sessions, poster exchange during coffee break, two lightning-talk blocks, keynote/panel, and seven-group roundtable activity |
 | `assets/style.css` | Styles for the home page |
 | `assets/css/workshop.css` | Color tokens (light and dark) and motion rules for the CHI 2027 page |
 | `assets/js/tailwind.config.js` | Tailwind theme for the CHI 2027 page: Inter, and `tide` (deep cyan) and `ember` (warm orange) colors mapped to the CSS tokens |
@@ -41,13 +42,15 @@ Then visit <http://localhost:8000/> and <http://localhost:8000/chi2027/>. After 
 
 ## Updating the CHI 2027 page
 
-The pages currently describe the workshop as **proposed**. Daniel McDuff is conditionally confirmed for the keynote and panel; Sherry Tongshuang Wu and Toby Jia-Jun Li are conditionally confirmed for the panel, alongside a planned AI panelist. Dates, program committee membership, the submission link, and the Discord invitation link remain to be announced. If the workshop is accepted:
+The pages currently describe the workshop as **proposed**. Daniel McDuff is supportive of joining as keynote speaker, subject to workshop acceptance and availability; Sherry Tongshuang Wu and Toby Jia-Jun Li are supportive of joining him on the panel, alongside a planned AI panelist. The program is tentative. Dates, program committee membership, the submission link, and the Discord invitation link remain to be announced. If the workshop is accepted:
 
 1. Remove "Proposed workshop" from the kicker line near the top of `chi2027/index.html`, and add the date and room to the information block below the title.
 2. Add the submission link and dates to `chi2027/call-for-participation.html`; participant decisions must reach authors at least seven days before CHI's early registration deadline.
 3. Finalize speaker arrangements and program committee membership, add the opt-in Discord invitation, and post accepted papers (with permission) and the arXiv index.
 
 Keep the text consistent with the organizers' workshop proposal, especially the call for participation.
+
+The program was reconciled with proposal commit `a8865ef` (`sections/activities.tex`) on 2026-09-29: 30-minute keynote, 30-minute panel, poster exchange during the conference coffee break, a second 20-minute lightning-talk block, and seven roundtable groups. The 50-minute roundtable block includes reflection and discussion.
 
 ## Organizer photos
 
