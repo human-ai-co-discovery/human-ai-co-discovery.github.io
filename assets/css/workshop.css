@@ -62,9 +62,18 @@ body {
 
 .prose > p { max-width: 85ch; }
 
-#questions { display: grid; gap: 1.25rem; }
+#questions { display: grid; gap: 0.5rem; list-style: none; padding-left: 0; }
 #questions li { margin: 0; }
-#questions li strong { display: block; font-size: 1.1em; line-height: 1.5; }
+#questions summary {
+  cursor: pointer;
+  padding: 0.65rem 0;
+  font-size: 1.05em;
+  font-weight: 600;
+  line-height: 1.5;
+  color: rgb(var(--tide-900));
+}
+#questions summary::marker { color: rgb(var(--ember-700)); }
+#questions details > p { margin: 0.5rem 0 1.25rem; max-width: 85ch; }
 
 /* In-page links land just below the sticky nav; --nav-height is set by main.js. */
 section, [id] { scroll-margin-top: calc(var(--nav-height, 4rem) + 2rem); }

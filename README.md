@@ -25,6 +25,8 @@ The site is plain HTML with no build step: edit a file and push to `main`.
 - **Home page** (`index.html`): hand-written CSS in `assets/style.css`, with Inter from Google Fonts.
 - **CHI 2027 page** (`chi2027/index.html`): a 1280px outer container, with a single-column reading layout, 20px desktop body text (18px on mobile), and organizers in up to four columns. It uses the Tailwind CSS Play CDN with the Typography plugin (pinned to 3.4.16), Inter from Google Fonts, and Lucide icons (pinned to 0.460.0). Tailwind colors resolve to CSS variables in `assets/css/workshop.css`, so dark mode follows `prefers-color-scheme` without `dark:` classes. The browser console shows Tailwind's "should not be used in production" warning; that is expected with the Play CDN.
 
+The four questions in About use native `details`/`summary` disclosures, collapsed by default; their full explanations remain available with mouse, touch, or keyboard.
+
 Both pages follow the palette of agentlab.zhihanjiang.com (deep cyan with a warm orange accent) and have a dark-mode set. Orange text uses darker shades (`ember-700`, or `ember-500` for large text) so it meets contrast requirements.
 
 ## Preview locally
