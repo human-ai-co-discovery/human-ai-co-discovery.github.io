@@ -60,7 +60,7 @@ body {
   background-color: rgb(var(--paper));
 }
 
-.page-container { width: 100%; padding-inline: clamp(1.25rem, 5vw, 7rem); }
+.page-container { width: 100%; padding-inline: clamp(1.5rem, 8vw, 12rem); }
 
 #questions { display: grid; gap: 0.5rem; list-style: none; padding-left: 0; }
 #questions li { margin: 0; }

@@ -25,7 +25,7 @@
   --mono: var(--body);
 
   --measure: 100%;
-  --gutter: clamp(1.25rem, 5vw, 7rem);
+  --gutter: clamp(1.5rem, 8vw, 12rem);
 }
 
 @media (prefers-color-scheme: dark) {
