@@ -60,6 +60,27 @@ body {
   background-color: rgb(var(--paper));
 }
 
+.page-container { width: 100%; padding-inline: clamp(1.5rem, 8vw, 12rem); }
+
+#questions { display: grid; gap: 0.5rem; list-style: none; padding-left: 0; }
+#questions li { margin: 0; }
+#questions summary {
+  cursor: pointer;
+  padding: 0.65rem 0;
+  font-size: 1.05em;
+  font-weight: 600;
+  line-height: 1.5;
+  color: rgb(var(--tide-900));
+}
+#questions summary::marker { color: rgb(var(--ember-700)); }
+#questions details > p { margin: 0.5rem 0 1.25rem; }
+
+.prose .cfp-topics { list-style: none; padding-left: 0; }
+.cfp-topics > li { margin: 1.75rem 0; padding-left: 0; }
+.cfp-topics h3 { margin: 0 0 0.5rem; }
+.cfp-topics p { margin: 0; }
+#navbar a[aria-current="page"] { color: rgb(var(--ember-700)); text-decoration: underline; text-underline-offset: 0.5em; }
+
 /* In-page links land just below the sticky nav; --nav-height is set by main.js. */
 section, [id] { scroll-margin-top: calc(var(--nav-height, 4rem) + 2rem); }
 

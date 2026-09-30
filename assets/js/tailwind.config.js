@@ -8,7 +8,7 @@ tailwind.config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Urbanist', 'Segoe UI', 'Helvetica Neue', 'sans-serif'],
+        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
       },
       colors: {
         paper: token('paper'),
@@ -41,8 +41,9 @@ tailwind.config = {
             '--tw-prose-bold': 'rgb(var(--ink))',
             '--tw-prose-bullets': 'rgb(var(--ember-400))',
             '--tw-prose-counters': 'rgb(var(--ember-700))',
-            fontFamily: 'Urbanist, sans-serif',
-            fontWeight: '500',
+            fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif',
+            fontWeight: '400',
+            fontSize: 'inherit',
             lineHeight: '1.625',
             p: { marginTop: '1em', marginBottom: '1em' },
             a: {
