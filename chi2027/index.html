@@ -16,7 +16,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
@@ -28,19 +28,19 @@
   <!-- Tokens and illustration styles -->
   <link rel="stylesheet" href="../assets/css/workshop.css">
 </head>
-<body class="text-ink antialiased font-sans font-medium text-base leading-relaxed selection:bg-ember-200 selection:text-tide-900">
+<body class="text-ink antialiased font-sans font-normal text-base leading-relaxed selection:bg-ember-200 selection:text-tide-900">
   <a class="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[60] focus:rounded-lg focus:bg-tide-900 focus:px-4 focus:py-2 focus:text-paper focus:font-semibold" href="#main">Skip to content</a>
 
   <!-- Navigation -->
   <nav id="navbar" class="sticky top-0 z-50 bg-paper/95 backdrop-blur border-b border-rule/50" aria-label="Page sections">
-    <div class="max-w-4xl mx-auto px-6">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
       <div class="flex justify-between h-16 items-center gap-4">
-        <a href="../" class="flex items-center gap-2.5 font-bold text-tide-900 text-lg sm:text-xl tracking-tight hover:text-ember-700 transition-colors whitespace-nowrap">
+        <a href="../" class="flex items-center gap-2.5 font-bold text-tide-900 text-base sm:text-xl tracking-tight hover:text-ember-700 transition-colors whitespace-nowrap">
           <img src="../assets/brand/avatar-teal.svg" alt="" width="28" height="28" class="w-7 h-7 rounded-md">
           Human-AI Co-Discovery
         </a>
 
-        <div class="hidden md:flex gap-5 lg:gap-7 text-sm font-semibold text-ink-soft whitespace-nowrap">
+        <div class="hidden lg:flex gap-5 lg:gap-7 text-sm font-semibold text-ink-soft whitespace-nowrap">
           <a href="#about" data-nav-link class="relative py-5 hover:text-ember-700 transition-colors aria-[current=true]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform aria-[current=true]:after:scale-x-100">About</a>
           <a href="#call-for-participation" data-nav-link class="relative py-5 hover:text-ember-700 transition-colors aria-[current=true]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform aria-[current=true]:after:scale-x-100">Call for Participation</a>
           <a href="#program" data-nav-link class="relative py-5 hover:text-ember-700 transition-colors aria-[current=true]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform aria-[current=true]:after:scale-x-100">Program</a>
@@ -54,7 +54,7 @@
       </div>
 
       <!-- Section links on small screens -->
-      <div class="md:hidden flex flex-wrap gap-x-5 gap-y-1 pb-3 -mt-1 text-sm font-semibold text-ink-soft">
+      <div class="lg:hidden flex flex-wrap gap-x-5 gap-y-1 pb-3 -mt-1 text-sm font-semibold text-ink-soft">
         <a href="#about" data-nav-link class="hover:text-ember-700 aria-[current=true]:text-ember-700 aria-[current=true]:underline decoration-2 decoration-ember-400 underline-offset-4">About</a>
         <a href="#call-for-participation" data-nav-link class="hover:text-ember-700 aria-[current=true]:text-ember-700 aria-[current=true]:underline decoration-2 decoration-ember-400 underline-offset-4">Call for Participation</a>
         <a href="#program" data-nav-link class="hover:text-ember-700 aria-[current=true]:text-ember-700 aria-[current=true]:underline decoration-2 decoration-ember-400 underline-offset-4">Program</a>
@@ -64,7 +64,7 @@
   </nav>
 
   <!-- Main Content -->
-  <main id="main" class="max-w-4xl mx-auto px-6 py-10 sm:py-12">
+  <main id="main" class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-10 sm:py-12">
 
     <!-- Header -->
     <header class="mb-10 pb-5">
@@ -75,10 +75,10 @@
       </div>
 
       <div class="relative">
-        <h1 class="text-5xl sm:text-6xl font-black text-tide-900 mb-5 leading-tight tracking-tight">
+        <h1 class="text-5xl sm:text-6xl font-bold text-tide-900 mb-5 leading-tight tracking-tight">
           Whose
           <button type="button" data-gloss aria-expanded="false" aria-controls="title-gloss"
-            class="text-ember-500 italic cursor-help underline decoration-dashed decoration-ember-400/50 hover:decoration-ember-500 underline-offset-8 decoration-4 transition-all">Eureka?</button>
+            class="text-ember-500 cursor-help underline decoration-dashed decoration-ember-400/50 hover:decoration-ember-500 underline-offset-8 decoration-4 transition-all">Eureka?</button>
         </h1>
         <div id="title-gloss" hidden class="absolute left-0 top-full -mt-2 w-full max-w-md bg-surface border border-rule rounded-xl p-5 shadow-2xl z-40 text-ink-soft">
           A <em class="not-italic font-bold text-tide-900">eureka</em> is the moment something new becomes clear. When people and AI make discoveries together, we ask whose moment it is: new to whom, whose understanding changed, and who steered the inquiry and gets the credit.
@@ -92,7 +92,7 @@
     <!-- Information -->
     <aside class="flex gap-4 bg-tide-50 border border-tide-100 rounded-xl p-6 my-8" aria-label="Workshop information">
       <i data-lucide="info" class="w-6 h-6 text-tide-700 shrink-0 mt-0.5" aria-hidden="true"></i>
-      <div class="space-y-2">
+      <div class="space-y-2 min-w-0">
         <p>The workshop will be open to CHI 2027 attendees, with priority for authors of accepted contributions; participants without papers are welcome in all discussions, and no prior reading is required.</p>
         <p><span class="font-bold">Contact:</span> <a href="mailto:zj2445@cumc.columbia.edu" class="text-tide-700 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 font-semibold break-words">zj2445@cumc.columbia.edu</a></p>
       </div>
@@ -167,6 +167,8 @@
       <h2 id="program-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Program</h2>
       <p class="mb-8">The proposed program runs across two in-person sessions.</p>
 
+      <div class="program-sessions grid lg:grid-cols-2 gap-10 lg:gap-16">
+      <div>
       <h3 class="text-xl font-bold text-tide-900 mb-4">Session 1</h3>
       <ol class="space-y-4">
         <li class="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-8">
@@ -199,7 +201,9 @@
         </li>
       </ol>
 
-      <div class="flex items-center gap-4 my-8 text-sm font-semibold italic text-ink-soft" role="separator" aria-label="Conference break">
+      </div>
+      <div>
+      <div class="flex items-center gap-4 mb-5 text-sm font-semibold text-ink-soft" role="separator" aria-label="Conference break">
         <span class="h-px flex-1 border-t border-dashed border-rule"></span>
         <span class="flex items-center gap-2"><i data-lucide="coffee" class="w-4 h-4" aria-hidden="true"></i>Conference break</span>
         <span class="h-px flex-1 border-t border-dashed border-rule"></span>
@@ -237,6 +241,9 @@
         </li>
       </ol>
 
+      </div>
+      </div>
+
       <div class="bg-tide-50 border border-tide-100 rounded-xl p-6 sm:p-8 mt-12">
         <h3 class="flex items-center gap-2 text-xl font-bold text-tide-900 mb-3">
           <i data-lucide="messages-square" class="w-5 h-5 text-ember-500" aria-hidden="true"></i>
@@ -258,7 +265,7 @@
       <h2 id="organizers-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Organizers</h2>
       <h3 class="text-xl font-bold text-tide-900 mb-6">Organizing team</h3>
 
-      <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-7">
+      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-7">
         <li class="group flex items-center gap-4">
           <a target="_blank" rel="noopener noreferrer" href="https://zhihanjiang.com/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/zhihan.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
           <div class="min-w-0">

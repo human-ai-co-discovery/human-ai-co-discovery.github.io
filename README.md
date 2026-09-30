@@ -13,7 +13,7 @@ Website for Human-AI Co-Discovery, exploring how people and AI discover new ques
 | `chi2027/proposal.pdf` | Workshop proposal, served by the nav bar's "Proposal" download button. **Not yet added**; until it is, the button leads to a missing file |
 | `assets/style.css` | Styles for the home page |
 | `assets/css/workshop.css` | Color tokens (light and dark) and motion rules for the CHI 2027 page |
-| `assets/js/tailwind.config.js` | Tailwind theme for the CHI 2027 page: Urbanist, and `tide` (deep cyan) and `ember` (warm orange) colors mapped to the CSS tokens |
+| `assets/js/tailwind.config.js` | Tailwind theme for the CHI 2027 page: Inter, and `tide` (deep cyan) and `ember` (warm orange) colors mapped to the CSS tokens |
 | `assets/js/main.js` | Lucide icons, the nav border on scroll, nav highlighting of the section being read, and the title gloss on the CHI 2027 page |
 | `assets/archive/hero-banner.html` | Retired hero banner from the CHI 2027 page (animated discovery-path illustration), kept for reference with steps to restore it |
 | `assets/people/` | Organizer photos (320 px JPEG), from each organizer's homepage or the UbiComp/ISWC 2026 tutorial site |
@@ -22,8 +22,8 @@ Website for Human-AI Co-Discovery, exploring how people and AI discover new ques
 
 The site is plain HTML with no build step: edit a file and push to `main`.
 
-- **Home page** (`index.html`): hand-written CSS in `assets/style.css`, with Fraunces, Atkinson Hyperlegible, and IBM Plex Mono from Google Fonts.
-- **CHI 2027 page** (`chi2027/index.html`): laid out after the [CHI '26 STAR workshop site](https://github.com/chi-star-workshop/chi-star-workshop.github.io) and using the same dependencies, all from CDNs: the Tailwind CSS Play CDN with the Typography plugin (pinned to 3.4.16), Urbanist from Google Fonts, and Lucide icons (pinned to 0.460.0). Tailwind colors resolve to CSS variables in `assets/css/workshop.css`, so dark mode follows `prefers-color-scheme` without `dark:` classes. The browser console shows Tailwind's "should not be used in production" warning; that is expected with the Play CDN.
+- **Home page** (`index.html`): hand-written CSS in `assets/style.css`, with Inter from Google Fonts.
+- **CHI 2027 page** (`chi2027/index.html`): a 1280px outer container, with questions and sessions arranged in two columns on desktop and organizers in up to four columns. It uses the Tailwind CSS Play CDN with the Typography plugin (pinned to 3.4.16), Inter from Google Fonts, and Lucide icons (pinned to 0.460.0). Tailwind colors resolve to CSS variables in `assets/css/workshop.css`, so dark mode follows `prefers-color-scheme` without `dark:` classes. The browser console shows Tailwind's "should not be used in production" warning; that is expected with the Play CDN.
 
 Both pages follow the palette of agentlab.zhihanjiang.com (deep cyan with a warm orange accent) and have a dark-mode set. Orange text uses darker shades (`ember-700`, or `ember-500` for large text) so it meets contrast requirements.
 

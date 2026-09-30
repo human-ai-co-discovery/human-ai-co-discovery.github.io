@@ -60,6 +60,27 @@ body {
   background-color: rgb(var(--paper));
 }
 
+.prose > p { max-width: 85ch; }
+
+#questions { display: grid; gap: 1.75rem; }
+#questions li { margin: 0; }
+#questions li strong { display: block; margin-bottom: 0.65rem; line-height: 1.4; }
+
+@media (min-width: 1024px) {
+  #about .prose {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 3rem;
+  }
+  #about .prose > p { max-width: none; margin-top: 0; }
+  #about .prose > p:nth-of-type(n+3), #questions { grid-column: 1 / -1; }
+  #questions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem 3rem;
+  }
+}
+
 /* In-page links land just below the sticky nav; --nav-height is set by main.js. */
 section, [id] { scroll-margin-top: calc(var(--nav-height, 4rem) + 2rem); }
 
