@@ -17,7 +17,7 @@ Website for Human-AI Co-Discovery, exploring how people and AI discover new ques
 | `assets/js/tailwind.config.js` | Tailwind theme for the CHI 2027 page: Inter, and `tide` (deep cyan) and `ember` (warm orange) colors mapped to the CSS tokens |
 | `assets/js/main.js` | Lucide icons, the nav border on scroll, nav highlighting of the section being read, the title gloss, and the hero's discovery field (a canvas) on the CHI 2027 page |
 | `assets/archive/hero-banner.html` | Earlier, retired hero banner from the CHI 2027 page (animated discovery-path illustration, not the current hero), kept for reference with steps to restore it |
-| `assets/img/` | Figure 1 for the CHI 2027 page, exported from the proposal's teaser figure: 1200 and 2400 px WebP, with a 1200 px PNG fallback |
+| `assets/img/` | Figure 1 for the CHI 2027 page, exported from the proposal's teaser figure without its Q1–Q4 row (the question cards below it cover the four questions): 1200 and 2400 px WebP, with a 1200 px PNG fallback |
 | `assets/people/` | Organizer photos (320 px JPEG), from each organizer's homepage or the UbiComp/ISWC 2026 tutorial site |
 | `assets/brand/` | Organization avatar: `avatar-teal` (used on GitHub) and `avatar-light`, as 1024 px PNG and editable SVG |
 | `.nojekyll` | Serves the files as plain static HTML (no Jekyll processing) |
