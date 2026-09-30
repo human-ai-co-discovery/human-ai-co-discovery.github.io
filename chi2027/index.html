@@ -42,23 +42,21 @@
 
         <div class="hidden lg:flex gap-5 lg:gap-7 text-sm font-semibold text-ink-soft whitespace-nowrap">
           <a href="#about" data-nav-link class="relative py-5 hover:text-ember-700 transition-colors aria-[current=true]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform aria-[current=true]:after:scale-x-100">About</a>
-          <a href="#call-for-participation" data-nav-link class="relative py-5 hover:text-ember-700 transition-colors aria-[current=true]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform aria-[current=true]:after:scale-x-100">Call for Participation</a>
+          <a href="call-for-participation.html" class="relative py-5 hover:text-ember-700 transition-colors aria-[current=true]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform aria-[current=true]:after:scale-x-100">Call for Participation</a>
           <a href="#program" data-nav-link class="relative py-5 hover:text-ember-700 transition-colors aria-[current=true]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform aria-[current=true]:after:scale-x-100">Program</a>
           <a href="#organizers" data-nav-link class="relative py-5 hover:text-ember-700 transition-colors aria-[current=true]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform aria-[current=true]:after:scale-x-100">Organizers</a>
+          <a href="#discord" data-nav-link class="relative py-5 hover:text-ember-700 transition-colors aria-[current=true]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform aria-[current=true]:after:scale-x-100">Discord</a>
         </div>
 
-        <a href="proposal.pdf" download aria-label="Download the workshop proposal (PDF)" class="flex items-center gap-2 text-sm font-bold text-tide-900 hover:text-ember-700 transition-colors bg-tide-50 px-3 py-1.5 rounded-lg border border-tide-100 hover:border-ember-200 shrink-0">
-          <i data-lucide="download" class="w-4 h-4" aria-hidden="true"></i>
-          <span class="hidden min-[360px]:inline">Proposal</span>
-        </a>
       </div>
 
       <!-- Section links on small screens -->
       <div class="lg:hidden flex flex-wrap gap-x-5 gap-y-1 pb-3 -mt-1 text-sm font-semibold text-ink-soft">
         <a href="#about" data-nav-link class="hover:text-ember-700 aria-[current=true]:text-ember-700 aria-[current=true]:underline decoration-2 decoration-ember-400 underline-offset-4">About</a>
-        <a href="#call-for-participation" data-nav-link class="hover:text-ember-700 aria-[current=true]:text-ember-700 aria-[current=true]:underline decoration-2 decoration-ember-400 underline-offset-4">Call for Participation</a>
+        <a href="call-for-participation.html" class="hover:text-ember-700 aria-[current=true]:text-ember-700 aria-[current=true]:underline decoration-2 decoration-ember-400 underline-offset-4">Call for Participation</a>
         <a href="#program" data-nav-link class="hover:text-ember-700 aria-[current=true]:text-ember-700 aria-[current=true]:underline decoration-2 decoration-ember-400 underline-offset-4">Program</a>
         <a href="#organizers" data-nav-link class="hover:text-ember-700 aria-[current=true]:text-ember-700 aria-[current=true]:underline decoration-2 decoration-ember-400 underline-offset-4">Organizers</a>
+        <a href="#discord" data-nav-link class="hover:text-ember-700 aria-[current=true]:text-ember-700 aria-[current=true]:underline decoration-2 decoration-ember-400 underline-offset-4">Discord</a>
       </div>
     </div>
   </nav>
@@ -93,7 +91,7 @@
     <aside class="flex gap-4 bg-tide-50 border border-tide-100 rounded-xl p-6 my-8" aria-label="Workshop information">
       <i data-lucide="info" class="w-6 h-6 text-tide-700 shrink-0 mt-0.5" aria-hidden="true"></i>
       <div class="space-y-2 min-w-0">
-        <p>Open to CHI 2027 attendees, with priority for accepted contributors. No paper or prior reading is required.</p>
+        <p>Open to CHI 2027 attendees, with priority for accepted contributors.</p>
         <p><span class="font-bold">Contact:</span> <a href="mailto:zj2445@cumc.columbia.edu" class="text-tide-700 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 font-semibold break-words">zj2445@cumc.columbia.edu</a></p>
       </div>
     </aside>
@@ -135,55 +133,17 @@
 
     <!-- Call for Participation -->
     <section id="call-for-participation" class="mb-20" aria-labelledby="cfp-h">
-      <h2 id="cfp-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Call for Participation</h2>
-      <h3 id="topics" class="text-xl font-bold text-tide-900 mb-4">Topics</h3>
+      <h2 id="cfp-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-6 pb-3 border-b border-rule leading-snug">Call for Participation</h2>
       <div class="prose">
-        <p>We plan to invite position papers, empirical studies, system descriptions, design concepts, critical perspectives, and work in progress, especially concrete examples of discovery with AI, including unsuccessful ones. Topics include:</p>
-        <ul class="space-y-2">
-          <li>Interpreting data and existing knowledge together</li>
-          <li>Serendipity and unexpected connections</li>
-          <li>Constructing and challenging explanations</li>
-          <li>Human agency in directing inquiry and delegating to AI</li>
-          <li>Human understanding and learning</li>
-          <li>Evidence, uncertainty, and unsuccessful investigations</li>
-          <li>Contributions, credit, and responsibility</li>
-          <li>Novelty and value across contexts</li>
-        </ul>
+        <p>We welcome position papers, empirical studies, system descriptions, design concepts, critical perspectives, and work in progress on human-AI co-discovery.</p>
+        <p><a href="call-for-participation.html" class="font-semibold">Read the full call: topics, contribution types, and submission details &rarr;</a></p>
       </div>
-
-      <h3 id="submission" class="text-xl font-bold text-tide-900 mt-12 mb-4">Submission Details</h3>
-      <dl class="space-y-3">
-        <div class="flex flex-col sm:flex-row gap-1 sm:gap-4">
-          <dt class="font-bold text-ink sm:w-40 shrink-0">Submissions</dt>
-          <dd>Papers of 2–4 pages in ACM double-column format, excluding references.</dd>
-        </div>
-        <div class="flex flex-col sm:flex-row gap-1 sm:gap-4">
-          <dt class="font-bold text-ink sm:w-40 shrink-0">Review</dt>
-          <dd>Each submission will receive two reviews from program committee members without conflicts of interest, considering relevance, quality appropriate to the contribution type, and potential to stimulate discussion. Authors will receive brief written feedback, and organizers will make the final selection.</dd>
-        </div>
-        <div class="flex flex-col sm:flex-row gap-1 sm:gap-4">
-          <dt class="font-bold text-ink sm:w-40 shrink-0">Sharing</dt>
-          <dd>With permission, accepted papers and presentation materials will be shared on this website. Authors may also post their papers on arXiv, and the organizers will compile an arXiv index. There are no separate archival proceedings.</dd>
-        </div>
-      </dl>
-
-      <h3 id="timeline" class="text-xl font-bold text-tide-900 mt-12 mb-4">Timeline</h3>
-      <dl class="space-y-3">
-        <div class="flex flex-col sm:flex-row gap-1 sm:gap-4">
-          <dt class="font-bold text-ember-700 sm:w-40 shrink-0">November 2026</dt>
-          <dd>Decisions on this workshop proposal expected</dd>
-        </div>
-        <div class="flex flex-col sm:flex-row gap-1 sm:gap-4">
-          <dt class="font-bold text-ember-700 sm:w-40 shrink-0">To be announced</dt>
-          <dd>Dates and submission instructions, posted here if the workshop is accepted</dd>
-        </div>
-      </dl>
     </section>
 
     <!-- Program -->
     <section id="program" class="mb-20" aria-labelledby="program-h">
       <h2 id="program-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Program</h2>
-      <p class="mb-8">The proposed program runs across two in-person sessions.</p>
+      <p class="mb-8">The proposed program comprises two 90-minute in-person sessions, subject to the conference schedule.</p>
 
       <div class="program-sessions grid gap-10">
       <div>
@@ -204,17 +164,17 @@
           </div>
         </li>
         <li class="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-8">
-          <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-sm tracking-wider">30 min</div>
-          <div>
-            <h4 class="font-bold text-tide-900">Invited Talks</h4>
-            <p class="text-ink-soft">Two invited talks (8 min each), each followed by 5 min of questions</p>
-          </div>
-        </li>
-        <li class="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-8">
           <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-sm tracking-wider">25 min</div>
           <div>
             <h4 class="font-bold text-tide-900">Lightning Talks</h4>
             <p class="text-ink-soft">Lightning talks by authors of accepted contributions</p>
+          </div>
+        </li>
+        <li class="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-8">
+          <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-sm tracking-wider">40 min</div>
+          <div>
+            <h4 class="font-bold text-tide-900">Human-AI Panel</h4>
+            <p class="text-ink-soft">Moderated discussion with human speakers, an AI panelist, and audience questions</p>
           </div>
         </li>
       </ol>
@@ -230,17 +190,17 @@
       <h3 class="text-xl font-bold text-tide-900 mb-4">Session 2</h3>
       <ol class="space-y-4">
         <li class="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-8">
-          <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-sm tracking-wider">15 min</div>
+          <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-sm tracking-wider">20 min</div>
           <div>
             <h4 class="font-bold text-tide-900">Poster Exchange</h4>
-            <p class="text-ink-soft">Poster exchange and roundtable topic selection</p>
+            <p class="text-ink-soft">Poster exchange and selection of inquiry questions</p>
           </div>
         </li>
         <li class="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-8">
-          <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-sm tracking-wider">45 min</div>
+          <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-sm tracking-wider">50 min</div>
           <div>
-            <h4 class="font-bold text-tide-900">Thematic Roundtables</h4>
-            <p class="text-ink-soft">Facilitated thematic roundtables, each opened with a provocation</p>
+            <h4 class="font-bold text-tide-900">Interactive Roundtable Activity</h4>
+            <p class="text-ink-soft">Explore a question with AI, compare interpretations, challenge assumptions, and reflect on a turning point or unresolved difficulty</p>
           </div>
         </li>
         <li class="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-8">
@@ -265,9 +225,10 @@
       <div class="bg-tide-50 border border-tide-100 rounded-xl p-6 sm:p-8 mt-12">
         <h3 class="flex items-center gap-2 text-xl font-bold text-tide-900 mb-3">
           <i data-lucide="messages-square" class="w-5 h-5 text-ember-500" aria-hidden="true"></i>
-          Speakers and provocations
+          Keynote, panel, and discussion prompts
         </h3>
-        <p class="text-ink">If the workshop is accepted, we will invite a keynote and two invited speakers whose work spans areas such as AI for science, learning, visual analytics, and design; they will also join the roundtables as discussants. Facilitators will open each roundtable with a provocation for participants to agree or disagree with, for example:</p>
+        <p class="text-ink">Conditional on workshop acceptance, Daniel McDuff (Google Research) will give the keynote and join Sherry Tongshuang Wu (Carnegie Mellon University), Toby Jia-Jun Li (University of Notre Dame), and an AI panelist. An organizer will moderate, with AI responses clearly identified and open to critique.</p>
+        <p class="text-ink mt-5">Roundtable prompts may include:</p>
         <ul class="mt-5 space-y-3">
           <li class="border-l-4 border-ember-400 pl-4 italic font-semibold text-tide-900">Serendipity cannot survive an AI optimized for relevance.</li>
           <li class="border-l-4 border-ember-400 pl-4 italic font-semibold text-tide-900">If an AI proposed the key idea, the human “eureka” is mostly recognition.</li>
@@ -342,9 +303,14 @@
         </li>
       </ul>
 
-      <h3 id="contact" class="text-xl font-bold text-tide-900 mt-12 mb-4">FAQ</h3>
+    </section>
+
+    <section id="discord" class="mb-20" aria-labelledby="discord-h">
+      <h2 id="discord-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-6 pb-3 border-b border-rule leading-snug">Discord Community</h2>
       <div class="prose">
-        <p>For questions about the workshop, please contact workshop organizers at <a href="mailto:zj2445@cumc.columbia.edu">zj2445@cumc.columbia.edu</a>.</p>
+        <p>Our opt-in Discord community will support discussion, resource sharing, and connections before, during, and after the workshop. Interested researchers and practitioners beyond the workshop are welcome.</p>
+        <p class="font-semibold text-ember-700">Invitation link coming soon.</p>
+        <p>For questions, contact <a href="mailto:zj2445@cumc.columbia.edu">zj2445@cumc.columbia.edu</a>.</p>
       </div>
     </section>
 

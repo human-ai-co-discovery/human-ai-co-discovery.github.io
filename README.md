@@ -9,8 +9,8 @@ Website for Human-AI Co-Discovery, exploring how people and AI discover new ques
 | Path | Page |
 | --- | --- |
 | `index.html` | Community home page, with links to events |
-| `chi2027/index.html` | *Whose Eureka? Human-AI Co-Discovery of Knowledge*, the proposed CHI 2027 workshop. Sections: About (overview, open questions), Call for Participation (topics, submission details, timeline), Program, Organizers (team, contact) |
-| `chi2027/proposal.pdf` | Workshop proposal, served by the nav bar's "Proposal" download button. **Not yet added**; until it is, the button leads to a missing file |
+| `chi2027/index.html` | *Whose Eureka? Human-AI Co-Discovery of Knowledge*, the proposed CHI 2027 workshop. Overview, expandable questions, program, organizers, and Discord community status |
+| `chi2027/call-for-participation.html` | Dedicated CFP page with eight topic descriptions, contribution types, submission and review rules, sharing, timeline, and contact |
 | `assets/style.css` | Styles for the home page |
 | `assets/css/workshop.css` | Color tokens (light and dark) and motion rules for the CHI 2027 page |
 | `assets/js/tailwind.config.js` | Tailwind theme for the CHI 2027 page: Inter, and `tide` (deep cyan) and `ember` (warm orange) colors mapped to the CSS tokens |
@@ -41,11 +41,11 @@ Then visit <http://localhost:8000/> and <http://localhost:8000/chi2027/>. After 
 
 ## Updating the CHI 2027 page
 
-The page currently describes the workshop as **proposed and under review**. It deliberately lists no dates, named speakers, program committee, or submission link, since none are confirmed yet. If the workshop is accepted:
+The pages currently describe the workshop as **proposed**. Daniel McDuff is conditionally confirmed for the keynote and panel; Sherry Tongshuang Wu and Toby Jia-Jun Li are conditionally confirmed for the panel, alongside a planned AI panelist. Dates, program committee membership, the submission link, and the Discord invitation link remain to be announced. If the workshop is accepted:
 
 1. Remove "Proposed workshop" from the kicker line near the top of `chi2027/index.html`, and add the date and room to the information block below the title.
-2. Add the submission link to the "Call for Participation" section and fill in its "Timeline" rows; participant decisions must reach authors at least seven days before CHI's early registration deadline.
-3. Add the keynote and invited speakers and the program committee once confirmed, and post accepted papers (with permission) and the arXiv index.
+2. Add the submission link and dates to `chi2027/call-for-participation.html`; participant decisions must reach authors at least seven days before CHI's early registration deadline.
+3. Finalize speaker arrangements and program committee membership, add the opt-in Discord invitation, and post accepted papers (with permission) and the arXiv index.
 
 Keep the text consistent with the organizers' workshop proposal, especially the call for participation.
 

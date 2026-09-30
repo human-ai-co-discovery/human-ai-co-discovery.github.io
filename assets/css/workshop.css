@@ -75,6 +75,12 @@ body {
 #questions summary::marker { color: rgb(var(--ember-700)); }
 #questions details > p { margin: 0.5rem 0 1.25rem; max-width: 85ch; }
 
+.prose .cfp-topics { list-style: none; padding-left: 0; }
+.cfp-topics > li { margin: 1.75rem 0; padding-left: 0; }
+.cfp-topics h3 { margin: 0 0 0.5rem; }
+.cfp-topics p { margin: 0; max-width: 85ch; }
+#navbar a[aria-current="page"] { color: rgb(var(--ember-700)); text-decoration: underline; text-underline-offset: 0.5em; }
+
 /* In-page links land just below the sticky nav; --nav-height is set by main.js. */
 section, [id] { scroll-margin-top: calc(var(--nav-height, 4rem) + 2rem); }
 
