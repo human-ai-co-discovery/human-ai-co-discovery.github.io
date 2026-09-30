@@ -1,5 +1,7 @@
-/* Workshop pages — tokens and the few rules Tailwind utilities do not cover.
-   The retired hero banner lives in assets/archive/hero-banner.html.
+/* Workshop pages — tokens, the home hero (eureka illustration and discovery field),
+   and the components Tailwind utilities do not cover: question cards, CFP topic
+   cards, and the program timeline. The earlier, retired hero banner lives in
+   assets/archive/hero-banner.html.
    Palette: cool off-white paper, deep cyan ink (tide), warm orange accent (ember).
    Ember strengths: 400 for strokes and fills, 500 for large text, 700 for small text (AA). */
 
@@ -22,6 +24,17 @@
   --ember-400: 224 120 86;
   --ember-500: 208 104 67;
   --ember-700: 176 76 44;
+
+  /* Workshop questions Q1-Q4 (pink, amber, green, blue, as in Figure 1).
+     --qN for badges, borders and text; --qN-soft for card fills. */
+  --q1: 184 58 87;
+  --q1-soft: 252 238 241;
+  --q2: 143 91 18;
+  --q2-soft: 251 243 228;
+  --q3: 47 122 91;
+  --q3-soft: 234 246 240;
+  --q4: 63 84 192;
+  --q4-soft: 237 240 252;
 
   color-scheme: light dark;
 }
@@ -46,6 +59,15 @@
     --ember-400: 235 146 117;
     --ember-500: 235 146 117;
     --ember-700: 238 158 132;
+
+    --q1: 240 150 172;
+    --q1-soft: 52 30 37;
+    --q2: 226 176 102;
+    --q2-soft: 50 40 24;
+    --q3: 128 206 168;
+    --q3-soft: 24 46 38;
+    --q4: 150 168 244;
+    --q4-soft: 30 36 62;
   }
 }
 
@@ -60,25 +82,271 @@ body {
   background-color: rgb(var(--paper));
 }
 
-.page-container { width: 100%; padding-inline: clamp(1.5rem, 8vw, 12rem); }
+/* --gutter is the side padding; the hero field reaches back across it to the viewport edges. */
+.page-container { --gutter: clamp(1.5rem, 8vw, 12rem); width: 100%; padding-inline: var(--gutter); }
 
-#questions { display: grid; gap: 0.5rem; list-style: none; padding-left: 0; }
-#questions li { margin: 0; }
-#questions summary {
-  cursor: pointer;
-  padding: 0.65rem 0;
-  font-size: 1.05em;
-  font-weight: 600;
-  line-height: 1.5;
-  color: rgb(var(--tide-900));
+/* ------------------------------------------------------------------
+   Home hero: the eureka illustration with the discovery field behind it.
+   The illustration's default styles are its final frame; the animations
+   only run under prefers-reduced-motion: no-preference and play once.
+   ------------------------------------------------------------------ */
+.hero { position: relative; isolation: isolate; }
+.hero-field {
+  position: absolute; z-index: -1;
+  top: -3rem; bottom: 0; left: calc(-1 * var(--gutter)); right: calc(-1 * var(--gutter));
+  overflow: hidden; pointer-events: none;
+  /* Fades out under the nav and above the notice box. When the header is stacked,
+     the illustration sits at its bottom, so the lower fade starts later there. */
+  --fade-end: 85%;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 20%, #000 var(--fade-end), transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 20%, #000 var(--fade-end), transparent);
 }
-#questions summary::marker { color: rgb(var(--ember-700)); }
-#questions details > p { margin: 0.5rem 0 1.25rem; }
+@media (min-width: 1024px) { .hero-field { --fade-end: 65%; } }
+.hero-field canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
 
-.prose .cfp-topics { list-style: none; padding-left: 0; }
-.cfp-topics > li { margin: 1.75rem 0; padding-left: 0; }
-.cfp-topics h3 { margin: 0 0 0.5rem; }
-.cfp-topics p { margin: 0; }
+.hero-eureka { position: relative; isolation: isolate; width: 100%; max-width: 30rem; }
+.hero-eureka::before {
+  content: ""; position: absolute; inset: 4% -4% 0 10%; z-index: -1; border-radius: 50%;
+  background:
+    radial-gradient(closest-side at 82% 26%, rgb(var(--ember-200) / 0.55), transparent 70%),
+    radial-gradient(closest-side at 40% 60%, rgb(var(--tide-100) / 0.7), transparent 80%);
+  filter: blur(18px);
+}
+.eh { display: block; width: 100%; height: auto; overflow: visible; }
+.eh-stop-tide { stop-color: rgb(var(--tide-700)); }
+.eh-stop-ember { stop-color: rgb(var(--ember-400)); }
+.eh-dot { fill: rgb(var(--tide-300)); opacity: 0.6; }
+.eh-dot--linked { fill: rgb(var(--tide-700)); opacity: 0.85; }
+.eh-link { fill: none; stroke: rgb(var(--tide-300)); stroke-width: 1.4; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 0; opacity: 0.9; }
+.eh-path { fill: none; stroke: url(#eh-grad); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.eh-pdot { fill: rgb(var(--tide-700)); stroke: rgb(var(--paper)); stroke-width: 2; }
+.eh-node, .eh-pdot, .eh-spark, .eh-spark-rays, .eh-spark-glow, .eh-dot { transform-box: fill-box; transform-origin: center; }
+.eh-node-ring { fill: rgb(var(--surface)); stroke: rgb(var(--tide-700)); stroke-width: 2.5; }
+.eh-glyph { fill: none; stroke: rgb(var(--tide-900)); stroke-width: 2.2; stroke-linecap: round; }
+.eh-glyph-text { fill: rgb(var(--tide-900)); font: 700 20px/1 Inter, system-ui, sans-serif; }
+.eh-label { fill: rgb(var(--ink-soft)); font: 600 14px/1 Inter, system-ui, sans-serif; letter-spacing: 0.04em; }
+.eh-label--eureka { fill: rgb(var(--ember-700)); font-weight: 700; letter-spacing: 0.08em; }
+/* Larger labels where the illustration scales down on phones. */
+@media (max-width: 479px) { .eh-label { font-size: 18px; } }
+.eh-spark-core { fill: rgb(var(--ember-400)); }
+.eh-spark-eye { fill: rgb(var(--surface)); }
+.eh-spark-rays { fill: none; stroke: rgb(var(--ember-400)); stroke-width: 2.5; stroke-linecap: round; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .eh-dot { animation: eh-scatter-in 0.9s ease-out var(--d, 0s) both; }
+  .eh-dot--linked { animation: eh-scatter-in 0.9s ease-out var(--d, 0s) both, eh-dot-link 0.5s ease-out var(--ld, 2s) both; }
+  .eh-pdot { animation: eh-gather 1.25s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s) both, eh-blip 0.45s ease-out var(--p, 2s); }
+  .eh-path { animation: eh-draw 1.8s linear 1.4s both; }
+  .eh-link { animation: eh-draw 0.6s ease-out var(--d, 2s) both; }
+  .eh-node { animation: eh-pop 0.55s cubic-bezier(0.3, 1.6, 0.5, 1) var(--d, 1.4s) both; }
+  .eh-label { animation: eh-fade-up 0.5s ease-out var(--d, 1.5s) both; }
+  .eh-spark { animation: eh-burst 0.7s cubic-bezier(0.3, 1.5, 0.5, 1) var(--d, 3.2s) both; }
+  .eh-spark-rays { animation: eh-rays 0.8s ease-out 3.3s both; }
+  .eh-spark-glow { animation: eh-glow 1.6s ease-in-out 3.4s; }
+  /* The title's "Eureka?" glows as the spark appears. */
+  .hero [data-gloss] { animation: eh-word 1.4s ease-out 3.3s; }
+}
+@keyframes eh-scatter-in { from { opacity: 0; transform: translate(var(--dx, 0), var(--dy, 0)); } }
+@keyframes eh-dot-link { from { fill: rgb(var(--tide-300)); } }
+@keyframes eh-gather { from { opacity: 0.3; fill: rgb(var(--tide-300)); transform: translate(var(--dx, 0), var(--dy, 0)) scale(0.7); } }
+@keyframes eh-blip { 40% { transform: scale(1.7); fill: rgb(var(--ember-400)); } }
+@keyframes eh-draw { from { stroke-dashoffset: 1; } }
+@keyframes eh-pop { from { opacity: 0; transform: scale(0.3); } }
+@keyframes eh-fade-up { from { opacity: 0; transform: translateY(6px); } }
+@keyframes eh-burst { 0% { opacity: 0; transform: scale(0) rotate(-45deg); } 60% { opacity: 1; transform: scale(1.3) rotate(8deg); } }
+@keyframes eh-rays { from { opacity: 0; transform: scale(0.4); } }
+@keyframes eh-glow { 50% { transform: scale(1.35); opacity: 0.35; } }
+@keyframes eh-word { 30% { text-shadow: 0 0 22px rgb(var(--ember-400) / 0.65), 0 0 2px rgb(var(--ember-400) / 0.4); } }
+
+/* Figure 1 is dark line art with white panels on a transparent background,
+   so it sits on a white plate in both themes (dimmed slightly in dark mode). */
+.figure-plate { background: #fff; }
+@media (prefers-color-scheme: dark) {
+  .figure-plate { filter: brightness(0.9); }
+}
+
+/* ------------------------------------------------------------------
+   Question cards (About). data-q on each card sets --qc and --qs.
+   ------------------------------------------------------------------ */
+#questions { display: grid; gap: 1rem; margin: 2.5rem 0 0; padding: 0; list-style: none; }
+@media (min-width: 768px) {
+  #questions { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+  /* Closed cards share their row's height; in a row with an open card, neither card stretches. */
+  #questions > li:has(> details[open]),
+  #questions > li:nth-child(odd):has(+ li > details[open]),
+  #questions > li:has(> details[open]) + li:nth-child(even) { align-self: start; }
+}
+#questions > li { margin: 0; min-width: 0; }
+.q-card > details {
+  height: 100%;
+  background: rgb(var(--qs));
+  border: 1px solid rgb(var(--qc) / 0.3);
+  border-radius: 1rem;
+  box-shadow: inset 5px 0 0 rgb(var(--qc));
+}
+.q-card > details[open] {
+  border-color: rgb(var(--qc) / 0.55);
+  box-shadow: inset 5px 0 0 rgb(var(--qc)), 0 14px 32px -18px rgb(var(--qc) / 0.7);
+}
+/* Hover styles only where a pointer can hover, so they do not stick after a tap. */
+@media (hover: hover) {
+  .q-card > details:hover {
+    border-color: rgb(var(--qc) / 0.55);
+    box-shadow: inset 5px 0 0 rgb(var(--qc)), 0 14px 32px -18px rgb(var(--qc) / 0.7);
+  }
+}
+.q-card summary {
+  display: flex; flex-direction: column; gap: 0.85rem;
+  padding: 1.25rem 1.25rem 1.3rem 1.6rem;
+  border-radius: 1rem;
+  cursor: pointer; list-style: none;
+}
+.q-card summary::-webkit-details-marker { display: none; }
+.q-card__head { display: flex; align-items: center; gap: 0.75rem; }
+.q-card__icon {
+  display: grid; place-items: center; flex: none;
+  width: 2.5rem; height: 2.5rem; border-radius: 0.75rem;
+  background: rgb(var(--surface)); color: rgb(var(--qc));
+  box-shadow: 0 0 0 1px rgb(var(--qc) / 0.3);
+}
+.q-card__icon svg { width: 1.3rem; height: 1.3rem; stroke-width: 2; }
+.q-card__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 0.55rem; min-width: 0; }
+.q-card .q-badge { min-width: 0; height: auto; margin: 0; padding: 0.3rem 0.5rem; font-size: 0.75rem; font-weight: 800; line-height: 1; letter-spacing: 0.04em; }
+.q-card__tag { font-size: 0.75rem; font-weight: 700; line-height: 1.3; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(var(--qc)); }
+.q-card__toggle {
+  margin-left: auto; flex: none; display: grid; place-items: center;
+  width: 2rem; height: 2rem; border-radius: 999px;
+  color: rgb(var(--qc)); background: rgb(var(--surface) / 0.7);
+}
+.q-card__toggle svg { width: 1.1rem; height: 1.1rem; }
+.q-card > details[open] .q-card__toggle { transform: rotate(180deg); }
+.q-card__title { display: block; font-size: 1.05em; font-weight: 600; line-height: 1.45; color: rgb(var(--tide-900)); }
+.q-card details > p {
+  margin: 0 1.25rem 0 1.6rem; padding: 0.95rem 0 1.35rem;
+  border-top: 1px dashed rgb(var(--qc) / 0.35);
+  font-size: 0.95em; line-height: 1.65;
+}
+/* On phones every label sits under its badge, with a smaller icon and tighter
+   tracking so the labels keep to one line where they can. */
+@media (max-width: 479px) {
+  .q-card__head { gap: 0.6rem; }
+  .q-card__icon { width: 2.25rem; height: 2.25rem; }
+  .q-card__meta { flex-direction: column; align-items: flex-start; }
+  .q-card__tag { letter-spacing: 0.04em; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .q-card > details { transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
+  .q-card__icon { transition: transform 0.3s cubic-bezier(0.3, 1.6, 0.5, 1); }
+  .q-card__toggle { transition: transform 0.3s ease; }
+  @media (hover: hover) {
+    .q-card > details:hover { transform: translateY(-2px); }
+    .q-card > details:hover .q-card__icon { transform: rotate(-8deg) scale(1.06); }
+  }
+  /* Open and close smoothly where the browser can animate to height: auto. */
+  @supports (interpolate-size: allow-keywords) {
+    .q-card > details { interpolate-size: allow-keywords; }
+    .q-card > details::details-content {
+      height: 0; overflow: clip;
+      transition: height 0.4s cubic-bezier(0.2, 0.7, 0.2, 1), content-visibility 0.4s allow-discrete;
+    }
+    .q-card > details[open]::details-content { height: auto; }
+  }
+  .q-card > details[open] > p { animation: q-open 0.45s ease-out both; }
+}
+@keyframes q-open { from { opacity: 0; transform: translateY(-6px); } }
+
+/* data-q="1".."4" sets the question color (--qc) and soft fill (--qs) for its subtree. */
+[data-q="1"] { --qc: var(--q1); --qs: var(--q1-soft); }
+[data-q="2"] { --qc: var(--q2); --qs: var(--q2-soft); }
+[data-q="3"] { --qc: var(--q3); --qs: var(--q3-soft); }
+[data-q="4"] { --qc: var(--q4); --qs: var(--q4-soft); }
+
+/* CFP topics grouped under the four questions. */
+.topic-groups { display: grid; gap: 2.25rem; margin-top: 1.75rem; }
+.topic-question { display: flex; align-items: flex-start; gap: 0.75rem; margin: 0 0 1rem; font-size: 1.2rem; line-height: 1.4; font-weight: 700; color: rgb(var(--tide-900)); }
+.q-badge { flex: none; display: inline-grid; place-items: center; min-width: 2.4rem; height: 2rem; padding: 0 0.5rem; border-radius: 999px; background: rgb(var(--qc)); color: rgb(var(--paper)); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.02em; margin-top: 0.05rem; }
+.topic-cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.9rem; }
+@media (min-width: 640px) {
+  .topic-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.topic-card { background: rgb(var(--qs)); border: 1px solid rgb(var(--qc) / 0.25); border-left: 4px solid rgb(var(--qc)); border-radius: 0.75rem; padding: 1rem 1.15rem; }
+.topic-card h4 { margin: 0 0 0.35rem; font-size: 1.05rem; font-weight: 600; line-height: 1.35; color: rgb(var(--tide-900)); }
+.topic-card p { margin: 0; font-size: 1rem; line-height: 1.55; color: rgb(var(--ink-soft)); }
+
+/* ------------------------------------------------------------------
+   Program "At a glance" timeline. Block lengths come from their minutes
+   (--min): a height of --min units when vertical (below 1024px), and
+   flex-grow when horizontal (from 1024px up). Axis ticks sit at --at of 90.
+   ------------------------------------------------------------------ */
+.tl { --tl-unit: 0.32rem; --tl-h: calc(90 * var(--tl-unit)); position: relative; font-size: 0.95rem; line-height: 1.3; }
+.tl-track { display: flex; flex-direction: column; margin: 0 0 0 2.75rem; padding: 0; list-style: none; }
+.tl-block {
+  --tl-fill: var(--tide-100); --tl-bar: var(--tide-700); --tl-len: calc(var(--min) * var(--tl-unit));
+  display: flex; flex: none; height: var(--tl-len); min-width: 0; margin: 0;
+}
+/* The last block may grow to fit a label that wraps below a short bar; the bar keeps its length. */
+.tl-block:last-child { height: auto; min-height: var(--tl-len); }
+.tl-block[data-tone="discussion"] { --tl-fill: var(--ember-50); --tl-bar: var(--ember-400); }
+.tl-block[data-tone="quiet"] { --tl-fill: var(--tide-100); --tl-fill-alpha: 0.45; --tl-bar: var(--tide-300); }
+.tl-link {
+  --tl-accent: inset 4px 0 0 rgb(var(--tl-bar));
+  position: relative; isolation: isolate; display: flex; flex: 1 1 auto; min-width: 0;
+  padding: 0.15rem 0 0 3rem; color: rgb(var(--tide-900)); text-decoration: none; border-radius: 0.5rem;
+}
+.tl-link::before {
+  content: ""; position: absolute; z-index: -1; left: 0; top: 0; width: 2.25rem; height: calc(var(--tl-len) - 3px);
+  border-radius: 0.5rem; background: rgb(var(--tl-fill) / var(--tl-fill-alpha, 1)); box-shadow: var(--tl-accent);
+}
+.tl-block:last-child .tl-link::before { height: var(--tl-len); }
+@media (hover: hover) {
+  .tl-link:hover::before { box-shadow: var(--tl-accent), inset 0 0 0 2px rgb(var(--tl-bar)); }
+  .tl-link:hover .tl-name { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.2em; }
+}
+/* The focus ring stays inside its block, clear of the neighbors and the 5-minute connectors. */
+.tl-link:focus-visible { outline-offset: -3px; }
+.tl-link:focus-visible .tl-name { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.2em; }
+.tl-text { display: flex; flex-wrap: wrap; align-items: baseline; align-self: flex-start; gap: 0 0.5rem; min-width: 0; }
+.tl-name { font-weight: 700; }
+.tl-min { font-weight: 700; color: rgb(var(--ember-700)); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.tl-axis { position: absolute; left: 0; top: 0; width: 2.25rem; height: var(--tl-h); font-size: 0.75rem; font-weight: 600; line-height: 1; color: rgb(var(--ink-soft)); font-variant-numeric: tabular-nums; }
+.tl-axis span { position: absolute; right: 0.5rem; top: calc(var(--at) / 90 * 100%); transform: translateY(-50%); white-space: nowrap; }
+.tl-axis span::after { content: ""; position: absolute; left: calc(100% + 0.15rem); top: 50%; width: 0.3rem; border-top: 1px solid rgb(var(--rule)); }
+.tl-axis span:first-child { transform: none; }
+.tl-axis span:last-child { transform: translateY(-100%); }
+/* The break between the rows: dashed rules either side of a link to its section. */
+.tl-break { display: flex; align-items: center; gap: 0.9rem; margin: 1.75rem 0; font-size: 0.95rem; font-weight: 600; line-height: 1.35; color: rgb(var(--ink-soft)); }
+.tl-break::before, .tl-break::after { content: ""; flex: 1 1 1rem; border-top: 2px dashed rgb(var(--rule)); }
+.tl-break a { display: inline-flex; align-items: center; gap: 0.5rem; color: inherit; text-align: center; text-decoration: underline; text-decoration-color: rgb(var(--tide-300)); text-underline-offset: 0.2em; }
+.tl-break a:hover { color: rgb(var(--ember-700)); text-decoration-color: currentColor; }
+.tl-break svg { flex: none; width: 1.1rem; height: 1.1rem; color: rgb(var(--ember-700)); }
+
+@media (min-width: 1024px) {
+  .tl-track { flex-direction: row; margin: 0; padding-top: 2.25rem; }
+  .tl-block, .tl-block:last-child { flex: var(--min) 1 0; height: auto; min-height: 0; }
+  /* min-height, so a row grows (and its blocks with it) when its labels need more room. */
+  .tl-link { --tl-accent: inset 0 4px 0 rgb(var(--tl-bar)); min-height: 7.5rem; padding: 0.85rem 0.8rem 0.75rem; }
+  .tl-link::before { inset: 0 3px 0 0; width: auto; height: auto; }
+  .tl-block:last-child .tl-link::before { right: 0; height: auto; }
+  .tl-text { flex-direction: column; flex-wrap: nowrap; align-items: flex-start; align-self: stretch; justify-content: space-between; width: 100%; }
+  .tl-min { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+  /* 5-minute blocks are too narrow for their label, so it sits above the block with a short connector. */
+  .tl-block[data-narrow] .tl-text { position: absolute; left: 0; bottom: calc(100% + 0.55rem); width: max-content; flex-direction: row; align-items: baseline; gap: 0.5rem; }
+  .tl-block[data-narrow] .tl-min { font-size: inherit; font-weight: 700; letter-spacing: 0; line-height: inherit; }
+  .tl-block[data-narrow]:last-child .tl-text { left: auto; right: 0; }
+  .tl-block[data-narrow] .tl-link::after { content: ""; position: absolute; left: 0.6rem; bottom: 100%; height: 0.45rem; border-left: 2px solid rgb(var(--tl-bar)); }
+  .tl-block[data-narrow]:last-child .tl-link::after { left: auto; right: 0.6rem; }
+  .tl-axis { position: relative; width: auto; height: 1.5rem; margin-top: 0.5rem; }
+  .tl-axis span { top: 0.4rem; right: auto; left: calc(var(--at) / 90 * 100%); transform: translateX(-50%); }
+  .tl-axis span::after { left: 50%; top: -0.45rem; width: 0; height: 0.3rem; border-top: 0; border-left: 1px solid rgb(var(--rule)); }
+  .tl-axis span:first-child { transform: none; }
+  .tl-axis span:first-child::after { left: 0; }
+  .tl-axis span:last-child { transform: translateX(-100%); }
+  .tl-axis span:last-child::after { left: auto; right: 0; }
+}
+/* Forced colors drop backgrounds and shadows, so the bars get a border instead. */
+@media (forced-colors: active) {
+  .tl-link::before { border: 1px solid CanvasText; }
+}
 #navbar a[aria-current="page"] { color: rgb(var(--ember-700)); text-decoration: underline; text-underline-offset: 0.5em; }
 
 /* In-page links land just below the sticky nav; --nav-height is set by main.js. */
@@ -95,5 +363,6 @@ section, [id] { scroll-margin-top: calc(var(--nav-height, 4rem) + 2rem); }
 
 @media print {
   body { background: #fff; }
-  #navbar, .skip-link { display: none !important; }
+  #navbar, .skip-link, .hero-field { display: none !important; }
+  .hero-eureka::before { display: none; }
 }

@@ -64,27 +64,106 @@
   <!-- Main Content -->
   <main id="main" class="page-container py-10 sm:py-12">
 
-    <!-- Header -->
-    <header class="mb-10 pb-5">
-      <div class="flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-2 mb-4 text-sm text-ink-soft">
-        <span>Proposed workshop @ CHI 2027</span>
-        <span class="hidden sm:block w-px h-4 bg-rule mx-1" aria-hidden="true"></span>
-        <span class="font-bold text-tide-900">Pittsburgh, PA, USA</span>
-      </div>
-
-      <div class="relative">
-        <h1 class="text-5xl sm:text-6xl font-bold text-tide-900 mb-5 leading-tight tracking-tight">
-          Whose
-          <button type="button" data-gloss aria-expanded="false" aria-controls="title-gloss"
-            class="text-ember-500 cursor-help underline decoration-dashed decoration-ember-400/50 hover:decoration-ember-500 underline-offset-8 decoration-4 transition-all">Eureka?</button>
-        </h1>
-        <div id="title-gloss" hidden class="absolute left-0 top-full -mt-2 w-full max-w-md bg-surface border border-rule rounded-xl p-5 shadow-2xl z-40 text-ink-soft">
-          A <em class="not-italic font-bold text-tide-900">eureka</em> is the moment something new becomes clear. When people and AI make discoveries together, we ask whose moment it is: new to whom, whose understanding changed, and who steered the inquiry and gets the credit.
+    <!-- Header: title, eureka illustration, and the discovery field behind both -->
+    <header class="hero mb-10 pb-5 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between lg:gap-12" data-field-host>
+      <div class="hero-field" aria-hidden="true"><canvas data-field></canvas></div>
+      <div class="min-w-0 lg:w-fit" data-field-quiet="0.06" data-field-text>
+        <div class="flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-2 mb-4 text-sm text-ink-soft">
+          <span>Proposed workshop @ CHI 2027</span>
+          <span class="hidden sm:block w-px h-4 bg-rule mx-1" aria-hidden="true"></span>
+          <span class="font-bold text-tide-900">Pittsburgh, PA, USA</span>
         </div>
+
+        <div class="relative">
+          <h1 class="text-5xl sm:text-6xl font-bold text-tide-900 mb-5 leading-tight tracking-tight">
+            Whose
+            <button type="button" data-gloss aria-expanded="false" aria-controls="title-gloss"
+              class="text-ember-500 cursor-help underline decoration-dashed decoration-ember-400/50 hover:decoration-ember-500 underline-offset-8 decoration-4 transition-all">Eureka?</button>
+          </h1>
+          <div id="title-gloss" hidden class="absolute left-0 top-full -mt-2 w-full max-w-md bg-surface border border-rule rounded-xl p-5 shadow-2xl z-40 text-ink-soft">
+            A <em class="not-italic font-bold text-tide-900">eureka</em> is the moment something new becomes clear. When people and AI make discoveries together, we ask whose moment it is: new to whom, whose understanding changed, and who steered the inquiry and gets the credit.
+          </div>
+        </div>
+        <p class="text-xl sm:text-2xl text-ink-soft leading-relaxed font-medium">
+          Human-AI Co-Discovery of Knowledge
+        </p>
       </div>
-      <p class="text-xl sm:text-2xl text-ink-soft leading-relaxed font-medium">
-        Human-AI Co-Discovery of Knowledge
-      </p>
+      <!-- Eureka illustration: question, connection, explanation, eureka (plays once; static under reduced motion) -->
+      <div class="hero-eureka lg:flex-1 lg:min-w-[18rem]" data-field-quiet="0.5" data-field-feather="120">
+        <svg class="eh" viewBox="0 0 480 300" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="eh-grad" gradientUnits="userSpaceOnUse" x1="56" y1="0" x2="428" y2="0">
+              <stop offset="0" class="eh-stop-tide"/><stop offset="0.55" class="eh-stop-tide"/><stop offset="1" class="eh-stop-ember"/>
+            </linearGradient>
+            <radialGradient id="eh-glow-fill"><stop offset="0" class="eh-stop-ember" stop-opacity="0.55"/><stop offset="1" class="eh-stop-ember" stop-opacity="0"/></radialGradient>
+          </defs>
+          <g class="eh-links">
+            <path class="eh-link" pathLength="1" d="M56 236L131 222" style="--d:1.5s"/>
+            <path class="eh-link" pathLength="1" d="M192 112L285 123" style="--d:2.14s"/>
+            <path class="eh-link" pathLength="1" d="M192 112L96 115" style="--d:2.14s"/>
+            <path class="eh-link" pathLength="1" d="M322 204L251 189" style="--d:2.71s"/>
+            <path class="eh-link" pathLength="1" d="M322 204L461 225" style="--d:2.71s"/>
+            <path class="eh-link" pathLength="1" d="M428 74L307 46" style="--d:3.3s"/>
+          </g>
+          <g class="eh-decoys">
+            <circle class="eh-dot" cx="220" cy="167" r="4" style="--d:0.0s;--dx:-7px;--dy:4px"/>
+            <circle class="eh-dot" cx="220" cy="248" r="3" style="--d:0.025s;--dx:3px;--dy:-10px"/>
+            <circle class="eh-dot" cx="59" cy="97" r="2.5" style="--d:0.05s;--dx:-3px;--dy:5px"/>
+            <circle class="eh-dot" cx="259" cy="258" r="2.5" style="--d:0.075s;--dx:1px;--dy:6px"/>
+            <circle class="eh-dot eh-dot--linked" cx="285" cy="123" r="4" style="--d:0.1s;--dx:4px;--dy:-12px;--ld:2.59s"/>
+            <circle class="eh-dot" cx="87" cy="18" r="2.5" style="--d:0.125s;--dx:5px;--dy:-14px"/>
+            <circle class="eh-dot" cx="43" cy="66" r="3" style="--d:0.15s;--dx:12px;--dy:1px"/>
+            <circle class="eh-dot" cx="163" cy="176" r="3" style="--d:0.175s;--dx:-6px;--dy:3px"/>
+            <circle class="eh-dot eh-dot--linked" cx="251" cy="189" r="4" style="--d:0.2s;--dx:-7px;--dy:-8px;--ld:3.16s"/>
+            <circle class="eh-dot" cx="18" cy="37" r="3.5" style="--d:0.225s;--dx:8px;--dy:1px"/>
+            <circle class="eh-dot eh-dot--linked" cx="131" cy="222" r="3.5" style="--d:0.25s;--dx:3px;--dy:12px;--ld:1.95s"/>
+            <circle class="eh-dot" cx="29" cy="168" r="2.5" style="--d:0.275s;--dx:3px;--dy:1px"/>
+            <circle class="eh-dot" cx="191" cy="277" r="2.5" style="--d:0.3s;--dx:-2px;--dy:6px"/>
+            <circle class="eh-dot" cx="113" cy="268" r="2.5" style="--d:0.325s;--dx:13px;--dy:-10px"/>
+            <circle class="eh-dot" cx="228" cy="283" r="4" style="--d:0.35s;--dx:-7px;--dy:6px"/>
+            <circle class="eh-dot" cx="23" cy="126" r="2.5" style="--d:0.375s;--dx:-10px;--dy:13px"/>
+            <circle class="eh-dot eh-dot--linked" cx="461" cy="225" r="4" style="--d:0.4s;--dx:2px;--dy:-2px;--ld:3.16s"/>
+            <circle class="eh-dot eh-dot--linked" cx="307" cy="46" r="4" style="--d:0.425s;--dx:9px;--dy:-14px;--ld:3.75s"/>
+            <circle class="eh-dot" cx="464" cy="14" r="3.5" style="--d:0.45s;--dx:7px;--dy:10px"/>
+            <circle class="eh-dot" cx="216" cy="17" r="3.5" style="--d:0.475s;--dx:-12px;--dy:-9px"/>
+            <circle class="eh-dot" cx="191" cy="146" r="2.5" style="--d:0.5s;--dx:10px;--dy:4px"/>
+            <circle class="eh-dot eh-dot--linked" cx="96" cy="115" r="3" style="--d:0.525s;--dx:-13px;--dy:-5px;--ld:2.59s"/>
+          </g>
+          <path class="eh-path" pathLength="1" d="M56 236 C 92 186, 128 118, 192 112 S 270 208, 322 204 S 398 120, 428 74"/>
+          <g class="eh-pdots">
+            <circle class="eh-pdot" cx="89.2" cy="188.3" r="4" style="--d:0.15s;--dx:-21px;--dy:41px;--p:1.6s"/>
+            <circle class="eh-pdot" cx="129.6" cy="141.3" r="4" style="--d:0.23s;--dx:-25px;--dy:-35px;--p:1.81s"/>
+            <circle class="eh-pdot" cx="232.0" cy="124.4" r="4" style="--d:0.31s;--dx:-53px;--dy:-12px;--p:2.19s"/>
+            <circle class="eh-pdot" cx="261.5" cy="157.2" r="4" style="--d:0.39s;--dx:56px;--dy:21px;--p:2.34s"/>
+            <circle class="eh-pdot" cx="288.8" cy="190.5" r="4" style="--d:0.47s;--dx:56px;--dy:13px;--p:2.49s"/>
+            <circle class="eh-pdot" cx="362.2" cy="182.8" r="4" style="--d:0.55s;--dx:39px;--dy:19px;--p:2.77s"/>
+            <circle class="eh-pdot" cx="394.5" cy="135.1" r="4" style="--d:0.63s;--dx:-65px;--dy:33px;--p:2.96s"/>
+          </g>
+          <g class="eh-node" style="--d:1.4s">
+            <circle class="eh-node-ring" cx="56" cy="236" r="17"/>
+            <text class="eh-glyph-text" x="56" y="242.5" text-anchor="middle">?</text>
+          </g>
+          <text class="eh-label" x="56" y="276" text-anchor="middle" style="--d:1.55s">question</text>
+          <g class="eh-node" style="--d:2.04s">
+            <circle class="eh-node-ring" cx="192" cy="112" r="17"/>
+            <circle class="eh-glyph" cx="187" cy="112" r="5.5"/>
+            <circle class="eh-glyph" cx="197" cy="112" r="5.5"/>
+          </g>
+          <text class="eh-label" x="192" y="80" text-anchor="middle" style="--d:2.19s">connection</text>
+          <g class="eh-node" style="--d:2.61s">
+            <circle class="eh-node-ring" cx="322" cy="204" r="17"/>
+            <path class="eh-glyph" d="M313 197.5h18M313 204h18M313 210.5h11"/>
+          </g>
+          <text class="eh-label" x="322" y="242" text-anchor="middle" style="--d:2.76s">explanation</text>
+          <g class="eh-spark" style="--d:3.2s">
+            <circle class="eh-spark-glow" cx="428" cy="74" r="44" fill="url(#eh-glow-fill)"/>
+            <path class="eh-spark-rays" d="M447.4 82.0L456.6 85.9M436.0 93.4L438.3 98.9M420.0 93.4L416.1 102.6M408.6 82.0L403.1 84.3M408.6 66.0L399.4 62.1M420.0 54.6L417.7 49.1M436.0 54.6L439.9 45.4M447.4 66.0L452.9 63.7"/>
+            <path class="eh-spark-core" d="M428 54 Q431.5 70.5 448 74 Q431.5 77.5 428 94 Q424.5 77.5 408 74 Q424.5 70.5 428 54 Z"/>
+            <circle class="eh-spark-eye" cx="428" cy="74" r="2.6"/>
+          </g>
+          <text class="eh-label eh-label--eureka" x="428" y="24" text-anchor="middle" style="--d:3.45s">eureka</text>
+        </svg>
+      </div>
     </header>
 
     <!-- Information -->
@@ -102,33 +181,80 @@
       <div class="prose">
         <p>AI systems increasingly help formulate ideas, explore data, and develop explanations. Yet a plausible or useful finding does not necessarily expand or deepen human knowledge. Discovery and understanding can reinforce one another: an unexpected connection may change how people frame a problem and what they ask next.</p>
         <p>This workshop explores human-AI co-discovery of knowledge: how people and AI develop new questions, connections, and explanations together. We invite researchers and practitioners to examine human agency, evidence, learning, and the recognition of contributions, and to develop a shared research agenda for discovery with AI.</p>
-        <ul id="questions">
-          <li>
-            <details>
-              <summary>How do people and AI develop questions, connections, and explanations together?</summary>
-              <p>People and AI can build on, challenge, or redirect one another's suggestions as they explore evidence and develop provisional conclusions. How can human-AI interaction help people recognize when an unexpected connection is worth pursuing, rather than simply accepting an AI suggestion?</p>
-            </details>
-          </li>
-          <li>
-            <details>
-              <summary>How do people guide co-discovery, and how are contributions recognized?</summary>
-              <p>As people delegate work to AI, they decide when to intervene, revise a plan, or decline assistance, and records of decisions and revisions can make human and AI contributions visible. How should credit, intellectual ownership, and responsibility be understood and negotiated when discoveries emerge from human-AI collaboration?</p>
-            </details>
-          </li>
-          <li>
-            <details>
-              <summary>What do people come to understand through co-discovery?</summary>
-              <p>Human-AI co-discovery may change how people frame a problem, what they notice, and what they ask next, even when an investigation remains inconclusive. How can reflection, learning, and changes in understanding be recognized alongside the findings that people and AI produce?</p>
-            </details>
-          </li>
-          <li>
-            <details>
-              <summary>What counts as a discovery, for whom, and on what evidence?</summary>
-              <p>Is an insight new to an individual, a team, or a field, and do its claims hold up against counter-evidence or alternative explanations? Concerns about scientific monocultures also raise the question of whether co-discovery can broaden, rather than narrow, the questions a community pursues.</p>
-            </details>
-          </li>
-        </ul>
       </div>
+
+      <figure class="mt-10">
+        <div class="figure-plate rounded-2xl border border-rule p-3 sm:p-5 lg:p-6 shadow-[0_1px_2px_rgb(var(--tide-900)/0.06)]">
+          <!-- Selecting the image opens it full size. -->
+          <a href="../assets/img/teaser-2400.webp" target="_blank" rel="noopener" class="block cursor-zoom-in">
+            <picture>
+              <source type="image/webp" srcset="../assets/img/teaser-1200.webp 1200w, ../assets/img/teaser-2400.webp 2400w" sizes="(min-width: 2400px) calc(100vw - 27rem), calc(84vw - 3rem)">
+              <img src="../assets/img/teaser-1200.png" width="1200" height="461" loading="lazy" decoding="async" class="block w-full h-auto" aria-describedby="figure-1-desc"
+                alt="Figure 1: a researcher and an AI assistant develop an inquiry about notifications in three steps (formulate questions; explore unexpected connections; construct, challenge, and revise explanations), above the workshop's four questions.">
+            </picture>
+            <span class="sr-only">(opens full size in a new tab)</span>
+          </a>
+        </div>
+        <p id="figure-1-desc" hidden>Panel 1, Formulate Questions: an interview excerpt reads, "I get so many notifications that it starts to feel overwhelming." The AI asks whether more notifications actually help people get things done faster. Panel 2, Explore Unexpected Connections: the researcher says the logs suggest they do, but experienced users also seem to get more notifications. The AI notes that within each experience group, more notifications are linked to slower work. Two interview excerpts read, "They keep me on track" and "They stress me out." Panel 3, Construct, Challenge, and Revise Explanations: the researcher suggests that experience may be masking the cost of interruptions and asks whether the pattern holds across kinds of tasks. The AI says it seems strongest during focused work and proposes a controlled study. A new question asks how task and context shape people's experiences of notifications. An arrow returns from the third panel to the first. Four boxes below list the workshop questions: Q1, co-discovery process; Q2, agency and credit; Q3, human understanding; Q4, what counts as discovery.</p>
+        <figcaption class="mt-4 text-base text-ink-soft leading-relaxed">
+          <span class="mr-1 text-xs font-bold uppercase tracking-widest text-ember-700">Figure 1</span> An illustrative human-AI co-discovery process: interview accounts and logs lead to analysis by experience level, a tentative explanation, and a proposed controlled study of alerts and task performance. The workshop's four questions appear below.
+        </figcaption>
+      </figure>
+
+      <ul id="questions">
+        <li class="q-card" data-q="1">
+          <details>
+            <summary>
+              <span class="q-card__head">
+                <span class="q-card__icon" aria-hidden="true"><i data-lucide="message-circle-question"></i></span>
+                <span class="q-card__meta"><span class="q-badge">Q1</span><span class="q-card__tag">Co-discovery process</span></span>
+                <span class="q-card__toggle" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+              </span>
+              <span class="q-card__title">How do people and AI develop questions, connections, and explanations together?</span>
+            </summary>
+            <p>People and AI can build on, challenge, or redirect one another's suggestions as they explore evidence and develop provisional conclusions. How can human-AI interaction help people recognize when an unexpected connection is worth pursuing, rather than simply accepting an AI suggestion?</p>
+          </details>
+        </li>
+        <li class="q-card" data-q="2">
+          <details>
+            <summary>
+              <span class="q-card__head">
+                <span class="q-card__icon" aria-hidden="true"><i data-lucide="hand-helping"></i></span>
+                <span class="q-card__meta"><span class="q-badge">Q2</span><span class="q-card__tag">Agency &amp; credit</span></span>
+                <span class="q-card__toggle" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+              </span>
+              <span class="q-card__title">How do people guide co-discovery, and how are contributions recognized?</span>
+            </summary>
+            <p>As people delegate work to AI, they decide when to intervene, revise a plan, or decline assistance, and records of decisions and revisions can make human and AI contributions visible. How should credit, intellectual ownership, and responsibility be understood and negotiated when discoveries emerge from human-AI collaboration?</p>
+          </details>
+        </li>
+        <li class="q-card" data-q="3">
+          <details>
+            <summary>
+              <span class="q-card__head">
+                <span class="q-card__icon" aria-hidden="true"><i data-lucide="lightbulb"></i></span>
+                <span class="q-card__meta"><span class="q-badge">Q3</span><span class="q-card__tag">Human understanding</span></span>
+                <span class="q-card__toggle" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+              </span>
+              <span class="q-card__title">What do people come to understand through co-discovery?</span>
+            </summary>
+            <p>Human-AI co-discovery may change how people frame a problem, what they notice, and what they ask next, even when an investigation remains inconclusive. How can reflection, learning, and changes in understanding be recognized alongside the findings that people and AI produce?</p>
+          </details>
+        </li>
+        <li class="q-card" data-q="4">
+          <details>
+            <summary>
+              <span class="q-card__head">
+                <span class="q-card__icon" aria-hidden="true"><i data-lucide="search-check"></i></span>
+                <span class="q-card__meta"><span class="q-badge">Q4</span><span class="q-card__tag">What counts as discovery</span></span>
+                <span class="q-card__toggle" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+              </span>
+              <span class="q-card__title">What counts as a discovery, for whom, and on what evidence?</span>
+            </summary>
+            <p>Is an insight new to an individual, a team, or a field, and do its claims hold up against counter-evidence or alternative explanations? Concerns about scientific monocultures also raise the question of whether co-discovery can broaden, rather than narrow, the questions a community pursues.</p>
+          </details>
+        </li>
+      </ul>
     </section>
 
     <!-- Call for Participation -->

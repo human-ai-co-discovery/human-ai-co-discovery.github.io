@@ -69,22 +69,51 @@
       <p class="mt-5">We plan two consecutive 90-minute in-person sessions. The schedule and speaker arrangements are tentative, subject to workshop acceptance and the conference schedule.</p>
     </header>
 
+    <!-- At a glance: each block's length is proportional to its minutes (--min); blocks link to the schedule below. -->
+    <section class="mb-12 rounded-2xl border border-rule bg-surface p-4 sm:p-6" aria-labelledby="glance-h">
+      <h2 id="glance-h" class="mb-5 text-xs font-bold uppercase tracking-widest text-ember-700">At a glance</h2>
+
+      <p id="tl-s1" class="flex flex-wrap items-baseline justify-between gap-x-4 mb-3 text-base"><span class="font-semibold text-tide-900">Session 1: Perspectives</span> <span class="text-ink-soft tabular-nums">90 min</span></p>
+      <div class="tl">
+        <ol class="tl-track" role="list" aria-labelledby="tl-s1">
+          <li class="tl-block" data-tone="quiet" data-narrow style="--min: 5"><a class="tl-link" href="#s1-welcome" aria-label="Welcome, 5 minutes"><span class="tl-text"><span class="tl-name">Welcome</span> <span class="tl-min">5 min</span></span></a></li>
+          <li class="tl-block" style="--min: 30"><a class="tl-link" href="#s1-keynote" aria-label="Keynote with Q&amp;A, 30 minutes"><span class="tl-text"><span class="tl-name">Keynote with Q&amp;A</span> <span class="tl-min">30 min</span></span></a></li>
+          <li class="tl-block" style="--min: 25"><a class="tl-link" href="#s1-lightning" aria-label="Lightning talks: first block, 25 minutes"><span class="tl-text"><span class="tl-name">Lightning talks: first block</span> <span class="tl-min">25 min</span></span></a></li>
+          <li class="tl-block" data-tone="discussion" style="--min: 30"><a class="tl-link" href="#s1-panel" aria-label="Human-AI panel discussion, 30 minutes"><span class="tl-text"><span class="tl-name">Human-AI panel discussion</span> <span class="tl-min">30 min</span></span></a></li>
+        </ol>
+        <div class="tl-axis" aria-hidden="true"><span style="--at: 0">0</span><span style="--at: 30">30</span><span style="--at: 60">60</span><span style="--at: 90">90 min</span></div>
+      </div>
+
+      <p class="tl-break"><a href="#break-h"><i data-lucide="coffee" aria-hidden="true"></i>Conference coffee break and poster exchange</a></p>
+
+      <p id="tl-s2" class="flex flex-wrap items-baseline justify-between gap-x-4 mb-3 text-base"><span class="font-semibold text-tide-900">Session 2: Co-Discovery</span> <span class="text-ink-soft tabular-nums">90 min</span></p>
+      <div class="tl">
+        <ol class="tl-track" role="list" aria-labelledby="tl-s2">
+          <li class="tl-block" style="--min: 20"><a class="tl-link" href="#s2-lightning" aria-label="Lightning talks: second block, 20 minutes"><span class="tl-text"><span class="tl-name">Lightning talks: second block</span> <span class="tl-min">20 min</span></span></a></li>
+          <li class="tl-block" data-tone="discussion" style="--min: 50"><a class="tl-link" href="#s2-roundtable" aria-label="Interactive roundtable activity, 50 minutes"><span class="tl-text"><span class="tl-name">Interactive roundtable activity</span> <span class="tl-min">50 min</span></span></a></li>
+          <li class="tl-block" data-tone="discussion" style="--min: 15"><a class="tl-link" href="#s2-reports" aria-label="Group reports and collective discussion, 15 minutes"><span class="tl-text"><span class="tl-name">Group reports and collective discussion</span> <span class="tl-min">15 min</span></span></a></li>
+          <li class="tl-block" data-tone="quiet" data-narrow style="--min: 5"><a class="tl-link" href="#s2-closing" aria-label="Closing and next steps, 5 minutes"><span class="tl-text"><span class="tl-name">Closing and next steps</span> <span class="tl-min">5 min</span></span></a></li>
+        </ol>
+        <div class="tl-axis" aria-hidden="true"><span style="--at: 0">0</span><span style="--at: 30">30</span><span style="--at: 60">60</span><span style="--at: 90">90 min</span></div>
+      </div>
+    </section>
+
     <section class="mb-12" aria-labelledby="session-1-h">
       <h2 id="session-1-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-3">Session 1: Perspectives</h2>
       <ol>
-        <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-8 py-5 border-b border-rule">
+        <li id="s1-welcome" class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-8 py-5 border-b border-rule">
           <span class="sm:w-24 shrink-0 font-semibold text-ember-700">5 min</span>
           <div><h3 class="font-semibold text-tide-900">Welcome</h3><p class="text-ink-soft">Workshop goals and overview of activities.</p></div>
         </li>
-        <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-8 py-5 border-b border-rule">
+        <li id="s1-keynote" class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-8 py-5 border-b border-rule">
           <span class="sm:w-24 shrink-0 font-semibold text-ember-700">30 min</span>
           <div><h3 class="font-semibold text-tide-900">Keynote with Q&amp;A</h3><p class="text-ink-soft">Daniel McDuff, Google Research (tentative).</p></div>
         </li>
-        <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-8 py-5 border-b border-rule">
+        <li id="s1-lightning" class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-8 py-5 border-b border-rule">
           <span class="sm:w-24 shrink-0 font-semibold text-ember-700">25 min</span>
           <div><h3 class="font-semibold text-tide-900">Lightning talks: first block</h3><p class="text-ink-soft">Brief talks by authors of accepted contributions.</p></div>
         </li>
-        <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-8 py-5 border-b border-rule">
+        <li id="s1-panel" class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-8 py-5 border-b border-rule">
           <span class="sm:w-24 shrink-0 font-semibold text-ember-700">30 min</span>
           <div><h3 class="font-semibold text-tide-900">Human-AI panel discussion</h3><p class="text-ink-soft">Tentative panelists: Daniel McDuff, Sherry Tongshuang Wu, Toby Jia-Jun Li, and an AI agent.</p></div>
         </li>
@@ -99,19 +128,19 @@
     <section class="mb-16" aria-labelledby="session-2-h">
       <h2 id="session-2-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-3">Session 2: Co-Discovery</h2>
       <ol>
-        <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-8 py-5 border-b border-rule">
+        <li id="s2-lightning" class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-8 py-5 border-b border-rule">
           <span class="sm:w-24 shrink-0 font-semibold text-ember-700">20 min</span>
           <div><h3 class="font-semibold text-tide-900">Lightning talks: second block</h3><p class="text-ink-soft">Brief talks by authors of accepted contributions.</p></div>
         </li>
-        <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-8 py-5 border-b border-rule">
+        <li id="s2-roundtable" class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-8 py-5 border-b border-rule">
           <span class="sm:w-24 shrink-0 font-semibold text-ember-700">50 min</span>
           <div><h3 class="font-semibold text-tide-900">Interactive roundtable activity</h3><p class="text-ink-soft">Including reflection and discussion.</p></div>
         </li>
-        <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-8 py-5 border-b border-rule">
+        <li id="s2-reports" class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-8 py-5 border-b border-rule">
           <span class="sm:w-24 shrink-0 font-semibold text-ember-700">15 min</span>
           <div><h3 class="font-semibold text-tide-900">Group reports and collective discussion</h3><p class="text-ink-soft">Short group reports followed by comparison of recurring themes and differences.</p></div>
         </li>
-        <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-8 py-5 border-b border-rule">
+        <li id="s2-closing" class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-8 py-5 border-b border-rule">
           <span class="sm:w-24 shrink-0 font-semibold text-ember-700">5 min</span>
           <div><h3 class="font-semibold text-tide-900">Closing and next steps</h3><p class="text-ink-soft">Summary and opportunities for continued exchange after the workshop.</p></div>
         </li>
