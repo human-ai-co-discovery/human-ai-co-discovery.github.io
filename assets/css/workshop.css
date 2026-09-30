@@ -171,10 +171,12 @@ body {
 #questions { display: grid; gap: 1rem; margin: 2.5rem 0 0; padding: 0; list-style: none; }
 @media (min-width: 768px) {
   #questions { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
-  /* Closed cards share their row's height; in a row with an open card, neither card stretches. */
-  #questions > li:has(> details[open]),
-  #questions > li:nth-child(odd):has(+ li > details[open]),
-  #questions > li:has(> details[open]) + li:nth-child(even) { align-self: start; }
+  /* Cards in a row share its height when both are closed or both are open. In a row with
+     one open card, neither stretches, so the closed card does not become an empty box. */
+  #questions > li:nth-child(odd):has(> details[open]):has(+ li > details:not([open])),
+  #questions > li:nth-child(odd):has(> details:not([open])):has(+ li > details[open]),
+  #questions > li:nth-child(odd):has(> details[open]) + li:has(> details:not([open])),
+  #questions > li:nth-child(odd):has(> details:not([open])) + li:has(> details[open]) { align-self: start; }
 }
 #questions > li { margin: 0; min-width: 0; }
 .q-card > details {
