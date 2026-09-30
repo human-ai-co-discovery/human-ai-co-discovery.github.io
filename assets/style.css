@@ -24,8 +24,8 @@
   --body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --mono: var(--body);
 
-  --measure: 72ch;
-  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --measure: 100%;
+  --gutter: clamp(1.25rem, 5vw, 7rem);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -97,7 +97,7 @@ a:hover { color: var(--accent-ink); text-decoration-thickness: 2px; }
   align-items: center;
   gap: clamp(1.5rem, 4vw, 4rem);
   padding: clamp(2.5rem, 7vw, 6rem) var(--gutter) clamp(2rem, 5vw, 4rem);
-  max-width: 86rem; margin: 0 auto;
+  margin: 0 auto;
 }
 .kicker {
   font-family: var(--mono); font-size: 0.9rem; letter-spacing: 0.12em; text-transform: uppercase;
@@ -147,7 +147,7 @@ a:hover { color: var(--accent-ink); text-decoration-thickness: 2px; }
 
 /* ---------- Status note ---------- */
 .status {
-  max-width: 86rem; margin: 0 auto; padding: 0 var(--gutter);
+  margin: 0 auto; padding: 0 var(--gutter);
 }
 .status p {
   margin: 0; max-width: var(--measure);
@@ -165,7 +165,7 @@ main { padding-bottom: 3rem; }
   display: grid;
   grid-template-columns: minmax(7rem, 9rem) minmax(0, 1fr);
   gap: 1rem clamp(1.5rem, 4vw, 3.5rem);
-  max-width: 86rem; margin: 0 auto;
+  margin: 0 auto;
   padding: clamp(2.2rem, 5vw, 3.6rem) var(--gutter) 0;
 }
 .section + .section > .margin-label { border-top: 1px solid var(--rule); }
@@ -181,7 +181,7 @@ main { padding-bottom: 3rem; }
   font-family: var(--display); font-weight: 600;
   font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.3rem); line-height: 1.12; letter-spacing: -0.01em;
   color: var(--title);
-  margin: 0.2rem 0 1rem; max-width: 26ch;
+  margin: 0.2rem 0 1rem;
 }
 .content p, .content li { max-width: var(--measure); }
 .lede { font-size: 1.12em; }
@@ -265,7 +265,7 @@ main { padding-bottom: 3rem; }
 
 /* ---------- Footer ---------- */
 .site-footer {
-  max-width: 86rem; margin: 2rem auto 0; padding: 1.6rem var(--gutter) 2.4rem;
+  margin: 2rem auto 0; padding: 1.6rem var(--gutter) 2.4rem;
   border-top: 1px solid var(--rule);
   font-family: var(--mono); font-size: 0.88rem; color: var(--ink-soft);
   display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.6rem 2rem;
