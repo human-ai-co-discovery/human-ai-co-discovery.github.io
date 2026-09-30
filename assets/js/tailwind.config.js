@@ -43,6 +43,7 @@ tailwind.config = {
             '--tw-prose-counters': 'rgb(var(--ember-700))',
             fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif',
             fontWeight: '400',
+            fontSize: 'inherit',
             lineHeight: '1.625',
             p: { marginTop: '1em', marginBottom: '1em' },
             a: {
