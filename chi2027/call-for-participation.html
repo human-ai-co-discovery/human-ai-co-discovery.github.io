@@ -27,7 +27,7 @@
 
   <!-- Tokens and the few rules Tailwind does not cover -->
   <link rel="stylesheet" href="assets/css/workshop.css?v=20261001-alignment">
-  <link rel="stylesheet" href="assets/css/interactive.css?v=20261001-community">
+  <link rel="stylesheet" href="assets/css/interactive.css?v=20261001-gemini">
 </head>
 <body class="text-ink antialiased font-sans font-normal text-lg sm:text-xl leading-relaxed selection:bg-ember-200 selection:text-tide-900">
   <a class="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[60] focus:rounded-lg focus:bg-tide-900 focus:px-4 focus:py-2 focus:text-paper focus:font-semibold" href="#main">Skip to content</a>
@@ -89,51 +89,23 @@
       </div>
     </section>
 
-    <details id="contribution-finder" class="contribution-finder mb-20" data-cfp-finder>
-      <summary><span>Find a starting point for your contribution</span><span class="finder-chevron" aria-hidden="true">⌄</span></summary>
+    <details id="contribution-finder" class="contribution-finder mb-20" data-cfp-assistant>
+      <summary><span>Explore how your work could contribute</span><span class="finder-chevron" aria-hidden="true">⌄</span></summary>
       <div class="finder-body">
-        <p>Choose the direction closest to your work. These suggestions can overlap.</p>
-        <div class="finder-options" role="group" aria-label="Your research interests">
-          <button type="button" id="entry-systems" data-cfp-entry="systems" aria-pressed="false" aria-controls="fit-systems">I build systems</button>
-          <button type="button" id="entry-understanding" data-cfp-entry="understanding" aria-pressed="false" aria-controls="fit-understanding">I study human understanding</button>
-          <button type="button" id="entry-agents" data-cfp-entry="agents" aria-pressed="false" aria-controls="fit-agents">I evaluate AI research agents</button>
-          <button type="button" id="entry-critical" data-cfp-entry="critical" aria-pressed="false" aria-controls="fit-critical">I bring a critical perspective</button>
-        </div>
-        <div class="finder-results" aria-live="polite" aria-atomic="true">
-          <section id="fit-systems" class="finder-result" aria-labelledby="entry-systems" hidden>
-            <h3>Designing how discovery happens</h3>
-            <p>Explore how systems shape the way people and AI ask questions, connect ideas, and develop explanations. You might share a prototype, design concept, or work in progress that makes delegation, revision, or the contributions of people and AI visible.</p>
-            <div class="finder-topics" role="group" aria-label="Related workshop topics">
-              <button type="button" data-cfp-topic="topic-q1">Interpreting together <span aria-hidden="true">↓</span></button>
-              <button type="button" data-cfp-topic="topic-q2">Human agency in co-discovery <span aria-hidden="true">↓</span></button>
-            </div>
-          </section>
-          <section id="fit-understanding" class="finder-result" aria-labelledby="entry-understanding" hidden>
-            <h3>Tracing what people come to understand</h3>
-            <p>Explore what people notice, question, or come to understand while working with AI. For example, share an empirical study or work in progress on interpreting evidence, recognizing unexpected connections, revising explanations, or learning from an inquiry that remains inconclusive.</p>
-            <div class="finder-topics" role="group" aria-label="Related workshop topics">
-              <button type="button" data-cfp-topic="topic-q3">Human understanding and learning <span aria-hidden="true">↓</span></button>
-              <button type="button" data-cfp-topic="topic-q1">Interpreting together <span aria-hidden="true">↓</span></button>
-            </div>
-          </section>
-          <section id="fit-agents" class="finder-result" aria-labelledby="entry-agents" hidden>
-            <h3>Examining research agents and their findings</h3>
-            <p>Examine how research agents develop findings and how those findings are assessed. You might share an empirical study or position paper on evidence, uncertainty, failed investigations, or the effects of human guidance on an agent’s research trajectory.</p>
-            <div class="finder-topics" role="group" aria-label="Related workshop topics">
-              <button type="button" data-cfp-topic="topic-q4">Evidence, uncertainty, and failure <span aria-hidden="true">↓</span></button>
-              <button type="button" data-cfp-topic="topic-q2">Human agency in co-discovery <span aria-hidden="true">↓</span></button>
-            </div>
-          </section>
-          <section id="fit-critical" class="finder-result" aria-labelledby="entry-critical" hidden>
-            <h3>Questioning what discovery is for</h3>
-            <p>Question whose goals, assumptions, and contributions shape discovery with AI. A position paper or critical perspective might examine credit and responsibility, whose knowledge is recognized, what counts as novel or valuable, or whether shared tools narrow the questions communities pursue.</p>
-            <div class="finder-topics" role="group" aria-label="Related workshop topics">
-              <button type="button" data-cfp-topic="topic-q2">Whose contribution, whose discovery? <span aria-hidden="true">↓</span></button>
-              <button type="button" data-cfp-topic="topic-q4">What counts as a discovery? <span aria-hidden="true">↓</span></button>
-            </div>
-          </section>
-        </div>
-        <p class="finder-note">All contribution types and topics remain available below. The same submission requirements apply to every direction.</p>
+        <p>Describe what you study or build and what you would like to discuss. The assistant will use this CFP to suggest relevant topics, contribution formats, and possible angles.</p>
+        <form id="cfp-assistant-form" class="assistant-form">
+          <label for="research-description">What are you working on?</label>
+          <textarea id="research-description" name="description" rows="5" minlength="20" maxlength="4000" required aria-describedby="assistant-input-hint assistant-privacy" placeholder="For example, I am studying how researchers revise AI-generated hypotheses when new evidence challenges them. I would like to discuss how to evaluate those turning points."></textarea>
+          <p id="assistant-input-hint" class="assistant-hint">A few sentences about your work, its context, and an open question are enough.</p>
+          <p id="assistant-privacy" class="assistant-hint">When you request suggestions, your description is sent to Google Gemini. This website does not save it.</p>
+          <div class="assistant-actions">
+            <button type="submit" data-assistant-submit disabled>Suggest contribution angles</button>
+            <button type="button" class="assistant-clear" data-assistant-clear>Clear</button>
+          </div>
+        </form>
+        <p class="assistant-status" data-assistant-status role="status">Checking whether the assistant is available…</p>
+        <div class="assistant-results" data-assistant-results aria-live="polite" aria-atomic="true"></div>
+        <p class="finder-note">AI-generated suggestions are starting points for discussion. The submission requirements and full topic list below remain the source of truth.</p>
       </div>
     </details>
 
@@ -174,7 +146,7 @@
       </dl>
     </section>
 
-    <section class="mb-20" aria-labelledby="overview-h">
+    <section id="cfp-overview" class="mb-20" aria-labelledby="overview-h">
       <h2 id="overview-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">About the Workshop</h2>
       <div class="prose">
         <p>This workshop explores human-AI co-discovery: how people and AI develop new questions, connections, and explanations together. A plausible or useful finding does not necessarily deepen people's understanding. An insight may also be new to a person or team without being new to a field.</p>
@@ -189,10 +161,10 @@
         <div class="prose">
         <p>We welcome contributions that offer a clear perspective, concrete experience, or open question for discussion:</p>
         <ul>
-          <li><strong>Position papers and critical perspectives</strong> on unresolved questions, tensions, or alternative visions for human-AI co-discovery.</li>
-          <li><strong>Empirical studies and accounts of practice</strong> examining how interaction shapes questions, interpretations, findings, or human understanding.</li>
-          <li><strong>System descriptions and design concepts</strong> that support exploration, explanation building, evidence assessment, reflection, or human agency.</li>
-          <li><strong>Work in progress and case descriptions</strong>, including unsuccessful investigations that reveal limitations, unexpected behavior, or lessons for future inquiry.</li>
+          <li data-cfp-contributions="position-paper critical-perspective"><strong>Position papers and critical perspectives</strong> on unresolved questions, tensions, or alternative visions for human-AI co-discovery.</li>
+          <li data-cfp-contributions="empirical-study account-of-practice"><strong>Empirical studies and accounts of practice</strong> examining how interaction shapes questions, interpretations, findings, or human understanding.</li>
+          <li data-cfp-contributions="system-description design-concept"><strong>System descriptions and design concepts</strong> that support exploration, explanation building, evidence assessment, reflection, or human agency.</li>
+          <li data-cfp-contributions="work-in-progress case-description"><strong>Work in progress and case descriptions</strong>, including unsuccessful investigations that reveal limitations, unexpected behavior, or lessons for future inquiry.</li>
         </ul>
         <p>Concrete examples of discovery with AI are especially welcome. A contribution might trace how an initial idea changed, what led people to challenge an interpretation, or what they learned even when the investigation remained inconclusive.</p>
         </div>
@@ -209,9 +181,9 @@
               <h4 class="m-0 text-lg sm:text-xl group-hover:text-ember-700 transition-colors">How do people and AI develop questions, connections, and explanations together?</h4>
             </summary>
             <ul>
-              <li><strong>Interpreting together.</strong> How people and AI make sense of data and existing knowledge, formulate questions, and revise interpretations as evidence develops.</li>
-              <li><strong>Serendipity and unexpected connections.</strong> How interaction with AI shapes the recognition of unexpected patterns, relationships, and possibilities, and how people decide which connections are worth pursuing.</li>
-              <li><strong>Developing and testing explanations.</strong> How people and AI construct, compare, challenge, and revise explanations, models, and representations, including the assumptions that underpin them.</li>
+              <li id="topic-interpretation" data-cfp-topic><strong>Interpreting together.</strong> How people and AI make sense of data and existing knowledge, formulate questions, and revise interpretations as evidence develops.</li>
+              <li id="topic-serendipity" data-cfp-topic><strong>Serendipity and unexpected connections.</strong> How interaction with AI shapes the recognition of unexpected patterns, relationships, and possibilities, and how people decide which connections are worth pursuing.</li>
+              <li id="topic-explanations" data-cfp-topic><strong>Developing and testing explanations.</strong> How people and AI construct, compare, challenge, and revise explanations, models, and representations, including the assumptions that underpin them.</li>
             </ul>
           </details>
           <details id="topic-q2" class="group mt-6">
@@ -221,8 +193,8 @@
               <h4 class="m-0 text-lg sm:text-xl group-hover:text-ember-700 transition-colors">How do people guide co-discovery, and how are contributions recognized?</h4>
             </summary>
             <ul>
-              <li><strong>Human agency in co-discovery.</strong> How people direct inquiry, work with proactive AI agents, delegate tasks, and decide when to intervene, redirect an exchange, or pursue another direction.</li>
-              <li><strong>Whose contribution, whose discovery?</strong> How human and AI contributions become visible, and how credit, intellectual ownership, and responsibility are understood and negotiated.</li>
+              <li id="topic-agency" data-cfp-topic><strong>Human agency in co-discovery.</strong> How people direct inquiry, work with proactive AI agents, delegate tasks, and decide when to intervene, redirect an exchange, or pursue another direction.</li>
+              <li id="topic-credit" data-cfp-topic><strong>Whose contribution, whose discovery?</strong> How human and AI contributions become visible, and how credit, intellectual ownership, and responsibility are understood and negotiated.</li>
             </ul>
           </details>
           <details id="topic-q3" class="group mt-6">
@@ -232,7 +204,7 @@
               <h4 class="m-0 text-lg sm:text-xl group-hover:text-ember-700 transition-colors">What do people come to understand through co-discovery?</h4>
             </summary>
             <ul>
-              <li><strong>Human understanding and learning.</strong> What people come to understand through co-discovery, how that understanding changes over time, and how reflection and further questioning develop even when an investigation remains inconclusive.</li>
+              <li id="topic-understanding" data-cfp-topic><strong>Human understanding and learning.</strong> What people come to understand through co-discovery, how that understanding changes over time, and how reflection and further questioning develop even when an investigation remains inconclusive.</li>
             </ul>
           </details>
           <details id="topic-q4" class="group mt-6">
@@ -242,8 +214,8 @@
               <h4 class="m-0 text-lg sm:text-xl group-hover:text-ember-700 transition-colors">What counts as a discovery, for whom, and on what evidence?</h4>
             </summary>
             <ul>
-              <li><strong>Evidence, uncertainty, and failure.</strong> How people and AI seek counter-evidence, recognize misleading patterns, work with uncertainty, and learn from unsuccessful inquiry.</li>
-              <li><strong>What counts as a discovery?</strong> What makes a connection or finding new and worthwhile for an individual, a team, or a field, and how novelty and value vary across research and practice.</li>
+              <li id="topic-evidence" data-cfp-topic><strong>Evidence, uncertainty, and failure.</strong> How people and AI seek counter-evidence, recognize misleading patterns, work with uncertainty, and learn from unsuccessful inquiry.</li>
+              <li id="topic-value" data-cfp-topic><strong>What counts as a discovery?</strong> What makes a connection or finding new and worthwhile for an individual, a team, or a field, and how novelty and value vary across research and practice.</li>
             </ul>
           </details>
         </div>
@@ -341,6 +313,7 @@
   </main>
 
   <!-- Main JavaScript -->
-  <script src="assets/js/main.js?v=20261001-community-2"></script>
+  <script src="assets/js/main.js?v=20261001-gemini"></script>
+  <script src="assets/js/cfp-assistant.js?v=20261001-gemini"></script>
 </body>
 </html>

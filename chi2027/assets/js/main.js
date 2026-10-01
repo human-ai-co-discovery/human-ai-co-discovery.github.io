@@ -110,29 +110,6 @@ if (provocation) {
   }
 }
 
-// Contribution suggestions guide visitors to the existing, complete topic list.
-const contributionFinder = document.querySelector('[data-cfp-finder]');
-if (contributionFinder) {
-  const entryButtons = contributionFinder.querySelectorAll('[data-cfp-entry]');
-  for (const button of entryButtons) {
-    button.addEventListener('click', () => {
-      for (const choice of entryButtons) choice.setAttribute('aria-pressed', String(choice === button));
-      for (const result of contributionFinder.querySelectorAll('.finder-result')) {
-        result.hidden = result.id !== `fit-${button.dataset.cfpEntry}`;
-      }
-    });
-  }
-  for (const button of contributionFinder.querySelectorAll('[data-cfp-topic]')) {
-    button.addEventListener('click', () => {
-      const topic = document.getElementById(button.dataset.cfpTopic);
-      if (!topic) return;
-      topic.open = true;
-      topic.scrollIntoView({ block: 'start' });
-      topic.querySelector('summary').focus({ preventScroll: true });
-    });
-  }
-}
-
 // Discussion content is exported on the server; no GitHub credentials enter the browser.
 const questionWall = document.querySelector('[data-question-wall]');
 if (questionWall) {

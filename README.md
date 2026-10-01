@@ -10,7 +10,7 @@ Website for Human-AI Co-Discovery, exploring how people and AI discover new ques
 | --- | --- |
 | `index.html` | Community home page, with links to events |
 | `chi2027/index.html` | *Whose Eureka? Human-AI Co-Discovery of Knowledge*, the proposed CHI 2027 workshop: title with the eureka illustration over the discovery field, overview with an interactive Figure 1 walkthrough (also opens full size), the four workshop questions as expandable cards, the CFP entry point, a program summary with the program timeline and the invited guests, organizers with research profiles, and a Connect section on the Discord community |
-| `chi2027/call-for-participation.html` | Dedicated CFP page: proposal status, participation essentials, an optional contribution finder, submission requirements, and key dates, a short workshop introduction, contribution types and all eight topics grouped under the four questions, activities, follow-up plans, accessibility, and optional readings |
+| `chi2027/call-for-participation.html` | Dedicated CFP page: proposal status, participation essentials, an optional Gemini contribution assistant, submission requirements, and key dates, a short workshop introduction, contribution types and all eight topics grouped under the four questions, activities, follow-up plans, accessibility, and optional readings |
 | `chi2027/program.html` | Dedicated tentative program: a timeline of the day drawn as the eureka curve, two 90-minute sessions, poster exchange during the coffee break, keynote and panel, and how participants take part |
 | `chi2027/discussion.html` | Community question wall linked to GitHub Discussions, plus an optional reflection prompt whose choices are neither saved nor submitted |
 | `chi2027/assets/css/workshop.css` | Color tokens (light and dark, including the Q1–Q4 question colors) and the few rules Tailwind utilities do not cover, such as the home hero illustration, the question cards, and the program timeline, for the CHI 2027 pages only |
@@ -22,6 +22,10 @@ Website for Human-AI Co-Discovery, exploring how people and AI discover new ques
 | `chi2027/assets/image/` | `figure-1-*`: Figure 1 for the CHI 2027 home page, exported from the proposal's teaser figure without its Q1–Q4 row (the four questions are listed below it): 1200 and 2400 px WebP, with a 1200 px PNG fallback. `teaser*.webp`: the full teaser figure |
 | `assets/people/` | Organizer and invited-guest photos (320 px JPEG), from each person's homepage or the UbiComp/ISWC 2026 tutorial site; `ai-agent.webp` is the robot from Figure 1, used for the AI agent panelist |
 | `assets/brand/` | Organization avatar: `avatar-teal` (used on GitHub) and `avatar-light`, as 1024 px PNG and editable SVG |
+| `scripts/serve.py` | Loopback-only static preview and server-side Gemini API; reads credentials outside the web root |
+| `scripts/cfp_context.py` | Extracts current CFP grounding and validates ID-based model suggestions |
+| `scripts/gemini_client.py` | Stateless Gemini REST client with structured output and safe errors |
+| `chi2027/assets/js/cfp-assistant.js` | Open description form, generation state, and linked topic suggestions |
 | `scripts/sync_questions.py` | Server-side, read-only export of public Q&A summaries; no client credentials |
 | `.github/workflows/sync-questions.yml` | Refreshes the question snapshot after discussion changes once merged to the default branch |
 | `chi2027/data/questions.json` | Generated community-question snapshot; no private discussion content |
@@ -44,7 +48,7 @@ From the repository root, run a static server and open the pages before pushing:
 python3 -m http.server 8000
 ```
 
-Then visit <http://localhost:8000/> and <http://localhost:8000/chi2027/>. After a push to `main`, GitHub Pages usually updates within a few minutes.
+Then visit <http://localhost:8000/> and <http://localhost:8000/chi2027/>. This static server does not enable Gemini; use the assistant preview command below for that feature. After a push to `main`, GitHub Pages usually updates within a few minutes.
 
 ## Updating the CHI 2027 page
 
@@ -58,9 +62,25 @@ Keep the text consistent with the organizers' workshop proposal, especially the 
 
 The program was reconciled with proposal commit `a8865ef` (`sections/activities.tex`) on 2026-09-29: 30-minute keynote, 30-minute panel, poster exchange during the conference coffee break, a second 20-minute lightning-talk block, and seven roundtable groups. The 50-minute roundtable block includes reflection and discussion.
 
-## Contribution finder and community questions
+## Gemini contribution assistant
 
-The CFP’s **Find a starting point for your contribution** disclosure offers four optional perspectives. Each opens a short contribution suggestion and links that expand the existing topic descriptions. It does not filter the full CFP or change submission requirements.
+The CFP’s **Explore how your work could contribute** disclosure accepts an open research description. A server-side Gemini call suggests up to three connections to the actual CFP, with reasons, possible writing angles, and contribution formats. It can ask for detail or report no clear connection. It does not judge eligibility, quality, or acceptance probability, and it does not change the submission requirements.
+
+`cfp_context.py` reads the current CFP HTML for every request. Topic IDs, question groups, contribution-type IDs, authored names, and descriptions come from the `data-cfp-topic` and `data-cfp-contributions` elements; the scope comes from `#cfp-overview`. Keep these attributes when editing. The output schema and server validation only accept existing IDs. The page uses those IDs to open the original topic and inserts generated text with `textContent`.
+
+Run the local assistant preview from the repository root:
+
+```sh
+python3 -m scripts.serve --port 8765 --env-file /private/tmp/chi2027-cfp-gemini.env
+```
+
+The environment file is outside the website directory and contains `GEMINI_API_KEY` and optional `GEMINI_MODEL` (default `gemini-3.5-flash-lite`). It is read for each request, so updating the key does not require restarting. Explicit file settings override environment variables. Never put the key in HTML, client JavaScript, a public build variable, or this repository. The server refuses credential files within its static root and serves neither hidden paths nor its Python source.
+
+The client uses Google’s [Interactions API](https://ai.google.dev/gemini-api/docs/interactions-overview) with `store:false`, [structured JSON output](https://ai.google.dev/gemini-api/docs/structured-output), a fixed Google endpoint, a response-size cap, and a 45-second timeout. Model details: [Gemini 3.5 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite). The website does not store descriptions, responses, or request bodies in logs; provider processing remains subject to Google’s terms. The browser tells visitors that descriptions are sent to Gemini.
+
+This server binds only to `127.0.0.1`, requires same-origin JSON requests, allows one model request at a time, and caps calls at ten per minute. It is a local preview, not a public API deployment. GitHub Pages cannot run it: before enabling the assistant on the public site, deploy an API with a secret store, appropriate access and usage limits, and the corresponding frontend endpoint configuration. Without an available API the form shows an unavailable message and the full CFP remains readable. Run all local unit checks with `python3 -m unittest discover -s tests`.
+
+## Community questions
 
 The **Discussion** page links to the repository’s real Q&A category for submitting and replying under a GitHub account. Discussions are enabled in the existing private repository; Pages remains disabled. The website does not create posts or handle GitHub credentials. Repository members can participate privately through GitHub now.
 
