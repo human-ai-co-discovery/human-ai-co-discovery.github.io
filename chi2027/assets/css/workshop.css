@@ -449,12 +449,18 @@ section, [id] { scroll-margin-top: calc(var(--nav-height, 4rem) + 2rem); }
   overflow-wrap: anywhere; cursor: pointer;
 }
 
-/* Keep the existing portrait rows unboxed and the organizer grid untouched. */
-.organizer-card { min-width: 0; }
+/* Shared rows align portraits, interest tags, and profile buttons even when
+   names or tags wrap. Column counts still follow the existing responsive grid. */
+#organizers > ul { row-gap: 0; }
+.organizer-card {
+  min-width: 0; display: grid; grid-row: span 3;
+  grid-template-rows: subgrid; row-gap: 0; padding-bottom: 1.75rem;
+}
 .organizer-card .organizer-tags, .profile-dialog .profile-tags {
   display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem;
   margin: 0.8rem 0 0; padding: 0; list-style: none;
 }
+.organizer-card .organizer-tags { align-items: flex-start; align-content: flex-start; }
 .organizer-card .organizer-tags > li, .profile-dialog .profile-tags > span {
   margin: 0; padding: 0.25rem 0.55rem; max-width: 100%; border-radius: 999px;
   background: rgb(var(--tide-50)); color: rgb(var(--ink-soft));
@@ -464,6 +470,7 @@ section, [id] { scroll-margin-top: calc(var(--nav-height, 4rem) + 2rem); }
   background: rgb(var(--qs)); color: rgb(var(--qc));
 }
 .organizer-card button.profile-open {
+  justify-self: start; align-self: start;
   appearance: none; display: inline-flex; align-items: center; gap: 0.4rem;
   min-height: 2.75rem; margin: 0.4rem 0 0; padding: 0.4rem 0;
   border: 0; background: transparent; color: rgb(var(--tide-700));
