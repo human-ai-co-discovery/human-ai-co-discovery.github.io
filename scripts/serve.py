@@ -169,19 +169,24 @@ class PreviewHandler(SimpleHTTPRequestHandler):
         if not self.server.inflight.acquire(blocking=False):
             return self.error(429, 'busy', 'The assistant is handling a request. Please try again shortly.')
         try:
-            if not self.server.budget.take():
-                return self.error(429, 'rate_limited', 'Please wait a minute before requesting more suggestions.')
-            result = self.server.generator(description, context, key, model=model)
-            self.send_json(200, {'result': result, 'context_version': context['version'],
-                                 'topics': [{'id': item['id'], 'name': item['name'], 'question_id': item['question_id']} for item in context['topics']],
-                                 'contribution_types': [{'id': item['id'], 'name': item['name']} for item in context['contribution_types']]})
+            try:
+                rate_limited = not self.server.budget.take()
+                if not rate_limited:
+                    result = self.server.generator(description, context, key, model=model)
+            finally:
+                # A client can send its next request as soon as response bytes arrive.
+                # Release the model slot before writing success or error responses.
+                self.server.inflight.release()
         except GeminiError as error:
             status = 429 if error.code == 'rate_limited' else 502
-            self.error(status, error.code, str(error))
+            return self.error(status, error.code, str(error))
         except Exception:
-            self.error(502, 'unavailable', 'Suggestions could not be generated. Please try again later.')
-        finally:
-            self.server.inflight.release()
+            return self.error(502, 'unavailable', 'Suggestions could not be generated. Please try again later.')
+        if rate_limited:
+            return self.error(429, 'rate_limited', 'Please wait a minute before requesting more suggestions.')
+        self.send_json(200, {'result': result, 'context_version': context['version'],
+                             'topics': [{'id': item['id'], 'name': item['name'], 'question_id': item['question_id']} for item in context['topics']],
+                             'contribution_types': [{'id': item['id'], 'name': item['name']} for item in context['contribution_types']]})
 
 
 def main():

@@ -175,6 +175,25 @@ class PreviewServerTests(unittest.TestCase):
             unexpected = serve.PreviewServer(("127.0.0.1", 0), self.site / ".env", generator=self.generator)
             self.addCleanup(unexpected.server_close)
 
+    def test_generation_slot_is_released_before_any_response_is_written(self):
+        original = serve.PreviewHandler.send_json
+        observed = []
+
+        def inspect_slot(handler, status, payload):
+            available = handler.server.inflight.acquire(blocking=False)
+            if available:
+                handler.server.inflight.release()
+            observed.append(available)
+            return original(handler, status, payload)
+
+        with patch.object(serve.PreviewHandler, "send_json", inspect_slot):
+            self.assertEqual(self.request()[0], 200)
+            self.generator.side_effect = serve.GeminiError("timeout")
+            self.assertEqual(self.request()[0], 502)
+            self.server.budget = serve.RequestBudget(limit=0)
+            self.assertEqual(self.request()[0], 429)
+        self.assertEqual(observed, [True, True, True])
+
     def test_request_budget_is_bounded_and_expires_at_exact_window_boundary(self):
         now = [0.0]
         self.server.budget = serve.RequestBudget(limit=2, period=10, clock=lambda: now[0])
