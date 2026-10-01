@@ -27,7 +27,7 @@
 
   <!-- Tokens and the few rules Tailwind does not cover -->
   <link rel="stylesheet" href="assets/css/workshop.css?v=20261001-alignment">
-  <link rel="stylesheet" href="assets/css/interactive.css?v=20261001-walkthrough-4">
+  <link rel="stylesheet" href="assets/css/interactive.css?v=20261001-discussion">
 </head>
 <body class="text-ink antialiased font-sans font-normal text-lg sm:text-xl leading-relaxed selection:bg-ember-200 selection:text-tide-900">
   <a class="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[60] focus:rounded-lg focus:bg-tide-900 focus:px-4 focus:py-2 focus:text-paper focus:font-semibold" href="#main">Skip to content</a>
@@ -41,14 +41,15 @@
           <span><span class="whitespace-nowrap">Human-AI Co-Discovery</span> <span class="whitespace-nowrap text-ember-500">@CHI&rsquo;27</span></span>
         </a>
 
-        <div class="hidden min-[1120px]:flex gap-5 text-base font-semibold text-ink-soft whitespace-nowrap">
+        <div class="hidden min-[1280px]:flex gap-5 text-base font-semibold text-ink-soft whitespace-nowrap">
           <a href="./" aria-current="page" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Home</a>
           <a href="call-for-participation.html" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Call for Participation</a>
           <a href="program.html" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Program</a>
           <a href="program.html#speakers" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Speakers</a>
           <a href="./#organizers" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Organizers</a>
+          <a href="discussion.html" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Discussion</a>
         </div>
-        <button type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" class="group/menu min-[1120px]:hidden shrink-0 grid place-items-center w-10 h-10 -mr-2 rounded-lg text-tide-900 hover:text-ember-700 hover:bg-tide-50 transition-colors">
+        <button type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" class="group/menu min-[1280px]:hidden shrink-0 grid place-items-center w-10 h-10 -mr-2 rounded-lg text-tide-900 hover:text-ember-700 hover:bg-tide-50 transition-colors">
           <i data-lucide="menu" class="w-6 h-6 group-aria-expanded/menu:hidden" aria-hidden="true"></i>
           <i data-lucide="x" class="w-6 h-6 hidden group-aria-expanded/menu:block" aria-hidden="true"></i>
           <span class="sr-only">Menu</span>
@@ -57,13 +58,14 @@
       </div>
 
       <!-- Page links on small screens: a dropdown opened by the menu button -->
-      <div id="mobile-nav" hidden class="min-[1120px]:hidden absolute inset-x-0 top-full bg-tide-25 pb-4">
+      <div id="mobile-nav" hidden class="min-[1280px]:hidden absolute inset-x-0 top-full bg-tide-25 pb-4">
         <div class="page-container flex flex-col gap-1 text-base font-semibold text-ink-soft">
           <a href="./" aria-current="page" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Home</a>
           <a href="call-for-participation.html" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Call for Participation</a>
           <a href="program.html" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Program</a>
           <a href="program.html#speakers" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Speakers</a>
           <a href="./#organizers" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Organizers</a>
+          <a href="discussion.html" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Discussion</a>
         </div>
       </div>
     </div>
@@ -357,37 +359,6 @@
         </li>
       </ul>
 
-      <section id="roundtable-question" class="provocation" aria-labelledby="provocation-h" data-provocation>
-        <p class="story-kicker">A roundtable provocation</p>
-        <h3 id="provocation-h">What do you think?</h3>
-        <blockquote>“A discovery that no one on the team can explain is not yet a discovery.”</blockquote>
-        <p>Choose a position to explore an argument and a question it raises.</p>
-        <div class="provocation-options" role="group" aria-label="Your initial position">
-          <button type="button" id="position-agree" data-position="agree" aria-pressed="false" aria-controls="response-agree">Agree</button>
-          <button type="button" id="position-disagree" data-position="disagree" aria-pressed="false" aria-controls="response-disagree">Disagree</button>
-          <button type="button" id="position-depends" data-position="depends" aria-pressed="false" aria-controls="response-depends">It depends</button>
-        </div>
-        <div class="provocation-responses" aria-live="polite" aria-atomic="true">
-          <section class="provocation-response" id="response-agree" aria-labelledby="position-agree" hidden>
-            <h4>Understanding is part of discovery</h4>
-            <p>From this perspective, discovery involves human understanding alongside novelty and evidence.</p>
-            <p class="provocation-followup"><strong>Then ask:</strong> What must someone be able to explain—the finding, its evidence, or the underlying mechanism?</p>
-          </section>
-          <section class="provocation-response" id="response-disagree" aria-labelledby="position-disagree" hidden>
-            <h4>A finding can come before an explanation</h4>
-            <p>A finding may count as a discovery if it is new and well supported, even when an explanation is still missing.</p>
-            <p class="provocation-followup"><strong>Then ask:</strong> What evidence would be enough to count it as a discovery?</p>
-          </section>
-          <section class="provocation-response" id="response-depends" aria-labelledby="position-depends" hidden>
-            <h4>The kind of claim matters</h4>
-            <p>Your answer may depend on the domain, how the finding will be used, and what “explain” means.</p>
-            <p class="provocation-followup"><strong>Then ask:</strong> Would a new pattern, a causal claim, and a design insight need the same kind of explanation?</p>
-          </section>
-        </div>
-        <p class="provocation-note">Try another position to explore a different perspective. Your choices stay on this page.</p>
-        <a class="provocation-program" href="program.html#s2-roundtable">Explore the roundtable activity <span aria-hidden="true">→</span></a>
-      </section>
-
       <aside class="mt-8 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 bg-tide-50 border border-tide-100 rounded-xl p-6" aria-label="Call for participation">
         <i data-lucide="info" class="hidden sm:block w-6 h-6 text-tide-700 shrink-0" aria-hidden="true"></i>
         <p class="flex-1 min-w-0">We welcome position papers, empirical studies, system descriptions, design concepts, critical perspectives, and work in progress on human-AI co-discovery.</p>
@@ -660,6 +631,6 @@
   </main>
 
   <!-- Main JavaScript -->
-  <script src="assets/js/main.js?v=20261001-walkthrough"></script>
+  <script src="assets/js/main.js?v=20261001-discussion-2"></script>
 </body>
 </html>
