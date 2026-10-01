@@ -1,28 +1,10 @@
 // Draw Lucide icons.
 if (window.lucide) lucide.createIcons();
 
-// Highlight the nav link for the section being read (aria-current drives the styling).
 const navbar = document.getElementById('navbar');
-const navLinks = [...document.querySelectorAll('[data-nav-link]')];
-const sections = [...new Set(navLinks.map((a) => a.hash))]
-  .map((hash) => document.querySelector(hash))
-  .filter(Boolean);
-
-const currentSection = () => {
-  // A section is current once its top passes a line a little below the nav
-  // (below where in-page links land, so a clicked section is highlighted).
-  const line = (navbar ? navbar.offsetHeight : 0) + Math.max(48, window.innerHeight * 0.1);
-  const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
-  if (atBottom) return sections[sections.length - 1];
-  let current = null;
-  for (const section of sections) {
-    if (section.getBoundingClientRect().top <= line) current = section;
-  }
-  return current;
-};
 
 // Tailwind's Play CDN styles the page after the browser has already jumped to a
-// linked section (such as from the old CFP and program pages), so jump again once loaded.
+// linked section (such as program.html → call-for-participation.html#topics-h), so jump again once loaded.
 window.addEventListener('load', () => {
   const target = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
   if (target) requestAnimationFrame(() => target.scrollIntoView());
@@ -52,11 +34,6 @@ const onScroll = () => {
   requestAnimationFrame(() => {
     ticking = false;
     if (fadeTarget) fadeNav();
-    const current = currentSection();
-    for (const link of navLinks) {
-      if (current && link.hash === `#${current.id}`) link.setAttribute('aria-current', 'true');
-      else link.removeAttribute('aria-current');
-    }
   });
 };
 window.addEventListener('scroll', onScroll, { passive: true });
@@ -89,5 +66,29 @@ for (const toggle of document.querySelectorAll('[data-bio-toggle]')) {
     const open = toggle.getAttribute('aria-expanded') !== 'true';
     toggle.setAttribute('aria-expanded', String(open));
     bio.hidden = !open;
+  });
+}
+
+// Mobile menu: the menu button drops down the page links; Escape or a click outside closes it.
+const menuToggle = document.querySelector('[data-menu-toggle]');
+const menu = menuToggle ? document.getElementById(menuToggle.getAttribute('aria-controls')) : null;
+if (menu) {
+  const setMenu = (open) => {
+    menuToggle.setAttribute('aria-expanded', String(open));
+    menu.hidden = !open;
+    navbar.toggleAttribute('data-menu-open', open);
+  };
+  menuToggle.addEventListener('click', () => setMenu(menu.hidden));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !menu.hidden) {
+      setMenu(false);
+      menuToggle.focus();
+    }
+  });
+  document.addEventListener('click', (event) => {
+    if (!menu.hidden && !navbar.contains(event.target)) setMenu(false);
+  });
+  window.matchMedia('(min-width: 1024px)').addEventListener('change', (event) => {
+    if (event.matches) setMenu(false);
   });
 }
