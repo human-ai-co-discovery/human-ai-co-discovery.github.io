@@ -27,7 +27,7 @@
 
   <!-- Tokens and the few rules Tailwind does not cover -->
   <link rel="stylesheet" href="assets/css/workshop.css?v=20261001-alignment">
-  <link rel="stylesheet" href="assets/css/interactive.css?v=20261001-discussion">
+  <link rel="stylesheet" href="assets/css/interactive.css?v=20261001-community">
 </head>
 <body class="text-ink antialiased font-sans font-normal text-lg sm:text-xl leading-relaxed selection:bg-ember-200 selection:text-tide-900">
   <a class="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[60] focus:rounded-lg focus:bg-tide-900 focus:px-4 focus:py-2 focus:text-paper focus:font-semibold" href="#main">Skip to content</a>
@@ -75,7 +75,23 @@
   <main id="main" class="page-container py-10 sm:py-12">
 
     <h1 id="title" class="text-[clamp(2.25rem,5vw,3rem)] font-bold text-tide-900 mb-6 leading-tight tracking-tight">Discussion</h1>
-    <p class="text-ink-soft">Explore a question we will bring to the workshop roundtables.</p>
+    <p class="text-ink-soft">Share questions for the workshop and explore different perspectives on discovery with AI.</p>
+
+    <section id="question-wall" class="question-wall" aria-labelledby="question-wall-h" data-question-wall>
+      <h2 id="question-wall-h">Community question wall</h2>
+      <p>Bring an unresolved question, a surprising experience, or a difficulty you would like to discuss.</p>
+      <div class="wall-actions">
+        <a class="wall-ask" href="https://github.com/human-ai-co-discovery/human-ai-co-discovery.github.io/discussions/new?category=q-a" target="_blank" rel="noopener noreferrer">Ask a question on GitHub <span aria-hidden="true">↗</span></a>
+        <a class="wall-browse" href="https://github.com/human-ai-co-discovery/human-ai-co-discovery.github.io/discussions/categories/q-a" target="_blank" rel="noopener noreferrer">Read and reply on GitHub <span aria-hidden="true">↗</span></a>
+      </div>
+      <p class="wall-note">Questions and replies are saved in GitHub Discussions under your GitHub account. Public question summaries also appear here.</p>
+      <p class="wall-private" data-wall-private hidden>Private preview: only people with access to the workshop repository can participate until it opens to the public.</p>
+      <div aria-live="polite">
+        <p class="wall-status" data-wall-status>Loading community questions…</p>
+        <ul class="community-questions" data-wall-list></ul>
+      </div>
+      <noscript><p>Visit GitHub using the links above to read questions and join the conversation.</p></noscript>
+    </section>
 
     <section id="roundtable-question" class="provocation" aria-labelledby="provocation-h" data-provocation>
       <p class="story-kicker">A roundtable provocation</p>
@@ -122,6 +138,6 @@
   </main>
 
   <!-- Main JavaScript -->
-  <script src="assets/js/main.js?v=20261001-discussion-2"></script>
+  <script src="assets/js/main.js?v=20261001-community-2"></script>
 </body>
 </html>

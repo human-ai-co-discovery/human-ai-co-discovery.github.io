@@ -10,9 +10,9 @@ Website for Human-AI Co-Discovery, exploring how people and AI discover new ques
 | --- | --- |
 | `index.html` | Community home page, with links to events |
 | `chi2027/index.html` | *Whose Eureka? Human-AI Co-Discovery of Knowledge*, the proposed CHI 2027 workshop: title with the eureka illustration over the discovery field, overview with an interactive Figure 1 walkthrough (also opens full size), the four workshop questions as expandable cards, the CFP entry point, a program summary with the program timeline and the invited guests, organizers with research profiles, and a Connect section on the Discord community |
-| `chi2027/call-for-participation.html` | Dedicated CFP page: proposal status, participation and submission essentials first, followed by key dates, a short workshop introduction, contribution types and all eight topics grouped under the four questions, activities, follow-up plans, accessibility, and optional readings |
+| `chi2027/call-for-participation.html` | Dedicated CFP page: proposal status, participation essentials, an optional contribution finder, submission requirements, and key dates, a short workshop introduction, contribution types and all eight topics grouped under the four questions, activities, follow-up plans, accessibility, and optional readings |
 | `chi2027/program.html` | Dedicated tentative program: a timeline of the day drawn as the eureka curve, two 90-minute sessions, poster exchange during the coffee break, keynote and panel, and how participants take part |
-| `chi2027/discussion.html` | Optional reflection prompt: choose a position to explore different arguments and questions; choices are neither saved nor submitted |
+| `chi2027/discussion.html` | Community question wall linked to GitHub Discussions, plus an optional reflection prompt whose choices are neither saved nor submitted |
 | `chi2027/assets/css/workshop.css` | Color tokens (light and dark, including the Q1–Q4 question colors) and the few rules Tailwind utilities do not cover, such as the home hero illustration, the question cards, and the program timeline, for the CHI 2027 pages only |
 | `chi2027/assets/css/interactive.css` | Styles for the Home figure walkthrough and the Discussion page’s reflection prompt |
 | `chi2027/assets/js/tailwind.config.js` | Tailwind theme for the CHI 2027 pages: Inter, `tide` (deep cyan) and `ember` (warm orange) colors mapped to the CSS tokens, and prose heading sizes |
@@ -22,6 +22,9 @@ Website for Human-AI Co-Discovery, exploring how people and AI discover new ques
 | `chi2027/assets/image/` | `figure-1-*`: Figure 1 for the CHI 2027 home page, exported from the proposal's teaser figure without its Q1–Q4 row (the four questions are listed below it): 1200 and 2400 px WebP, with a 1200 px PNG fallback. `teaser*.webp`: the full teaser figure |
 | `assets/people/` | Organizer and invited-guest photos (320 px JPEG), from each person's homepage or the UbiComp/ISWC 2026 tutorial site; `ai-agent.webp` is the robot from Figure 1, used for the AI agent panelist |
 | `assets/brand/` | Organization avatar: `avatar-teal` (used on GitHub) and `avatar-light`, as 1024 px PNG and editable SVG |
+| `scripts/sync_questions.py` | Server-side, read-only export of public Q&A summaries; no client credentials |
+| `.github/workflows/sync-questions.yml` | Refreshes the question snapshot after discussion changes once merged to the default branch |
+| `chi2027/data/questions.json` | Generated community-question snapshot; no private discussion content |
 | `.nojekyll` | Serves the files as plain static HTML (no Jekyll processing) |
 
 The site is plain HTML with no build step: edit a file and push to `main`.
@@ -54,6 +57,18 @@ The pages currently describe the workshop as **proposed**. Daniel McDuff is supp
 Keep the text consistent with the organizers' workshop proposal, especially the call for participation.
 
 The program was reconciled with proposal commit `a8865ef` (`sections/activities.tex`) on 2026-09-29: 30-minute keynote, 30-minute panel, poster exchange during the conference coffee break, a second 20-minute lightning-talk block, and seven roundtable groups. The 50-minute roundtable block includes reflection and discussion.
+
+## Contribution finder and community questions
+
+The CFP’s **Find a starting point for your contribution** disclosure offers four optional perspectives. Each opens a short contribution suggestion and links that expand the existing topic descriptions. It does not filter the full CFP or change submission requirements.
+
+The **Discussion** page links to the repository’s real Q&A category for submitting and replying under a GitHub account. Discussions are enabled in the existing private repository; Pages remains disabled. The website does not create posts or handle GitHub credentials. Repository members can participate privately through GitHub now.
+
+`python3 scripts/sync_questions.py` exports a deterministic snapshot to `chi2027/data/questions.json` using the authenticated GitHub CLI. While the repository is private, the exporter writes only category metadata and an empty list, without fetching discussion content. Private preview discussions therefore do not enter the website’s Git history. Once public, it exports the 20 most recently updated Q&A discussions with plain-text excerpts and canonical GitHub links. Public snapshots are versioned; removing a discussion clears it from the next snapshot, not earlier commits.
+
+After `.github/workflows/sync-questions.yml` reaches the default branch, discussion/comment changes, repository publication, or a manual run refresh the snapshot. The workflow has read access to discussions and write access to repository contents. It does not change visibility, enable Pages, or post messages. Local previews read their checked-out snapshot; the `human-ai-co-discovery.github.io` site reads the current JSON from raw GitHub, so a snapshot update does not depend on a Pages rebuild. If a custom domain is added, update that source selection in `main.js`.
+
+On fetch failure the site keeps links to GitHub available. The exporter preserves the previous snapshot on API or validation failure, and the browser inserts user text with `textContent`. Run its checks with `python3 -m unittest discover -s tests -p 'test_sync_questions.py'`.
 
 ## Figure walkthrough and reflection prompt
 

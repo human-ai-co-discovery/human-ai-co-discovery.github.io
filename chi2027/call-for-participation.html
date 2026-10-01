@@ -27,6 +27,7 @@
 
   <!-- Tokens and the few rules Tailwind does not cover -->
   <link rel="stylesheet" href="assets/css/workshop.css?v=20261001-alignment">
+  <link rel="stylesheet" href="assets/css/interactive.css?v=20261001-community">
 </head>
 <body class="text-ink antialiased font-sans font-normal text-lg sm:text-xl leading-relaxed selection:bg-ember-200 selection:text-tide-900">
   <a class="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[60] focus:rounded-lg focus:bg-tide-900 focus:px-4 focus:py-2 focus:text-paper focus:font-semibold" href="#main">Skip to content</a>
@@ -87,6 +88,54 @@
         <p>We expect 35 participants, with priority for accepted contributors. The planned workshop consists of two consecutive 90-minute in-person sessions.</p>
       </div>
     </section>
+
+    <details id="contribution-finder" class="contribution-finder mb-20" data-cfp-finder>
+      <summary><span>Find a starting point for your contribution</span><span class="finder-chevron" aria-hidden="true">⌄</span></summary>
+      <div class="finder-body">
+        <p>Choose the direction closest to your work. These suggestions can overlap.</p>
+        <div class="finder-options" role="group" aria-label="Your research interests">
+          <button type="button" id="entry-systems" data-cfp-entry="systems" aria-pressed="false" aria-controls="fit-systems">I build systems</button>
+          <button type="button" id="entry-understanding" data-cfp-entry="understanding" aria-pressed="false" aria-controls="fit-understanding">I study human understanding</button>
+          <button type="button" id="entry-agents" data-cfp-entry="agents" aria-pressed="false" aria-controls="fit-agents">I evaluate AI research agents</button>
+          <button type="button" id="entry-critical" data-cfp-entry="critical" aria-pressed="false" aria-controls="fit-critical">I bring a critical perspective</button>
+        </div>
+        <div class="finder-results" aria-live="polite" aria-atomic="true">
+          <section id="fit-systems" class="finder-result" aria-labelledby="entry-systems" hidden>
+            <h3>Designing how discovery happens</h3>
+            <p>Explore how systems shape the way people and AI ask questions, connect ideas, and develop explanations. You might share a prototype, design concept, or work in progress that makes delegation, revision, or the contributions of people and AI visible.</p>
+            <div class="finder-topics" role="group" aria-label="Related workshop topics">
+              <button type="button" data-cfp-topic="topic-q1">Interpreting together <span aria-hidden="true">↓</span></button>
+              <button type="button" data-cfp-topic="topic-q2">Human agency in co-discovery <span aria-hidden="true">↓</span></button>
+            </div>
+          </section>
+          <section id="fit-understanding" class="finder-result" aria-labelledby="entry-understanding" hidden>
+            <h3>Tracing what people come to understand</h3>
+            <p>Explore what people notice, question, or come to understand while working with AI. For example, share an empirical study or work in progress on interpreting evidence, recognizing unexpected connections, revising explanations, or learning from an inquiry that remains inconclusive.</p>
+            <div class="finder-topics" role="group" aria-label="Related workshop topics">
+              <button type="button" data-cfp-topic="topic-q3">Human understanding and learning <span aria-hidden="true">↓</span></button>
+              <button type="button" data-cfp-topic="topic-q1">Interpreting together <span aria-hidden="true">↓</span></button>
+            </div>
+          </section>
+          <section id="fit-agents" class="finder-result" aria-labelledby="entry-agents" hidden>
+            <h3>Examining research agents and their findings</h3>
+            <p>Examine how research agents develop findings and how those findings are assessed. You might share an empirical study or position paper on evidence, uncertainty, failed investigations, or the effects of human guidance on an agent’s research trajectory.</p>
+            <div class="finder-topics" role="group" aria-label="Related workshop topics">
+              <button type="button" data-cfp-topic="topic-q4">Evidence, uncertainty, and failure <span aria-hidden="true">↓</span></button>
+              <button type="button" data-cfp-topic="topic-q2">Human agency in co-discovery <span aria-hidden="true">↓</span></button>
+            </div>
+          </section>
+          <section id="fit-critical" class="finder-result" aria-labelledby="entry-critical" hidden>
+            <h3>Questioning what discovery is for</h3>
+            <p>Question whose goals, assumptions, and contributions shape discovery with AI. A position paper or critical perspective might examine credit and responsibility, whose knowledge is recognized, what counts as novel or valuable, or whether shared tools narrow the questions communities pursue.</p>
+            <div class="finder-topics" role="group" aria-label="Related workshop topics">
+              <button type="button" data-cfp-topic="topic-q2">Whose contribution, whose discovery? <span aria-hidden="true">↓</span></button>
+              <button type="button" data-cfp-topic="topic-q4">What counts as a discovery? <span aria-hidden="true">↓</span></button>
+            </div>
+          </section>
+        </div>
+        <p class="finder-note">All contribution types and topics remain available below. The same submission requirements apply to every direction.</p>
+      </div>
+    </details>
 
     <section class="mb-20" aria-labelledby="submit-h">
       <h2 id="submit-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Submission and Review</h2>
@@ -153,7 +202,7 @@
         <h3 id="topics-h" class="text-xl font-bold text-tide-900 mb-4">Topics and questions</h3>
         <div class="prose">
           <p>Contributions may address one or more of the four workshop questions and the directions under each:</p>
-          <details class="group mt-6">
+          <details id="topic-q1" class="group mt-6">
             <summary class="flex items-start gap-2 cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden">
               <i data-lucide="chevron-down" class="w-4 h-4 mt-1 shrink-0 text-tide-700 group-hover:text-ember-700 group-open:hidden" aria-hidden="true"></i>
               <i data-lucide="chevron-up" class="w-4 h-4 mt-1 shrink-0 text-tide-700 group-hover:text-ember-700 hidden group-open:block" aria-hidden="true"></i>
@@ -165,7 +214,7 @@
               <li><strong>Developing and testing explanations.</strong> How people and AI construct, compare, challenge, and revise explanations, models, and representations, including the assumptions that underpin them.</li>
             </ul>
           </details>
-          <details class="group mt-6">
+          <details id="topic-q2" class="group mt-6">
             <summary class="flex items-start gap-2 cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden">
               <i data-lucide="chevron-down" class="w-4 h-4 mt-1 shrink-0 text-tide-700 group-hover:text-ember-700 group-open:hidden" aria-hidden="true"></i>
               <i data-lucide="chevron-up" class="w-4 h-4 mt-1 shrink-0 text-tide-700 group-hover:text-ember-700 hidden group-open:block" aria-hidden="true"></i>
@@ -176,7 +225,7 @@
               <li><strong>Whose contribution, whose discovery?</strong> How human and AI contributions become visible, and how credit, intellectual ownership, and responsibility are understood and negotiated.</li>
             </ul>
           </details>
-          <details class="group mt-6">
+          <details id="topic-q3" class="group mt-6">
             <summary class="flex items-start gap-2 cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden">
               <i data-lucide="chevron-down" class="w-4 h-4 mt-1 shrink-0 text-tide-700 group-hover:text-ember-700 group-open:hidden" aria-hidden="true"></i>
               <i data-lucide="chevron-up" class="w-4 h-4 mt-1 shrink-0 text-tide-700 group-hover:text-ember-700 hidden group-open:block" aria-hidden="true"></i>
@@ -186,7 +235,7 @@
               <li><strong>Human understanding and learning.</strong> What people come to understand through co-discovery, how that understanding changes over time, and how reflection and further questioning develop even when an investigation remains inconclusive.</li>
             </ul>
           </details>
-          <details class="group mt-6">
+          <details id="topic-q4" class="group mt-6">
             <summary class="flex items-start gap-2 cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden">
               <i data-lucide="chevron-down" class="w-4 h-4 mt-1 shrink-0 text-tide-700 group-hover:text-ember-700 group-open:hidden" aria-hidden="true"></i>
               <i data-lucide="chevron-up" class="w-4 h-4 mt-1 shrink-0 text-tide-700 group-hover:text-ember-700 hidden group-open:block" aria-hidden="true"></i>
@@ -292,6 +341,6 @@
   </main>
 
   <!-- Main JavaScript -->
-  <script src="assets/js/main.js?v=20261001-discussion-2"></script>
+  <script src="assets/js/main.js?v=20261001-community-2"></script>
 </body>
 </html>

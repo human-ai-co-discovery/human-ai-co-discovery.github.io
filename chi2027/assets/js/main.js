@@ -110,6 +110,82 @@ if (provocation) {
   }
 }
 
+// Contribution suggestions guide visitors to the existing, complete topic list.
+const contributionFinder = document.querySelector('[data-cfp-finder]');
+if (contributionFinder) {
+  const entryButtons = contributionFinder.querySelectorAll('[data-cfp-entry]');
+  for (const button of entryButtons) {
+    button.addEventListener('click', () => {
+      for (const choice of entryButtons) choice.setAttribute('aria-pressed', String(choice === button));
+      for (const result of contributionFinder.querySelectorAll('.finder-result')) {
+        result.hidden = result.id !== `fit-${button.dataset.cfpEntry}`;
+      }
+    });
+  }
+  for (const button of contributionFinder.querySelectorAll('[data-cfp-topic]')) {
+    button.addEventListener('click', () => {
+      const topic = document.getElementById(button.dataset.cfpTopic);
+      if (!topic) return;
+      topic.open = true;
+      topic.scrollIntoView({ block: 'start' });
+      topic.querySelector('summary').focus({ preventScroll: true });
+    });
+  }
+}
+
+// Discussion content is exported on the server; no GitHub credentials enter the browser.
+const questionWall = document.querySelector('[data-question-wall]');
+if (questionWall) {
+  const status = questionWall.querySelector('[data-wall-status]');
+  const list = questionWall.querySelector('[data-wall-list]');
+  // Bot commits do not trigger a Pages rebuild. On GitHub Pages, read the current
+  // snapshot directly from main; local previews read their checked-out snapshot.
+  const source = location.hostname === 'human-ai-co-discovery.github.io'
+    ? 'https://raw.githubusercontent.com/human-ai-co-discovery/human-ai-co-discovery.github.io/main/chi2027/data/questions.json'
+    : 'data/questions.json';
+  fetch(source, { cache: 'no-store' })
+    .then(response => {
+      if (!response.ok) throw new Error('Questions unavailable');
+      return response.json();
+    })
+    .then(data => {
+      if (data.repository !== 'human-ai-co-discovery/human-ai-co-discovery.github.io'
+        || !Array.isArray(data.questions) || typeof data.private !== 'boolean') throw new Error('Invalid question data');
+      const cards = (data.private ? [] : data.questions).slice(0, 20).map(question => {
+        if (typeof question.title !== 'string' || typeof question.excerpt !== 'string'
+          || (question.author !== null && typeof question.author !== 'string') || typeof question.url !== 'string'
+          || !/^https:\/\/github\.com\/human-ai-co-discovery\/human-ai-co-discovery\.github\.io\/discussions\/[1-9]\d*$/.test(question.url)) {
+          throw new Error('Invalid question');
+        }
+        const card = document.createElement('li');
+        const heading = document.createElement('h3');
+        const link = document.createElement('a');
+        link.href = question.url;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = question.title;
+        heading.append(link);
+        const excerpt = document.createElement('p');
+        excerpt.textContent = question.excerpt;
+        const meta = document.createElement('p');
+        meta.className = 'question-meta';
+        meta.textContent = `${question.author ? '@' + question.author : 'Community member'} · Join the discussion on GitHub ↗`;
+        card.append(heading, excerpt, meta);
+        return card;
+      });
+      list.replaceChildren(...cards);
+      questionWall.querySelector('[data-wall-private]').hidden = !data.private;
+      status.hidden = cards.length > 0;
+      status.textContent = data.private
+        ? 'Read questions and join the conversation on GitHub during this private preview. Public question summaries will appear here when the community opens.'
+        : 'No community questions yet. Start a conversation on GitHub.';
+    })
+    .catch(() => {
+      status.hidden = false;
+      status.textContent = 'Questions could not be loaded. You can still read and reply on GitHub using the links above.';
+    });
+}
+
 // Organizer research profiles connect the team, question cards, and selected work.
 // Names, bios, and links come from the existing cards and their local templates.
 const researchProfile = document.getElementById('research-profile');
