@@ -10,7 +10,7 @@
    rules below avoid properties that the pages also set with utilities. */
 
 :root {
-  --page-gutter: clamp(1.5rem, 8vw, 12rem);
+  --page-gutter: clamp(1rem, 6vw, 12rem);
   --paper: 249 250 251;
   --surface: 255 255 255;
   --ink: 36 64 75;
@@ -98,7 +98,7 @@ html {
   padding-inline: calc(var(--page-gutter) - 0.75rem);
 }
 @media (max-width: 639px) {
-  :root { --page-gutter: 1.5rem; }
+  :root { --page-gutter: 1rem; }
 }
 
 /* ------------------------------------------------------------------
@@ -124,7 +124,7 @@ html {
 
 .hero-eureka { position: relative; isolation: isolate; width: 100%; max-width: 30rem; }
 .hero-eureka::before {
-  content: ""; position: absolute; inset: 4% -4% 0 10%; z-index: -1; border-radius: 50%;
+  content: ""; position: absolute; inset: 4% 0 0 10%; z-index: -1; border-radius: 50%;
   background:
     radial-gradient(closest-side at 82% 26%, rgb(var(--ember-200) / 0.55), transparent 70%),
     radial-gradient(closest-side at 40% 60%, rgb(var(--tide-100) / 0.7), transparent 80%);
