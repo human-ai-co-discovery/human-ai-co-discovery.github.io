@@ -69,6 +69,37 @@ for (const toggle of document.querySelectorAll('[data-bio-toggle]')) {
   });
 }
 
+// Figure walkthrough: the selected stage highlights its panel and reveals a short explanation.
+const discoveryStory = document.querySelector('[data-discovery-story]');
+if (discoveryStory) {
+  const storyButtons = discoveryStory.querySelectorAll('[data-story-step]');
+  const storyPanels = discoveryStory.querySelectorAll('.story-panel');
+  const selectStoryStep = (step) => {
+    discoveryStory.dataset.step = step;
+    for (const button of storyButtons) button.setAttribute('aria-pressed', String(button.dataset.storyStep === step));
+    for (const panel of storyPanels) panel.hidden = panel.id !== `story-panel-${step}`;
+  };
+  for (const button of storyButtons) button.addEventListener('click', () => selectStoryStep(button.dataset.storyStep));
+  discoveryStory.querySelector('[data-story-restart]').addEventListener('click', () => {
+    selectStoryStep('1');
+    storyButtons[0].focus();
+  });
+}
+
+// Reflection choices reveal authored perspectives; no answers are stored or submitted.
+const provocation = document.querySelector('[data-provocation]');
+if (provocation) {
+  const positionButtons = provocation.querySelectorAll('[data-position]');
+  for (const button of positionButtons) {
+    button.addEventListener('click', () => {
+      for (const choice of positionButtons) choice.setAttribute('aria-pressed', String(choice === button));
+      for (const response of provocation.querySelectorAll('.provocation-response')) {
+        response.hidden = response.id !== `response-${button.dataset.position}`;
+      }
+    });
+  }
+}
+
 // Organizer research profiles connect the team, question cards, and selected work.
 // Names, bios, and links come from the existing cards and their local templates.
 const researchProfile = document.getElementById('research-profile');

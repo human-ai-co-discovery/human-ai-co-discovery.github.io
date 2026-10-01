@@ -27,6 +27,7 @@
 
   <!-- Tokens and the few rules Tailwind does not cover -->
   <link rel="stylesheet" href="assets/css/workshop.css?v=20261001-alignment">
+  <link rel="stylesheet" href="assets/css/interactive.css?v=20261001-walkthrough-4">
 </head>
 <body class="text-ink antialiased font-sans font-normal text-lg sm:text-xl leading-relaxed selection:bg-ember-200 selection:text-tide-900">
   <a class="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[60] focus:rounded-lg focus:bg-tide-900 focus:px-4 focus:py-2 focus:text-paper focus:font-semibold" href="#main">Skip to content</a>
@@ -206,13 +207,15 @@
         <p>This workshop explores human-AI co-discovery of knowledge: how people and AI develop new questions, connections, and explanations together. We invite researchers and practitioners to discuss agency, evidence, learning, and how contributions are recognized, and to help shape a shared research agenda for discovery with AI.</p>
       </div>
 
-      <figure class="mt-10">
-        <div class="figure-plate group relative rounded-2xl border border-rule p-3 sm:p-5 shadow-[0_1px_2px_rgb(var(--tide-900)/0.06)]">
+      <div id="discovery-example" class="discovery-story mt-10" data-discovery-story data-step="1">
+      <figure>
+        <div class="story-figure figure-plate group relative rounded-2xl border border-rule p-3 sm:p-5 shadow-[0_1px_2px_rgb(var(--tide-900)/0.06)]">
           <picture>
             <source type="image/webp" srcset="assets/image/figure-1-1200.webp 1200w, assets/image/figure-1-2400.webp 2400w" sizes="(min-width: 2743px) calc(100vw - 24rem), 86vw">
             <img src="assets/image/figure-1-1200.png" width="1200" height="357" loading="lazy" decoding="async" class="block w-full h-auto" aria-describedby="figure-1-desc"
               alt="Figure 1: a researcher and an AI assistant develop an inquiry about notifications in three steps (formulate questions; explore unexpected connections; construct, challenge, and revise explanations).">
           </picture>
+          <div class="story-focus" aria-hidden="true"><i></i><i></i><i></i></div>
           <!-- Selecting the figure opens it full size in the dialog above. -->
           <button type="button" data-dialog-open="teaser-dialog" aria-label="View Figure 1 at full size" title="View Figure 1 at full size"
             class="absolute inset-0 rounded-2xl cursor-zoom-in">
@@ -226,6 +229,36 @@
           <span class="mr-1 text-xs font-bold uppercase tracking-widest text-ember-700">Figure 1</span> An illustrative human-AI co-discovery process: interview accounts and logs about notifications lead to analysis by experience level, a tentative explanation of interruption costs, and a proposed controlled study. The workshop's four questions appear below.
         </figcaption>
       </figure>
+        <div class="story-controls" role="group" aria-label="Explore the stages in Figure 1">
+          <button type="button" id="story-step-1" data-story-step="1" aria-pressed="true" aria-controls="story-panel-1"><span class="story-number">1</span> Formulate a question</button>
+          <button type="button" id="story-step-2" data-story-step="2" aria-pressed="false" aria-controls="story-panel-2"><span class="story-number">2</span> Revisit the pattern</button>
+          <button type="button" id="story-step-3" data-story-step="3" aria-pressed="false" aria-controls="story-panel-3"><span class="story-number">3</span> Challenge an explanation</button>
+        </div>
+        <div class="story-panels" aria-live="polite" aria-atomic="true">
+          <section class="story-panel" id="story-panel-1" aria-labelledby="story-step-1">
+            <p class="story-kicker">An illustrative scenario · Step 1 of 3</p>
+            <h3>From an experience to a question</h3>
+            <p>The researcher brings an account of notification overload. The AI asks whether notifications help people finish faster.</p>
+            <p><strong>What changes:</strong> An experience becomes a question to investigate together.</p>
+            <p class="story-open-question"><strong>Still open:</strong> The interview excerpt alone cannot answer that question.</p>
+          </section>
+          <section class="story-panel" id="story-panel-2" aria-labelledby="story-step-2" hidden>
+            <p class="story-kicker">An illustrative scenario · Step 2 of 3</p>
+            <h3>A closer look changes the story</h3>
+            <p>The researcher notices that experienced users seem to receive more notifications. The AI points out that, within each experience group, more notifications are linked to slower work.</p>
+            <p><strong>What changes:</strong> Looking within groups changes the interpretation of the overall trend.</p>
+            <p class="story-open-question"><strong>Still open:</strong> This association does not establish that notifications cause slower work.</p>
+          </section>
+          <section class="story-panel" id="story-panel-3" aria-labelledby="story-step-3" hidden>
+            <p class="story-kicker">An illustrative scenario · Step 3 of 3</p>
+            <h3>An explanation opens the next question</h3>
+            <p>The researcher suggests that experience may mask interruption costs and asks whether the pattern holds across task types. The AI proposes a controlled study.</p>
+            <p><strong>What changes:</strong> The next question considers how task and context shape notification experiences.</p>
+            <p class="story-open-question"><strong>Still open:</strong> The proposed explanation needs testing.</p>
+            <button type="button" class="story-loop" data-story-restart>↶ Return to the first question</button>
+          </section>
+        </div>
+      </div>
 
       <h2 id="explore-h" class="mt-12 mb-3 text-2xl sm:text-3xl font-bold text-tide-900">Find your way into the questions</h2>
       <p class="text-ink-soft">Open a question to discover related reading, workshop activities, and people to meet.</p>
@@ -323,6 +356,37 @@
           </details>
         </li>
       </ul>
+
+      <section id="roundtable-question" class="provocation" aria-labelledby="provocation-h" data-provocation>
+        <p class="story-kicker">A roundtable provocation</p>
+        <h3 id="provocation-h">What do you think?</h3>
+        <blockquote>“A discovery that no one on the team can explain is not yet a discovery.”</blockquote>
+        <p>Choose a position to explore an argument and a question it raises.</p>
+        <div class="provocation-options" role="group" aria-label="Your initial position">
+          <button type="button" id="position-agree" data-position="agree" aria-pressed="false" aria-controls="response-agree">Agree</button>
+          <button type="button" id="position-disagree" data-position="disagree" aria-pressed="false" aria-controls="response-disagree">Disagree</button>
+          <button type="button" id="position-depends" data-position="depends" aria-pressed="false" aria-controls="response-depends">It depends</button>
+        </div>
+        <div class="provocation-responses" aria-live="polite" aria-atomic="true">
+          <section class="provocation-response" id="response-agree" aria-labelledby="position-agree" hidden>
+            <h4>Understanding is part of discovery</h4>
+            <p>From this perspective, discovery involves human understanding alongside novelty and evidence.</p>
+            <p class="provocation-followup"><strong>Then ask:</strong> What must someone be able to explain—the finding, its evidence, or the underlying mechanism?</p>
+          </section>
+          <section class="provocation-response" id="response-disagree" aria-labelledby="position-disagree" hidden>
+            <h4>A finding can come before an explanation</h4>
+            <p>A finding may count as a discovery if it is new and well supported, even when an explanation is still missing.</p>
+            <p class="provocation-followup"><strong>Then ask:</strong> What evidence would be enough to count it as a discovery?</p>
+          </section>
+          <section class="provocation-response" id="response-depends" aria-labelledby="position-depends" hidden>
+            <h4>The kind of claim matters</h4>
+            <p>Your answer may depend on the domain, how the finding will be used, and what “explain” means.</p>
+            <p class="provocation-followup"><strong>Then ask:</strong> Would a new pattern, a causal claim, and a design insight need the same kind of explanation?</p>
+          </section>
+        </div>
+        <p class="provocation-note">Try another position to explore a different perspective. Your choices stay on this page.</p>
+        <a class="provocation-program" href="program.html#s2-roundtable">Explore the roundtable activity <span aria-hidden="true">→</span></a>
+      </section>
 
       <aside class="mt-8 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 bg-tide-50 border border-tide-100 rounded-xl p-6" aria-label="Call for participation">
         <i data-lucide="info" class="hidden sm:block w-6 h-6 text-tide-700 shrink-0" aria-hidden="true"></i>
@@ -596,6 +660,6 @@
   </main>
 
   <!-- Main JavaScript -->
-  <script src="assets/js/main.js?v=20261001-profiles"></script>
+  <script src="assets/js/main.js?v=20261001-walkthrough"></script>
 </body>
 </html>

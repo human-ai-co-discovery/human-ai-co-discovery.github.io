@@ -9,10 +9,11 @@ Website for Human-AI Co-Discovery, exploring how people and AI discover new ques
 | Path | Page |
 | --- | --- |
 | `index.html` | Community home page, with links to events |
-| `chi2027/index.html` | *Whose Eureka? Human-AI Co-Discovery of Knowledge*, the proposed CHI 2027 workshop: title with the eureka illustration over the discovery field, overview with Figure 1 (opens full size), the four workshop questions as expandable cards, the CFP entry point, a program summary with the program timeline and the invited guests, organizers with research profiles, and a Connect section on the Discord community |
+| `chi2027/index.html` | *Whose Eureka? Human-AI Co-Discovery of Knowledge*, the proposed CHI 2027 workshop: title with the eureka illustration over the discovery field, overview with an interactive Figure 1 walkthrough (also opens full size), the four workshop questions as expandable cards, a roundtable reflection prompt, the CFP entry point, a program summary with the program timeline and the invited guests, organizers with research profiles, and a Connect section on the Discord community |
 | `chi2027/call-for-participation.html` | Dedicated CFP page: proposal status, participation and submission essentials first, followed by key dates, a short workshop introduction, contribution types and all eight topics grouped under the four questions, activities, follow-up plans, accessibility, and optional readings |
 | `chi2027/program.html` | Dedicated tentative program: a timeline of the day drawn as the eureka curve, two 90-minute sessions, poster exchange during the coffee break, keynote and panel, and how participants take part |
 | `chi2027/assets/css/workshop.css` | Color tokens (light and dark, including the Q1–Q4 question colors) and the few rules Tailwind utilities do not cover, such as the home hero illustration, the question cards, and the program timeline, for the CHI 2027 pages only |
+| `chi2027/assets/css/interactive.css` | Styles scoped to the Home page’s figure walkthrough and reflection prompt |
 | `chi2027/assets/js/tailwind.config.js` | Tailwind theme for the CHI 2027 pages: Inter, `tide` (deep cyan) and `ember` (warm orange) colors mapped to the CSS tokens, and prose heading sizes |
 | `chi2027/assets/js/main.js` | Lucide icons, nav highlighting of the section being read, the title gloss, dialogs, the discovery field behind the home hero, and the program timeline (placing its stops along the curve) |
 | `chi2027/archive/` | Retired designs kept for reference, each a standalone page with steps to restore it: `hero-banner.html` (the first hero banner) and `retired-components.html` (the program timeline and the CFP topic cards, plus the originals of the eureka hero and the Q1–Q4 question cards, which are back on Home) |
@@ -52,6 +53,12 @@ The pages currently describe the workshop as **proposed**. Daniel McDuff is supp
 Keep the text consistent with the organizers' workshop proposal, especially the call for participation.
 
 The program was reconciled with proposal commit `a8865ef` (`sections/activities.tex`) on 2026-09-29: 30-minute keynote, 30-minute panel, poster exchange during the conference coffee break, a second 20-minute lightning-talk block, and seven roundtable groups. The 50-minute roundtable block includes reflection and discussion.
+
+## Figure walkthrough and reflection prompt
+
+On the Home page, the three Figure 1 controls highlight the selected stage and show how the researcher and AI change the inquiry, including what remains untested. The figure is an illustrative scenario; its full-size dialog remains available. Text is in the `story-panel-*` sections in `chi2027/index.html`.
+
+The roundtable provocation offers Agree, Disagree, and It depends. Each choice reveals an authored perspective and follow-up question. Choices stay in the current page state: there is no storage, submission, tally, or live AI response. Edit the `response-*` sections to revise those perspectives. Both interactions use native buttons, visible selection states, and polite announcements of revealed content.
 
 ## Research profiles and question links
 
