@@ -40,12 +40,14 @@
           <span><span class="whitespace-nowrap">Human-AI Co-Discovery</span> <span class="whitespace-nowrap text-ember-500">@CHI&rsquo;27</span></span>
         </a>
 
-        <div class="hidden lg:flex gap-7 text-sm font-semibold text-ink-soft whitespace-nowrap">
+        <div class="hidden min-[880px]:flex gap-5 text-sm font-semibold text-ink-soft whitespace-nowrap">
           <a href="./" aria-current="page" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Home</a>
           <a href="call-for-participation.html" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Call for Participation</a>
           <a href="program.html" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Program</a>
+          <a href="program.html#speakers" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Speakers</a>
+          <a href="./#organizers" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Organizers</a>
         </div>
-        <button type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" class="group/menu lg:hidden shrink-0 grid place-items-center w-10 h-10 -mr-2 rounded-lg text-tide-900 hover:text-ember-700 hover:bg-tide-50 transition-colors">
+        <button type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" class="group/menu min-[880px]:hidden shrink-0 grid place-items-center w-10 h-10 -mr-2 rounded-lg text-tide-900 hover:text-ember-700 hover:bg-tide-50 transition-colors">
           <i data-lucide="menu" class="w-6 h-6 group-aria-expanded/menu:hidden" aria-hidden="true"></i>
           <i data-lucide="x" class="w-6 h-6 hidden group-aria-expanded/menu:block" aria-hidden="true"></i>
           <span class="sr-only">Menu</span>
@@ -54,11 +56,13 @@
       </div>
 
       <!-- Page links on small screens: a dropdown opened by the menu button -->
-      <div id="mobile-nav" hidden class="lg:hidden absolute inset-x-0 top-full bg-tide-25 pb-4">
+      <div id="mobile-nav" hidden class="min-[880px]:hidden absolute inset-x-0 top-full bg-tide-25 pb-4">
         <div class="max-w-4xl mx-auto px-3 flex flex-col gap-1 text-base font-semibold text-ink-soft">
           <a href="./" aria-current="page" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Home</a>
           <a href="call-for-participation.html" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Call for Participation</a>
           <a href="program.html" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Program</a>
+          <a href="program.html#speakers" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Speakers</a>
+          <a href="./#organizers" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Organizers</a>
         </div>
       </div>
     </div>
@@ -67,20 +71,11 @@
   <!-- Main Content -->
   <main id="main" class="max-w-4xl mx-auto px-6 py-10 sm:py-12">
 
-    <!-- Header -->
-    <header class="relative mb-10 pb-5 md:py-12">
-      <!-- Teaser as a decorative backdrop on the right, with a button in its corner
-           that opens it full size; hidden on small screens. -->
-      <div class="hidden md:block absolute right-0 -top-[10%] -bottom-[10%] max-w-[55%] pointer-events-none">
-        <img src="assets/image/teaser-960.webp" srcset="assets/image/teaser-960.webp 960w, assets/image/teaser-1440.webp 1440w" sizes="28rem" width="960" height="844" alt="" aria-hidden="true" decoding="async"
-          class="hero-teaser h-full w-auto max-w-full object-contain object-right select-none">
-        <button type="button" data-dialog-open="teaser-dialog" aria-label="View figure at full size" title="View figure at full size"
-          class="pointer-events-auto absolute z-10 bottom-2 right-2 grid place-items-center w-6 h-6 text-tide-700 hover:text-ember-700 transition-colors">
-          <i data-lucide="maximize-2" class="w-3 h-3" aria-hidden="true"></i>
-        </button>
-      </div>
+    <!-- Header: title, eureka illustration, and the discovery field behind both -->
+    <header class="hero relative mb-10 pb-5 md:py-12 flex flex-col gap-8 md:flex-row md:items-center md:justify-between md:gap-10" data-field-host>
+      <div class="hero-field" aria-hidden="true"><canvas data-field></canvas></div>
 
-      <div class="relative">
+      <div class="relative min-w-0 md:shrink-0" data-field-quiet="0.06" data-field-text>
         <div class="flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-2 mb-4 text-[clamp(0.8125rem,1.3vw,0.875rem)] text-ink-soft">
           <span>Proposed workshop @ CHI 2027</span>
           <span class="hidden sm:block w-px h-4 bg-rule mx-1" aria-hidden="true"></span>
@@ -104,11 +99,87 @@
           Human-AI Co-Discovery of Knowledge
         </p>
       </div>
+      <!-- Eureka illustration: question, connection, explanation, eureka (plays once; static under reduced motion) -->
+      <div class="hero-eureka md:flex-1 md:min-w-0" data-field-quiet="0.5" data-field-feather="120">
+        <svg class="eh" viewBox="0 0 480 300" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="eh-grad" gradientUnits="userSpaceOnUse" x1="56" y1="0" x2="428" y2="0">
+              <stop offset="0" class="eh-stop-tide"/><stop offset="0.55" class="eh-stop-tide"/><stop offset="1" class="eh-stop-ember"/>
+            </linearGradient>
+            <radialGradient id="eh-glow-fill"><stop offset="0" class="eh-stop-ember" stop-opacity="0.55"/><stop offset="1" class="eh-stop-ember" stop-opacity="0"/></radialGradient>
+          </defs>
+          <g class="eh-links">
+            <path class="eh-link" pathLength="1" d="M56 236L131 222" style="--d:1.5s"/>
+            <path class="eh-link" pathLength="1" d="M192 112L285 123" style="--d:2.14s"/>
+            <path class="eh-link" pathLength="1" d="M192 112L96 115" style="--d:2.14s"/>
+            <path class="eh-link" pathLength="1" d="M322 204L251 189" style="--d:2.71s"/>
+            <path class="eh-link" pathLength="1" d="M322 204L461 225" style="--d:2.71s"/>
+            <path class="eh-link" pathLength="1" d="M428 74L307 46" style="--d:3.3s"/>
+          </g>
+          <g class="eh-decoys">
+            <circle class="eh-dot" cx="220" cy="167" r="4" style="--d:0.0s;--dx:-7px;--dy:4px"/>
+            <circle class="eh-dot" cx="220" cy="248" r="3" style="--d:0.025s;--dx:3px;--dy:-10px"/>
+            <circle class="eh-dot" cx="59" cy="97" r="2.5" style="--d:0.05s;--dx:-3px;--dy:5px"/>
+            <circle class="eh-dot" cx="259" cy="258" r="2.5" style="--d:0.075s;--dx:1px;--dy:6px"/>
+            <circle class="eh-dot eh-dot--linked" cx="285" cy="123" r="4" style="--d:0.1s;--dx:4px;--dy:-12px;--ld:2.59s"/>
+            <circle class="eh-dot" cx="87" cy="18" r="2.5" style="--d:0.125s;--dx:5px;--dy:-14px"/>
+            <circle class="eh-dot" cx="43" cy="66" r="3" style="--d:0.15s;--dx:12px;--dy:1px"/>
+            <circle class="eh-dot" cx="163" cy="176" r="3" style="--d:0.175s;--dx:-6px;--dy:3px"/>
+            <circle class="eh-dot eh-dot--linked" cx="251" cy="189" r="4" style="--d:0.2s;--dx:-7px;--dy:-8px;--ld:3.16s"/>
+            <circle class="eh-dot" cx="18" cy="37" r="3.5" style="--d:0.225s;--dx:8px;--dy:1px"/>
+            <circle class="eh-dot eh-dot--linked" cx="131" cy="222" r="3.5" style="--d:0.25s;--dx:3px;--dy:12px;--ld:1.95s"/>
+            <circle class="eh-dot" cx="29" cy="168" r="2.5" style="--d:0.275s;--dx:3px;--dy:1px"/>
+            <circle class="eh-dot" cx="191" cy="277" r="2.5" style="--d:0.3s;--dx:-2px;--dy:6px"/>
+            <circle class="eh-dot" cx="113" cy="268" r="2.5" style="--d:0.325s;--dx:13px;--dy:-10px"/>
+            <circle class="eh-dot" cx="228" cy="283" r="4" style="--d:0.35s;--dx:-7px;--dy:6px"/>
+            <circle class="eh-dot" cx="23" cy="126" r="2.5" style="--d:0.375s;--dx:-10px;--dy:13px"/>
+            <circle class="eh-dot eh-dot--linked" cx="461" cy="225" r="4" style="--d:0.4s;--dx:2px;--dy:-2px;--ld:3.16s"/>
+            <circle class="eh-dot eh-dot--linked" cx="307" cy="46" r="4" style="--d:0.425s;--dx:9px;--dy:-14px;--ld:3.75s"/>
+            <circle class="eh-dot" cx="464" cy="14" r="3.5" style="--d:0.45s;--dx:7px;--dy:10px"/>
+            <circle class="eh-dot" cx="216" cy="17" r="3.5" style="--d:0.475s;--dx:-12px;--dy:-9px"/>
+            <circle class="eh-dot" cx="191" cy="146" r="2.5" style="--d:0.5s;--dx:10px;--dy:4px"/>
+            <circle class="eh-dot eh-dot--linked" cx="96" cy="115" r="3" style="--d:0.525s;--dx:-13px;--dy:-5px;--ld:2.59s"/>
+          </g>
+          <path class="eh-path" pathLength="1" d="M56 236 C 92 186, 128 118, 192 112 S 270 208, 322 204 S 398 120, 428 74"/>
+          <g class="eh-pdots">
+            <circle class="eh-pdot" cx="89.2" cy="188.3" r="4" style="--d:0.15s;--dx:-21px;--dy:41px;--p:1.6s"/>
+            <circle class="eh-pdot" cx="129.6" cy="141.3" r="4" style="--d:0.23s;--dx:-25px;--dy:-35px;--p:1.81s"/>
+            <circle class="eh-pdot" cx="232.0" cy="124.4" r="4" style="--d:0.31s;--dx:-53px;--dy:-12px;--p:2.19s"/>
+            <circle class="eh-pdot" cx="261.5" cy="157.2" r="4" style="--d:0.39s;--dx:56px;--dy:21px;--p:2.34s"/>
+            <circle class="eh-pdot" cx="288.8" cy="190.5" r="4" style="--d:0.47s;--dx:56px;--dy:13px;--p:2.49s"/>
+            <circle class="eh-pdot" cx="362.2" cy="182.8" r="4" style="--d:0.55s;--dx:39px;--dy:19px;--p:2.77s"/>
+            <circle class="eh-pdot" cx="394.5" cy="135.1" r="4" style="--d:0.63s;--dx:-65px;--dy:33px;--p:2.96s"/>
+          </g>
+          <g class="eh-node" style="--d:1.4s">
+            <circle class="eh-node-ring" cx="56" cy="236" r="17"/>
+            <text class="eh-glyph-text" x="56" y="242.5" text-anchor="middle">?</text>
+          </g>
+          <text class="eh-label" x="56" y="276" text-anchor="middle" style="--d:1.55s">question</text>
+          <g class="eh-node" style="--d:2.04s">
+            <circle class="eh-node-ring" cx="192" cy="112" r="17"/>
+            <circle class="eh-glyph" cx="187" cy="112" r="5.5"/>
+            <circle class="eh-glyph" cx="197" cy="112" r="5.5"/>
+          </g>
+          <text class="eh-label" x="192" y="80" text-anchor="middle" style="--d:2.19s">connection</text>
+          <g class="eh-node" style="--d:2.61s">
+            <circle class="eh-node-ring" cx="322" cy="204" r="17"/>
+            <path class="eh-glyph" d="M313 197.5h18M313 204h18M313 210.5h11"/>
+          </g>
+          <text class="eh-label" x="322" y="242" text-anchor="middle" style="--d:2.76s">explanation</text>
+          <g class="eh-spark" style="--d:3.2s">
+            <circle class="eh-spark-glow" cx="428" cy="74" r="44" fill="url(#eh-glow-fill)"/>
+            <path class="eh-spark-rays" d="M447.4 82.0L456.6 85.9M436.0 93.4L438.3 98.9M420.0 93.4L416.1 102.6M408.6 82.0L403.1 84.3M408.6 66.0L399.4 62.1M420.0 54.6L417.7 49.1M436.0 54.6L439.9 45.4M447.4 66.0L452.9 63.7"/>
+            <path class="eh-spark-core" d="M428 54 Q431.5 70.5 448 74 Q431.5 77.5 428 94 Q424.5 77.5 408 74 Q424.5 70.5 428 54 Z"/>
+            <circle class="eh-spark-eye" cx="428" cy="74" r="2.6"/>
+          </g>
+          <text class="eh-label eh-label--eureka" x="428" y="24" text-anchor="middle" style="--d:3.45s">eureka</text>
+        </svg>
+      </div>
     </header>
 
-    <!-- Teaser at full size, opened from the header button. -->
+    <!-- Figure 1 at full size, opened from the figure below the About text. -->
     <dialog id="teaser-dialog" aria-labelledby="teaser-dialog-h"
-      class="w-[calc(100%-2rem)] max-w-4xl max-h-[calc(100dvh-2rem)] rounded-xl border border-rule bg-surface p-0 text-ink shadow-2xl backdrop:bg-transparent">
+      class="w-[calc(100%-2rem)] max-w-6xl max-h-[calc(100dvh-2rem)] rounded-xl border border-rule bg-surface p-0 text-ink shadow-2xl backdrop:bg-transparent">
       <div class="flex items-center justify-between gap-4 px-5 py-3 border-b border-rule">
         <h2 id="teaser-dialog-h" class="text-base font-bold text-tide-900">An illustrative human-AI co-discovery process</h2>
         <form method="dialog">
@@ -117,11 +188,14 @@
           </button>
         </form>
       </div>
-      <div class="p-3 sm:p-4">
-        <img src="assets/image/teaser-1440.webp" srcset="assets/image/teaser-960.webp 960w, assets/image/teaser-1440.webp 1440w" sizes="(min-width: 56rem) 54rem, 100vw" width="1440" height="1266" decoding="async"
-          class="figure-plate block mx-auto w-auto max-w-full max-h-[calc(100dvh-8rem)] h-auto rounded-lg" aria-describedby="teaser-desc"
-          alt="A researcher and an AI assistant develop an inquiry about notifications in three steps: formulate questions; explore unexpected connections; construct, challenge, and revise explanations.">
-        <p id="teaser-desc" hidden>Panel 1, Formulate Questions: an interview excerpt reads, "I get so many notifications that it starts to feel overwhelming." The AI asks whether more notifications actually help people get things done faster. Panel 2, Explore Unexpected Connections: the researcher says the logs suggest they do, but experienced users also seem to get more notifications. The AI notes that within each experience group, more notifications are linked to slower work. Two interview excerpts read, "They keep me on track" and "They stress me out." Panel 3, Construct, Challenge, and Revise Explanations: the researcher suggests that experience may be masking the cost of interruptions and asks whether the pattern holds across different kinds of tasks. The AI says it seems strongest during focused work and proposes a controlled study. A new question asks how task and context shape people's experiences of notifications. Arrows lead from panel 1 to 2, from 2 down to 3, and from 3 back up to 1.</p>
+      <!-- On narrow screens the figure keeps its full width (1200px) and scrolls sideways. -->
+      <div class="p-3 sm:p-4 overflow-x-auto">
+        <picture>
+          <source type="image/webp" srcset="assets/image/figure-1-1200.webp 1200w, assets/image/figure-1-2400.webp 2400w" sizes="(min-width: 74rem) 70rem, (min-width: 48rem) 100vw, 75rem">
+          <img src="assets/image/figure-1-1200.png" width="1200" height="357" decoding="async"
+            class="figure-plate block mx-auto w-[75rem] max-w-none md:w-auto md:max-w-full max-h-[calc(100dvh-8rem)] h-auto rounded-lg" aria-describedby="figure-1-desc"
+            alt="A researcher and an AI assistant develop an inquiry about notifications in three steps: formulate questions; explore unexpected connections; construct, challenge, and revise explanations.">
+        </picture>
       </div>
     </dialog>
 
@@ -131,6 +205,83 @@
         <p>AI systems increasingly help formulate ideas, explore data, and develop explanations. Yet a plausible or useful finding does not necessarily expand or deepen human knowledge. Discovery and understanding can reinforce one another: an unexpected connection may change how people frame a problem and what they ask next.</p>
         <p>This workshop explores human-AI co-discovery of knowledge: how people and AI develop new questions, connections, and explanations together. We invite researchers and practitioners to examine human agency, evidence, learning, and the recognition of contributions, and to develop a shared research agenda for discovery with AI.</p>
       </div>
+
+      <figure class="mt-10">
+        <div class="figure-plate group relative rounded-2xl border border-rule p-3 sm:p-5 shadow-[0_1px_2px_rgb(var(--tide-900)/0.06)]">
+          <picture>
+            <source type="image/webp" srcset="assets/image/figure-1-1200.webp 1200w, assets/image/figure-1-2400.webp 2400w" sizes="(min-width: 56rem) 50rem, calc(100vw - 5rem)">
+            <img src="assets/image/figure-1-1200.png" width="1200" height="357" loading="lazy" decoding="async" class="block w-full h-auto" aria-describedby="figure-1-desc"
+              alt="Figure 1: a researcher and an AI assistant develop an inquiry about notifications in three steps (formulate questions; explore unexpected connections; construct, challenge, and revise explanations).">
+          </picture>
+          <!-- Selecting the figure opens it full size in the dialog above. -->
+          <button type="button" data-dialog-open="teaser-dialog" aria-label="View Figure 1 at full size" title="View Figure 1 at full size"
+            class="absolute inset-0 rounded-2xl cursor-zoom-in">
+            <span class="figure-expand absolute top-2 right-2 grid place-items-center w-7 h-7 sm:w-8 sm:h-8 rounded-full shadow-md transition-colors" aria-hidden="true">
+              <i data-lucide="maximize-2" class="w-4 h-4"></i>
+            </span>
+          </button>
+        </div>
+        <p id="figure-1-desc" hidden>Panel 1, Formulate Questions: an interview excerpt reads, "I get so many notifications that it starts to feel overwhelming." The AI asks whether more notifications actually help people get things done faster. Panel 2, Explore Unexpected Connections: the researcher says the logs suggest they do, but experienced users also seem to get more notifications. The AI notes that within each experience group, more notifications are linked to slower work. Two interview excerpts read, "They keep me on track" and "They stress me out." Panel 3, Construct, Challenge, and Revise Explanations: the researcher suggests that experience may be masking the cost of interruptions and asks whether the pattern holds across kinds of tasks. The AI says it seems strongest during focused work and proposes a controlled study. A new question asks how task and context shape people's experiences of notifications. An arrow returns from the third panel to the first.</p>
+        <figcaption class="mt-4 text-base text-ink-soft leading-relaxed">
+          <span class="mr-1 text-xs font-bold uppercase tracking-widest text-ember-700">Figure 1</span> An illustrative human-AI co-discovery process: interview accounts and logs about notifications lead to analysis by experience level, a tentative explanation of interruption costs, and a proposed controlled study. The workshop's four questions appear below.
+        </figcaption>
+      </figure>
+
+      <ul id="questions" class="mt-10 grid gap-4 md:grid-cols-2 md:gap-5">
+        <li class="q-card min-w-0" data-q="1">
+          <details>
+            <summary>
+              <span class="q-card__head">
+                <span class="q-card__icon" aria-hidden="true"><i data-lucide="message-circle-question"></i></span>
+                <span class="q-card__meta"><span class="q-badge">Q1</span><span class="q-card__tag">Co-discovery process</span></span>
+                <span class="q-card__toggle" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+              </span>
+              <span class="q-card__title">How do people and AI develop questions, connections, and explanations together?</span>
+            </summary>
+            <p>People and AI can build on, challenge, or redirect one another's suggestions as they explore evidence and develop provisional conclusions. How can human-AI interaction help people recognize when an unexpected connection is worth pursuing, rather than simply accepting an AI suggestion?</p>
+          </details>
+        </li>
+        <li class="q-card min-w-0" data-q="2">
+          <details>
+            <summary>
+              <span class="q-card__head">
+                <span class="q-card__icon" aria-hidden="true"><i data-lucide="hand-helping"></i></span>
+                <span class="q-card__meta"><span class="q-badge">Q2</span><span class="q-card__tag">Agency &amp; credit</span></span>
+                <span class="q-card__toggle" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+              </span>
+              <span class="q-card__title">How do people guide co-discovery, and how are contributions recognized?</span>
+            </summary>
+            <p>As people delegate work to AI, they decide when to intervene, revise a plan, or decline assistance, and records of decisions and revisions can make human and AI contributions visible. How should credit, intellectual ownership, and responsibility be understood and negotiated when discoveries emerge from human-AI collaboration?</p>
+          </details>
+        </li>
+        <li class="q-card min-w-0" data-q="3">
+          <details>
+            <summary>
+              <span class="q-card__head">
+                <span class="q-card__icon" aria-hidden="true"><i data-lucide="lightbulb"></i></span>
+                <span class="q-card__meta"><span class="q-badge">Q3</span><span class="q-card__tag">Human understanding</span></span>
+                <span class="q-card__toggle" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+              </span>
+              <span class="q-card__title">What do people come to understand through co-discovery?</span>
+            </summary>
+            <p>Human-AI co-discovery may change how people frame a problem, what they notice, and what they ask next, even when an investigation remains inconclusive. How can reflection, learning, and changes in understanding be recognized alongside the findings that people and AI produce?</p>
+          </details>
+        </li>
+        <li class="q-card min-w-0" data-q="4">
+          <details>
+            <summary>
+              <span class="q-card__head">
+                <span class="q-card__icon" aria-hidden="true"><i data-lucide="search-check"></i></span>
+                <span class="q-card__meta"><span class="q-badge">Q4</span><span class="q-card__tag">What counts as discovery</span></span>
+                <span class="q-card__toggle" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+              </span>
+              <span class="q-card__title">What counts as a discovery, for whom, and on what evidence?</span>
+            </summary>
+            <p>Is an insight new to an individual, a team, or a field, and do its claims hold up against counter-evidence or alternative explanations? Concerns about scientific monocultures also raise the question of whether co-discovery can broaden, rather than narrow, the questions a community pursues.</p>
+          </details>
+        </li>
+      </ul>
+
       <aside class="mt-8 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 bg-tide-50 border border-tide-100 rounded-xl p-6" aria-label="Call for participation">
         <i data-lucide="info" class="hidden sm:block w-6 h-6 text-tide-700 shrink-0" aria-hidden="true"></i>
         <p class="flex-1 min-w-0">We welcome position papers, empirical studies, system descriptions, design concepts, critical perspectives, and work in progress on human-AI co-discovery.</p>
@@ -141,8 +292,75 @@
       </aside>
     </section>
 
+    <!-- Program -->
+    <section id="program" class="mb-20" aria-labelledby="program-h">
+      <h2 id="program-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Program</h2>
+      <div class="prose">
+        <p>The tentative program spans two 90-minute sessions, with a keynote, lightning talks, a human-AI panel, and interactive roundtables. Poster exchange will take place during the conference coffee break.</p>
+      </div>
+
+      <!-- Discovery path: the program drawn as the eureka curve. Each stop links to its
+           schedule item on the Program page; main.js places it on the curve by its start minute (data-min). -->
+      <nav class="dp mt-8 mb-10" aria-label="Program at a glance" data-discovery-path>
+        <div class="dp-session">
+          <p id="dp-s1" class="dp-kicker"><span class="dp-kicker-name">Session 1: Perspectives</span> <span class="dp-kicker-min">90 min</span></p>
+          <ol class="dp-stops" aria-labelledby="dp-s1">
+            <li><a class="dp-stop" href="program.html#s1-welcome" data-min="5" aria-label="Welcome, 5 minutes"><span class="dp-node" aria-hidden="true"></span><span class="dp-name">Welcome</span> <span class="dp-min">5 min</span></a></li>
+            <li><a class="dp-stop" href="program.html#s1-keynote" data-min="30" aria-label="Keynote with Q&amp;A, 30 minutes"><span class="dp-node dp-node--ring" aria-hidden="true"><i data-lucide="mic"></i></span><span class="dp-name">Keynote with Q&amp;A</span> <span class="dp-min">30 min</span></a></li>
+            <li><a class="dp-stop" href="program.html#s1-lightning" data-min="25" aria-label="Lightning talks: first block, 25 minutes"><span class="dp-node" aria-hidden="true"></span><span class="dp-name">Lightning talks: first block</span> <span class="dp-min">25 min</span></a></li>
+            <li><a class="dp-stop" href="program.html#s1-panel" data-min="30" aria-label="Human-AI panel discussion, 30 minutes"><span class="dp-node dp-node--ring" aria-hidden="true"><i data-lucide="messages-square"></i></span><span class="dp-name">Human-AI panel discussion</span> <span class="dp-min">30 min</span></a></li>
+          </ol>
+        </div>
+        <p class="dp-pause"><a class="dp-stop dp-stop--break" href="program.html#break-h"><span class="dp-node dp-node--break" aria-hidden="true"><i data-lucide="coffee"></i></span><span class="dp-name">Conference coffee break and poster exchange</span></a></p>
+        <div class="dp-session">
+          <p id="dp-s2" class="dp-kicker"><span class="dp-kicker-name">Session 2: Co-Discovery</span> <span class="dp-kicker-min">90 min</span></p>
+          <ol class="dp-stops" aria-labelledby="dp-s2">
+            <li><a class="dp-stop" href="program.html#s2-lightning" data-min="20" aria-label="Lightning talks: second block, 20 minutes"><span class="dp-node" aria-hidden="true"></span><span class="dp-name">Lightning talks: second block</span> <span class="dp-min">20 min</span></a></li>
+            <li><a class="dp-stop" href="program.html#s2-roundtable" data-min="50" aria-label="Interactive roundtable activity, 50 minutes"><span class="dp-node dp-node--ring" aria-hidden="true"><i data-lucide="users"></i></span><span class="dp-name">Interactive roundtable activity</span> <span class="dp-min">50 min</span></a></li>
+            <li><a class="dp-stop" href="program.html#s2-reports" data-min="15" aria-label="Group reports and collective discussion, 15 minutes"><span class="dp-node" aria-hidden="true"></span><span class="dp-name">Group reports and collective discussion</span> <span class="dp-min">15 min</span></a></li>
+            <li><a class="dp-stop dp-stop--eureka" href="program.html#s2-closing" data-min="5" aria-label="Closing and next steps, 5 minutes"><span class="dp-node dp-node--spark" aria-hidden="true"><svg viewBox="-32 -32 64 64" focusable="false"><path class="dp-spark-rays" d="M19.4 8L28.6 11.9M8 19.4L10.3 24.9M-8 19.4L-11.9 28.6M-19.4 8L-24.9 10.3M-19.4 -8L-28.6 -11.9M-8 -19.4L-10.3 -24.9M8 -19.4L11.9 -28.6M19.4 -8L24.9 -10.3"/><path class="dp-spark-core" d="M0 -20Q3.5 -3.5 20 0Q3.5 3.5 0 20Q-3.5 3.5 -20 0Q-3.5 -3.5 0 -20Z"/><circle class="dp-spark-eye" r="2.6"/></svg></span><span class="dp-name">Closing and next steps</span> <span class="dp-min">5 min</span></a></li>
+          </ol>
+        </div>
+      </nav>
+
+      <h3 class="mt-10 mb-6 font-semibold text-ink-soft">Invited Guests <span class="font-normal">(tentative)</span></h3>
+      <!-- Names, photos, and links as on program.html; the role restates the schedule there. -->
+      <ul class="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-8">
+        <li class="group flex flex-col items-center text-center">
+          <a target="_blank" rel="noopener noreferrer" href="https://danmcduff.github.io/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/daniel.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
+          <h4 class="mt-3 font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug text-balance"><a target="_blank" rel="noopener noreferrer" href="https://danmcduff.github.io/" class="hover:underline">Daniel McDuff</a></h4>
+          <p class="text-sm text-ink-soft">Google Research</p>
+          <p class="mt-auto pt-2.5"><span class="inline-block rounded-full bg-ember-50 text-ember-700 px-2.5 py-0.5 text-xs font-semibold">Keynote and panel</span></p>
+        </li>
+        <li class="group flex flex-col items-center text-center">
+          <a target="_blank" rel="noopener noreferrer" href="https://www.cs.cmu.edu/~sherryw/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/sherry.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
+          <h4 class="mt-3 font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug text-balance"><a target="_blank" rel="noopener noreferrer" href="https://www.cs.cmu.edu/~sherryw/" class="hover:underline">Sherry Tongshuang Wu</a></h4>
+          <p class="text-sm text-ink-soft">Carnegie Mellon University</p>
+          <p class="mt-auto pt-2.5"><span class="inline-block rounded-full bg-tide-50 text-tide-700 px-2.5 py-0.5 text-xs font-semibold">Panel</span></p>
+        </li>
+        <li class="group flex flex-col items-center text-center">
+          <a target="_blank" rel="noopener noreferrer" href="https://toby.li/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/toby.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
+          <h4 class="mt-3 font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug text-balance"><a target="_blank" rel="noopener noreferrer" href="https://toby.li/" class="hover:underline">Toby Jia-Jun Li</a></h4>
+          <p class="text-sm text-ink-soft">University of Notre Dame</p>
+          <p class="mt-auto pt-2.5"><span class="inline-block rounded-full bg-tide-50 text-tide-700 px-2.5 py-0.5 text-xs font-semibold">Panel</span></p>
+        </li>
+        <li class="flex flex-col items-center text-center">
+          <span class="agent-avatar shrink-0 flex items-end justify-center overflow-hidden w-20 h-20 rounded-full border border-rule" aria-hidden="true"><img src="../assets/people/ai-agent.webp" alt="" width="320" height="320" loading="lazy" decoding="async" class="agent-avatar__img w-[88%] h-auto"></span>
+          <h4 class="mt-3 font-bold text-tide-900 text-lg leading-snug text-balance">An AI agent</h4>
+          <p class="mt-auto pt-2.5"><span class="inline-block rounded-full bg-tide-50 text-tide-700 px-2.5 py-0.5 text-xs font-semibold">Panel</span></p>
+        </li>
+      </ul>
+
+      <p class="mt-10">
+        <a href="program.html" class="inline-flex items-center gap-2 rounded-lg bg-tide-700 px-4 py-2.5 text-sm font-semibold text-paper hover:bg-ember-700 transition-colors">
+          View the full program
+          <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
+        </a>
+      </p>
+    </section>
+
     <!-- Organizers -->
-    <section id="organizers" class="mb-20" aria-labelledby="organizers-h">
+    <section id="organizers" class="mb-20 scroll-mt-20" aria-labelledby="organizers-h">
       <h2 id="organizers-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Organizers</h2>
 
       <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-7">
@@ -209,7 +427,7 @@
     <section id="connect" class="mb-20" aria-labelledby="connect-h">
       <h2 id="connect-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Connect with us!</h2>
       <div class="prose">
-        <p>We have created an opt-in Discord community that will support discussion, resource sharing, and connections before, during, and after the workshop. If you are interested in the broad topic of human-AI co-discovery, we encourage you to join our community!</p>
+        <p>We will create an opt-in Discord community that will support discussion, resource sharing, and connections before, during, and after the workshop. If you are interested in the broad topic of human-AI co-discovery, we encourage you to join our community!</p>
         <!-- Discord placeholder: when the invite is ready, add href="<invite URL>" target="_blank" rel="noopener noreferrer",
              remove aria-disabled and the opacity/cursor classes, and delete the "Coming soon" note. -->
         <div class="not-prose my-6 flex flex-wrap items-center gap-3">

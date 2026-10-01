@@ -40,12 +40,14 @@
           <span><span class="whitespace-nowrap">Human-AI Co-Discovery</span> <span class="whitespace-nowrap text-ember-500">@CHI&rsquo;27</span></span>
         </a>
 
-        <div class="hidden lg:flex gap-7 text-sm font-semibold text-ink-soft whitespace-nowrap">
+        <div class="hidden min-[880px]:flex gap-5 text-sm font-semibold text-ink-soft whitespace-nowrap">
           <a href="./" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Home</a>
           <a href="call-for-participation.html" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Call for Participation</a>
           <a href="program.html" aria-current="page" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Program</a>
+          <a href="program.html#speakers" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Speakers</a>
+          <a href="./#organizers" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Organizers</a>
         </div>
-        <button type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" class="group/menu lg:hidden shrink-0 grid place-items-center w-10 h-10 -mr-2 rounded-lg text-tide-900 hover:text-ember-700 hover:bg-tide-50 transition-colors">
+        <button type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" class="group/menu min-[880px]:hidden shrink-0 grid place-items-center w-10 h-10 -mr-2 rounded-lg text-tide-900 hover:text-ember-700 hover:bg-tide-50 transition-colors">
           <i data-lucide="menu" class="w-6 h-6 group-aria-expanded/menu:hidden" aria-hidden="true"></i>
           <i data-lucide="x" class="w-6 h-6 hidden group-aria-expanded/menu:block" aria-hidden="true"></i>
           <span class="sr-only">Menu</span>
@@ -54,11 +56,13 @@
       </div>
 
       <!-- Page links on small screens: a dropdown opened by the menu button -->
-      <div id="mobile-nav" hidden class="lg:hidden absolute inset-x-0 top-full bg-tide-25 pb-4">
+      <div id="mobile-nav" hidden class="min-[880px]:hidden absolute inset-x-0 top-full bg-tide-25 pb-4">
         <div class="max-w-4xl mx-auto px-3 flex flex-col gap-1 text-base font-semibold text-ink-soft">
           <a href="./" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Home</a>
           <a href="call-for-participation.html" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Call for Participation</a>
           <a href="program.html" aria-current="page" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Program</a>
+          <a href="program.html#speakers" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Speakers</a>
+          <a href="./#organizers" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Organizers</a>
         </div>
       </div>
     </div>
@@ -71,6 +75,31 @@
 
     <section class="mb-20" aria-labelledby="schedule-h">
       <h2 id="schedule-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Schedule</h2>
+
+      <!-- Discovery path: the program drawn as the eureka curve. Each stop links to its
+           schedule item below; main.js places it on the curve by its start minute (data-min). -->
+      <nav class="dp mb-14" aria-label="Program at a glance" data-discovery-path>
+        <div class="dp-session">
+          <p id="dp-s1" class="dp-kicker"><span class="dp-kicker-name">Session 1: Perspectives</span> <span class="dp-kicker-min">90 min</span></p>
+          <ol class="dp-stops" aria-labelledby="dp-s1">
+            <li><a class="dp-stop" href="#s1-welcome" data-min="5" aria-label="Welcome, 5 minutes"><span class="dp-node" aria-hidden="true"></span><span class="dp-name">Welcome</span> <span class="dp-min">5 min</span></a></li>
+            <li><a class="dp-stop" href="#s1-keynote" data-min="30" aria-label="Keynote with Q&amp;A, 30 minutes"><span class="dp-node dp-node--ring" aria-hidden="true"><i data-lucide="mic"></i></span><span class="dp-name">Keynote with Q&amp;A</span> <span class="dp-min">30 min</span></a></li>
+            <li><a class="dp-stop" href="#s1-lightning" data-min="25" aria-label="Lightning talks: first block, 25 minutes"><span class="dp-node" aria-hidden="true"></span><span class="dp-name">Lightning talks: first block</span> <span class="dp-min">25 min</span></a></li>
+            <li><a class="dp-stop" href="#s1-panel" data-min="30" aria-label="Human-AI panel discussion, 30 minutes"><span class="dp-node dp-node--ring" aria-hidden="true"><i data-lucide="messages-square"></i></span><span class="dp-name">Human-AI panel discussion</span> <span class="dp-min">30 min</span></a></li>
+          </ol>
+        </div>
+        <p class="dp-pause"><a class="dp-stop dp-stop--break" href="#break-h"><span class="dp-node dp-node--break" aria-hidden="true"><i data-lucide="coffee"></i></span><span class="dp-name">Conference coffee break and poster exchange</span></a></p>
+        <div class="dp-session">
+          <p id="dp-s2" class="dp-kicker"><span class="dp-kicker-name">Session 2: Co-Discovery</span> <span class="dp-kicker-min">90 min</span></p>
+          <ol class="dp-stops" aria-labelledby="dp-s2">
+            <li><a class="dp-stop" href="#s2-lightning" data-min="20" aria-label="Lightning talks: second block, 20 minutes"><span class="dp-node" aria-hidden="true"></span><span class="dp-name">Lightning talks: second block</span> <span class="dp-min">20 min</span></a></li>
+            <li><a class="dp-stop" href="#s2-roundtable" data-min="50" aria-label="Interactive roundtable activity, 50 minutes"><span class="dp-node dp-node--ring" aria-hidden="true"><i data-lucide="users"></i></span><span class="dp-name">Interactive roundtable activity</span> <span class="dp-min">50 min</span></a></li>
+            <li><a class="dp-stop" href="#s2-reports" data-min="15" aria-label="Group reports and collective discussion, 15 minutes"><span class="dp-node" aria-hidden="true"></span><span class="dp-name">Group reports and collective discussion</span> <span class="dp-min">15 min</span></a></li>
+            <li><a class="dp-stop dp-stop--eureka" href="#s2-closing" data-min="5" aria-label="Closing and next steps, 5 minutes"><span class="dp-node dp-node--spark" aria-hidden="true"><svg viewBox="-32 -32 64 64" focusable="false"><path class="dp-spark-rays" d="M19.4 8L28.6 11.9M8 19.4L10.3 24.9M-8 19.4L-11.9 28.6M-19.4 8L-24.9 10.3M-19.4 -8L-28.6 -11.9M-8 -19.4L-10.3 -24.9M8 -19.4L11.9 -28.6M19.4 -8L24.9 -10.3"/><path class="dp-spark-core" d="M0 -20Q3.5 -3.5 20 0Q3.5 3.5 0 20Q-3.5 3.5 -20 0Q-3.5 -3.5 0 -20Z"/><circle class="dp-spark-eye" r="2.6"/></svg></span><span class="dp-name">Closing and next steps</span> <span class="dp-min">5 min</span></a></li>
+          </ol>
+        </div>
+      </nav>
+
       <section aria-labelledby="session-1-h">
         <h3 id="session-1-h" class="text-xl font-bold text-tide-900 mb-4">Session 1: Perspectives</h3>
         <ol class="space-y-4">
@@ -111,7 +140,6 @@
           <span class="flex items-center gap-2 text-center"><i data-lucide="coffee" class="w-4 h-4 shrink-0" aria-hidden="true"></i>Conference coffee break and poster exchange</span>
           <span class="h-px flex-1 border-t border-dashed border-rule" aria-hidden="true"></span>
         </h3>
-        <p class="mt-3 text-center text-sm text-ink-soft">Authors are encouraged to share posters on their own devices during the conference coffee break to reduce printing.</p>
       </section>
 
       <section class="mt-12" aria-labelledby="session-2-h">
@@ -149,8 +177,8 @@
       </section>
     </section>
 
-    <section class="mb-20" aria-labelledby="speakers-h">
-      <h2 id="speakers-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Invited Guests</h2>
+    <section id="speakers" class="mb-20 scroll-mt-20" aria-labelledby="speakers-h">
+      <h2 id="speakers-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Invited Guests <span class="font-medium text-ink-soft">(tentative)</span></h2>
       <h3 class="mt-6 mb-3 font-semibold text-ink-soft">Keynote Speakers</h3>
       <ul class="grid grid-cols-1">
         <li class="group">
@@ -209,7 +237,7 @@
         </li>
         <li>
           <div class="flex items-center gap-4">
-            <span class="shrink-0 grid place-items-center w-16 h-16 rounded-full bg-tide-50 text-tide-700 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))]" aria-hidden="true"><i data-lucide="bot" class="w-7 h-7"></i></span>
+            <span class="agent-avatar shrink-0 flex items-end justify-center overflow-hidden w-16 h-16 rounded-full border border-rule" aria-hidden="true"><img src="../assets/people/ai-agent.webp" alt="" width="320" height="320" loading="lazy" decoding="async" class="agent-avatar__img w-[88%] h-auto"></span>
             <div class="min-w-0">
               <div class="flex items-center gap-1.5">
                 <h4 class="font-bold text-tide-900 text-lg leading-snug">An AI agent</h4>
