@@ -69,6 +69,48 @@ for (const toggle of document.querySelectorAll('[data-bio-toggle]')) {
   });
 }
 
+// Organizer research profiles connect the team, question cards, and selected work.
+// Names, bios, and links come from the existing cards and their local templates.
+const researchProfile = document.getElementById('research-profile');
+if (researchProfile) {
+  for (const opener of document.querySelectorAll('[data-profile-open]')) {
+    opener.addEventListener('click', () => {
+      const card = document.getElementById(`organizer-${opener.dataset.profileOpen}`);
+      if (!card) return;
+      const name = card.querySelector('h4 a');
+      const photo = card.querySelector('img');
+      researchProfile.querySelector('[data-profile-name]').textContent = name.textContent;
+      researchProfile.querySelector('[data-profile-institution]').textContent = card.querySelector('[data-profile-affiliation]').textContent;
+      researchProfile.querySelector('[data-profile-photo]').src = photo.currentSrc || photo.src;
+      researchProfile.querySelector('[data-profile-description]').textContent = card.querySelector('[data-profile-bio]').textContent;
+      researchProfile.querySelector('[data-profile-homepage]').href = name.href;
+      const tags = Array.from(card.querySelectorAll('.organizer-tags li'), (tag) => {
+        const label = document.createElement('span');
+        label.textContent = tag.textContent;
+        return label;
+      });
+      researchProfile.querySelector('[data-profile-tags]').replaceChildren(...tags);
+      researchProfile.querySelector('[data-profile-content-slot]').replaceChildren(card.querySelector('template').content.cloneNode(true));
+      researchProfile.showModal();
+      researchProfile.querySelector('.profile-dialog__body').scrollTop = 0;
+    });
+  }
+  researchProfile.addEventListener('click', (event) => {
+    if (event.target === researchProfile) {
+      researchProfile.close();
+      return;
+    }
+    const trigger = event.target.closest('[data-question-target]');
+    if (!trigger) return;
+    const question = document.getElementById(`question-${trigger.dataset.questionTarget}`);
+    if (!question) return;
+    researchProfile.close();
+    question.querySelector('details').open = true;
+    question.scrollIntoView({ block: 'start' });
+    question.querySelector('summary').focus({ preventScroll: true });
+  });
+}
+
 // Mobile menu: the menu button drops down the page links; Escape or a click outside closes it.
 const menuToggle = document.querySelector('[data-menu-toggle]');
 const menu = menuToggle ? document.getElementById(menuToggle.getAttribute('aria-controls')) : null;

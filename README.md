@@ -9,7 +9,7 @@ Website for Human-AI Co-Discovery, exploring how people and AI discover new ques
 | Path | Page |
 | --- | --- |
 | `index.html` | Community home page, with links to events |
-| `chi2027/index.html` | *Whose Eureka? Human-AI Co-Discovery of Knowledge*, the proposed CHI 2027 workshop: title with the eureka illustration over the discovery field, overview with Figure 1 (opens full size), the four workshop questions as expandable cards, the CFP entry point, a program summary with the program timeline and the invited guests, organizers with expandable bios, and a Connect section on the Discord community |
+| `chi2027/index.html` | *Whose Eureka? Human-AI Co-Discovery of Knowledge*, the proposed CHI 2027 workshop: title with the eureka illustration over the discovery field, overview with Figure 1 (opens full size), the four workshop questions as expandable cards, the CFP entry point, a program summary with the program timeline and the invited guests, organizers with research profiles, and a Connect section on the Discord community |
 | `chi2027/call-for-participation.html` | Dedicated CFP page: proposal status, participation and submission essentials first, followed by key dates, a short workshop introduction, contribution types and all eight topics grouped under the four questions, activities, follow-up plans, accessibility, and optional readings |
 | `chi2027/program.html` | Dedicated tentative program: a timeline of the day drawn as the eureka curve, two 90-minute sessions, poster exchange during the coffee break, keynote and panel, and how participants take part |
 | `chi2027/assets/css/workshop.css` | Color tokens (light and dark, including the Q1–Q4 question colors) and the few rules Tailwind utilities do not cover, such as the home hero illustration, the question cards, and the program timeline, for the CHI 2027 pages only |
@@ -25,7 +25,7 @@ Website for Human-AI Co-Discovery, exploring how people and AI discover new ques
 The site is plain HTML with no build step: edit a file and push to `main`.
 
 - **Home page** (`index.html`): hand-written CSS in `assets/style.css`, with Inter from Google Fonts.
-- **CHI 2027 pages** (`chi2027/`): a fluid single-column layout with generous side margins, 18px body text on phones and 20px on larger screens, and 16px navigation links. The four expandable question cards stack in one column. The pages retain their plain background, topic lists, and program timeline above the schedule list. The navigation switches to a menu below 1120px to keep the larger links from crowding the logo. They use the Tailwind CSS Play CDN with the Typography plugin (pinned to 3.4.16), Inter from Google Fonts, and Lucide icons (pinned to 0.460.0). Their CSS and scripts live in `chi2027/assets/` and are independent of the home page's. Tailwind colors resolve to CSS variables in `chi2027/assets/css/workshop.css`, so dark mode follows `prefers-color-scheme` without `dark:` classes. The browser console shows Tailwind's "should not be used in production" warning; that is expected with the Play CDN.
+- **CHI 2027 pages** (`chi2027/`): a fluid single-column layout with generous side margins, 18px body text on phones and 20px on larger screens, and 16px navigation links. The four expandable question cards stack in one column and connect to related readings, activities, and organizer profiles. Organizers appear four per row on wide screens, two per row on tablets, and one per row on phones. The pages retain their plain background, topic lists, and program timeline above the schedule list. The navigation switches to a menu below 1120px to keep the larger links from crowding the logo. They use the Tailwind CSS Play CDN with the Typography plugin (pinned to 3.4.16), Inter from Google Fonts, and Lucide icons (pinned to 0.460.0). Their CSS and scripts live in `chi2027/assets/` and are independent of the home page's. Tailwind colors resolve to CSS variables in `chi2027/assets/css/workshop.css`, so dark mode follows `prefers-color-scheme` without `dark:` classes. The browser console shows Tailwind's "should not be used in production" warning; that is expected with the Play CDN.
 
 The Play CDN injects its styles after `workshop.css`, so a Tailwind utility wins over a rule there with the same specificity. Keep `workshop.css` to properties the pages do not also set with utilities. The active nav link (the current page, or the section being read on the home page) is styled with a single `[&[aria-current]]` variant, which covers both `aria-current="page"` and `aria-current="true"`.
 
@@ -52,6 +52,12 @@ The pages currently describe the workshop as **proposed**. Daniel McDuff is supp
 Keep the text consistent with the organizers' workshop proposal, especially the call for participation.
 
 The program was reconciled with proposal commit `a8865ef` (`sections/activities.tex`) on 2026-09-29: 30-minute keynote, 30-minute panel, poster exchange during the conference coffee break, a second 20-minute lightning-talk block, and seven roundtable groups. The 50-minute roundtable block includes reflection and discussion.
+
+## Research profiles and question links
+
+The Home page connects each workshop question to two selected readings, a program activity, and organizers with related interests. Each organizer's **Research profile** opens a native dialog with their existing bio, research-interest tags, two selected publications, and buttons that open the relevant questions. Escape and the close button dismiss the dialog; clicking a question returns focus to that question. These thematic connections are editorial suggestions, not exclusive assignments of expertise.
+
+Edit the research-interest tags and publication links in each `organizer-*` card in `chi2027/index.html`; the dialog reuses the card's name, affiliation, photo, and bio. Its `<template data-profile-content>` holds the related questions and selected papers. Keep publication metadata consistent with the CFP readings and proposal bibliography, and label preprints explicitly.
 
 ## Organizer photos
 
