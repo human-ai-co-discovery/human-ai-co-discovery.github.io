@@ -88,7 +88,7 @@ if (menu) {
   document.addEventListener('click', (event) => {
     if (!menu.hidden && !navbar.contains(event.target)) setMenu(false);
   });
-  window.matchMedia('(min-width: 880px)').addEventListener('change', (event) => {
+  window.matchMedia('(min-width: 1120px)').addEventListener('change', (event) => {
     if (event.matches) setMenu(false);
   });
 }

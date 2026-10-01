@@ -10,6 +10,7 @@
    rules below avoid properties that the pages also set with utilities. */
 
 :root {
+  --page-gutter: clamp(1.5rem, 8vw, 12rem);
   --paper: 249 250 251;
   --surface: 255 255 255;
   --ink: 36 64 75;
@@ -85,6 +86,19 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   font-size: 16px;
+}
+
+/* Fluid single-column reading space, with generous margins on wider screens. */
+.page-container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--page-gutter);
+}
+#mobile-nav .page-container {
+  padding-inline: calc(var(--page-gutter) - 0.75rem);
+}
+@media (max-width: 639px) {
+  :root { --page-gutter: 1.5rem; }
 }
 
 /* ------------------------------------------------------------------
@@ -164,7 +178,7 @@ html {
 
 /* The title's gloss is centered under "Eureka?"; on the narrowest phones it
    narrows so that it stays inside the page. */
-#title-gloss { max-width: calc(100vw - 6rem); }
+#title-gloss { max-width: calc(100vw - 8rem); }
 
 /* Figure 1 has white panels on a transparent background, so it sits on white
    in both themes (dimmed slightly in dark mode), inline and full size. */
@@ -195,14 +209,6 @@ html {
 [data-q="3"] { --qc: var(--q3); --qs: var(--q3-soft); }
 [data-q="4"] { --qc: var(--q4); --qs: var(--q4-soft); }
 
-/* Cards in a row share its height when both are closed or both are open. In a row with
-   one open card, neither stretches, so the closed card does not become an empty box. */
-@media (min-width: 768px) {
-  #questions > li:nth-child(odd):has(> details[open]):has(+ li > details:not([open])),
-  #questions > li:nth-child(odd):has(> details:not([open])):has(+ li > details[open]),
-  #questions > li:nth-child(odd):has(> details[open]) + li:has(> details:not([open])),
-  #questions > li:nth-child(odd):has(> details:not([open])) + li:has(> details[open]) { align-self: start; }
-}
 .q-card > details {
   height: 100%;
   background: rgb(var(--qs));

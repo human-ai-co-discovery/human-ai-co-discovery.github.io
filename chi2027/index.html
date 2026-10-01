@@ -28,26 +28,26 @@
   <!-- Tokens and the few rules Tailwind does not cover -->
   <link rel="stylesheet" href="assets/css/workshop.css">
 </head>
-<body class="text-ink antialiased font-sans font-normal text-base leading-relaxed selection:bg-ember-200 selection:text-tide-900">
+<body class="text-ink antialiased font-sans font-normal text-lg sm:text-xl leading-relaxed selection:bg-ember-200 selection:text-tide-900">
   <a class="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[60] focus:rounded-lg focus:bg-tide-900 focus:px-4 focus:py-2 focus:text-paper focus:font-semibold" href="#main">Skip to content</a>
 
   <!-- Navigation -->
   <nav id="navbar" data-nav-fade="#title" class="sticky top-0 z-50 bg-[rgb(var(--tide-25)/var(--nav-fill,0))] [&[data-menu-open]]:bg-tide-25" aria-label="Workshop pages">
-    <div class="max-w-4xl mx-auto px-6">
+    <div class="page-container">
       <div class="flex justify-between h-16 items-center gap-4">
-        <a href="../chi2027/" class="flex items-center gap-2.5 min-w-0 font-bold text-tide-900 text-base sm:text-xl leading-tight tracking-tight hover:text-ember-500 hover:underline underline-offset-4 decoration-2 transition-colors">
+        <a href="./" class="flex items-center gap-2.5 min-w-0 font-bold text-tide-900 text-base sm:text-xl leading-tight tracking-tight hover:text-ember-500 hover:underline underline-offset-4 decoration-2 transition-colors">
           <img src="../assets/brand/avatar-teal.svg" alt="" width="28" height="28" class="w-7 h-7 shrink-0 rounded-md">
           <span><span class="whitespace-nowrap">Human-AI Co-Discovery</span> <span class="whitespace-nowrap text-ember-500">@CHI&rsquo;27</span></span>
         </a>
 
-        <div class="hidden min-[880px]:flex gap-5 text-sm font-semibold text-ink-soft whitespace-nowrap">
+        <div class="hidden min-[1120px]:flex gap-5 text-base font-semibold text-ink-soft whitespace-nowrap">
           <a href="./" aria-current="page" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Home</a>
           <a href="call-for-participation.html" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Call for Participation</a>
           <a href="program.html" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Program</a>
           <a href="program.html#speakers" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Speakers</a>
           <a href="./#organizers" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Organizers</a>
         </div>
-        <button type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" class="group/menu min-[880px]:hidden shrink-0 grid place-items-center w-10 h-10 -mr-2 rounded-lg text-tide-900 hover:text-ember-700 hover:bg-tide-50 transition-colors">
+        <button type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" class="group/menu min-[1120px]:hidden shrink-0 grid place-items-center w-10 h-10 -mr-2 rounded-lg text-tide-900 hover:text-ember-700 hover:bg-tide-50 transition-colors">
           <i data-lucide="menu" class="w-6 h-6 group-aria-expanded/menu:hidden" aria-hidden="true"></i>
           <i data-lucide="x" class="w-6 h-6 hidden group-aria-expanded/menu:block" aria-hidden="true"></i>
           <span class="sr-only">Menu</span>
@@ -56,8 +56,8 @@
       </div>
 
       <!-- Page links on small screens: a dropdown opened by the menu button -->
-      <div id="mobile-nav" hidden class="min-[880px]:hidden absolute inset-x-0 top-full bg-tide-25 pb-4">
-        <div class="max-w-4xl mx-auto px-3 flex flex-col gap-1 text-base font-semibold text-ink-soft">
+      <div id="mobile-nav" hidden class="min-[1120px]:hidden absolute inset-x-0 top-full bg-tide-25 pb-4">
+        <div class="page-container flex flex-col gap-1 text-base font-semibold text-ink-soft">
           <a href="./" aria-current="page" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Home</a>
           <a href="call-for-participation.html" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Call for Participation</a>
           <a href="program.html" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Program</a>
@@ -69,7 +69,7 @@
   </nav>
 
   <!-- Main Content -->
-  <main id="main" class="max-w-4xl mx-auto px-6 py-10 sm:py-12">
+  <main id="main" class="page-container py-10 sm:py-12">
 
     <!-- Header: title, eureka illustration, and the discovery field behind both -->
     <header class="hero relative mb-10 pb-5 md:py-12 flex flex-col gap-8 md:flex-row md:items-center md:justify-between md:gap-10" data-field-host>
@@ -89,9 +89,9 @@
             <button type="button" data-gloss aria-describedby="title-gloss"
               class="text-ember-500 italic cursor-auto">Eureka?</button>
             <span id="title-gloss" aria-hidden="true"
-              class="pointer-events-none invisible opacity-0 translate-y-1 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 transition duration-150 absolute left-1/2 top-full z-40 mt-4 w-72 sm:w-80 -translate-x-1/2 rounded-lg bg-tide-900 px-4 py-3 text-left text-sm font-normal leading-relaxed tracking-normal text-paper shadow-lg">
+              class="pointer-events-none invisible opacity-0 translate-y-1 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 transition duration-150 absolute left-1/2 top-full z-40 mt-4 w-72 sm:w-80 -translate-x-1/2 rounded-lg bg-tide-900 px-4 py-3 text-left text-base font-normal leading-relaxed tracking-normal text-paper shadow-lg">
               <span class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rotate-45 bg-tide-900" aria-hidden="true"></span>
-              A <em class="not-italic font-bold">eureka</em> is the moment something new becomes clear. When people and AI make discoveries together, we ask whose moment it is: new to whom, whose understanding changed, and who steered the inquiry and gets the credit.
+              A <em class="not-italic font-bold">eureka</em> moment is when something suddenly becomes clear. When people and AI make a discovery together, we ask: Is it new to a person, a team, or a field? Whose understanding changes? Who guides the inquiry, and who gets the credit?
             </span>
           </span>
         </h1>
@@ -203,13 +203,13 @@
     <section id="about" class="mt-16 mb-20" aria-label="About">
       <div class="prose">
         <p>AI systems increasingly help formulate ideas, explore data, and develop explanations. Yet a plausible or useful finding does not necessarily expand or deepen human knowledge. Discovery and understanding can reinforce one another: an unexpected connection may change how people frame a problem and what they ask next.</p>
-        <p>This workshop explores human-AI co-discovery of knowledge: how people and AI develop new questions, connections, and explanations together. We invite researchers and practitioners to examine human agency, evidence, learning, and the recognition of contributions, and to develop a shared research agenda for discovery with AI.</p>
+        <p>This workshop explores human-AI co-discovery of knowledge: how people and AI develop new questions, connections, and explanations together. We invite researchers and practitioners to discuss agency, evidence, learning, and how contributions are recognized, and to help shape a shared research agenda for discovery with AI.</p>
       </div>
 
       <figure class="mt-10">
         <div class="figure-plate group relative rounded-2xl border border-rule p-3 sm:p-5 shadow-[0_1px_2px_rgb(var(--tide-900)/0.06)]">
           <picture>
-            <source type="image/webp" srcset="assets/image/figure-1-1200.webp 1200w, assets/image/figure-1-2400.webp 2400w" sizes="(min-width: 56rem) 50rem, calc(100vw - 5rem)">
+            <source type="image/webp" srcset="assets/image/figure-1-1200.webp 1200w, assets/image/figure-1-2400.webp 2400w" sizes="(min-width: 2400px) calc(100vw - 24rem), 84vw">
             <img src="assets/image/figure-1-1200.png" width="1200" height="357" loading="lazy" decoding="async" class="block w-full h-auto" aria-describedby="figure-1-desc"
               alt="Figure 1: a researcher and an AI assistant develop an inquiry about notifications in three steps (formulate questions; explore unexpected connections; construct, challenge, and revise explanations).">
           </picture>
@@ -227,7 +227,7 @@
         </figcaption>
       </figure>
 
-      <ul id="questions" class="mt-10 grid gap-4 md:grid-cols-2 md:gap-5">
+      <ul id="questions" class="mt-10 grid gap-4 md:gap-5">
         <li class="q-card min-w-0" data-q="1">
           <details>
             <summary>
@@ -251,7 +251,7 @@
               </span>
               <span class="q-card__title">How do people guide co-discovery, and how are contributions recognized?</span>
             </summary>
-            <p>As people delegate work to AI, they decide when to intervene, revise a plan, or decline assistance, and records of decisions and revisions can make human and AI contributions visible. How should credit, intellectual ownership, and responsibility be understood and negotiated when discoveries emerge from human-AI collaboration?</p>
+            <p>As people delegate work to AI, they decide when to intervene, revise a plan, or decline assistance. Records of decisions and revisions can make human and AI contributions visible. How should people negotiate credit, intellectual ownership, and responsibility for discoveries that emerge from human-AI collaboration?</p>
           </details>
         </li>
         <li class="q-card min-w-0" data-q="3">
@@ -264,7 +264,7 @@
               </span>
               <span class="q-card__title">What do people come to understand through co-discovery?</span>
             </summary>
-            <p>Human-AI co-discovery may change how people frame a problem, what they notice, and what they ask next, even when an investigation remains inconclusive. How can reflection, learning, and changes in understanding be recognized alongside the findings that people and AI produce?</p>
+            <p>Human-AI co-discovery may change how people frame a problem, what they notice, and what they ask next, even when an investigation remains inconclusive. How can we recognize reflection, learning, and changes in understanding alongside the findings that people and AI produce?</p>
           </details>
         </li>
         <li class="q-card min-w-0" data-q="4">
@@ -277,7 +277,7 @@
               </span>
               <span class="q-card__title">What counts as a discovery, for whom, and on what evidence?</span>
             </summary>
-            <p>Is an insight new to an individual, a team, or a field, and do its claims hold up against counter-evidence or alternative explanations? Concerns about scientific monocultures also raise the question of whether co-discovery can broaden, rather than narrow, the questions a community pursues.</p>
+            <p>Is an insight new to an individual, a team, or a field? Do its claims hold up against counter-evidence or alternative explanations? Concerns about scientific monocultures, where research converges on similar ideas and approaches, also raise a question: can co-discovery broaden the questions a community pursues?</p>
           </details>
         </li>
       </ul>
@@ -285,7 +285,7 @@
       <aside class="mt-8 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 bg-tide-50 border border-tide-100 rounded-xl p-6" aria-label="Call for participation">
         <i data-lucide="info" class="hidden sm:block w-6 h-6 text-tide-700 shrink-0" aria-hidden="true"></i>
         <p class="flex-1 min-w-0">We welcome position papers, empirical studies, system descriptions, design concepts, critical perspectives, and work in progress on human-AI co-discovery.</p>
-        <a href="call-for-participation.html" class="self-start sm:self-auto shrink-0 inline-flex items-center gap-2 rounded-lg bg-tide-700 px-4 py-2.5 text-sm font-semibold text-paper hover:bg-ember-700 transition-colors">
+        <a href="call-for-participation.html" class="self-start sm:self-auto shrink-0 inline-flex items-center gap-2 rounded-lg bg-tide-700 px-4 py-2.5 text-base font-semibold text-paper hover:bg-ember-700 transition-colors">
           Call for Participation
           <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
         </a>
@@ -329,19 +329,19 @@
         <li class="group flex flex-col items-center text-center">
           <a target="_blank" rel="noopener noreferrer" href="https://danmcduff.github.io/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/daniel.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
           <h4 class="mt-3 font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug text-balance"><a target="_blank" rel="noopener noreferrer" href="https://danmcduff.github.io/" class="hover:underline">Daniel McDuff</a></h4>
-          <p class="text-sm text-ink-soft">Google Research</p>
+          <p class="text-base text-ink-soft">Google Research</p>
           <p class="mt-auto pt-2.5"><span class="inline-block rounded-full bg-ember-50 text-ember-700 px-2.5 py-0.5 text-xs font-semibold">Keynote and panel</span></p>
         </li>
         <li class="group flex flex-col items-center text-center">
           <a target="_blank" rel="noopener noreferrer" href="https://www.cs.cmu.edu/~sherryw/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/sherry.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
           <h4 class="mt-3 font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug text-balance"><a target="_blank" rel="noopener noreferrer" href="https://www.cs.cmu.edu/~sherryw/" class="hover:underline">Sherry Tongshuang Wu</a></h4>
-          <p class="text-sm text-ink-soft">Carnegie Mellon University</p>
+          <p class="text-base text-ink-soft">Carnegie Mellon University</p>
           <p class="mt-auto pt-2.5"><span class="inline-block rounded-full bg-tide-50 text-tide-700 px-2.5 py-0.5 text-xs font-semibold">Panel</span></p>
         </li>
         <li class="group flex flex-col items-center text-center">
           <a target="_blank" rel="noopener noreferrer" href="https://toby.li/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/toby.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
           <h4 class="mt-3 font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug text-balance"><a target="_blank" rel="noopener noreferrer" href="https://toby.li/" class="hover:underline">Toby Jia-Jun Li</a></h4>
-          <p class="text-sm text-ink-soft">University of Notre Dame</p>
+          <p class="text-base text-ink-soft">University of Notre Dame</p>
           <p class="mt-auto pt-2.5"><span class="inline-block rounded-full bg-tide-50 text-tide-700 px-2.5 py-0.5 text-xs font-semibold">Panel</span></p>
         </li>
         <li class="flex flex-col items-center text-center">
@@ -352,7 +352,7 @@
       </ul>
 
       <p class="mt-10">
-        <a href="program.html" class="inline-flex items-center gap-2 rounded-lg bg-tide-700 px-4 py-2.5 text-sm font-semibold text-paper hover:bg-ember-700 transition-colors">
+        <a href="program.html" class="inline-flex items-center gap-2 rounded-lg bg-tide-700 px-4 py-2.5 text-base font-semibold text-paper hover:bg-ember-700 transition-colors">
           View the full program
           <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
         </a>
@@ -369,104 +369,104 @@
             <a target="_blank" rel="noopener noreferrer" href="https://zhihanjiang.com/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/zhihan.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
             <div class="min-w-0">
               <div class="flex items-center gap-1.5"><h4 class="font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug"><a target="_blank" rel="noopener noreferrer" href="https://zhihanjiang.com/" class="hover:underline">Zhihan Jiang</a></h4><button type="button" data-bio-toggle aria-expanded="false" aria-controls="bio-zhihan" class="group/bio shrink-0 grid place-items-center w-6 h-6 text-tide-700 hover:text-ember-700 transition-colors"><i data-lucide="chevron-down" class="w-4 h-4 group-aria-expanded/bio:hidden" aria-hidden="true"></i><i data-lucide="chevron-up" class="w-4 h-4 hidden group-aria-expanded/bio:block" aria-hidden="true"></i><span class="sr-only">Bio of Zhihan Jiang</span></button></div>
-              <p class="text-sm text-ink-soft">Columbia University</p>
+              <p class="text-base text-ink-soft">Columbia University</p>
             </div>
           </div>
-          <p id="bio-zhihan" hidden class="mt-3 text-sm text-ink-soft leading-relaxed">Her research focuses on human-AI co-sensemaking, examining how people interpret complex data and develop their own understanding through interaction with AI. She has built visual analytics for exploring children's health through multimodal data and a knowledge-empowered AI assistant for dietary monitoring, and has proposed student-AI collaborative inquiry for learning.</p>
+          <p id="bio-zhihan" hidden class="mt-3 text-base text-ink-soft leading-relaxed">Her research focuses on human-AI co-sensemaking, examining how people interpret complex data and develop their own understanding through interaction with AI. She has built visual analytics tools for exploring children's health through multimodal data and a knowledge-empowered AI assistant for dietary monitoring. She has also proposed student-AI collaborative inquiry for learning.</p>
         </li>
         <li class="group">
           <div class="flex items-center gap-4">
             <a target="_blank" rel="noopener noreferrer" href="https://wangyifang.top/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/yifang.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
             <div class="min-w-0">
               <div class="flex items-center gap-1.5"><h4 class="font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug"><a target="_blank" rel="noopener noreferrer" href="https://wangyifang.top/" class="hover:underline">Yifang Wang</a></h4><button type="button" data-bio-toggle aria-expanded="false" aria-controls="bio-yifang" class="group/bio shrink-0 grid place-items-center w-6 h-6 text-tide-700 hover:text-ember-700 transition-colors"><i data-lucide="chevron-down" class="w-4 h-4 group-aria-expanded/bio:hidden" aria-hidden="true"></i><i data-lucide="chevron-up" class="w-4 h-4 hidden group-aria-expanded/bio:block" aria-hidden="true"></i><span class="sr-only">Bio of Yifang Wang</span></button></div>
-              <p class="text-sm text-ink-soft">Florida State University</p>
+              <p class="text-base text-ink-soft">Florida State University</p>
             </div>
           </div>
-          <p id="bio-yifang" hidden class="mt-3 text-sm text-ink-soft leading-relaxed">Her research connects data visualization, human-AI collaboration, and AI agents for scientific discovery and decision-making. She develops systems that help researchers express intent, explore complex information, and guide evolving analyses, as well as visual analytics platforms for analyzing the science ecosystem and facilitating science policy-making.</p>
+          <p id="bio-yifang" hidden class="mt-3 text-base text-ink-soft leading-relaxed">Her research connects data visualization, human-AI collaboration, and AI agents for scientific discovery and decision-making. She develops systems that help researchers express intent, explore complex information, and guide evolving analyses. Her visual analytics platforms also help analyze the science ecosystem and inform science policy.</p>
         </li>
         <li class="group">
           <div class="flex items-center gap-4">
             <a target="_blank" rel="noopener noreferrer" href="https://ruishizou.github.io/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/ruishi.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
             <div class="min-w-0">
               <div class="flex items-center gap-1.5"><h4 class="font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug"><a target="_blank" rel="noopener noreferrer" href="https://ruishizou.github.io/" class="hover:underline">Ruishi Zou</a></h4><button type="button" data-bio-toggle aria-expanded="false" aria-controls="bio-ruishi" class="group/bio shrink-0 grid place-items-center w-6 h-6 text-tide-700 hover:text-ember-700 transition-colors"><i data-lucide="chevron-down" class="w-4 h-4 group-aria-expanded/bio:hidden" aria-hidden="true"></i><i data-lucide="chevron-up" class="w-4 h-4 hidden group-aria-expanded/bio:block" aria-hidden="true"></i><span class="sr-only">Bio of Ruishi Zou</span></button></div>
-              <p class="text-sm text-ink-soft">Harvard University</p>
+              <p class="text-base text-ink-soft">Harvard University</p>
             </div>
           </div>
-          <p id="bio-ruishi" hidden class="mt-3 text-sm text-ink-soft leading-relaxed">His research seeks to help users make sense of complex information (knowledge-intensive text and data) through intelligent, interactive interfaces. His recent interests include how graphics can contribute to knowledge dissemination.</p>
+          <p id="bio-ruishi" hidden class="mt-3 text-base text-ink-soft leading-relaxed">His research explores how intelligent, interactive interfaces can help people make sense of complex texts and data. He is also interested in how graphics can help people communicate knowledge.</p>
         </li>
         <li class="group">
           <div class="flex items-center gap-4">
             <a target="_blank" rel="noopener noreferrer" href="https://shiyuxu.me/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/shiyu.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
             <div class="min-w-0">
               <div class="flex items-center gap-1.5"><h4 class="font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug"><a target="_blank" rel="noopener noreferrer" href="https://shiyuxu.me/" class="hover:underline">Shiyu Xu</a></h4><button type="button" data-bio-toggle aria-expanded="false" aria-controls="bio-shiyu" class="group/bio shrink-0 grid place-items-center w-6 h-6 text-tide-700 hover:text-ember-700 transition-colors"><i data-lucide="chevron-down" class="w-4 h-4 group-aria-expanded/bio:hidden" aria-hidden="true"></i><i data-lucide="chevron-up" class="w-4 h-4 hidden group-aria-expanded/bio:block" aria-hidden="true"></i><span class="sr-only">Bio of Shiyu Xu</span></button></div>
-              <p class="text-sm text-ink-soft">University of Michigan</p>
+              <p class="text-base text-ink-soft">University of Michigan</p>
             </div>
           </div>
-          <p id="bio-shiyu" hidden class="mt-3 text-sm text-ink-soft leading-relaxed">She studies human-centered intelligent systems for sensemaking in everyday and clinical settings. Her research interests include how narrative and visual representations support evidence interpretation and how collaborative learning fosters reflection and understanding.</p>
+          <p id="bio-shiyu" hidden class="mt-3 text-base text-ink-soft leading-relaxed">She studies human-centered intelligent systems for sensemaking in everyday and clinical settings. Her interests include how narratives and visual representations help people interpret evidence, and how collaborative learning supports reflection and understanding.</p>
         </li>
         <li class="group">
           <div class="flex items-center gap-4">
             <a target="_blank" rel="noopener noreferrer" href="https://dylansheng.github.io/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/rui.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
             <div class="min-w-0">
               <div class="flex items-center gap-1.5"><h4 class="font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug"><a target="_blank" rel="noopener noreferrer" href="https://dylansheng.github.io/" class="hover:underline">Rui Sheng</a></h4><button type="button" data-bio-toggle aria-expanded="false" aria-controls="bio-rui" class="group/bio shrink-0 grid place-items-center w-6 h-6 text-tide-700 hover:text-ember-700 transition-colors"><i data-lucide="chevron-down" class="w-4 h-4 group-aria-expanded/bio:hidden" aria-hidden="true"></i><i data-lucide="chevron-up" class="w-4 h-4 hidden group-aria-expanded/bio:block" aria-hidden="true"></i><span class="sr-only">Bio of Rui Sheng</span></button></div>
-              <p class="text-sm text-ink-soft">Northeastern University</p>
+              <p class="text-base text-ink-soft">Northeastern University</p>
             </div>
           </div>
-          <p id="bio-rui" hidden class="mt-3 text-sm text-ink-soft leading-relaxed">Rui's research combines human-AI collaboration and visual analytics to support scientific inquiry and reasoning with complex information. His work examines how interactive representations help people inspect computational processes, assess evidence, and diagnose failures in AI-assisted analysis.</p>
+          <p id="bio-rui" hidden class="mt-3 text-base text-ink-soft leading-relaxed">Rui's research combines human-AI collaboration and visual analytics to support scientific inquiry and reasoning with complex information. His work examines how interactive representations help people inspect computational processes, assess evidence, and diagnose failures in AI-assisted analysis.</p>
         </li>
         <li class="group">
           <div class="flex items-center gap-4">
             <a target="_blank" rel="noopener noreferrer" href="https://samuelschmidgall.github.io/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/samuel.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
             <div class="min-w-0">
               <div class="flex items-center gap-1.5"><h4 class="font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug"><a target="_blank" rel="noopener noreferrer" href="https://samuelschmidgall.github.io/" class="hover:underline">Samuel Schmidgall</a></h4><button type="button" data-bio-toggle aria-expanded="false" aria-controls="bio-samuel" class="group/bio shrink-0 grid place-items-center w-6 h-6 text-tide-700 hover:text-ember-700 transition-colors"><i data-lucide="chevron-down" class="w-4 h-4 group-aria-expanded/bio:hidden" aria-hidden="true"></i><i data-lucide="chevron-up" class="w-4 h-4 hidden group-aria-expanded/bio:block" aria-hidden="true"></i><span class="sr-only">Bio of Samuel Schmidgall</span></button></div>
-              <p class="text-sm text-ink-soft">Google DeepMind</p>
+              <p class="text-base text-ink-soft">Google DeepMind</p>
             </div>
           </div>
-          <p id="bio-samuel" hidden class="mt-3 text-sm text-ink-soft leading-relaxed">His research focuses on AI for scientific discovery, including agent-based research workflows and the evaluation of AI judgments about scientific ideas. He studies how human guidance can shape automated research workflows and improve the quality of their outcomes.</p>
+          <p id="bio-samuel" hidden class="mt-3 text-base text-ink-soft leading-relaxed">His research focuses on AI for scientific discovery, including agent-based research workflows and the evaluation of AI judgments about scientific ideas. He studies how human guidance can shape automated research workflows and improve the quality of their outcomes.</p>
         </li>
         <li class="group">
           <div class="flex items-center gap-4">
             <a target="_blank" rel="noopener noreferrer" href="https://chenhaot.com/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/chenhao.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
             <div class="min-w-0">
               <div class="flex items-center gap-1.5"><h4 class="font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug"><a target="_blank" rel="noopener noreferrer" href="https://chenhaot.com/" class="hover:underline">Chenhao Tan</a></h4><button type="button" data-bio-toggle aria-expanded="false" aria-controls="bio-chenhao" class="group/bio shrink-0 grid place-items-center w-6 h-6 text-tide-700 hover:text-ember-700 transition-colors"><i data-lucide="chevron-down" class="w-4 h-4 group-aria-expanded/bio:hidden" aria-hidden="true"></i><i data-lucide="chevron-up" class="w-4 h-4 hidden group-aria-expanded/bio:block" aria-hidden="true"></i><span class="sr-only">Bio of Chenhao Tan</span></button></div>
-              <p class="text-sm text-ink-soft">University of Chicago</p>
+              <p class="text-base text-ink-soft">University of Chicago</p>
             </div>
           </div>
-          <p id="bio-chenhao" hidden class="mt-3 text-sm text-ink-soft leading-relaxed">His recent work focuses on AI &amp; Scientific Discovery. He has worked on hypothesis generation, AI scientists, and evaluation and verification of scientific products.</p>
+          <p id="bio-chenhao" hidden class="mt-3 text-base text-ink-soft leading-relaxed">His recent work focuses on AI for scientific discovery. His work includes hypothesis generation, AI scientists, and methods for evaluating and verifying scientific research outputs.</p>
         </li>
         <li class="group">
           <div class="flex items-center gap-4">
             <a target="_blank" rel="noopener noreferrer" href="https://orsonxu.com/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/orson.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
             <div class="min-w-0">
               <div class="flex items-center gap-1.5"><h4 class="font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug"><a target="_blank" rel="noopener noreferrer" href="https://orsonxu.com/" class="hover:underline">Xuhai “Orson” Xu</a></h4><button type="button" data-bio-toggle aria-expanded="false" aria-controls="bio-orson" class="group/bio shrink-0 grid place-items-center w-6 h-6 text-tide-700 hover:text-ember-700 transition-colors"><i data-lucide="chevron-down" class="w-4 h-4 group-aria-expanded/bio:hidden" aria-hidden="true"></i><i data-lucide="chevron-up" class="w-4 h-4 hidden group-aria-expanded/bio:block" aria-hidden="true"></i><span class="sr-only">Bio of Xuhai “Orson” Xu</span></button></div>
-              <p class="text-sm text-ink-soft">Columbia University</p>
+              <p class="text-base text-ink-soft">Columbia University</p>
             </div>
           </div>
-          <p id="bio-orson" hidden class="mt-3 text-sm text-ink-soft leading-relaxed">His research spans human-AI interaction, ubiquitous computing, and health informatics, from modeling behavior with everyday sensor data to designing AI agents and explanations that support decisions by individuals and experts. His work examines how intelligent interfaces shape people's understanding, reliance, and decision-making, and how these effects vary across levels of expertise.</p>
+          <p id="bio-orson" hidden class="mt-3 text-base text-ink-soft leading-relaxed">His research spans human-AI interaction, ubiquitous computing, and health informatics. He models behavior with everyday sensor data and designs AI agents and explanations to support decisions by individuals and experts. He examines how intelligent interfaces shape people's understanding, reliance, and decision-making, including how these effects vary with expertise.</p>
         </li>
       </ul>
 
     </section>
 
     <section id="connect" class="mb-20" aria-labelledby="connect-h">
-      <h2 id="connect-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Connect with us!</h2>
+      <h2 id="connect-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Stay connected</h2>
       <div class="prose">
-        <p>We will create an opt-in Discord community that will support discussion, resource sharing, and connections before, during, and after the workshop. If you are interested in the broad topic of human-AI co-discovery, we encourage you to join our community!</p>
+        <p>We will open an opt-in Discord community for discussion and resource sharing before, during, and after the workshop. Anyone interested in human-AI co-discovery is welcome.</p>
         <!-- Discord placeholder: when the invite is ready, add href="<invite URL>" target="_blank" rel="noopener noreferrer",
              remove aria-disabled and the opacity/cursor classes, and delete the "Coming soon" note. -->
         <div class="not-prose my-6 flex flex-wrap items-center gap-3">
-          <a aria-disabled="true" class="inline-flex items-center gap-2 rounded-lg bg-tide-700 px-4 py-2.5 text-sm font-semibold text-paper opacity-50 cursor-not-allowed">
+          <a aria-disabled="true" class="inline-flex items-center gap-2 rounded-lg bg-tide-700 px-4 py-2.5 text-base font-semibold text-paper opacity-50 cursor-not-allowed">
             <i data-lucide="messages-square" class="w-4 h-4" aria-hidden="true"></i>
             Join our Discord
           </a>
-          <span class="text-sm font-semibold text-ember-700">Invitation link coming soon</span>
+          <span class="text-base font-semibold text-ember-700">Invitation link coming soon</span>
         </div>
         <p>For questions, contact <a href="mailto:zj2445@cumc.columbia.edu">zj2445@cumc.columbia.edu</a>.</p>
       </div>
     </section>
 
     <!-- Footer -->
-    <footer class="mt-20 pt-10 text-sm text-ink-soft flex flex-col lg:flex-row justify-between items-center gap-4 text-center">
+    <footer class="mt-20 pt-10 text-base text-ink-soft flex flex-col lg:flex-row justify-between items-center gap-4 text-center">
       <p class="font-medium">CHI 2027 Workshop on Human-AI Co-Discovery (Proposal)</p>
       <div class="flex flex-wrap justify-center items-center gap-2">
         <span class="w-2 h-2 rounded-full bg-ember-400" aria-hidden="true"></span>
