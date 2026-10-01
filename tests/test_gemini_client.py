@@ -85,6 +85,17 @@ class GeminiClientTests(unittest.TestCase):
                 self.assertEqual(caught.exception.code, "configuration")
                 send.assert_not_called()
 
+    def test_dotted_key_is_accepted_only_as_a_header(self):
+        dotted_key = "test.key.with.dots-not-a-real-credential"
+        with patch.object(gemini._OPENER, "open", return_value=Response(json.dumps(interaction()).encode())) as send:
+            result = gemini.generate_suggestions(DESCRIPTION, CONTEXT, dotted_key)
+        self.assertEqual(result, SUGGESTIONS)
+        http_request = send.call_args.args[0]
+        headers = {name.lower(): value for name, value in http_request.header_items()}
+        self.assertEqual(headers["x-goog-api-key"], dotted_key)
+        self.assertNotIn(dotted_key, http_request.full_url)
+        self.assertNotIn(dotted_key, http_request.data.decode())
+
     def test_redirects_are_not_followed(self):
         handler = gemini._NoRedirect()
         for status in (301, 302, 303, 307, 308):

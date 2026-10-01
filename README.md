@@ -27,6 +27,7 @@ Website for Human-AI Co-Discovery, exploring how people and AI discover new ques
 | `scripts/gemini_client.py` | Stateless Gemini REST client with structured output and safe errors |
 | `chi2027/assets/js/cfp-assistant.js` | Open description form, generation state, and linked topic suggestions |
 | `scripts/sync_questions.py` | Server-side, read-only export of public Q&A summaries; no client credentials |
+| `.github/workflows/checks.yml` | Runs unit/local HTTP tests and browser-script syntax checks on pull requests and changes to main |
 | `.github/workflows/sync-questions.yml` | Refreshes the question snapshot after discussion changes once merged to the default branch |
 | `chi2027/data/questions.json` | Generated community-question snapshot; no private discussion content |
 | `.nojekyll` | Serves the files as plain static HTML (no Jekyll processing) |
@@ -38,7 +39,7 @@ The site is plain HTML with no build step: edit a file and push to `main`.
 
 The Play CDN injects its styles after `workshop.css`, so a Tailwind utility wins over a rule there with the same specificity. Keep `workshop.css` to properties the pages do not also set with utilities. The active nav link (the current page, or the section being read on the home page) is styled with a single `[&[aria-current]]` variant, which covers both `aria-current="page"` and `aria-current="true"`.
 
-Both pages follow the palette of agentlab.zhihanjiang.com (deep cyan with a warm orange accent) and have a dark-mode set. Orange text uses darker shades (`ember-700`, or `ember-500` for large text) so it meets contrast requirements.
+The pages follow the palette of agentlab.zhihanjiang.com (deep cyan with a warm orange accent) and have a dark-mode set. Orange text uses darker shades (`ember-700`, or `ember-500` for large text) so it meets contrast requirements.
 
 ## Preview locally
 
@@ -48,7 +49,7 @@ From the repository root, run a static server and open the pages before pushing:
 python3 -m http.server 8000
 ```
 
-Then visit <http://localhost:8000/> and <http://localhost:8000/chi2027/>. This static server does not enable Gemini; use the assistant preview command below for that feature. After a push to `main`, GitHub Pages usually updates within a few minutes.
+Then visit <http://localhost:8000/> and <http://localhost:8000/chi2027/>. This static server does not enable Gemini; use the assistant preview command below for that feature. Once GitHub Pages is enabled, a push to `main` usually updates it within a few minutes. Pages is currently disabled.
 
 ## Updating the CHI 2027 page
 
