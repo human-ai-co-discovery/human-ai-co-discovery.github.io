@@ -1,0 +1,22 @@
+name: Website checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Run unit and local HTTP tests
+        run: python3 -m unittest discover -s tests
+      - name: Check browser scripts
+        run: |
+          node --check chi2027/assets/js/main.js
+          node --check chi2027/assets/js/cfp-assistant.js

@@ -26,28 +26,30 @@
   <script src="assets/js/tailwind.config.js"></script>
 
   <!-- Tokens and the few rules Tailwind does not cover -->
-  <link rel="stylesheet" href="assets/css/workshop.css">
+  <link rel="stylesheet" href="assets/css/workshop.css?v=20261001-alignment">
+  <link rel="stylesheet" href="assets/css/interactive.css?v=20261001-gemini">
 </head>
-<body class="text-ink antialiased font-sans font-normal text-base leading-relaxed selection:bg-ember-200 selection:text-tide-900">
+<body class="text-ink antialiased font-sans font-normal text-lg sm:text-xl leading-relaxed selection:bg-ember-200 selection:text-tide-900">
   <a class="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[60] focus:rounded-lg focus:bg-tide-900 focus:px-4 focus:py-2 focus:text-paper focus:font-semibold" href="#main">Skip to content</a>
 
   <!-- Navigation -->
   <nav id="navbar" data-nav-fade="#title" class="sticky top-0 z-50 bg-[rgb(var(--tide-25)/var(--nav-fill,0))] [&[data-menu-open]]:bg-tide-25" aria-label="Workshop pages">
-    <div class="max-w-4xl mx-auto px-6">
+    <div class="page-container">
       <div class="flex justify-between h-16 items-center gap-4">
-        <a href="../" class="flex items-center gap-2.5 min-w-0 font-bold text-tide-900 text-base sm:text-xl leading-tight tracking-tight hover:text-ember-500 hover:underline underline-offset-4 decoration-2 transition-colors">
+        <a href="./" class="flex items-center gap-2.5 min-w-0 font-bold text-tide-900 text-base sm:text-xl leading-tight tracking-tight hover:text-ember-500 hover:underline underline-offset-4 decoration-2 transition-colors">
           <img src="../assets/brand/avatar-teal.svg" alt="" width="28" height="28" class="w-7 h-7 shrink-0 rounded-md">
           <span><span class="whitespace-nowrap">Human-AI Co-Discovery</span> <span class="whitespace-nowrap text-ember-500">@CHI&rsquo;27</span></span>
         </a>
 
-        <div class="hidden min-[880px]:flex gap-5 text-sm font-semibold text-ink-soft whitespace-nowrap">
+        <div class="hidden min-[1280px]:flex gap-5 text-base font-semibold text-ink-soft whitespace-nowrap">
           <a href="./" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Home</a>
           <a href="call-for-participation.html" aria-current="page" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Call for Participation</a>
           <a href="program.html" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Program</a>
           <a href="program.html#speakers" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Speakers</a>
           <a href="./#organizers" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Organizers</a>
+          <a href="discussion.html" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Discussion</a>
         </div>
-        <button type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" class="group/menu min-[880px]:hidden shrink-0 grid place-items-center w-10 h-10 -mr-2 rounded-lg text-tide-900 hover:text-ember-700 hover:bg-tide-50 transition-colors">
+        <button type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" class="group/menu min-[1280px]:hidden shrink-0 grid place-items-center w-10 h-10 -mr-2 rounded-lg text-tide-900 hover:text-ember-700 hover:bg-tide-50 transition-colors">
           <i data-lucide="menu" class="w-6 h-6 group-aria-expanded/menu:hidden" aria-hidden="true"></i>
           <i data-lucide="x" class="w-6 h-6 hidden group-aria-expanded/menu:block" aria-hidden="true"></i>
           <span class="sr-only">Menu</span>
@@ -56,63 +58,100 @@
       </div>
 
       <!-- Page links on small screens: a dropdown opened by the menu button -->
-      <div id="mobile-nav" hidden class="min-[880px]:hidden absolute inset-x-0 top-full bg-tide-25 pb-4">
-        <div class="max-w-4xl mx-auto px-3 flex flex-col gap-1 text-base font-semibold text-ink-soft">
+      <div id="mobile-nav" hidden class="min-[1280px]:hidden absolute inset-x-0 top-full bg-tide-25 pb-4">
+        <div class="page-container flex flex-col gap-1 text-base font-semibold text-ink-soft">
           <a href="./" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Home</a>
           <a href="call-for-participation.html" aria-current="page" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Call for Participation</a>
           <a href="program.html" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Program</a>
           <a href="program.html#speakers" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Speakers</a>
           <a href="./#organizers" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Organizers</a>
+          <a href="discussion.html" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Discussion</a>
         </div>
       </div>
     </div>
   </nav>
 
   <!-- Main Content -->
-  <main id="main" class="max-w-4xl mx-auto px-6 py-10 sm:py-12">
+  <main id="main" class="page-container py-10 sm:py-12">
 
     <h1 id="title" class="text-[clamp(2.25rem,5vw,3rem)] font-bold text-tide-900 mb-10 leading-tight tracking-tight">Call for Participation</h1>
-
-    <section class="mb-20" aria-labelledby="overview-h">
-      <h2 id="overview-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Overview</h2>
-      <div class="prose">
-      <p>AI systems can now formulate ideas, survey relevant work, conduct experiments, and validate hypotheses in a largely autonomous loop. People still contribute to identifying valuable research questions and steering exploration, but we risk offloading understanding itself to AI: a discovery reported by AI does not necessarily expand or deepen human knowledge, and a connection may be new to a person or team without being new to a field.</p>
-      <p>This workshop invites researchers, designers, and practitioners from HCI, AI, and other research domains to explore human-AI co-discovery of knowledge: how people and AI develop new questions, connections, and explanations together, across research and practice.</p>
-      <p>Our objectives are to:</p>
-      <ul>
-        <li>Examine the <a href="#topics-h">four workshop questions</a>: how people and AI develop questions, connections, and explanations together; how people guide co-discovery and how contributions are recognized; what people come to understand; and what counts as a discovery, for whom, and on what evidence.</li>
-        <li>Compare concrete experiences of discovery with AI across research and practice, including unsuccessful ones.</li>
-        <li>Identify shared challenges, ethical considerations, and research priorities for designing and evaluating AI-supported discovery in ways that support both new findings and human understanding.</li>
-        <li>Build a community and develop a shared research agenda for human-AI co-discovery of knowledge.</li>
-      </ul>
-      </div>
-    </section>
+    <p class="mb-10 text-ink-soft"><strong>Proposal under review.</strong> Submissions are not open yet. We will post dates and submission instructions here if the workshop is accepted.</p>
 
     <section id="participation" class="mb-20 scroll-mt-20" aria-labelledby="participation-h">
-      <h2 id="participation-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Participation</h2>
+      <h2 id="participation-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">How to Participate</h2>
       <div class="prose">
-      <p>There are two ways to take part:</p>
-      <ul>
-        <li><strong>Submit a paper.</strong> Authors of accepted contributions will give a lightning talk of about three minutes during the sessions and are invited to share a poster during the conference coffee break. See <a href="#submit-h">Submission and Review</a> for the format and review process.</li>
-        <li><strong>Join without a paper.</strong> Conference attendees are welcome; no prior reading is required. All participants take part in the discussions and the interactive roundtable activity.</li>
-      </ul>
-      <p>We expect 35 participants, with priority for accepted contributors. Beyond the workshop, we will create an opt-in <a href="./#connect">Discord community</a> for discussion before, during, and after the workshop, open to interested researchers and practitioners.</p>
+        <p>We welcome researchers, designers, and practitioners interested in human-AI co-discovery. There are two ways to take part:</p>
+        <ul>
+          <li><strong>Submit a paper.</strong> Share a 2–4-page contribution in ACM double-column format, excluding references. Each submission will receive two program committee reviews.</li>
+          <li><strong>Attend without a paper.</strong> All conference attendees are welcome to join the discussions and roundtable activity.</li>
+        </ul>
+        <p>We expect 35 participants, with priority for accepted contributors. The planned workshop consists of two consecutive 90-minute in-person sessions.</p>
       </div>
     </section>
 
+    <details id="contribution-finder" class="contribution-finder mb-20" data-cfp-assistant>
+      <summary><span>Explore how your work could contribute</span><span class="finder-chevron" aria-hidden="true">⌄</span></summary>
+      <div class="finder-body">
+        <p>Describe what you study or build and what you would like to discuss. The assistant will use this CFP to suggest relevant topics, contribution formats, and possible angles.</p>
+        <form id="cfp-assistant-form" class="assistant-form">
+          <label for="research-description">What are you working on?</label>
+          <textarea id="research-description" name="description" rows="5" minlength="20" maxlength="4000" required aria-describedby="assistant-input-hint assistant-privacy" placeholder="For example, I am studying how researchers revise AI-generated hypotheses when new evidence challenges them. I would like to discuss how to evaluate those turning points."></textarea>
+          <p id="assistant-input-hint" class="assistant-hint">A few sentences about your work, its context, and an open question are enough.</p>
+          <p id="assistant-privacy" class="assistant-hint">When you request suggestions, your description is sent to Google Gemini. This website does not save it.</p>
+          <div class="assistant-actions">
+            <button type="submit" data-assistant-submit disabled>Suggest contribution angles</button>
+            <button type="button" class="assistant-clear" data-assistant-clear>Clear</button>
+          </div>
+        </form>
+        <p class="assistant-status" data-assistant-status role="status">Checking whether the assistant is available…</p>
+        <div class="assistant-results" data-assistant-results aria-live="polite" aria-atomic="true"></div>
+        <p class="finder-note">AI-generated suggestions are starting points for discussion. The submission requirements and full topic list below remain the source of truth.</p>
+      </div>
+    </details>
+
+    <section class="mb-20" aria-labelledby="submit-h">
+      <h2 id="submit-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Submission and Review</h2>
+      <dl id="submission-h" class="space-y-4">
+        <div>
+          <dt class="font-bold text-ink">Paper format</dt>
+          <dd>2–4 pages in ACM double-column format, excluding references. Use the <code class="text-tide-900 before:content-none after:content-none">sigconf</code> format in the <a href="https://www.overleaf.com/latex/templates/acm-conference-proceedings-primary-article-template/wbvnghjbzwpc" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Overleaf LaTeX template</a>.</dd>
+        </div>
+        <div>
+          <dt class="font-bold text-ink">Review process</dt>
+          <dd>Each submission will receive two program committee reviews. Acceptance will depend on relevance, quality, and discussion potential.</dd>
+        </div>
+        <div>
+          <dt class="font-bold text-ink">How to submit</dt>
+          <dd>We will post the submission link here if the workshop is accepted.</dd>
+        </div>
+        <div>
+          <dt class="font-bold text-ink">Sharing accepted papers</dt>
+          <dd>With authors' permission, accepted contributions will be shared on this website at least one week before the workshop.</dd>
+        </div>
+      </dl>
+    </section>
 
     <section id="dates" class="mb-20 scroll-mt-20" aria-labelledby="timeline-h">
       <h2 id="timeline-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Key Dates</h2>
-      <dl class="space-y-3">
-        <div class="flex flex-col sm:flex-row gap-1 sm:gap-4">
-          <dt class="font-bold text-ink sm:w-72 shrink-0">Submission deadline and participant notification</dt>
-          <dd>To be announced if the workshop is accepted, following the CHI workshop timeline</dd>
+      <p class="mb-4">Dates will be announced if the workshop is accepted, following the CHI workshop timeline.</p>
+      <dl class="space-y-4">
+        <div>
+          <dt class="font-bold text-ink">Submission deadline and participant notification</dt>
+          <dd>To be announced</dd>
         </div>
-        <div class="flex flex-col sm:flex-row gap-1 sm:gap-4">
-          <dt class="font-bold text-ink sm:w-72 shrink-0">Workshop date and room</dt>
-          <dd>To be announced if the workshop is accepted</dd>
+        <div>
+          <dt class="font-bold text-ink">Workshop date and room</dt>
+          <dd>To be announced</dd>
         </div>
       </dl>
+    </section>
+
+    <section id="cfp-overview" class="mb-20" aria-labelledby="overview-h">
+      <h2 id="overview-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">About the Workshop</h2>
+      <div class="prose">
+        <p>This workshop explores human-AI co-discovery: how people and AI develop new questions, connections, and explanations together. A plausible or useful finding does not necessarily deepen people's understanding. An insight may also be new to a person or team without being new to a field.</p>
+        <p>We bring together researchers and practitioners from HCI, AI, and related fields to compare experiences of discovery with AI, including unsuccessful investigations. Through the <a href="#topics-h">four questions below</a>, we will identify shared challenges, ethical considerations, and research priorities for supporting both new findings and human understanding. Our aim is to build a community and a shared research agenda for human-AI co-discovery.</p>
+      </div>
     </section>
 
     <section class="mb-20" aria-labelledby="contribute-h">
@@ -122,10 +161,10 @@
         <div class="prose">
         <p>We welcome contributions that offer a clear perspective, concrete experience, or open question for discussion:</p>
         <ul>
-          <li><strong>Position papers and critical perspectives</strong> on unresolved questions, tensions, or alternative visions for human-AI co-discovery.</li>
-          <li><strong>Empirical studies and accounts of practice</strong> examining how interaction shapes questions, interpretations, findings, or human understanding.</li>
-          <li><strong>System descriptions and design concepts</strong> that support exploration, explanation building, evidence assessment, reflection, or human agency.</li>
-          <li><strong>Work in progress and case descriptions</strong>, including unsuccessful investigations that reveal limitations, unexpected behavior, or lessons for future inquiry.</li>
+          <li data-cfp-contributions="position-paper critical-perspective"><strong>Position papers and critical perspectives</strong> on unresolved questions, tensions, or alternative visions for human-AI co-discovery.</li>
+          <li data-cfp-contributions="empirical-study account-of-practice"><strong>Empirical studies and accounts of practice</strong> examining how interaction shapes questions, interpretations, findings, or human understanding.</li>
+          <li data-cfp-contributions="system-description design-concept"><strong>System descriptions and design concepts</strong> that support exploration, explanation building, evidence assessment, reflection, or human agency.</li>
+          <li data-cfp-contributions="work-in-progress case-description"><strong>Work in progress and case descriptions</strong>, including unsuccessful investigations that reveal limitations, unexpected behavior, or lessons for future inquiry.</li>
         </ul>
         <p>Concrete examples of discovery with AI are especially welcome. A contribution might trace how an initial idea changed, what led people to challenge an interpretation, or what they learned even when the investigation remained inconclusive.</p>
         </div>
@@ -135,61 +174,50 @@
         <h3 id="topics-h" class="text-xl font-bold text-tide-900 mb-4">Topics and questions</h3>
         <div class="prose">
           <p>Contributions may address one or more of the four workshop questions and the directions under each:</p>
-          <details class="group mt-6">
+          <details id="topic-q1" class="group mt-6">
             <summary class="flex items-start gap-2 cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden">
               <i data-lucide="chevron-down" class="w-4 h-4 mt-1 shrink-0 text-tide-700 group-hover:text-ember-700 group-open:hidden" aria-hidden="true"></i>
               <i data-lucide="chevron-up" class="w-4 h-4 mt-1 shrink-0 text-tide-700 group-hover:text-ember-700 hidden group-open:block" aria-hidden="true"></i>
-              <h4 class="m-0 text-base group-hover:text-ember-700 transition-colors">How do people and AI develop questions, connections, and explanations together?</h4>
+              <h4 class="m-0 text-lg sm:text-xl group-hover:text-ember-700 transition-colors">How do people and AI develop questions, connections, and explanations together?</h4>
             </summary>
             <ul>
-              <li><strong>Interpreting together.</strong> How people and AI make sense of data and existing knowledge, formulate questions, and revise interpretations as evidence develops.</li>
-              <li><strong>Serendipity and unexpected connections.</strong> How interaction with AI shapes the recognition of unexpected patterns, relationships, and possibilities, and how people decide which connections are worth pursuing.</li>
-              <li><strong>Developing and testing explanations.</strong> How people and AI construct, compare, challenge, and revise explanations, models, and representations, including the assumptions that underpin them.</li>
+              <li id="topic-interpretation" data-cfp-topic><strong>Interpreting together.</strong> How people and AI make sense of data and existing knowledge, formulate questions, and revise interpretations as evidence develops.</li>
+              <li id="topic-serendipity" data-cfp-topic><strong>Serendipity and unexpected connections.</strong> How interaction with AI shapes the recognition of unexpected patterns, relationships, and possibilities, and how people decide which connections are worth pursuing.</li>
+              <li id="topic-explanations" data-cfp-topic><strong>Developing and testing explanations.</strong> How people and AI construct, compare, challenge, and revise explanations, models, and representations, including the assumptions that underpin them.</li>
             </ul>
           </details>
-          <details class="group mt-6">
+          <details id="topic-q2" class="group mt-6">
             <summary class="flex items-start gap-2 cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden">
               <i data-lucide="chevron-down" class="w-4 h-4 mt-1 shrink-0 text-tide-700 group-hover:text-ember-700 group-open:hidden" aria-hidden="true"></i>
               <i data-lucide="chevron-up" class="w-4 h-4 mt-1 shrink-0 text-tide-700 group-hover:text-ember-700 hidden group-open:block" aria-hidden="true"></i>
-              <h4 class="m-0 text-base group-hover:text-ember-700 transition-colors">How do people guide co-discovery, and how are contributions recognized?</h4>
+              <h4 class="m-0 text-lg sm:text-xl group-hover:text-ember-700 transition-colors">How do people guide co-discovery, and how are contributions recognized?</h4>
             </summary>
             <ul>
-              <li><strong>Human agency in co-discovery.</strong> How people direct inquiry, work with proactive AI agents, delegate tasks, and decide when to intervene, redirect an exchange, or pursue another direction.</li>
-              <li><strong>Whose contribution, whose discovery?</strong> How human and AI contributions become visible, and how credit, intellectual ownership, and responsibility are understood and negotiated.</li>
+              <li id="topic-agency" data-cfp-topic><strong>Human agency in co-discovery.</strong> How people direct inquiry, work with proactive AI agents, delegate tasks, and decide when to intervene, redirect an exchange, or pursue another direction.</li>
+              <li id="topic-credit" data-cfp-topic><strong>Whose contribution, whose discovery?</strong> How human and AI contributions become visible, and how credit, intellectual ownership, and responsibility are understood and negotiated.</li>
             </ul>
           </details>
-          <details class="group mt-6">
+          <details id="topic-q3" class="group mt-6">
             <summary class="flex items-start gap-2 cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden">
               <i data-lucide="chevron-down" class="w-4 h-4 mt-1 shrink-0 text-tide-700 group-hover:text-ember-700 group-open:hidden" aria-hidden="true"></i>
               <i data-lucide="chevron-up" class="w-4 h-4 mt-1 shrink-0 text-tide-700 group-hover:text-ember-700 hidden group-open:block" aria-hidden="true"></i>
-              <h4 class="m-0 text-base group-hover:text-ember-700 transition-colors">What do people come to understand through co-discovery?</h4>
+              <h4 class="m-0 text-lg sm:text-xl group-hover:text-ember-700 transition-colors">What do people come to understand through co-discovery?</h4>
             </summary>
             <ul>
-              <li><strong>Human understanding and learning.</strong> What people come to understand through co-discovery, how that understanding changes over time, and how reflection and further questioning develop even when an investigation remains inconclusive.</li>
+              <li id="topic-understanding" data-cfp-topic><strong>Human understanding and learning.</strong> What people come to understand through co-discovery, how that understanding changes over time, and how reflection and further questioning develop even when an investigation remains inconclusive.</li>
             </ul>
           </details>
-          <details class="group mt-6">
+          <details id="topic-q4" class="group mt-6">
             <summary class="flex items-start gap-2 cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden">
               <i data-lucide="chevron-down" class="w-4 h-4 mt-1 shrink-0 text-tide-700 group-hover:text-ember-700 group-open:hidden" aria-hidden="true"></i>
               <i data-lucide="chevron-up" class="w-4 h-4 mt-1 shrink-0 text-tide-700 group-hover:text-ember-700 hidden group-open:block" aria-hidden="true"></i>
-              <h4 class="m-0 text-base group-hover:text-ember-700 transition-colors">What counts as a discovery, for whom, and on what evidence?</h4>
+              <h4 class="m-0 text-lg sm:text-xl group-hover:text-ember-700 transition-colors">What counts as a discovery, for whom, and on what evidence?</h4>
             </summary>
             <ul>
-              <li><strong>Evidence, uncertainty, and failure.</strong> How people and AI seek counter-evidence, recognize misleading patterns, work with uncertainty, and learn from unsuccessful inquiry.</li>
-              <li><strong>What counts as a discovery?</strong> What makes a connection or finding new and worthwhile for an individual, a team, or a field, and how novelty and value vary across research and practice.</li>
+              <li id="topic-evidence" data-cfp-topic><strong>Evidence, uncertainty, and failure.</strong> How people and AI seek counter-evidence, recognize misleading patterns, work with uncertainty, and learn from unsuccessful inquiry.</li>
+              <li id="topic-value" data-cfp-topic><strong>What counts as a discovery?</strong> What makes a connection or finding new and worthwhile for an individual, a team, or a field, and how novelty and value vary across research and practice.</li>
             </ul>
           </details>
-        </div>
-      </section>
-    </section>
-
-    <section class="mb-20" aria-labelledby="submit-h">
-      <h2 id="submit-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Submission and Review</h2>
-      <section aria-labelledby="submission-h">
-        <div class="prose">
-        <p>Submit a <strong>2–4-page paper in ACM double-column format, excluding references</strong>. A LaTeX template is available on <a href="https://www.overleaf.com/latex/templates/acm-conference-proceedings-primary-article-template/wbvnghjbzwpc" target="_blank" rel="noopener noreferrer">Overleaf</a> (use the <code class="text-tide-900 before:content-none after:content-none">sigconf</code> format). The submission channel will be posted here if the workshop is accepted; see <a href="#dates">Key Dates</a> for the deadline.</p>
-        <p>Each submission will receive <strong>two program committee reviews</strong>. Acceptance will depend on relevance, quality, and discussion potential.</p>
-        <p>With authors' permission, accepted contributions will be shared on this website at least one week before the workshop.</p>
         </div>
       </section>
     </section>
@@ -197,14 +225,31 @@
     <section id="at-the-workshop" class="mb-20 scroll-mt-20" aria-labelledby="at-workshop-h">
       <h2 id="at-workshop-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">At the Workshop</h2>
       <div class="prose">
-      <p>We plan two consecutive 90-minute in-person sessions; the program is tentative and subject to the conference schedule.</p>
-      <ul>
-        <li><strong>Keynote and human-AI panel.</strong> A keynote with Q&amp;A by Daniel McDuff (Google Research) and a 30-minute panel with Daniel McDuff, Sherry Tongshuang Wu, Toby Jia-Jun Li, and an AI agent (all tentative). The agent responds to the same questions as the human panelists and to attendees' follow-up questions; participants can challenge its assumptions, examine the evidence behind its claims, and compare its reasoning with the human panelists' perspectives.</li>
-        <li><strong>Lightning talks and posters.</strong> Authors of accepted contributions give talks of about three minutes each, in two blocks; posters are shared during the conference coffee break.</li>
-        <li><strong>Interactive roundtable activity.</strong> Seven cross-disciplinary groups, facilitated by the organizers, explore a question with AI using public or participant-approved materials, identify a turning point or unresolved difficulty, and reflect on it through the <a href="#topics-h">four workshop questions</a>. Participants choose and approve any excerpts shared beyond their group.</li>
-        <li><strong>Group reports and collective discussion.</strong> Each group gives a report of up to two minutes on an exchange, insight, or unresolved difficulty, with an open question; a collective discussion then compares recurring themes and differences across groups.</li>
-      </ul>
-      <p><a href="program.html">See the full program</a>.</p>
+        <p>The program and invited speakers are tentative, subject to workshop acceptance, speaker availability, and the conference schedule.</p>
+        <ul>
+          <li><strong>Keynote and human-AI panel.</strong> We plan a keynote with Q&amp;A by Daniel McDuff (Google Research) and a 30-minute panel with Daniel McDuff, Sherry Tongshuang Wu, Toby Jia-Jun Li, and an AI agent. The agent will respond to the same questions as the human panelists and to attendees' follow-up questions. Participants can challenge its assumptions, examine the evidence behind its claims, and compare its reasoning with the human panelists' perspectives.</li>
+          <li><strong>Lightning talks and posters.</strong> Talks by accepted contributors will be split into two blocks, with about three minutes per talk and timings adjusted to the final program. During the conference coffee break, authors are encouraged to display posters on their own devices.</li>
+          <li><strong>Interactive roundtable activity.</strong> Seven groups with participants from different disciplines will explore a question with AI, using public or participant-approved materials. Organizers will facilitate. Each group will identify a turning point or unresolved difficulty and reflect on it through the <a href="#topics-h">four workshop questions</a>. Participants will choose and approve any excerpts shared beyond their group.</li>
+          <li><strong>Group reports and collective discussion.</strong> Each group will give a report of up to two minutes, sharing an exchange, insight, or unresolved difficulty and an open question. A brief discussion will compare recurring themes and differences across the groups.</li>
+        </ul>
+        <p><a href="program.html">See the full program</a>.</p>
+      </div>
+    </section>
+
+    <section class="mb-20" aria-labelledby="sharing-h">
+      <h2 id="sharing-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">After the Workshop</h2>
+      <div class="prose">
+      <p>With authors' permission, accepted papers and workshop materials will remain available on this website, including an index of papers that authors choose to post on arXiv. We do not plan separate archival proceedings.</p>
+      <p>Interested participants may also contribute to a follow-up perspective or research-agenda paper for an HCI venue, with authorship reflecting substantive contributions to synthesis and writing.</p>
+      <p>We will create an opt-in <a href="./#connect">Discord community</a> for discussion, resource sharing, and connections before, during, and after the workshop. It will be open to interested researchers and practitioners, whether or not they attend.</p>
+      </div>
+    </section>
+
+    <section id="accessibility" class="mb-20 scroll-mt-20" aria-labelledby="accessibility-h">
+      <h2 id="accessibility-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Accessibility</h2>
+      <div class="prose">
+        <p>You can contribute through speech or writing, and facilitators will include both in the discussion. Instructions and prompts will be available in accessible electronic formats and in print. Presenters will use readable text and provide written and spoken descriptions of visuals.</p>
+        <p>For access requests, contact <a href="mailto:zj2445@cumc.columbia.edu">zj2445@cumc.columbia.edu</a>. We will coordinate with participants and the CHI Accessibility Chairs.</p>
       </div>
     </section>
 
@@ -215,63 +260,47 @@
         <section data-q="1" aria-labelledby="reading-q1-h">
           <h3 id="reading-q1-h" class="flex items-start gap-3 text-lg font-bold text-tide-900 leading-snug"><span class="q-badge mt-0.5">Q1</span><span>How do people and AI develop questions, connections, and explanations together?</span></h3>
           <ul role="list" class="mt-4 space-y-3">
-            <li><a href="https://doi.org/10.1145/1640233.1640279" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Discovery Is Never by Chance: Designing for (Un)Serendipity</a><span class="block text-sm text-ink-soft">André, schraefel, Teevan, and Dumais · Creativity &amp; Cognition 2009</span></li>
-            <li><a href="https://doi.org/10.1145/3613904.3642698" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">How AI Processing Delays Foster Creativity: Exploring Research Question Co-Creation with an LLM-based Agent</a><span class="block text-sm text-ink-soft">Liu et al. · CHI 2024</span></li>
-            <li><a href="https://doi.org/10.1145/3613904.3642002" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">CollabCoder: A Lower-barrier, Rigorous Workflow for Inductive Collaborative Qualitative Analysis with Large Language Models</a><span class="block text-sm text-ink-soft">Gao et al. · CHI 2024</span></li>
-            <li><span class="font-semibold text-tide-900">The Sensemaking Process and Leverage Points for Analyst Technology as Identified Through Cognitive Task Analysis</span><span class="block text-sm text-ink-soft">Pirolli and Card · International Conference on Intelligence Analysis 2005</span></li>
-            <li><a href="https://doi.org/10.1109/MIS.2006.100" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Making Sense of Sensemaking 2: A Macrocognitive Model</a><span class="block text-sm text-ink-soft">Klein, Moon, and Hoffman · IEEE Intelligent Systems 2006</span></li>
+            <li><a href="https://doi.org/10.1145/1640233.1640279" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Discovery Is Never by Chance: Designing for (Un)Serendipity</a><span class="block text-base text-ink-soft">André, schraefel, Teevan, and Dumais · Creativity &amp; Cognition 2009</span></li>
+            <li><a href="https://doi.org/10.1145/3613904.3642698" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">How AI Processing Delays Foster Creativity: Exploring Research Question Co-Creation with an LLM-based Agent</a><span class="block text-base text-ink-soft">Liu et al. · CHI 2024</span></li>
+            <li><a href="https://doi.org/10.1145/3613904.3642002" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">CollabCoder: A Lower-barrier, Rigorous Workflow for Inductive Collaborative Qualitative Analysis with Large Language Models</a><span class="block text-base text-ink-soft">Gao et al. · CHI 2024</span></li>
+            <li><span class="font-semibold text-tide-900">The Sensemaking Process and Leverage Points for Analyst Technology as Identified Through Cognitive Task Analysis</span><span class="block text-base text-ink-soft">Pirolli and Card · International Conference on Intelligence Analysis 2005</span></li>
+            <li><a href="https://doi.org/10.1109/MIS.2006.100" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Making Sense of Sensemaking 2: A Macrocognitive Model</a><span class="block text-base text-ink-soft">Klein, Moon, and Hoffman · IEEE Intelligent Systems 2006</span></li>
           </ul>
         </section>
         <section data-q="2" aria-labelledby="reading-q2-h">
           <h3 id="reading-q2-h" class="flex items-start gap-3 text-lg font-bold text-tide-900 leading-snug"><span class="q-badge mt-0.5">Q2</span><span>How do people guide co-discovery, and how are contributions recognized?</span></h3>
           <ul role="list" class="mt-4 space-y-3">
-            <li><a href="https://doi.org/10.1145/302979.303030" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Principles of Mixed-Initiative User Interfaces</a><span class="block text-sm text-ink-soft">Horvitz · CHI 1999</span></li>
-            <li><a href="https://doi.org/10.1145/3290605.3300233" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Guidelines for Human-AI Interaction</a><span class="block text-sm text-ink-soft">Amershi et al. · CHI 2019</span></li>
-            <li><a href="https://doi.org/10.1145/3772318.3791673" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Cocoa: Co-Planning and Co-Execution with AI Agents</a><span class="block text-sm text-ink-soft">Feng et al. · CHI 2026</span></li>
-            <li><a href="https://doi.org/10.1145/3706599.3720080" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Prompting Generative AI with Interaction-Augmented Instructions</a><span class="block text-sm text-ink-soft">Shen et al. · CHI 2025 Extended Abstracts</span></li>
-            <li><a href="https://doi.org/10.1109/TVCG.2015.2467551" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Characterizing Provenance in Visualization and Data Analysis: An Organizational Framework of Provenance Types and Purposes</a><span class="block text-sm text-ink-soft">Ragan, Endert, Sanyal, and Chen · IEEE TVCG 2016</span></li>
-            <li><a href="https://doi.org/10.1038/d41586-026-00665-y" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">AI agents are ‘aeroplanes for the mind’: five ways to ensure that scientists are responsible pilots</a><span class="block text-sm text-ink-soft">Wang · Nature 2026</span></li>
+            <li><a href="https://doi.org/10.1145/302979.303030" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Principles of Mixed-Initiative User Interfaces</a><span class="block text-base text-ink-soft">Horvitz · CHI 1999</span></li>
+            <li><a href="https://doi.org/10.1145/3290605.3300233" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Guidelines for Human-AI Interaction</a><span class="block text-base text-ink-soft">Amershi et al. · CHI 2019</span></li>
+            <li><a href="https://doi.org/10.1145/3772318.3791673" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Cocoa: Co-Planning and Co-Execution with AI Agents</a><span class="block text-base text-ink-soft">Feng et al. · CHI 2026</span></li>
+            <li><a href="https://doi.org/10.1145/3706599.3720080" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Prompting Generative AI with Interaction-Augmented Instructions</a><span class="block text-base text-ink-soft">Shen et al. · CHI 2025 Extended Abstracts</span></li>
+            <li><a href="https://doi.org/10.1109/TVCG.2015.2467551" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Characterizing Provenance in Visualization and Data Analysis: An Organizational Framework of Provenance Types and Purposes</a><span class="block text-base text-ink-soft">Ragan, Endert, Sanyal, and Chen · IEEE TVCG 2016</span></li>
+            <li><a href="https://doi.org/10.1038/d41586-026-00665-y" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">AI agents are ‘aeroplanes for the mind’: five ways to ensure that scientists are responsible pilots</a><span class="block text-base text-ink-soft">Wang · Nature 2026</span></li>
           </ul>
         </section>
         <section data-q="3" aria-labelledby="reading-q3-h">
           <h3 id="reading-q3-h" class="flex items-start gap-3 text-lg font-bold text-tide-900 leading-snug"><span class="q-badge mt-0.5">Q3</span><span>What do people come to understand through co-discovery?</span></h3>
           <ul role="list" class="mt-4 space-y-3">
-            <li><a href="https://doi.org/10.1145/3490099.3511138" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Do People Engage Cognitively with AI? Impact of AI Assistance on Incidental Learning</a><span class="block text-sm text-ink-soft">Gajos and Mamykina · IUI 2022</span></li>
-            <li><a href="https://doi.org/10.1038/s41586-024-07146-0" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Artificial Intelligence and Illusions of Understanding in Scientific Research</a><span class="block text-sm text-ink-soft">Messeri and Crockett · Nature 2024</span></li>
-            <li><a href="https://doi.org/10.1016/B978-0-08-029348-6.50026-9" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Ironies of Automation</a><span class="block text-sm text-ink-soft">Bainbridge · Analysis, Design and Evaluation of Man–Machine Systems, 1983</span></li>
-            <li><a href="https://doi.org/10.1109/MCG.2009.22" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Defining Insight for Visual Analytics</a><span class="block text-sm text-ink-soft">Chang, Ziemkiewicz, Green, and Ribarsky · IEEE Computer Graphics and Applications 2009</span></li>
+            <li><a href="https://doi.org/10.1145/3490099.3511138" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Do People Engage Cognitively with AI? Impact of AI Assistance on Incidental Learning</a><span class="block text-base text-ink-soft">Gajos and Mamykina · IUI 2022</span></li>
+            <li><a href="https://doi.org/10.1038/s41586-024-07146-0" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Artificial Intelligence and Illusions of Understanding in Scientific Research</a><span class="block text-base text-ink-soft">Messeri and Crockett · Nature 2024</span></li>
+            <li><a href="https://doi.org/10.1016/B978-0-08-029348-6.50026-9" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Ironies of Automation</a><span class="block text-base text-ink-soft">Bainbridge · Analysis, Design and Evaluation of Man–Machine Systems, 1983</span></li>
+            <li><a href="https://doi.org/10.1109/MCG.2009.22" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Defining Insight for Visual Analytics</a><span class="block text-base text-ink-soft">Chang, Ziemkiewicz, Green, and Ribarsky · IEEE Computer Graphics and Applications 2009</span></li>
           </ul>
         </section>
         <section data-q="4" aria-labelledby="reading-q4-h">
           <h3 id="reading-q4-h" class="flex items-start gap-3 text-lg font-bold text-tide-900 leading-snug"><span class="q-badge mt-0.5">Q4</span><span>What counts as a discovery, for whom, and on what evidence?</span></h3>
           <ul role="list" class="mt-4 space-y-3">
-            <li><a href="https://doi.org/10.1109/MCG.2006.70" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Toward Measuring Visualization Insight</a><span class="block text-sm text-ink-soft">North · IEEE Computer Graphics and Applications 2006</span></li>
-            <li><a href="https://doi.org/10.48550/arXiv.2608.14905" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">How Do Agents Fail on AutoResearch: End-to-End Diagnostic Evaluation on 100 Real-World Frontier Research Tasks</a><span class="block text-sm text-ink-soft">Fei et al. · arXiv 2026</span></li>
-            <li><a href="https://doi.org/10.1038/s41586-025-09922-y" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Artificial intelligence tools expand scientists’ impact but contract science’s focus</a><span class="block text-sm text-ink-soft">Hao, Xu, Li, and Evans · Nature 2026</span></li>
-            <li><a href="https://doi.org/10.1038/s41586-023-06221-2" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Scientific discovery in the age of artificial intelligence</a><span class="block text-sm text-ink-soft">Wang et al. · Nature 2023</span></li>
+            <li><a href="https://doi.org/10.1109/MCG.2006.70" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Toward Measuring Visualization Insight</a><span class="block text-base text-ink-soft">North · IEEE Computer Graphics and Applications 2006</span></li>
+            <li><a href="https://doi.org/10.48550/arXiv.2608.14905" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">How Do Agents Fail on AutoResearch: End-to-End Diagnostic Evaluation on 100 Real-World Frontier Research Tasks</a><span class="block text-base text-ink-soft">Fei et al. · arXiv 2026</span></li>
+            <li><a href="https://doi.org/10.1038/s41586-025-09922-y" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Artificial intelligence tools expand scientists’ impact but contract science’s focus</a><span class="block text-base text-ink-soft">Hao, Xu, Li, and Evans · Nature 2026</span></li>
+            <li><a href="https://doi.org/10.1038/s41586-023-06221-2" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Scientific discovery in the age of artificial intelligence</a><span class="block text-base text-ink-soft">Wang et al. · Nature 2023</span></li>
           </ul>
         </section>
       </div>
     </section>
 
-    <section id="accessibility" class="mb-20 scroll-mt-20" aria-labelledby="accessibility-h">
-      <h2 id="accessibility-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Accessibility</h2>
-      <div class="prose">
-      <p>We will coordinate access requests with participants and the CHI Accessibility Chairs. Clear activity instructions and discussion prompts will be available in accessible electronic formats and in print. Presenters will use readable text and provide text and spoken descriptions of visuals. Participants may contribute through speech or writing, with facilitators incorporating both.</p>
-      <p>To request accommodations, contact <a href="mailto:zj2445@cumc.columbia.edu">zj2445@cumc.columbia.edu</a>.</p>
-      </div>
-    </section>
-
-    <section class="mb-20" aria-labelledby="sharing-h">
-      <h2 id="sharing-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">After the Workshop</h2>
-      <div class="prose">
-      <p>With authors' permission, accepted papers and workshop materials will remain available on this website, including an index of papers that authors choose to post on arXiv. We do not plan separate archival proceedings.</p>
-      <p>Interested participants may also contribute to a follow-up perspective or research-agenda paper for an HCI venue, with authorship reflecting substantive contributions to synthesis and writing.</p>
-      </div>
-    </section>
-
     <!-- Footer -->
-    <footer class="mt-20 pt-10 text-sm text-ink-soft flex flex-col lg:flex-row justify-between items-center gap-4 text-center">
+    <footer class="mt-20 pt-10 text-base text-ink-soft flex flex-col lg:flex-row justify-between items-center gap-4 text-center">
       <p class="font-medium">CHI 2027 Workshop on Human-AI Co-Discovery (Proposal)</p>
       <div class="flex flex-wrap justify-center items-center gap-2">
         <span class="w-2 h-2 rounded-full bg-ember-400" aria-hidden="true"></span>
@@ -284,6 +313,7 @@
   </main>
 
   <!-- Main JavaScript -->
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js?v=20261001-gemini"></script>
+  <script src="assets/js/cfp-assistant.js?v=20261001-gemini"></script>
 </body>
 </html>

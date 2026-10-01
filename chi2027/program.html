@@ -26,28 +26,29 @@
   <script src="assets/js/tailwind.config.js"></script>
 
   <!-- Tokens and the few rules Tailwind does not cover -->
-  <link rel="stylesheet" href="assets/css/workshop.css">
+  <link rel="stylesheet" href="assets/css/workshop.css?v=20261001-alignment">
 </head>
-<body class="text-ink antialiased font-sans font-normal text-base leading-relaxed selection:bg-ember-200 selection:text-tide-900">
+<body class="text-ink antialiased font-sans font-normal text-lg sm:text-xl leading-relaxed selection:bg-ember-200 selection:text-tide-900">
   <a class="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[60] focus:rounded-lg focus:bg-tide-900 focus:px-4 focus:py-2 focus:text-paper focus:font-semibold" href="#main">Skip to content</a>
 
   <!-- Navigation -->
   <nav id="navbar" data-nav-fade="#title" class="sticky top-0 z-50 bg-[rgb(var(--tide-25)/var(--nav-fill,0))] [&[data-menu-open]]:bg-tide-25" aria-label="Workshop pages">
-    <div class="max-w-4xl mx-auto px-6">
+    <div class="page-container">
       <div class="flex justify-between h-16 items-center gap-4">
-        <a href="../" class="flex items-center gap-2.5 min-w-0 font-bold text-tide-900 text-base sm:text-xl leading-tight tracking-tight hover:text-ember-500 hover:underline underline-offset-4 decoration-2 transition-colors">
+        <a href="./" class="flex items-center gap-2.5 min-w-0 font-bold text-tide-900 text-base sm:text-xl leading-tight tracking-tight hover:text-ember-500 hover:underline underline-offset-4 decoration-2 transition-colors">
           <img src="../assets/brand/avatar-teal.svg" alt="" width="28" height="28" class="w-7 h-7 shrink-0 rounded-md">
           <span><span class="whitespace-nowrap">Human-AI Co-Discovery</span> <span class="whitespace-nowrap text-ember-500">@CHI&rsquo;27</span></span>
         </a>
 
-        <div class="hidden min-[880px]:flex gap-5 text-sm font-semibold text-ink-soft whitespace-nowrap">
+        <div class="hidden min-[1280px]:flex gap-5 text-base font-semibold text-ink-soft whitespace-nowrap">
           <a href="./" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Home</a>
           <a href="call-for-participation.html" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Call for Participation</a>
           <a href="program.html" aria-current="page" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Program</a>
           <a href="program.html#speakers" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Speakers</a>
           <a href="./#organizers" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Organizers</a>
+          <a href="discussion.html" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Discussion</a>
         </div>
-        <button type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" class="group/menu min-[880px]:hidden shrink-0 grid place-items-center w-10 h-10 -mr-2 rounded-lg text-tide-900 hover:text-ember-700 hover:bg-tide-50 transition-colors">
+        <button type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" class="group/menu min-[1280px]:hidden shrink-0 grid place-items-center w-10 h-10 -mr-2 rounded-lg text-tide-900 hover:text-ember-700 hover:bg-tide-50 transition-colors">
           <i data-lucide="menu" class="w-6 h-6 group-aria-expanded/menu:hidden" aria-hidden="true"></i>
           <i data-lucide="x" class="w-6 h-6 hidden group-aria-expanded/menu:block" aria-hidden="true"></i>
           <span class="sr-only">Menu</span>
@@ -56,25 +57,28 @@
       </div>
 
       <!-- Page links on small screens: a dropdown opened by the menu button -->
-      <div id="mobile-nav" hidden class="min-[880px]:hidden absolute inset-x-0 top-full bg-tide-25 pb-4">
-        <div class="max-w-4xl mx-auto px-3 flex flex-col gap-1 text-base font-semibold text-ink-soft">
+      <div id="mobile-nav" hidden class="min-[1280px]:hidden absolute inset-x-0 top-full bg-tide-25 pb-4">
+        <div class="page-container flex flex-col gap-1 text-base font-semibold text-ink-soft">
           <a href="./" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Home</a>
           <a href="call-for-participation.html" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Call for Participation</a>
           <a href="program.html" aria-current="page" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Program</a>
           <a href="program.html#speakers" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Speakers</a>
           <a href="./#organizers" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Organizers</a>
+          <a href="discussion.html" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Discussion</a>
         </div>
       </div>
     </div>
   </nav>
 
   <!-- Main Content -->
-  <main id="main" class="max-w-4xl mx-auto px-6 py-10 sm:py-12">
+  <main id="main" class="page-container py-10 sm:py-12">
 
     <h1 id="title" class="text-[clamp(2.25rem,5vw,3rem)] font-bold text-tide-900 mb-10 leading-tight tracking-tight">Program</h1>
 
     <section class="mb-20" aria-labelledby="schedule-h">
       <h2 id="schedule-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Schedule</h2>
+
+      <p class="mb-8">We plan two 90-minute in-person sessions. The program is tentative and subject to workshop acceptance, speaker availability, and the conference schedule.</p>
 
       <!-- Discovery path: the program drawn as the eureka curve. Each stop links to its
            schedule item below; main.js places it on the curve by its start minute (data-min). -->
@@ -104,73 +108,74 @@
         <h3 id="session-1-h" class="text-xl font-bold text-tide-900 mb-4">Session 1: Perspectives</h3>
         <ol class="space-y-4">
           <li id="s1-welcome" class="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-8">
-            <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-sm tracking-wider">5 min</div>
+            <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-base tracking-wider">5 min</div>
             <div>
               <h4 class="font-bold text-tide-900">Welcome</h4>
-              <p class="text-ink-soft">Workshop goals and overview of activities.</p>
+              <p class="text-ink-soft">An overview of the workshop's goals and activities.</p>
             </div>
           </li>
           <li id="s1-keynote" class="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-8">
-            <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-sm tracking-wider">30 min</div>
+            <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-base tracking-wider">30 min</div>
             <div>
               <h4 class="font-bold text-tide-900">Keynote with Q&amp;A</h4>
-              <p class="text-ink-soft">Daniel McDuff, Google Research.</p>
+              <p class="text-ink-soft">A keynote by Daniel McDuff (Google Research), followed by audience questions.</p>
             </div>
           </li>
           <li id="s1-lightning" class="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-8">
-            <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-sm tracking-wider">25 min</div>
+            <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-base tracking-wider">25 min</div>
             <div>
               <h4 class="font-bold text-tide-900">Lightning talks: first block</h4>
-              <p class="text-ink-soft">Talks of about three minutes each by authors of accepted contributions.</p>
+              <p class="text-ink-soft">Authors of accepted contributions give brief talks of around three minutes each.</p>
             </div>
           </li>
           <li id="s1-panel" class="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-8">
-            <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-sm tracking-wider">30 min</div>
+            <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-base tracking-wider">30 min</div>
             <div>
               <h4 class="font-bold text-tide-900">Human-AI panel discussion</h4>
-              <p class="text-ink-soft">Daniel McDuff, Sherry Tongshuang Wu, Toby Jia-Jun Li, and an AI agent.</p>
+              <p class="text-ink-soft">Daniel McDuff joins Sherry Tongshuang Wu, Toby Jia-Jun Li, and a planned AI panelist for a moderated discussion with audience questions.</p>
             </div>
           </li>
         </ol>
       </section>
 
       <section class="my-12" aria-labelledby="break-h">
-        <h3 id="break-h" class="flex items-center gap-4 text-sm font-semibold italic text-ink-soft">
+        <h3 id="break-h" class="flex items-center gap-4 text-base font-semibold italic text-ink-soft">
           <span class="h-px flex-1 border-t border-dashed border-rule" aria-hidden="true"></span>
           <span class="flex items-center gap-2 text-center"><i data-lucide="coffee" class="w-4 h-4 shrink-0" aria-hidden="true"></i>Conference coffee break and poster exchange</span>
           <span class="h-px flex-1 border-t border-dashed border-rule" aria-hidden="true"></span>
         </h3>
+        <p>We encourage authors to display posters on their own devices during the conference coffee break.</p>
       </section>
 
       <section class="mt-12" aria-labelledby="session-2-h">
         <h3 id="session-2-h" class="text-xl font-bold text-tide-900 mb-4">Session 2: Co-Discovery</h3>
         <ol class="space-y-4">
           <li id="s2-lightning" class="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-8">
-            <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-sm tracking-wider">20 min</div>
+            <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-base tracking-wider">20 min</div>
             <div>
               <h4 class="font-bold text-tide-900">Lightning talks: second block</h4>
-              <p class="text-ink-soft">Talks of about three minutes each by authors of accepted contributions.</p>
+              <p class="text-ink-soft">The second block continues the talks by accepted contributors, with around three minutes per talk.</p>
             </div>
           </li>
           <li id="s2-roundtable" class="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-8">
-            <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-sm tracking-wider">50 min</div>
+            <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-base tracking-wider">50 min</div>
             <div>
               <h4 class="font-bold text-tide-900">Interactive roundtable activity</h4>
-              <p class="text-ink-soft">Seven cross-disciplinary groups explore a question with AI, identify a turning point or unresolved difficulty, and reflect on it through the <a href="call-for-participation.html#topics-h" class="text-tide-700 underline decoration-tide-300 underline-offset-4 hover:text-ember-700">four workshop questions</a>.</p>
+              <p class="text-ink-soft">Participants form seven cross-disciplinary groups to explore a question with AI. Each group identifies a turning point or unresolved difficulty and reflects on how its questions, explanations, or understanding developed, guided by the <a href="call-for-participation.html#topics-h" class="text-tide-700 underline decoration-tide-300 underline-offset-4 hover:text-ember-700">four workshop questions</a>.</p>
             </div>
           </li>
           <li id="s2-reports" class="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-8">
-            <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-sm tracking-wider">15 min</div>
+            <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-base tracking-wider">15 min</div>
             <div>
               <h4 class="font-bold text-tide-900">Group reports and collective discussion</h4>
-              <p class="text-ink-soft">Two-minute group reports, followed by a collective discussion of recurring themes and differences.</p>
+              <p class="text-ink-soft">Each group gives a report of up to two minutes, followed by a collective discussion of recurring themes and differences.</p>
             </div>
           </li>
           <li id="s2-closing" class="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-8">
-            <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-sm tracking-wider">5 min</div>
+            <div class="sm:w-24 shrink-0 font-bold text-ember-700 text-base tracking-wider">5 min</div>
             <div>
               <h4 class="font-bold text-tide-900">Closing and next steps</h4>
-              <p class="text-ink-soft">Summary and opportunities for continued exchange after the workshop.</p>
+              <p class="text-ink-soft">Organizers summarize the discussion and outline opportunities for continued exchange and collaboration after the workshop.</p>
             </div>
           </li>
         </ol>
@@ -179,7 +184,7 @@
 
     <section id="speakers" class="mb-20 scroll-mt-20" aria-labelledby="speakers-h">
       <h2 id="speakers-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Invited Guests <span class="font-medium text-ink-soft">(tentative)</span></h2>
-      <h3 class="mt-6 mb-3 font-semibold text-ink-soft">Keynote Speakers</h3>
+      <h3 class="mt-6 mb-3 font-semibold text-ink-soft">Keynote speaker and panelist</h3>
       <ul class="grid grid-cols-1">
         <li class="group">
           <div class="flex items-center gap-4">
@@ -193,10 +198,10 @@
                   <span class="sr-only">Bio of Daniel McDuff</span>
                 </button>
               </div>
-              <p class="text-sm text-ink-soft">Google Research</p>
+              <p class="text-base text-ink-soft">Google Research</p>
             </div>
           </div>
-          <p id="bio-daniel" hidden class="mt-3 ml-20 text-sm text-ink-soft leading-relaxed">Daniel builds machine learning systems that sense, model, and synthesize human behavior, with an emphasis on health, physiology, and affective computing. His research spans camera-based physiological measurement, wearable foundation models, and health agents that turn longitudinal sensor data into personal and clinical insight.</p>
+          <p id="bio-daniel" hidden class="mt-3 ml-20 text-base text-ink-soft leading-relaxed">Daniel builds machine learning systems to sense, model, and synthesize human behavior, with a focus on health, physiology, and affective computing. His research spans camera-based physiological measurement, wearable foundation models, and health agents that draw personal and clinical insights from longitudinal sensor data.</p>
         </li>
       </ul>
       <h3 class="mt-8 mb-3 font-semibold text-ink-soft">Panelists</h3>
@@ -213,10 +218,10 @@
                   <span class="sr-only">Bio of Sherry Tongshuang Wu</span>
                 </button>
               </div>
-              <p class="text-sm text-ink-soft">Carnegie Mellon University</p>
+              <p class="text-base text-ink-soft">Carnegie Mellon University</p>
             </div>
           </div>
-          <p id="bio-sherry" hidden class="mt-3 ml-20 text-sm text-ink-soft leading-relaxed">Sherry is an Assistant Professor in the Human-Computer Interaction Institute at Carnegie Mellon University. Working at the intersection of HCI and natural language processing, she supports people interacting with imperfect AI by helping them debug and correct it interactively, with award-winning papers at venues such as ACL, CHI, TOCHI, and TVCG.</p>
+          <p id="bio-sherry" hidden class="mt-3 ml-20 text-base text-ink-soft leading-relaxed">Sherry is an Assistant Professor in the Human-Computer Interaction Institute at Carnegie Mellon University. Her research connects HCI and natural language processing to help people work with imperfect AI through interactive debugging and correction. Her work has been published at ACL and CHI, and in TOCHI and TVCG.</p>
         </li>
         <li class="group">
           <div class="flex items-center gap-4">
@@ -230,10 +235,10 @@
                   <span class="sr-only">Bio of Toby Jia-Jun Li</span>
                 </button>
               </div>
-              <p class="text-sm text-ink-soft">University of Notre Dame</p>
+              <p class="text-base text-ink-soft">University of Notre Dame</p>
             </div>
           </div>
-          <p id="bio-toby" hidden class="mt-3 ml-20 text-sm text-ink-soft leading-relaxed">Toby is an Assistant Professor of Computer Science and Engineering at the University of Notre Dame, where he leads the SaNDwich Lab and directs the Human-Centered Responsible AI Lab. He designs and studies interactive systems that help people create, configure, and extend AI-powered systems, including human-AI collaboration for the future of work.</p>
+          <p id="bio-toby" hidden class="mt-3 ml-20 text-base text-ink-soft leading-relaxed">Toby is an Assistant Professor of Computer Science and Engineering at the University of Notre Dame. He leads the SaNDwich Lab and directs the Human-Centered Responsible AI Lab. He designs and studies interactive systems that help people create, configure, and extend AI-powered systems, including human-AI collaboration for the future of work.</p>
         </li>
         <li>
           <div class="flex items-center gap-4">
@@ -249,18 +254,18 @@
               </div>
             </div>
           </div>
-          <p id="bio-ai-agent" hidden class="mt-3 ml-20 text-sm text-ink-soft leading-relaxed">The agent will respond to the same questions as the human speakers and engage with attendee follow-ups. Participants can challenge its assumptions, examine its evidence, and compare its reasoning with the human panelists' perspectives.</p>
+          <p id="bio-ai-agent" hidden class="mt-3 ml-20 text-base text-ink-soft leading-relaxed">An AI agent is planned as the fourth panelist. It will respond to the same questions as the human speakers and to follow-up questions from attendees. Participants can challenge its assumptions, examine the evidence behind its claims, and compare its reasoning with the human panelists' perspectives.</p>
         </li>
       </ul>
     </section>
 
     <section class="mb-20" aria-labelledby="papers-h">
       <h2 id="papers-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Accepted Papers</h2>
-      <p class="text-ink-soft">Accepted papers will be listed here after notification.</p>
+      <p class="text-ink-soft">Accepted papers will be listed here after authors have been notified.</p>
     </section>
 
     <!-- Footer -->
-    <footer class="mt-20 pt-10 text-sm text-ink-soft flex flex-col lg:flex-row justify-between items-center gap-4 text-center">
+    <footer class="mt-20 pt-10 text-base text-ink-soft flex flex-col lg:flex-row justify-between items-center gap-4 text-center">
       <p class="font-medium">CHI 2027 Workshop on Human-AI Co-Discovery (Proposal)</p>
       <div class="flex flex-wrap justify-center items-center gap-2">
         <span class="w-2 h-2 rounded-full bg-ember-400" aria-hidden="true"></span>
@@ -273,6 +278,6 @@
   </main>
 
   <!-- Main JavaScript -->
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js?v=20261001-gemini"></script>
 </body>
 </html>

@@ -5,7 +5,17 @@ const navbar = document.getElementById('navbar');
 
 // Tailwind's Play CDN styles the page after the browser has already jumped to a
 // linked section (such as program.html → call-for-participation.html#topics-h), so jump again once loaded.
+// Preserve both bookmarked and in-page links to the reflection prompt's former location.
+const redirectDiscussionLink = () => {
+  if (location.hash === '#roundtable-question' && document.querySelector('[data-discovery-story]')) {
+    location.replace('discussion.html#roundtable-question');
+    return true;
+  }
+  return false;
+};
+window.addEventListener('hashchange', redirectDiscussionLink);
 window.addEventListener('load', () => {
+  if (redirectDiscussionLink()) return;
   const target = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
   if (target) requestAnimationFrame(() => target.scrollIntoView());
 });
@@ -69,6 +79,132 @@ for (const toggle of document.querySelectorAll('[data-bio-toggle]')) {
   });
 }
 
+// Figure walkthrough: the selected stage highlights its panel and reveals a short explanation.
+const discoveryStory = document.querySelector('[data-discovery-story]');
+if (discoveryStory) {
+  const storyButtons = discoveryStory.querySelectorAll('[data-story-step]');
+  const storyPanels = discoveryStory.querySelectorAll('.story-panel');
+  const selectStoryStep = (step) => {
+    discoveryStory.dataset.step = step;
+    for (const button of storyButtons) button.setAttribute('aria-pressed', String(button.dataset.storyStep === step));
+    for (const panel of storyPanels) panel.hidden = panel.id !== `story-panel-${step}`;
+  };
+  for (const button of storyButtons) button.addEventListener('click', () => selectStoryStep(button.dataset.storyStep));
+  discoveryStory.querySelector('[data-story-restart]').addEventListener('click', () => {
+    selectStoryStep('1');
+    storyButtons[0].focus();
+  });
+}
+
+// Reflection choices reveal authored perspectives; no answers are stored or submitted.
+const provocation = document.querySelector('[data-provocation]');
+if (provocation) {
+  const positionButtons = provocation.querySelectorAll('[data-position]');
+  for (const button of positionButtons) {
+    button.addEventListener('click', () => {
+      for (const choice of positionButtons) choice.setAttribute('aria-pressed', String(choice === button));
+      for (const response of provocation.querySelectorAll('.provocation-response')) {
+        response.hidden = response.id !== `response-${button.dataset.position}`;
+      }
+    });
+  }
+}
+
+// Discussion content is exported on the server; no GitHub credentials enter the browser.
+const questionWall = document.querySelector('[data-question-wall]');
+if (questionWall) {
+  const status = questionWall.querySelector('[data-wall-status]');
+  const list = questionWall.querySelector('[data-wall-list]');
+  // Bot commits do not trigger a Pages rebuild. On GitHub Pages, read the current
+  // snapshot directly from main; local previews read their checked-out snapshot.
+  const source = location.hostname === 'human-ai-co-discovery.github.io'
+    ? 'https://raw.githubusercontent.com/human-ai-co-discovery/human-ai-co-discovery.github.io/main/chi2027/data/questions.json'
+    : 'data/questions.json';
+  fetch(source, { cache: 'no-store' })
+    .then(response => {
+      if (!response.ok) throw new Error('Questions unavailable');
+      return response.json();
+    })
+    .then(data => {
+      if (data.repository !== 'human-ai-co-discovery/human-ai-co-discovery.github.io'
+        || !Array.isArray(data.questions) || typeof data.private !== 'boolean') throw new Error('Invalid question data');
+      const cards = (data.private ? [] : data.questions).slice(0, 20).map(question => {
+        if (typeof question.title !== 'string' || typeof question.excerpt !== 'string'
+          || (question.author !== null && typeof question.author !== 'string') || typeof question.url !== 'string'
+          || !/^https:\/\/github\.com\/human-ai-co-discovery\/human-ai-co-discovery\.github\.io\/discussions\/[1-9]\d*$/.test(question.url)) {
+          throw new Error('Invalid question');
+        }
+        const card = document.createElement('li');
+        const heading = document.createElement('h3');
+        const link = document.createElement('a');
+        link.href = question.url;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = question.title;
+        heading.append(link);
+        const excerpt = document.createElement('p');
+        excerpt.textContent = question.excerpt;
+        const meta = document.createElement('p');
+        meta.className = 'question-meta';
+        meta.textContent = `${question.author ? '@' + question.author : 'Community member'} · Join the discussion on GitHub ↗`;
+        card.append(heading, excerpt, meta);
+        return card;
+      });
+      list.replaceChildren(...cards);
+      questionWall.querySelector('[data-wall-private]').hidden = !data.private;
+      status.hidden = cards.length > 0;
+      status.textContent = data.private
+        ? 'Read questions and join the conversation on GitHub during this private preview. Public question summaries will appear here when the community opens.'
+        : 'No community questions yet. Start a conversation on GitHub.';
+    })
+    .catch(() => {
+      status.hidden = false;
+      status.textContent = 'Questions could not be loaded. You can still read and reply on GitHub using the links above.';
+    });
+}
+
+// Organizer research profiles connect the team, question cards, and selected work.
+// Names, bios, and links come from the existing cards and their local templates.
+const researchProfile = document.getElementById('research-profile');
+if (researchProfile) {
+  for (const opener of document.querySelectorAll('[data-profile-open]')) {
+    opener.addEventListener('click', () => {
+      const card = document.getElementById(`organizer-${opener.dataset.profileOpen}`);
+      if (!card) return;
+      const name = card.querySelector('h4 a');
+      const photo = card.querySelector('img');
+      researchProfile.querySelector('[data-profile-name]').textContent = name.textContent;
+      researchProfile.querySelector('[data-profile-institution]').textContent = card.querySelector('[data-profile-affiliation]').textContent;
+      researchProfile.querySelector('[data-profile-photo]').src = photo.currentSrc || photo.src;
+      researchProfile.querySelector('[data-profile-description]').textContent = card.querySelector('[data-profile-bio]').textContent;
+      researchProfile.querySelector('[data-profile-homepage]').href = name.href;
+      const tags = Array.from(card.querySelectorAll('.organizer-tags li'), (tag) => {
+        const label = document.createElement('span');
+        label.textContent = tag.textContent;
+        return label;
+      });
+      researchProfile.querySelector('[data-profile-tags]').replaceChildren(...tags);
+      researchProfile.querySelector('[data-profile-content-slot]').replaceChildren(card.querySelector('template').content.cloneNode(true));
+      researchProfile.showModal();
+      researchProfile.querySelector('.profile-dialog__body').scrollTop = 0;
+    });
+  }
+  researchProfile.addEventListener('click', (event) => {
+    if (event.target === researchProfile) {
+      researchProfile.close();
+      return;
+    }
+    const trigger = event.target.closest('[data-question-target]');
+    if (!trigger) return;
+    const question = document.getElementById(`question-${trigger.dataset.questionTarget}`);
+    if (!question) return;
+    researchProfile.close();
+    question.querySelector('details').open = true;
+    question.scrollIntoView({ block: 'start' });
+    question.querySelector('summary').focus({ preventScroll: true });
+  });
+}
+
 // Mobile menu: the menu button drops down the page links; Escape or a click outside closes it.
 const menuToggle = document.querySelector('[data-menu-toggle]');
 const menu = menuToggle ? document.getElementById(menuToggle.getAttribute('aria-controls')) : null;
@@ -88,7 +224,7 @@ if (menu) {
   document.addEventListener('click', (event) => {
     if (!menu.hidden && !navbar.contains(event.target)) setMenu(false);
   });
-  window.matchMedia('(min-width: 880px)').addEventListener('change', (event) => {
+  window.matchMedia('(min-width: 1280px)').addEventListener('change', (event) => {
     if (event.matches) setMenu(false);
   });
 }

@@ -10,6 +10,7 @@
    rules below avoid properties that the pages also set with utilities. */
 
 :root {
+  --page-gutter: clamp(1.25rem, 7vw, 12rem);
   --paper: 249 250 251;
   --surface: 255 255 255;
   --ink: 36 64 75;
@@ -87,6 +88,19 @@ html {
   font-size: 16px;
 }
 
+/* Fluid single-column reading space, with generous margins on wider screens. */
+.page-container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--page-gutter);
+}
+#mobile-nav .page-container {
+  padding-inline: calc(var(--page-gutter) - 0.75rem);
+}
+@media (max-width: 639px) {
+  :root { --page-gutter: 1.25rem; }
+}
+
 /* ------------------------------------------------------------------
    Home hero: the eureka illustration with the discovery field behind it.
    The illustration's default styles are its final frame; the animations
@@ -110,7 +124,7 @@ html {
 
 .hero-eureka { position: relative; isolation: isolate; width: 100%; max-width: 30rem; }
 .hero-eureka::before {
-  content: ""; position: absolute; inset: 4% -4% 0 10%; z-index: -1; border-radius: 50%;
+  content: ""; position: absolute; inset: 4% 0 0 10%; z-index: -1; border-radius: 50%;
   background:
     radial-gradient(closest-side at 82% 26%, rgb(var(--ember-200) / 0.55), transparent 70%),
     radial-gradient(closest-side at 40% 60%, rgb(var(--tide-100) / 0.7), transparent 80%);
@@ -164,7 +178,7 @@ html {
 
 /* The title's gloss is centered under "Eureka?"; on the narrowest phones it
    narrows so that it stays inside the page. */
-#title-gloss { max-width: calc(100vw - 6rem); }
+#title-gloss { max-width: calc(100vw - 8rem); }
 
 /* Figure 1 has white panels on a transparent background, so it sits on white
    in both themes (dimmed slightly in dark mode), inline and full size. */
@@ -195,14 +209,6 @@ html {
 [data-q="3"] { --qc: var(--q3); --qs: var(--q3-soft); }
 [data-q="4"] { --qc: var(--q4); --qs: var(--q4-soft); }
 
-/* Cards in a row share its height when both are closed or both are open. In a row with
-   one open card, neither stretches, so the closed card does not become an empty box. */
-@media (min-width: 768px) {
-  #questions > li:nth-child(odd):has(> details[open]):has(+ li > details:not([open])),
-  #questions > li:nth-child(odd):has(> details:not([open])):has(+ li > details[open]),
-  #questions > li:nth-child(odd):has(> details[open]) + li:has(> details:not([open])),
-  #questions > li:nth-child(odd):has(> details:not([open])) + li:has(> details[open]) { align-self: start; }
-}
 .q-card > details {
   height: 100%;
   background: rgb(var(--qs));
@@ -396,3 +402,164 @@ section, [id] { scroll-margin-top: calc(var(--nav-height, 4rem) + 2rem); }
   .dp-node--ring, .dp-node--break { background: Canvas; border-color: CanvasText; color: CanvasText; }
 }
 /* ==================== end of discovery path ==================== */
+
+/* Connected question resources and organizer profiles. Resource lists stay
+   vertical; question colors inherit from each card's existing data-q tokens. */
+.q-card .question-paths {
+  margin: 0 1.25rem 1.4rem 1.5rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid rgb(var(--qc) / 0.2);
+  font-size: 1rem; line-height: 1.55; min-width: 0;
+}
+.question-paths h4 { margin: 1.25rem 0 0.55rem; font-size: 1rem; font-weight: 600; color: rgb(var(--qc)); }
+.question-paths h4:first-child { margin-top: 0; }
+:is(.question-paths, .profile-dialog) .research-links { margin: 0; padding: 0; list-style: none; }
+:is(.question-paths, .profile-dialog) .research-links > li {
+  margin: 0; padding: 0.75rem 0; min-width: 0;
+  border-bottom: 1px solid rgb(var(--rule));
+  font-size: 1rem; line-height: 1.55; overflow-wrap: anywhere;
+}
+:is(.question-paths, .profile-dialog) .research-links > li:last-child { border-bottom: 0; }
+:is(.question-paths, .profile-dialog) .research-links a {
+  display: block; font-size: 1rem; font-weight: 600; line-height: 1.45;
+  color: rgb(var(--tide-700)); text-decoration: none;
+}
+:is(.question-paths, .profile-dialog) .research-links p { margin: 0.3rem 0 0; color: rgb(var(--ink-soft)); }
+:is(.question-paths, .profile-dialog) .research-links :is(small, .research-meta) {
+  display: block; margin-top: 0.25rem; font-size: 0.875rem; font-weight: 400; line-height: 1.5; color: rgb(var(--ink-soft));
+}
+.question-paths a.all-readings {
+  display: inline-flex; align-items: center; gap: 0.4rem; min-height: 2.75rem; margin-top: 0.35rem;
+  font-size: 1rem; font-weight: 600; color: rgb(var(--qc)); text-decoration: none; text-underline-offset: 0.2em;
+}
+.question-paths a.activity-link {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 0.25rem; min-height: 2.75rem;
+  color: rgb(var(--qc)); font-weight: 600;
+  text-decoration: none;
+}
+.question-paths .activity-link strong { font-weight: 600; text-decoration: underline; text-underline-offset: 0.2em; }
+.question-paths .activity-link > span { font-weight: 400; color: rgb(var(--ink-soft)); line-height: 1.55; }
+.question-paths .related-people { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.6rem; }
+.question-paths button.person-link {
+  appearance: none; display: inline-flex; align-items: center; justify-content: center;
+  max-width: 100%; min-height: 2.75rem; margin: 0; padding: 0.35rem 0.75rem;
+  border: 1px solid rgb(var(--qc) / 0.3); border-radius: 999px;
+  background: rgb(var(--surface) / 0.75); color: rgb(var(--tide-900));
+  font: inherit; font-weight: 500; line-height: 1.4; text-align: center;
+  overflow-wrap: anywhere; cursor: pointer;
+}
+
+/* Shared rows align portraits, interest tags, and profile buttons even when
+   names or tags wrap. Column counts still follow the existing responsive grid. */
+#organizers > ul { row-gap: 0; }
+.organizer-card {
+  min-width: 0; display: grid; grid-row: span 3;
+  grid-template-rows: subgrid; row-gap: 0; padding-bottom: 1.75rem;
+}
+.organizer-card .organizer-tags, .profile-dialog .profile-tags {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem;
+  margin: 0.8rem 0 0; padding: 0; list-style: none;
+}
+.organizer-card .organizer-tags { align-items: flex-start; align-content: flex-start; }
+.organizer-card .organizer-tags > li, .profile-dialog .profile-tags > span {
+  margin: 0; padding: 0.25rem 0.55rem; max-width: 100%; border-radius: 999px;
+  background: rgb(var(--tide-50)); color: rgb(var(--ink-soft));
+  font-size: 0.8125rem; font-weight: 500; line-height: 1.4; overflow-wrap: anywhere;
+}
+.organizer-card .organizer-tags > [data-q], .profile-dialog .profile-tags > [data-q] {
+  background: rgb(var(--qs)); color: rgb(var(--qc));
+}
+.organizer-card button.profile-open {
+  justify-self: start; align-self: start;
+  appearance: none; display: inline-flex; align-items: center; gap: 0.4rem;
+  min-height: 2.75rem; margin: 0.4rem 0 0; padding: 0.4rem 0;
+  border: 0; background: transparent; color: rgb(var(--tide-700));
+  font: inherit; font-size: 1rem; font-weight: 600; line-height: 1.4; text-align: left;
+  text-underline-offset: 0.2em; cursor: pointer;
+}
+
+/* Native dialog visibility is preserved: only [open] uses flex. Its header
+   stays visible while the body scrolls, including on small mobile screens. */
+dialog.profile-dialog {
+  box-sizing: border-box; width: min(48rem, calc(100% - 2.5rem));
+  max-height: calc(100vh - 2.5rem); max-height: calc(100dvh - 2.5rem);
+  margin: auto; padding: 0; overflow: hidden;
+  border: 1px solid rgb(var(--rule)); border-radius: 1rem;
+  background: rgb(var(--surface)); color: rgb(var(--ink));
+  font-family: inherit; font-size: 1.125rem; line-height: 1.65;
+  box-shadow: 0 24px 72px -20px rgb(0 0 0 / 0.4);
+}
+dialog.profile-dialog[open] { display: flex; flex-direction: column; }
+dialog.profile-dialog::backdrop { background: rgb(17 25 29 / 0.6); }
+.profile-dialog .profile-dialog__header {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center;
+  gap: 1rem; flex: none; padding: 1.5rem; border-bottom: 1px solid rgb(var(--rule));
+}
+.profile-dialog .profile-photo {
+  display: block; width: 4.5rem; height: 4.5rem; border-radius: 50%;
+  object-fit: cover; object-position: center 25%; background: rgb(var(--tide-50));
+}
+.profile-dialog .profile-dialog__header h2 {
+  margin: 0; font-size: 1.5rem; font-weight: 700; line-height: 1.25;
+  color: rgb(var(--tide-900)); letter-spacing: -0.02em; overflow-wrap: anywhere;
+}
+.profile-dialog .profile-dialog__header p { margin: 0.3rem 0 0; font-size: 1rem; line-height: 1.45; color: rgb(var(--ink-soft)); }
+.profile-dialog .profile-heading { min-width: 0; }
+.profile-dialog .profile-dialog__header .profile-eyebrow {
+  margin: 0 0 0.35rem; font-size: 0.8125rem; font-weight: 600; line-height: 1.3;
+  letter-spacing: 0.06em; text-transform: uppercase; color: rgb(var(--ink-soft));
+}
+.profile-dialog .profile-dialog__header form { margin: 0; align-self: start; }
+.profile-dialog button.profile-close {
+  appearance: none; display: grid; place-items: center; width: 2.75rem; height: 2.75rem;
+  margin: 0; padding: 0; border: 1px solid rgb(var(--rule)); border-radius: 0.6rem;
+  background: transparent; color: rgb(var(--tide-900));
+  font: inherit; font-size: 1.5rem; line-height: 1; cursor: pointer;
+}
+.profile-dialog .profile-close svg { width: 1.25rem; height: 1.25rem; }
+.profile-dialog .profile-dialog__body {
+  min-height: 0; padding: 1.5rem; overflow-y: auto; overscroll-behavior: contain;
+  overflow-wrap: anywhere;
+}
+.profile-dialog .profile-bio { margin: 0; font-size: 1.125rem; line-height: 1.65; }
+.profile-dialog .profile-tags { margin: 1.25rem 0 1.5rem; }
+.profile-dialog .profile-dialog__body > .profile-tags:first-child { margin-top: 0; }
+.profile-dialog .profile-content { display: block; margin-top: 1.75rem; }
+.profile-dialog .profile-content > section + section { margin-top: 1.75rem; }
+.profile-dialog .profile-content h3 { margin: 0 0 0.75rem; font-size: 1.125rem; font-weight: 600; line-height: 1.4; color: rgb(var(--tide-900)); }
+.profile-dialog .profile-question-links { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.55rem; }
+.profile-dialog .profile-question-links button {
+  appearance: none; display: flex; align-items: flex-start; gap: 0.6rem;
+  width: 100%; margin: 0; padding: 0.75rem;
+  border: 1px solid rgb(var(--qc) / 0.3); border-radius: 0.65rem;
+  background: rgb(var(--qs)); color: rgb(var(--tide-900));
+  font: inherit; font-size: 1rem; font-weight: 500; line-height: 1.45; text-align: left;
+  overflow-wrap: anywhere; cursor: pointer;
+}
+.profile-dialog .profile-question-links .q-badge { margin-top: 0.2rem; }
+.profile-dialog a.profile-homepage {
+  display: inline-flex; align-items: center; gap: 0.4rem; min-height: 2.75rem; margin-top: 1.5rem;
+  font-size: 1rem; font-weight: 600; color: rgb(var(--tide-700));
+  text-decoration: underline; text-underline-offset: 0.2em;
+}
+:is(.question-paths, .organizer-card, .profile-dialog) :is(a, button):focus-visible {
+  outline: 3px solid rgb(var(--tide-700)); outline-offset: 3px;
+}
+@media (max-width: 479px) {
+  .profile-dialog .profile-dialog__header { gap: 0.75rem; padding: 1rem; }
+  .profile-dialog .profile-photo { width: 3.5rem; height: 3.5rem; }
+  .profile-dialog .profile-dialog__body { padding: 1rem; }
+}
+@media (hover: hover) {
+  :is(.question-paths, .profile-dialog) .research-links a:hover > span,
+  .question-paths a.all-readings:hover, .organizer-card button.profile-open:hover { text-decoration: underline; }
+  .question-paths button.person-link:hover { background: rgb(var(--surface)); border-color: rgb(var(--qc) / 0.6); }
+  .profile-dialog button.profile-close:hover { background: rgb(var(--tide-50)); }
+  .profile-dialog .profile-question-links button:hover { border-color: rgb(var(--qc) / 0.6); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .question-paths button.person-link, .organizer-card button.profile-open,
+  .profile-dialog button.profile-close, .profile-dialog .profile-question-links button {
+    transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+  }
+}
