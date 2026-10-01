@@ -10,7 +10,7 @@
    rules below avoid properties that the pages also set with utilities. */
 
 :root {
-  --page-gutter: clamp(1rem, 6vw, 12rem);
+  --page-gutter: clamp(1.25rem, 7vw, 12rem);
   --paper: 249 250 251;
   --surface: 255 255 255;
   --ink: 36 64 75;
@@ -98,7 +98,7 @@ html {
   padding-inline: calc(var(--page-gutter) - 0.75rem);
 }
 @media (max-width: 639px) {
-  :root { --page-gutter: 1rem; }
+  :root { --page-gutter: 1.25rem; }
 }
 
 /* ------------------------------------------------------------------
