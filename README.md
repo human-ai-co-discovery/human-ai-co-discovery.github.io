@@ -2,7 +2,7 @@
 
 Website for Human-AI Co-Discovery, exploring how people and AI discover new questions, patterns, connections, and explanations.
 
-**Status: private, not published.** The repository is private and GitHub Pages is off, so the site is visible only to organization members. The organization is on the GitHub Free plan, where Pages sites are always public and private repositories cannot publish Pages. To publish, make the repository public and enable Pages from the `main` branch root; the site will then appear at <https://human-ai-co-discovery.github.io/>.
+**Status: public.** GitHub Pages publishes the `main` branch root at <https://human-ai-co-discovery.github.io/>. The CHI 2027 workshop website is at <https://human-ai-co-discovery.github.io/chi2027/>. The workshop proposal remains under review; publication of the website does not indicate acceptance.
 
 ## Structure
 
@@ -49,7 +49,7 @@ From the repository root, run a static server and open the pages before pushing:
 python3 -m http.server 8000
 ```
 
-Then visit <http://localhost:8000/> and <http://localhost:8000/chi2027/>. This static server does not enable Gemini; use the assistant preview command below for that feature. Once GitHub Pages is enabled, a push to `main` usually updates it within a few minutes. Pages is currently disabled.
+Then visit <http://localhost:8000/> and <http://localhost:8000/chi2027/>. This static server does not enable Gemini; use the assistant preview command below for that feature. A push to `main` updates GitHub Pages after its deployment finishes.
 
 ## Updating the CHI 2027 page
 
@@ -83,7 +83,7 @@ This server binds only to `127.0.0.1`, requires same-origin JSON requests, allow
 
 ## Community questions
 
-The **Discussion** page links to the repository’s real Q&A category for submitting and replying under a GitHub account. Discussions are enabled in the existing private repository; Pages remains disabled. The website does not create posts or handle GitHub credentials. Repository members can participate privately through GitHub now.
+The **Discussion** page links to the public repository’s Q&A category for submitting and replying under a GitHub account. The website does not create posts or handle GitHub credentials. Questions and replies posted there are public.
 
 `python3 scripts/sync_questions.py` exports a deterministic snapshot to `chi2027/data/questions.json` using the authenticated GitHub CLI. While the repository is private, the exporter writes only category metadata and an empty list, without fetching discussion content. Private preview discussions therefore do not enter the website’s Git history. Once public, it exports the 20 most recently updated Q&A discussions with plain-text excerpts and canonical GitHub links. Public snapshots are versioned; removing a discussion clears it from the next snapshot, not earlier commits.
 
