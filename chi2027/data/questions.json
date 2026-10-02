@@ -1,6 +1,6 @@
 {
   "repository": "human-ai-co-discovery/human-ai-co-discovery.github.io",
-  "private": false,
+  "private": true,
   "discussion_url": "https://github.com/human-ai-co-discovery/human-ai-co-discovery.github.io/discussions/categories/q-a",
   "new_question_url": "https://github.com/human-ai-co-discovery/human-ai-co-discovery.github.io/discussions/new?category=q-a",
   "questions": []
