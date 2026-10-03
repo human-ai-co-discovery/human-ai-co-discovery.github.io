@@ -84,68 +84,11 @@
       <div class="prose">
         <p>We welcome researchers, designers, and practitioners interested in human-AI co-discovery. There are two ways to take part:</p>
         <ul>
-          <li><strong>Submit a paper.</strong> Share a 2–4-page contribution in ACM double-column format, excluding references. Each submission will receive two program committee reviews.</li>
+          <li><strong>Submit a paper.</strong> Share your work, experience, or an open question for discussion.</li>
           <li><strong>Attend without a paper.</strong> All conference attendees are welcome to join the discussions and roundtable activity.</li>
         </ul>
-        <p>We expect 50 participants, with priority for accepted contributors. The planned workshop consists of two consecutive 90-minute in-person sessions.</p>
+        <p>We expect 50 participants, with priority for accepted contributors.</p>
       </div>
-    </section>
-
-    <details id="contribution-finder" class="contribution-finder mb-20" data-cfp-assistant>
-      <summary><span>Explore how your work could contribute</span><span class="finder-chevron" aria-hidden="true">⌄</span></summary>
-      <div class="finder-body">
-        <p>Describe what you study or build and what you would like to discuss. The assistant will use this CFP to suggest relevant topics, contribution formats, and possible angles.</p>
-        <form id="cfp-assistant-form" class="assistant-form">
-          <label for="research-description">What are you working on?</label>
-          <textarea id="research-description" name="description" rows="5" minlength="20" maxlength="4000" required aria-describedby="assistant-input-hint assistant-privacy" placeholder="For example, I am studying how researchers revise AI-generated hypotheses when new evidence challenges them. I would like to discuss how to evaluate those turning points."></textarea>
-          <p id="assistant-input-hint" class="assistant-hint">A few sentences about your work, its context, and an open question are enough.</p>
-          <p id="assistant-privacy" class="assistant-hint">When you request suggestions, your description is sent to Google Gemini. This website does not save it.</p>
-          <div class="assistant-actions">
-            <button type="submit" data-assistant-submit disabled>Suggest contribution angles</button>
-            <button type="button" class="assistant-clear" data-assistant-clear>Clear</button>
-          </div>
-        </form>
-        <p class="assistant-status" data-assistant-status role="status">Checking whether the assistant is available…</p>
-        <div class="assistant-results" data-assistant-results aria-live="polite" aria-atomic="true"></div>
-        <p class="finder-note">AI-generated suggestions are starting points for discussion. The submission requirements and full topic list can be found below.</p>
-      </div>
-    </details>
-
-    <section class="mb-20" aria-labelledby="submit-h">
-      <h2 id="submit-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Submission and Review</h2>
-      <dl id="submission-h" class="space-y-4">
-        <div>
-          <dt class="font-bold text-ink">Paper format</dt>
-          <dd>2–4 pages in ACM double-column format, excluding references. Use the <code class="text-tide-900 before:content-none after:content-none">sigconf</code> format in the <a href="https://www.overleaf.com/latex/templates/acm-conference-proceedings-primary-article-template/wbvnghjbzwpc" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Overleaf LaTeX template</a>.</dd>
-        </div>
-        <div>
-          <dt class="font-bold text-ink">Review process</dt>
-          <dd>Each submission will receive two program committee reviews. Acceptance will depend on relevance, quality, and discussion potential.</dd>
-        </div>
-        <div>
-          <dt class="font-bold text-ink">How to submit</dt>
-          <dd>We will post the submission link here if the workshop is accepted.</dd>
-        </div>
-        <div>
-          <dt class="font-bold text-ink">Sharing accepted papers</dt>
-          <dd>With authors' permission, accepted contributions will be shared on this website at least one week before the workshop. See our <a href="after-workshop.html" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700">plans for after the workshop</a>.</dd>
-        </div>
-      </dl>
-    </section>
-
-    <section id="dates" class="mb-20 scroll-mt-20" aria-labelledby="timeline-h">
-      <h2 id="timeline-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Key Dates</h2>
-      <p class="mb-4">Dates will be announced if the workshop is accepted, following the CHI workshop timeline.</p>
-      <dl class="space-y-4">
-        <div>
-          <dt class="font-bold text-ink">Submission deadline and participant notification</dt>
-          <dd>To be announced</dd>
-        </div>
-        <div>
-          <dt class="font-bold text-ink">Workshop date and room</dt>
-          <dd>To be announced</dd>
-        </div>
-      </dl>
     </section>
 
     <section class="mb-20" aria-labelledby="contribute-h">
@@ -163,6 +106,29 @@
         <p>Concrete examples of discovery with AI are especially welcome. A contribution might trace how an initial idea changed, what led people to challenge an interpretation, or what they learned even when the investigation remained inconclusive.</p>
         </div>
       </section>
+
+      <div id="contribution-finder" class="mt-12 scroll-mt-20" data-cfp-assistant>
+        <p class="text-base text-ink-soft" data-assistant-unavailable>Contribution assistant coming soon. Explore the contribution formats above and the topics below.</p>
+        <details class="contribution-finder" data-assistant-disclosure hidden>
+          <summary><span>Explore how your work could contribute</span><span class="finder-chevron" aria-hidden="true">⌄</span></summary>
+          <div class="finder-body">
+            <p>Describe what you study or build and what you would like to discuss. The assistant will use this CFP to suggest relevant topics, contribution formats, and possible angles.</p>
+            <form id="cfp-assistant-form" class="assistant-form">
+              <label for="research-description">What are you working on?</label>
+              <textarea id="research-description" name="description" rows="5" minlength="20" maxlength="4000" required aria-describedby="assistant-input-hint assistant-privacy" placeholder="For example, I am studying how researchers revise AI-generated hypotheses when new evidence challenges them. I would like to discuss how to evaluate those turning points."></textarea>
+              <p id="assistant-input-hint" class="assistant-hint">A few sentences about your work, its context, and an open question are enough.</p>
+              <p id="assistant-privacy" class="assistant-hint">When you request suggestions, your description is sent to Google Gemini. This website does not save it.</p>
+              <div class="assistant-actions">
+                <button type="submit" data-assistant-submit disabled>Suggest contribution angles</button>
+                <button type="button" class="assistant-clear" data-assistant-clear>Clear</button>
+              </div>
+            </form>
+            <p class="assistant-status" data-assistant-status role="status">Checking whether the assistant is available…</p>
+            <div class="assistant-results" data-assistant-results aria-live="polite" aria-atomic="true"></div>
+            <p class="finder-note">AI-generated suggestions are starting points for discussion. The submission requirements and full topic list can be found below.</p>
+          </div>
+        </details>
+      </div>
 
       <section class="mt-12" aria-labelledby="topics-h">
         <h3 id="topics-h" class="text-xl font-bold text-tide-900 mb-4">Topics and questions</h3>
@@ -216,17 +182,47 @@
       </section>
     </section>
 
+    <section class="mb-20" aria-labelledby="submit-h">
+      <h2 id="submit-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Submission and Review</h2>
+      <dl id="submission-h" class="space-y-4">
+        <div>
+          <dt class="font-bold text-ink">Paper format</dt>
+          <dd>2–4 pages in ACM double-column format, excluding references. Use the <code class="text-tide-900 before:content-none after:content-none">sigconf</code> format in the <a href="https://www.overleaf.com/latex/templates/acm-conference-proceedings-primary-article-template/wbvnghjbzwpc" target="_blank" rel="noopener noreferrer" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700 hover:decoration-current">Overleaf LaTeX template</a>.</dd>
+        </div>
+        <div>
+          <dt class="font-bold text-ink">Review process</dt>
+          <dd>Each submission will receive two program committee reviews. Acceptance will depend on relevance, quality, and discussion potential.</dd>
+        </div>
+        <div>
+          <dt class="font-bold text-ink">How to submit</dt>
+          <dd>We will post the submission link here if the workshop is accepted.</dd>
+        </div>
+        <div>
+          <dt class="font-bold text-ink">Sharing accepted papers</dt>
+          <dd>With authors' permission, accepted contributions will be shared on this website at least one week before the workshop. See our <a href="after-workshop.html" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700">plans for after the workshop</a>.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section id="dates" class="mb-20 scroll-mt-20" aria-labelledby="timeline-h">
+      <h2 id="timeline-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Key Dates</h2>
+      <p class="mb-4">Dates will be announced if the workshop is accepted, following the CHI workshop timeline.</p>
+      <dl class="space-y-4">
+        <div>
+          <dt class="font-bold text-ink">Submission deadline and participant notification</dt>
+          <dd>To be announced</dd>
+        </div>
+        <div>
+          <dt class="font-bold text-ink">Workshop date and room</dt>
+          <dd>To be announced</dd>
+        </div>
+      </dl>
+    </section>
+
     <section id="at-the-workshop" class="mb-20 scroll-mt-20" aria-labelledby="at-workshop-h">
       <h2 id="at-workshop-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">At the Workshop</h2>
       <div class="prose">
-        <p>The program and invited speakers are tentative, subject to workshop acceptance, speaker availability, and the conference schedule.</p>
-        <ul>
-          <li><strong>Keynote and human-AI panel.</strong> We plan a keynote with Q&amp;A by Daniel McDuff (Google Research) and a 30-minute panel with Daniel McDuff, Sherry Tongshuang Wu, Toby Jia-Jun Li, and an AI agent. The agent will respond to the same questions as the human panelists and to attendees' follow-up questions. Participants can challenge its assumptions, examine the evidence behind its claims, and compare its reasoning with the human panelists' perspectives.</li>
-          <li><strong>Lightning talks and posters.</strong> Talks by accepted contributors will be split into two blocks, with about three minutes per talk and timings adjusted to the final program. During the conference coffee break, authors are encouraged to display posters on their own devices.</li>
-          <li><strong>Interactive roundtable activity.</strong> Seven groups with participants from different disciplines will explore a question with AI, using public or participant-approved materials. Organizers will facilitate. Each group will identify a turning point or unresolved difficulty and reflect on it through the <a href="#topics-h">four workshop questions</a>. Participants will choose and approve any excerpts shared beyond their group.</li>
-          <li><strong>Group reports and collective discussion.</strong> Each group will give a report of up to two minutes, sharing an exchange, insight, or unresolved difficulty and an open question. A brief discussion will compare recurring themes and differences across the groups.</li>
-        </ul>
-        <p><a href="program.html">See the full program</a>.</p>
+        <p>The planned workshop brings together short talks, a keynote and human-AI panel, and a hands-on roundtable where participants explore a question with AI and compare what they learn. See the <a href="program.html">tentative program</a> for the schedule, speakers, and activity details.</p>
       </div>
     </section>
 
@@ -299,6 +295,6 @@
 
   <!-- Main JavaScript -->
   <script src="assets/js/main.js?v=20261001-gemini"></script>
-  <script src="assets/js/cfp-assistant.js?v=20261001-gemini"></script>
+  <script src="assets/js/cfp-assistant.js?v=20261003-availability"></script>
 </body>
 </html>
