@@ -22,6 +22,16 @@ const redirectMovedSection = () => {
       return true;
     }
   }
+  if (location.pathname.endsWith('/program.html')) {
+    if (['#speakers', '#speakers-h'].includes(location.hash)) {
+      location.replace('speakers.html');
+      return true;
+    }
+    if (['#bio-daniel', '#bio-sherry', '#bio-toby', '#bio-ai-agent'].includes(location.hash)) {
+      location.replace(`speakers.html${location.hash}`);
+      return true;
+    }
+  }
   return false;
 };
 window.addEventListener('hashchange', redirectMovedSection);
