@@ -1,6 +1,8 @@
 // The model sees the current CFP through the server. Credentials never enter this page.
 const assistant = document.querySelector('[data-cfp-assistant]');
 if (assistant) {
+  const disclosure = assistant.querySelector('[data-assistant-disclosure]');
+  const unavailable = assistant.querySelector('[data-assistant-unavailable]');
   const form = assistant.querySelector('form');
   const input = form.querySelector('textarea');
   const submit = form.querySelector('[data-assistant-submit]');
@@ -18,9 +20,11 @@ if (assistant) {
       available = false;
     }
     submit.disabled = !available;
+    disclosure.hidden = !available;
+    unavailable.hidden = available;
     status.textContent = available
       ? 'Ready to explore connections to the CFP.'
-      : 'The assistant is not available yet. You can explore all topics and contribution formats below.';
+      : 'The assistant is not available yet. You can explore contribution formats above and topics below.';
   };
   checkAvailability();
 

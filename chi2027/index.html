@@ -103,6 +103,10 @@
         <p class="text-[clamp(1.125rem,2.2vw,1.5rem)] text-ink-soft leading-relaxed max-w-2xl font-medium">
           Human-AI Co-Discovery of Knowledge
         </p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href="call-for-participation.html" class="inline-flex items-center justify-center min-h-11 rounded-lg bg-tide-700 px-4 py-2.5 text-base font-semibold text-paper hover:bg-ember-700 transition-colors">Call for Participation</a>
+          <a href="program.html" class="inline-flex items-center justify-center min-h-11 rounded-lg border border-tide-700 px-4 py-2.5 text-base font-semibold text-tide-700 hover:bg-tide-50 transition-colors">View Program</a>
+        </div>
       </div>
       <!-- Eureka illustration: question, connection, explanation, eureka (plays once; static under reduced motion) -->
       <div class="hero-eureka md:flex-1 md:min-w-0" data-field-quiet="0.5" data-field-feather="120">
@@ -365,54 +369,31 @@
         <p>The tentative program spans two 90-minute sessions, with a keynote, lightning talks, a human-AI panel, and interactive roundtables. Poster exchange will take place during the conference coffee break.</p>
       </div>
 
-      <!-- Discovery path: the program drawn as the eureka curve. Each stop links to its
-           schedule item on the Program page; main.js places it on the curve by its start minute (data-min). -->
-      <nav class="dp mt-8 mb-10" aria-label="Program at a glance" data-discovery-path>
-        <div class="dp-session">
-          <p id="dp-s1" class="dp-kicker"><span class="dp-kicker-name">Session 1: Perspectives</span> <span class="dp-kicker-min">90 min</span></p>
-          <ol class="dp-stops" aria-labelledby="dp-s1">
-            <li><a class="dp-stop" href="program.html#s1-welcome" data-min="5" aria-label="Welcome, 5 minutes"><span class="dp-node" aria-hidden="true"></span><span class="dp-name">Welcome</span> <span class="dp-min">5 min</span></a></li>
-            <li><a class="dp-stop" href="program.html#s1-keynote" data-min="30" aria-label="Keynote with Q&amp;A, 30 minutes"><span class="dp-node dp-node--ring" aria-hidden="true"><i data-lucide="mic"></i></span><span class="dp-name">Keynote with Q&amp;A</span> <span class="dp-min">30 min</span></a></li>
-            <li><a class="dp-stop" href="program.html#s1-lightning" data-min="25" aria-label="Lightning talks: first block, 25 minutes"><span class="dp-node" aria-hidden="true"></span><span class="dp-name">Lightning talks: first block</span> <span class="dp-min">25 min</span></a></li>
-            <li><a class="dp-stop" href="program.html#s1-panel" data-min="30" aria-label="Human-AI panel discussion, 30 minutes"><span class="dp-node dp-node--ring" aria-hidden="true"><i data-lucide="messages-square"></i></span><span class="dp-name">Human-AI panel discussion</span> <span class="dp-min">30 min</span></a></li>
-          </ol>
-        </div>
-        <p class="dp-pause"><a class="dp-stop dp-stop--break" href="program.html#break-h"><span class="dp-node dp-node--break" aria-hidden="true"><i data-lucide="coffee"></i></span><span class="dp-name">Conference coffee break and poster exchange</span></a></p>
-        <div class="dp-session">
-          <p id="dp-s2" class="dp-kicker"><span class="dp-kicker-name">Session 2: Co-Discovery</span> <span class="dp-kicker-min">90 min</span></p>
-          <ol class="dp-stops" aria-labelledby="dp-s2">
-            <li><a class="dp-stop" href="program.html#s2-lightning" data-min="20" aria-label="Lightning talks: second block, 20 minutes"><span class="dp-node" aria-hidden="true"></span><span class="dp-name">Lightning talks: second block</span> <span class="dp-min">20 min</span></a></li>
-            <li><a class="dp-stop" href="program.html#s2-roundtable" data-min="50" aria-label="Interactive roundtable activity, 50 minutes"><span class="dp-node dp-node--ring" aria-hidden="true"><i data-lucide="users"></i></span><span class="dp-name">Interactive roundtable activity</span> <span class="dp-min">50 min</span></a></li>
-            <li><a class="dp-stop" href="program.html#s2-reports" data-min="15" aria-label="Group reports and collective discussion, 15 minutes"><span class="dp-node" aria-hidden="true"></span><span class="dp-name">Group reports and collective discussion</span> <span class="dp-min">15 min</span></a></li>
-            <li><a class="dp-stop dp-stop--eureka" href="program.html#s2-closing" data-min="5" aria-label="Closing and next steps, 5 minutes"><span class="dp-node dp-node--spark" aria-hidden="true"><svg viewBox="-32 -32 64 64" focusable="false"><path class="dp-spark-rays" d="M19.4 8L28.6 11.9M8 19.4L10.3 24.9M-8 19.4L-11.9 28.6M-19.4 8L-24.9 10.3M-19.4 -8L-28.6 -11.9M-8 -19.4L-10.3 -24.9M8 -19.4L11.9 -28.6M19.4 -8L24.9 -10.3"/><path class="dp-spark-core" d="M0 -20Q3.5 -3.5 20 0Q3.5 3.5 0 20Q-3.5 3.5 -20 0Q-3.5 -3.5 0 -20Z"/><circle class="dp-spark-eye" r="2.6"/></svg></span><span class="dp-name">Closing and next steps</span> <span class="dp-min">5 min</span></a></li>
-          </ol>
-        </div>
-      </nav>
 
       <h3 class="mt-10 mb-6 font-semibold text-ink-soft">Invited Guests <span class="font-normal">(tentative)</span></h3>
-      <!-- Names, photos, and links as on program.html; the role restates the schedule there. -->
+      <!-- Compact speaker previews link to the full profiles. -->
       <ul class="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-8">
         <li class="group flex flex-col items-center text-center">
-          <a target="_blank" rel="noopener noreferrer" href="https://danmcduff.github.io/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/daniel.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
-          <h4 class="mt-3 font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug text-balance"><a target="_blank" rel="noopener noreferrer" href="https://danmcduff.github.io/" class="hover:underline">Daniel McDuff</a></h4>
+          <a href="speakers.html#daniel" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/daniel.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
+          <h4 class="mt-3 font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug text-balance"><a href="speakers.html#daniel" class="hover:underline">Daniel McDuff</a></h4>
           <p class="text-base text-ink-soft">Google Research</p>
           <p class="mt-auto pt-2.5"><span class="inline-block rounded-full bg-ember-50 text-ember-700 px-2.5 py-0.5 text-xs font-semibold">Keynote and panel</span></p>
         </li>
         <li class="group flex flex-col items-center text-center">
-          <a target="_blank" rel="noopener noreferrer" href="https://www.cs.cmu.edu/~sherryw/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/sherry.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
-          <h4 class="mt-3 font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug text-balance"><a target="_blank" rel="noopener noreferrer" href="https://www.cs.cmu.edu/~sherryw/" class="hover:underline">Sherry Tongshuang Wu</a></h4>
+          <a href="speakers.html#sherry" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/sherry.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
+          <h4 class="mt-3 font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug text-balance"><a href="speakers.html#sherry" class="hover:underline">Sherry Tongshuang Wu</a></h4>
           <p class="text-base text-ink-soft">Carnegie Mellon University</p>
           <p class="mt-auto pt-2.5"><span class="inline-block rounded-full bg-tide-50 text-tide-700 px-2.5 py-0.5 text-xs font-semibold">Panel</span></p>
         </li>
         <li class="group flex flex-col items-center text-center">
-          <a target="_blank" rel="noopener noreferrer" href="https://toby.li/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/toby.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
-          <h4 class="mt-3 font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug text-balance"><a target="_blank" rel="noopener noreferrer" href="https://toby.li/" class="hover:underline">Toby Jia-Jun Li</a></h4>
+          <a href="speakers.html#toby" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/toby.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
+          <h4 class="mt-3 font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug text-balance"><a href="speakers.html#toby" class="hover:underline">Toby Jia-Jun Li</a></h4>
           <p class="text-base text-ink-soft">University of Notre Dame</p>
           <p class="mt-auto pt-2.5"><span class="inline-block rounded-full bg-tide-50 text-tide-700 px-2.5 py-0.5 text-xs font-semibold">Panel</span></p>
         </li>
         <li class="flex flex-col items-center text-center">
-          <span class="agent-avatar shrink-0 flex items-end justify-center overflow-hidden w-20 h-20 rounded-full border border-rule" aria-hidden="true"><img src="../assets/people/ai-agent.webp" alt="" width="320" height="320" loading="lazy" decoding="async" class="agent-avatar__img w-[88%] h-auto"></span>
-          <h4 class="mt-3 font-bold text-tide-900 text-lg leading-snug text-balance">An AI agent</h4>
+          <a href="speakers.html#ai-agent" tabindex="-1" aria-hidden="true"><span class="agent-avatar shrink-0 flex items-end justify-center overflow-hidden w-20 h-20 rounded-full border border-rule" aria-hidden="true"><img src="../assets/people/ai-agent.webp" alt="" width="320" height="320" loading="lazy" decoding="async" class="agent-avatar__img w-[88%] h-auto"></span></a>
+          <h4 class="mt-3 font-bold text-tide-900 text-lg leading-snug text-balance"><a href="speakers.html#ai-agent" class="hover:underline">An AI agent</a></h4>
           <p class="mt-auto pt-2.5"><span class="inline-block rounded-full bg-tide-50 text-tide-700 px-2.5 py-0.5 text-xs font-semibold">Panel</span></p>
         </li>
       </ul>
@@ -434,91 +415,91 @@
       <ul class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-x-8 gap-y-7">
         <li class="group organizer-card" id="organizer-zhihan">
           <div class="flex items-center gap-4">
-            <a target="_blank" rel="noopener noreferrer" href="https://zhihanjiang.com/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/zhihan.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
+            <a href="organizers.html#organizer-zhihan" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/zhihan.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
             <div class="min-w-0">
-              <div class="flex items-center gap-1.5"><h4 class="font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug"><a target="_blank" rel="noopener noreferrer" href="https://zhihanjiang.com/" class="hover:underline">Zhihan Jiang</a></h4></div>
+              <div class="flex items-center gap-1.5"><h4 class="font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug"><a href="organizers.html#organizer-zhihan" class="hover:underline">Zhihan Jiang</a></h4></div>
               <p data-profile-affiliation class="text-base text-ink-soft">Columbia University</p>
             </div>
           </div>
           <ul class="organizer-tags" aria-label="Research interests"><li>Human-AI co-sensemaking</li><li>Visual analytics</li></ul>
-          <a class="profile-open" href="organizers.html#organizer-zhihan" aria-label="Research profile: Zhihan Jiang">Research profile <span aria-hidden="true">↗</span></a>
+          <a class="profile-open" href="organizers.html#organizer-zhihan" aria-label="Research profile: Zhihan Jiang">Research profile <span aria-hidden="true">→</span></a>
         </li>
         <li class="group organizer-card" id="organizer-yifang">
           <div class="flex items-center gap-4">
-            <a target="_blank" rel="noopener noreferrer" href="https://wangyifang.top/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/yifang.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
+            <a href="organizers.html#organizer-yifang" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/yifang.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
             <div class="min-w-0">
-              <div class="flex items-center gap-1.5"><h4 class="font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug"><a target="_blank" rel="noopener noreferrer" href="https://wangyifang.top/" class="hover:underline">Yifang Wang</a></h4></div>
+              <div class="flex items-center gap-1.5"><h4 class="font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug"><a href="organizers.html#organizer-yifang" class="hover:underline">Yifang Wang</a></h4></div>
               <p data-profile-affiliation class="text-base text-ink-soft">Florida State University</p>
             </div>
           </div>
           <ul class="organizer-tags" aria-label="Research interests"><li>Visual analytics</li><li>AI for science</li></ul>
-          <a class="profile-open" href="organizers.html#organizer-yifang" aria-label="Research profile: Yifang Wang">Research profile <span aria-hidden="true">↗</span></a>
+          <a class="profile-open" href="organizers.html#organizer-yifang" aria-label="Research profile: Yifang Wang">Research profile <span aria-hidden="true">→</span></a>
         </li>
         <li class="group organizer-card" id="organizer-ruishi">
           <div class="flex items-center gap-4">
-            <a target="_blank" rel="noopener noreferrer" href="https://ruishizou.github.io/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/ruishi.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
+            <a href="organizers.html#organizer-ruishi" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/ruishi.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
             <div class="min-w-0">
-              <div class="flex items-center gap-1.5"><h4 class="font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug"><a target="_blank" rel="noopener noreferrer" href="https://ruishizou.github.io/" class="hover:underline">Ruishi Zou</a></h4></div>
+              <div class="flex items-center gap-1.5"><h4 class="font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug"><a href="organizers.html#organizer-ruishi" class="hover:underline">Ruishi Zou</a></h4></div>
               <p data-profile-affiliation class="text-base text-ink-soft">Harvard University</p>
             </div>
           </div>
           <ul class="organizer-tags" aria-label="Research interests"><li>Visual sensemaking</li><li>Knowledge communication</li></ul>
-          <a class="profile-open" href="organizers.html#organizer-ruishi" aria-label="Research profile: Ruishi Zou">Research profile <span aria-hidden="true">↗</span></a>
+          <a class="profile-open" href="organizers.html#organizer-ruishi" aria-label="Research profile: Ruishi Zou">Research profile <span aria-hidden="true">→</span></a>
         </li>
         <li class="group organizer-card" id="organizer-shiyu">
           <div class="flex items-center gap-4">
-            <a target="_blank" rel="noopener noreferrer" href="https://shiyuxu.me/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/shiyu.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
+            <a href="organizers.html#organizer-shiyu" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/shiyu.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
             <div class="min-w-0">
-              <div class="flex items-center gap-1.5"><h4 class="font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug"><a target="_blank" rel="noopener noreferrer" href="https://shiyuxu.me/" class="hover:underline">Shiyu Xu</a></h4></div>
+              <div class="flex items-center gap-1.5"><h4 class="font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug"><a href="organizers.html#organizer-shiyu" class="hover:underline">Shiyu Xu</a></h4></div>
               <p data-profile-affiliation class="text-base text-ink-soft">University of Michigan</p>
             </div>
           </div>
           <ul class="organizer-tags" aria-label="Research interests"><li>Evidence interpretation</li><li>Collaborative learning</li></ul>
-          <a class="profile-open" href="organizers.html#organizer-shiyu" aria-label="Research profile: Shiyu Xu">Research profile <span aria-hidden="true">↗</span></a>
+          <a class="profile-open" href="organizers.html#organizer-shiyu" aria-label="Research profile: Shiyu Xu">Research profile <span aria-hidden="true">→</span></a>
         </li>
         <li class="group organizer-card" id="organizer-rui">
           <div class="flex items-center gap-4">
-            <a target="_blank" rel="noopener noreferrer" href="https://dylansheng.github.io/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/rui.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
+            <a href="organizers.html#organizer-rui" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/rui.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
             <div class="min-w-0">
-              <div class="flex items-center gap-1.5"><h4 class="font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug"><a target="_blank" rel="noopener noreferrer" href="https://dylansheng.github.io/" class="hover:underline">Rui Sheng</a></h4></div>
+              <div class="flex items-center gap-1.5"><h4 class="font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug"><a href="organizers.html#organizer-rui" class="hover:underline">Rui Sheng</a></h4></div>
               <p data-profile-affiliation class="text-base text-ink-soft">Northeastern University</p>
             </div>
           </div>
           <ul class="organizer-tags" aria-label="Research interests"><li>Visual analytics</li><li>AI-assisted analysis</li></ul>
-          <a class="profile-open" href="organizers.html#organizer-rui" aria-label="Research profile: Rui Sheng">Research profile <span aria-hidden="true">↗</span></a>
+          <a class="profile-open" href="organizers.html#organizer-rui" aria-label="Research profile: Rui Sheng">Research profile <span aria-hidden="true">→</span></a>
         </li>
         <li class="group organizer-card" id="organizer-samuel">
           <div class="flex items-center gap-4">
-            <a target="_blank" rel="noopener noreferrer" href="https://samuelschmidgall.github.io/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/samuel.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
+            <a href="organizers.html#organizer-samuel" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/samuel.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
             <div class="min-w-0">
-              <div class="flex items-center gap-1.5"><h4 class="font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug"><a target="_blank" rel="noopener noreferrer" href="https://samuelschmidgall.github.io/" class="hover:underline">Samuel Schmidgall</a></h4></div>
+              <div class="flex items-center gap-1.5"><h4 class="font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug"><a href="organizers.html#organizer-samuel" class="hover:underline">Samuel Schmidgall</a></h4></div>
               <p data-profile-affiliation class="text-base text-ink-soft">Google DeepMind</p>
             </div>
           </div>
           <ul class="organizer-tags" aria-label="Research interests"><li>Research agents</li><li>Scientific evaluation</li></ul>
-          <a class="profile-open" href="organizers.html#organizer-samuel" aria-label="Research profile: Samuel Schmidgall">Research profile <span aria-hidden="true">↗</span></a>
+          <a class="profile-open" href="organizers.html#organizer-samuel" aria-label="Research profile: Samuel Schmidgall">Research profile <span aria-hidden="true">→</span></a>
         </li>
         <li class="group organizer-card" id="organizer-chenhao">
           <div class="flex items-center gap-4">
-            <a target="_blank" rel="noopener noreferrer" href="https://chenhaot.com/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/chenhao.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
+            <a href="organizers.html#organizer-chenhao" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/chenhao.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
             <div class="min-w-0">
-              <div class="flex items-center gap-1.5"><h4 class="font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug"><a target="_blank" rel="noopener noreferrer" href="https://chenhaot.com/" class="hover:underline">Chenhao Tan</a></h4></div>
+              <div class="flex items-center gap-1.5"><h4 class="font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug"><a href="organizers.html#organizer-chenhao" class="hover:underline">Chenhao Tan</a></h4></div>
               <p data-profile-affiliation class="text-base text-ink-soft">University of Chicago</p>
             </div>
           </div>
           <ul class="organizer-tags" aria-label="Research interests"><li>Hypothesis generation</li><li>Research evaluation</li></ul>
-          <a class="profile-open" href="organizers.html#organizer-chenhao" aria-label="Research profile: Chenhao Tan">Research profile <span aria-hidden="true">↗</span></a>
+          <a class="profile-open" href="organizers.html#organizer-chenhao" aria-label="Research profile: Chenhao Tan">Research profile <span aria-hidden="true">→</span></a>
         </li>
         <li class="group organizer-card" id="organizer-orson">
           <div class="flex items-center gap-4">
-            <a target="_blank" rel="noopener noreferrer" href="https://orsonxu.com/" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/orson.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
+            <a href="organizers.html#organizer-orson" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/orson.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
             <div class="min-w-0">
-              <div class="flex items-center gap-1.5"><h4 class="font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug"><a target="_blank" rel="noopener noreferrer" href="https://orsonxu.com/" class="hover:underline">Xuhai “Orson” Xu</a></h4></div>
+              <div class="flex items-center gap-1.5"><h4 class="font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug"><a href="organizers.html#organizer-orson" class="hover:underline">Xuhai “Orson” Xu</a></h4></div>
               <p data-profile-affiliation class="text-base text-ink-soft">Columbia University</p>
             </div>
           </div>
           <ul class="organizer-tags" aria-label="Research interests"><li>Human-AI interaction</li><li>Explainable AI</li></ul>
-          <a class="profile-open" href="organizers.html#organizer-orson" aria-label="Research profile: Xuhai “Orson” Xu">Research profile <span aria-hidden="true">↗</span></a>
+          <a class="profile-open" href="organizers.html#organizer-orson" aria-label="Research profile: Xuhai “Orson” Xu">Research profile <span aria-hidden="true">→</span></a>
         </li>
       </ul>
       <p class="mt-6"><a href="organizers.html" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700">Meet all organizers</a></p>
@@ -528,16 +509,11 @@
     <section id="connect" class="mb-20" aria-labelledby="connect-h">
       <h2 id="connect-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Stay connected</h2>
       <div class="prose">
-        <p>We will open an opt-in Discord community for discussion and resource sharing before, during, and after the workshop. Anyone interested in human-AI co-discovery is welcome.</p>
-        <!-- Discord placeholder: when the invite is ready, add href="<invite URL>" target="_blank" rel="noopener noreferrer",
-             remove aria-disabled and the opacity/cursor classes, and delete the "Coming soon" note. -->
-        <div class="not-prose my-6 flex flex-wrap items-center gap-3">
-          <a aria-disabled="true" class="inline-flex items-center gap-2 rounded-lg bg-tide-700 px-4 py-2.5 text-base font-semibold text-paper opacity-50 cursor-not-allowed">
-            <i data-lucide="messages-square" class="w-4 h-4" aria-hidden="true"></i>
-            Join our Discord
-          </a>
-          <span class="text-base font-semibold text-ember-700">Invitation link coming soon</span>
+        <p>Our GitHub discussion board is open for questions, ideas, and replies. Anyone interested in human-AI co-discovery is welcome.</p>
+        <div class="not-prose my-6">
+          <a href="https://github.com/human-ai-co-discovery/human-ai-co-discovery.github.io/discussions/categories/q-a" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-lg bg-tide-700 px-4 py-2.5 text-base font-semibold text-paper hover:bg-ember-700 transition-colors">Join the discussion on GitHub <span aria-hidden="true">↗</span></a>
         </div>
+        <p><strong>Discord community coming soon.</strong> We will also open an opt-in space for conversation and resource sharing before, during, and after the workshop.</p>
         <p>For questions, contact <a href="mailto:zj2445@cumc.columbia.edu">zj2445@cumc.columbia.edu</a>.</p>
       </div>
     </section>
