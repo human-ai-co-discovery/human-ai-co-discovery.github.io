@@ -1,13 +1,13 @@
 /* Figure and discussion interactions reuse the workshop palette and native controls. */
 .story-focus {
-  position: absolute; inset: 0.75rem 0.75rem calc(0.75rem + 10%);
+  /* Leave the image's bottom 10% for the return arrow, accounting for card padding. */
+  position: absolute; inset: 0.75rem 0.75rem calc(0.6rem + 10%);
   display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.7rem;
-  pointer-events: none;
 }
-.story-focus i { background: rgb(255 255 255 / 0.58); border: 2px solid transparent; border-radius: 0.65rem; }
-.discovery-story[data-step="1"] .story-focus i:nth-child(1),
-.discovery-story[data-step="2"] .story-focus i:nth-child(2),
-.discovery-story[data-step="3"] .story-focus i:nth-child(3) {
+.story-focus button { appearance: none; padding: 0; cursor: pointer; background: rgb(255 255 255 / 0.58); border: 2px solid transparent; border-radius: 0.65rem; }
+.discovery-story[data-step="1"] .story-focus button:nth-child(1),
+.discovery-story[data-step="2"] .story-focus button:nth-child(2),
+.discovery-story[data-step="3"] .story-focus button:nth-child(3) {
   background: transparent; border-color: rgb(var(--tide-700));
 }
 .story-controls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.65rem; margin: 1.5rem 0 0; }
@@ -42,7 +42,7 @@
 .provocation-response h4 { margin: 0 0 0.5rem; color: rgb(var(--tide-900)); font-size: 1.125rem; font-weight: 700; line-height: 1.4; }
 .provocation-followup { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgb(var(--rule)); }
 .provocation > p.provocation-note { margin-top: 1rem; font-size: 0.9375rem; }
-@media (min-width: 640px) { .story-focus { inset: 1.25rem 1.25rem calc(1.25rem + 10%); } }
+@media (min-width: 640px) { .story-focus { inset: 1.25rem 1.25rem calc(1rem + 10%); } }
 @media (max-width: 639px) {
   .story-controls { grid-template-columns: minmax(0, 1fr); gap: 0.5rem; }
   .story-controls button { padding: 0.65rem 0.8rem; }
@@ -57,7 +57,7 @@
   .story-controls button:hover, .provocation-options button:hover { border-color: rgb(var(--tide-700)); }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .story-focus i, .story-controls button, .provocation-options button { transition: background-color 0.18s ease, border-color 0.18s ease; }
+  .story-focus button, .story-controls button, .provocation-options button { transition: background-color 0.18s ease, border-color 0.18s ease; }
 }
 
 /* Contribution suggestions are optional; the full CFP stays available below. */

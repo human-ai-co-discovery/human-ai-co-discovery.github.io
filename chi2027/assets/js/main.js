@@ -92,7 +92,7 @@ if (discoveryStory) {
   for (const button of storyButtons) button.addEventListener('click', () => selectStoryStep(button.dataset.storyStep));
   discoveryStory.querySelector('[data-story-restart]').addEventListener('click', () => {
     selectStoryStep('1');
-    storyButtons[0].focus();
+    discoveryStory.querySelector('#story-step-1').focus();
   });
 }
 

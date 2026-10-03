@@ -180,7 +180,7 @@
       </div>
     </header>
 
-    <!-- Figure 1 at full size, opened from the figure below the About text. -->
+    <!-- Figure 1 at full size, opened from its top-right expand button. -->
     <dialog id="teaser-dialog" aria-labelledby="teaser-dialog-h"
       class="w-[calc(100%-2rem)] max-w-6xl max-h-[calc(100dvh-2rem)] rounded-xl border border-rule bg-surface p-0 text-ink shadow-2xl backdrop:bg-transparent">
       <div class="flex items-center justify-between gap-4 px-5 py-3 border-b border-rule">
@@ -217,11 +217,14 @@
             <img src="assets/image/figure-1-1200.png" width="1200" height="357" loading="lazy" decoding="async" class="block w-full h-auto" aria-describedby="figure-1-desc"
               alt="Figure 1: a researcher and an AI assistant develop an inquiry about notifications in three steps (formulate questions; explore unexpected connections; construct, challenge, and revise explanations).">
           </picture>
-          <div class="story-focus" aria-hidden="true"><i></i><i></i><i></i></div>
-          <!-- Selecting the figure opens it full size in the dialog above. -->
+          <div class="story-focus" role="group" aria-label="Select a step in Figure 1">
+            <button type="button" data-story-step="1" aria-pressed="true" aria-controls="story-panel-1" aria-label="Select step 1: Formulate a question" title="1 · Formulate a question"></button>
+            <button type="button" data-story-step="2" aria-pressed="false" aria-controls="story-panel-2" aria-label="Select step 2: Revisit the pattern" title="2 · Revisit the pattern"></button>
+            <button type="button" data-story-step="3" aria-pressed="false" aria-controls="story-panel-3" aria-label="Select step 3: Challenge an explanation" title="3 · Challenge an explanation"></button>
+          </div>
           <button type="button" data-dialog-open="teaser-dialog" aria-label="View Figure 1 at full size" title="View Figure 1 at full size"
-            class="absolute inset-0 rounded-2xl cursor-zoom-in">
-            <span class="figure-expand absolute top-2 right-2 grid place-items-center w-7 h-7 sm:w-8 sm:h-8 rounded-full shadow-md transition-colors" aria-hidden="true">
+            class="absolute top-1 right-1 z-10 grid place-items-center w-11 h-11 rounded-full cursor-zoom-in">
+            <span class="figure-expand grid place-items-center w-7 h-7 sm:w-8 sm:h-8 rounded-full shadow-md transition-colors" aria-hidden="true">
               <i data-lucide="maximize-2" class="w-4 h-4"></i>
             </span>
           </button>
