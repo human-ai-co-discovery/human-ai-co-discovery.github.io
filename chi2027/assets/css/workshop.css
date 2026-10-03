@@ -413,19 +413,19 @@ section, [id] { scroll-margin-top: calc(var(--nav-height, 4rem) + 2rem); }
 }
 .question-paths h4 { margin: 1.25rem 0 0.55rem; font-size: 1rem; font-weight: 600; color: rgb(var(--qc)); }
 .question-paths h4:first-child { margin-top: 0; }
-:is(.question-paths, .profile-dialog) .research-links { margin: 0; padding: 0; list-style: none; }
-:is(.question-paths, .profile-dialog) .research-links > li {
+:is(.question-paths, .profile-dialog, .organizer-profile) .research-links { margin: 0; padding: 0; list-style: none; }
+:is(.question-paths, .profile-dialog, .organizer-profile) .research-links > li {
   margin: 0; padding: 0.75rem 0; min-width: 0;
   border-bottom: 1px solid rgb(var(--rule));
   font-size: 1rem; line-height: 1.55; overflow-wrap: anywhere;
 }
-:is(.question-paths, .profile-dialog) .research-links > li:last-child { border-bottom: 0; }
-:is(.question-paths, .profile-dialog) .research-links a {
+:is(.question-paths, .profile-dialog, .organizer-profile) .research-links > li:last-child { border-bottom: 0; }
+:is(.question-paths, .profile-dialog, .organizer-profile) .research-links a {
   display: block; font-size: 1rem; font-weight: 600; line-height: 1.45;
   color: rgb(var(--tide-700)); text-decoration: none;
 }
-:is(.question-paths, .profile-dialog) .research-links p { margin: 0.3rem 0 0; color: rgb(var(--ink-soft)); }
-:is(.question-paths, .profile-dialog) .research-links :is(small, .research-meta) {
+:is(.question-paths, .profile-dialog, .organizer-profile) .research-links p { margin: 0.3rem 0 0; color: rgb(var(--ink-soft)); }
+:is(.question-paths, .profile-dialog, .organizer-profile) .research-links :is(small, .research-meta) {
   display: block; margin-top: 0.25rem; font-size: 0.875rem; font-weight: 400; line-height: 1.5; color: rgb(var(--ink-soft));
 }
 .question-paths a.all-readings {
@@ -456,12 +456,12 @@ section, [id] { scroll-margin-top: calc(var(--nav-height, 4rem) + 2rem); }
   min-width: 0; display: grid; grid-row: span 3;
   grid-template-rows: subgrid; row-gap: 0; padding-bottom: 1.75rem;
 }
-.organizer-card .organizer-tags, .profile-dialog .profile-tags {
+.organizer-card .organizer-tags, .organizer-profile .organizer-tags, .profile-dialog .profile-tags {
   display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem;
   margin: 0.8rem 0 0; padding: 0; list-style: none;
 }
 .organizer-card .organizer-tags { align-items: flex-start; align-content: flex-start; }
-.organizer-card .organizer-tags > li, .profile-dialog .profile-tags > span {
+.organizer-card .organizer-tags > li, .organizer-profile .organizer-tags > li, .profile-dialog .profile-tags > span {
   margin: 0; padding: 0.25rem 0.55rem; max-width: 100%; border-radius: 999px;
   background: rgb(var(--tide-50)); color: rgb(var(--ink-soft));
   font-size: 0.8125rem; font-weight: 500; line-height: 1.4; overflow-wrap: anywhere;
@@ -469,7 +469,7 @@ section, [id] { scroll-margin-top: calc(var(--nav-height, 4rem) + 2rem); }
 .organizer-card .organizer-tags > [data-q], .profile-dialog .profile-tags > [data-q] {
   background: rgb(var(--qs)); color: rgb(var(--qc));
 }
-.organizer-card button.profile-open {
+.organizer-card .profile-open {
   justify-self: start; align-self: start;
   appearance: none; display: inline-flex; align-items: center; gap: 0.4rem;
   min-height: 2.75rem; margin: 0.4rem 0 0; padding: 0.4rem 0;
@@ -551,14 +551,14 @@ dialog.profile-dialog::backdrop { background: rgb(17 25 29 / 0.6); }
   .profile-dialog .profile-dialog__body { padding: 1rem; }
 }
 @media (hover: hover) {
-  :is(.question-paths, .profile-dialog) .research-links a:hover > span,
-  .question-paths a.all-readings:hover, .organizer-card button.profile-open:hover { text-decoration: underline; }
+  :is(.question-paths, .profile-dialog, .organizer-profile) .research-links a:hover > span,
+  .question-paths a.all-readings:hover, .organizer-card .profile-open:hover { text-decoration: underline; }
   .question-paths button.person-link:hover { background: rgb(var(--surface)); border-color: rgb(var(--qc) / 0.6); }
   .profile-dialog button.profile-close:hover { background: rgb(var(--tide-50)); }
   .profile-dialog .profile-question-links button:hover { border-color: rgb(var(--qc) / 0.6); }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .question-paths button.person-link, .organizer-card button.profile-open,
+  .question-paths button.person-link, .organizer-card .profile-open,
   .profile-dialog button.profile-close, .profile-dialog .profile-question-links button {
     transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
   }

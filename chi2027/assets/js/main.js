@@ -7,6 +7,16 @@ const navbar = document.getElementById('navbar');
 // linked section (such as program.html → call-for-participation.html#topics-h), so jump again once loaded.
 // Preserve bookmarked and in-page links to sections that have moved to other pages.
 const redirectMovedSection = () => {
+  if (document.querySelector('[data-discovery-story]')) {
+    if (['#organizers', '#organizers-h'].includes(location.hash)) {
+      location.replace('organizers.html');
+      return true;
+    }
+    if (/^#(?:organizer|bio)-(?:zhihan|yifang|ruishi|shiyu|rui|samuel|chenhao|orson)$/.test(location.hash)) {
+      location.replace(`organizers.html${location.hash}`);
+      return true;
+    }
+  }
   if (location.hash === '#roundtable-question' && document.querySelector('[data-discovery-story]')) {
     location.replace('discussion.html#roundtable-question');
     return true;
@@ -34,12 +44,14 @@ const redirectMovedSection = () => {
   }
   return false;
 };
-window.addEventListener('hashchange', redirectMovedSection);
-window.addEventListener('load', () => {
+const revealLinkedSection = () => {
   if (redirectMovedSection()) return;
   const target = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  if (target && target.matches('.q-card')) target.querySelector('details').open = true;
   if (target) requestAnimationFrame(() => target.scrollIntoView());
-});
+};
+window.addEventListener('hashchange', revealLinkedSection);
+window.addEventListener('load', revealLinkedSection);
 
 // Keep in-page link targets clear of the nav, whose height changes when its links wrap.
 const setNavHeight = () => {
@@ -182,48 +194,6 @@ if (questionWall) {
       status.hidden = false;
       status.textContent = 'Questions could not be loaded. You can still read and reply on GitHub using the links above.';
     });
-}
-
-// Organizer research profiles connect the team, question cards, and selected work.
-// Names, bios, and links come from the existing cards and their local templates.
-const researchProfile = document.getElementById('research-profile');
-if (researchProfile) {
-  for (const opener of document.querySelectorAll('[data-profile-open]')) {
-    opener.addEventListener('click', () => {
-      const card = document.getElementById(`organizer-${opener.dataset.profileOpen}`);
-      if (!card) return;
-      const name = card.querySelector('h4 a');
-      const photo = card.querySelector('img');
-      researchProfile.querySelector('[data-profile-name]').textContent = name.textContent;
-      researchProfile.querySelector('[data-profile-institution]').textContent = card.querySelector('[data-profile-affiliation]').textContent;
-      researchProfile.querySelector('[data-profile-photo]').src = photo.currentSrc || photo.src;
-      researchProfile.querySelector('[data-profile-description]').textContent = card.querySelector('[data-profile-bio]').textContent;
-      researchProfile.querySelector('[data-profile-homepage]').href = name.href;
-      const tags = Array.from(card.querySelectorAll('.organizer-tags li'), (tag) => {
-        const label = document.createElement('span');
-        label.textContent = tag.textContent;
-        return label;
-      });
-      researchProfile.querySelector('[data-profile-tags]').replaceChildren(...tags);
-      researchProfile.querySelector('[data-profile-content-slot]').replaceChildren(card.querySelector('template').content.cloneNode(true));
-      researchProfile.showModal();
-      researchProfile.querySelector('.profile-dialog__body').scrollTop = 0;
-    });
-  }
-  researchProfile.addEventListener('click', (event) => {
-    if (event.target === researchProfile) {
-      researchProfile.close();
-      return;
-    }
-    const trigger = event.target.closest('[data-question-target]');
-    if (!trigger) return;
-    const question = document.getElementById(`question-${trigger.dataset.questionTarget}`);
-    if (!question) return;
-    researchProfile.close();
-    question.querySelector('details').open = true;
-    question.scrollIntoView({ block: 'start' });
-    question.querySelector('summary').focus({ preventScroll: true });
-  });
 }
 
 // Mobile menu: the menu button drops down the page links; Escape or a click outside closes it.

@@ -9,10 +9,11 @@ Website for Human-AI Co-Discovery, exploring how people and AI discover new ques
 | Path | Page |
 | --- | --- |
 | `index.html` | Community home page, with links to events |
-| `chi2027/index.html` | *Whose Eureka? Human-AI Co-Discovery of Knowledge*, the proposed CHI 2027 workshop: title with the eureka illustration over the discovery field, overview with an interactive Figure 1 walkthrough (also opens full size), the four workshop questions as expandable cards, the CFP entry point, a program summary with the program timeline and the invited guests, organizers with research profiles, and a Connect section on the Discord community |
+| `chi2027/index.html` | *Whose Eureka? Human-AI Co-Discovery of Knowledge*, the proposed CHI 2027 workshop: title with the eureka illustration over the discovery field, overview with an interactive Figure 1 walkthrough (also opens full size), the four workshop questions as expandable cards, the CFP entry point, a program summary with the program timeline and the invited guests, compact organizer cards linking to their profiles, and a Connect section on the Discord community |
 | `chi2027/call-for-participation.html` | Dedicated CFP page: proposal status, participation essentials, an optional Gemini contribution assistant, submission requirements and key dates, contribution types and all eight topics grouped under the four questions, activities, accessibility, and optional readings |
 | `chi2027/program.html` | Workshop background followed by the tentative program: a timeline of the day drawn as the eureka curve, two 90-minute sessions, poster exchange during the coffee break, keynote and panel, and how participants take part; links to the CFP's accessibility arrangements |
 | `chi2027/speakers.html` | Dedicated keynote and panel profiles, with Daniel McDuff's talk title and abstract marked TBD until provided; the program retains a brief linked guest list |
+| `chi2027/organizers.html` | Eight organizer profiles with affiliations, research interests, biographies, related workshop questions, and expandable selected publications |
 | `chi2027/after-workshop.html` | Plans for sharing materials, a joint perspective or research-agenda paper, and continued community discussion |
 | `chi2027/discussion.html` | Community question wall linked to GitHub Discussions, plus an optional reflection prompt whose choices are neither saved nor submitted |
 | `chi2027/assets/css/workshop.css` | Color tokens (light and dark, including the Q1–Q4 question colors) and the few rules Tailwind utilities do not cover, such as the home hero illustration, the question cards, and the program timeline, for the CHI 2027 pages only |
@@ -101,9 +102,9 @@ The dedicated Discussion page offers a roundtable provocation with Agree, Disagr
 
 ## Research profiles and question links
 
-The Home page connects each workshop question to two selected readings and further reading in the CFP. Each organizer's **Research profile** opens a native dialog with their existing bio, research-interest tags, two selected publications, and buttons that open the relevant questions. Escape and the close button dismiss the dialog; clicking a question returns focus to that question. These thematic connections are editorial suggestions, not exclusive assignments of expertise.
+The Home page connects each workshop question to two selected readings and further reading in the CFP. Each organizer's **Research profile** link opens their section on the dedicated Organizers page, with a biography, research-interest tags, related questions, and two selected publications in an expandable list. A related-question link opens the corresponding Home question card. These thematic connections are editorial suggestions, not exclusive assignments of expertise.
 
-Edit the research-interest tags and publication links in each `organizer-*` card in `chi2027/index.html`; the dialog reuses the card's name, affiliation, photo, and bio. Its `<template data-profile-content>` holds the related questions and selected papers. Keep publication metadata consistent with the CFP readings and proposal bibliography, and label preprints explicitly.
+Edit the biographies, question links, and selected papers in the `organizer-*` profiles in `chi2027/organizers.html`. Keep names, affiliations, photos, and interest tags aligned with the compact Home cards. Keep publication metadata consistent with the CFP readings and proposal bibliography, and label preprints explicitly.
 
 ## Organizer photos
 
