@@ -120,14 +120,29 @@ def _label(node, nodes):
 
 def load_context(path):
     """Read fresh HTML; return only scope, topics, contribution_types and source SHA."""
-    raw = Path(path).read_bytes()
+    path = Path(path)
+    raw = path.read_bytes()
+    source_hash = hashlib.sha256(raw)
     parser = _CFPParser()
     parser.feed(raw.decode("utf-8"))
     parser.close()
     nodes = parser.nodes
     by_id = lambda value: [node for node in nodes if node.attrs.get("id") == value]
-    overview = _one(by_id("cfp-overview"), "cfp-overview")
-    scope = "\n\n".join(_plain(node) for node in nodes
+    overviews = by_id("cfp-overview")
+    scope_nodes = nodes
+    if not overviews:
+        try:
+            program_raw = path.with_name("program.html").read_bytes()
+        except FileNotFoundError as error:
+            raise CFPContextError("cfp-overview is missing from the CFP and program.html is absent.") from error
+        parser = _CFPParser()
+        parser.feed(program_raw.decode("utf-8"))
+        parser.close()
+        scope_nodes = parser.nodes
+        overviews = [node for node in scope_nodes if node.attrs.get("id") == "cfp-overview"]
+        source_hash.update(b"\0" + program_raw)
+    overview = _one(overviews, "cfp-overview")
+    scope = "\n\n".join(_plain(node) for node in scope_nodes
                         if node.tag == "p" and node.within(overview) and _plain(node))
     if not scope:
         raise CFPContextError("cfp-overview needs scope paragraphs.")
@@ -160,7 +175,7 @@ def load_context(path):
             or {item["id"] for item in contribution_types} != set(CONTRIBUTION_IDS)):
         raise CFPContextError("The CFP must identify all eight contribution types exactly once.")
     return {"topics": topics, "contribution_types": contribution_types, "scope": scope,
-            "version": "sha256:" + hashlib.sha256(raw).hexdigest()}
+            "version": "sha256:" + source_hash.hexdigest()}
 
 
 def response_schema(context):

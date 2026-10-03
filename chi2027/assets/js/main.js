@@ -5,17 +5,28 @@ const navbar = document.getElementById('navbar');
 
 // Tailwind's Play CDN styles the page after the browser has already jumped to a
 // linked section (such as program.html → call-for-participation.html#topics-h), so jump again once loaded.
-// Preserve both bookmarked and in-page links to the reflection prompt's former location.
-const redirectDiscussionLink = () => {
+// Preserve bookmarked and in-page links to sections that have moved to other pages.
+const redirectMovedSection = () => {
   if (location.hash === '#roundtable-question' && document.querySelector('[data-discovery-story]')) {
     location.replace('discussion.html#roundtable-question');
     return true;
   }
+  if (location.pathname.endsWith('/call-for-participation.html')) {
+    const destination = {
+      '#cfp-overview': 'program.html#cfp-overview',
+      '#overview-h': 'program.html#overview-h',
+      '#sharing-h': 'after-workshop.html#title',
+    }[location.hash];
+    if (destination) {
+      location.replace(destination);
+      return true;
+    }
+  }
   return false;
 };
-window.addEventListener('hashchange', redirectDiscussionLink);
+window.addEventListener('hashchange', redirectMovedSection);
 window.addEventListener('load', () => {
-  if (redirectDiscussionLink()) return;
+  if (redirectMovedSection()) return;
   const target = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
   if (target) requestAnimationFrame(() => target.scrollIntoView());
 });
@@ -224,7 +235,7 @@ if (menu) {
   document.addEventListener('click', (event) => {
     if (!menu.hidden && !navbar.contains(event.target)) setMenu(false);
   });
-  window.matchMedia('(min-width: 1280px)').addEventListener('change', (event) => {
+  window.matchMedia('(min-width: 1536px)').addEventListener('change', (event) => {
     if (event.matches) setMenu(false);
   });
 }

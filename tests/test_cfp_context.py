@@ -11,9 +11,11 @@ SPEC = importlib.util.spec_from_file_location("cfp_context", ROOT / "scripts/cfp
 cfp = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(cfp)
 
+OVERVIEW = """<section id="cfp-overview"><h2>Not part of scope</h2>
+<p>Discovery across <em>research &amp; practice</em>.</p><p>Incomplete inquiry is welcome.</p></section>"""
+
 FIXTURE = """<!doctype html><html><head><meta charset="utf-8"></head><body>
-<section id="cfp-overview"><h2>Not part of scope</h2>
-<p>Discovery across <em>research &amp; practice</em>.</p><p>Incomplete inquiry is welcome.</p></section>
+""" + OVERVIEW + """
 <button data-cfp-topic="topic-q1">An unrelated navigation control</button>
 <ul>
 <li data-cfp-contributions="position-paper critical-perspective"><strong>Position papers and critical perspectives</strong> on open questions.</li>
@@ -36,10 +38,12 @@ FIXTURE = """<!doctype html><html><head><meta charset="utf-8"></head><body>
 </body></html>"""
 
 
-def load_text(text):
+def load_text(text, program=None):
     with tempfile.TemporaryDirectory() as directory:
         path = Path(directory) / "cfp.html"
         path.write_text(text, encoding="utf-8")
+        if program is not None:
+            path.with_name("program.html").write_text(program, encoding="utf-8")
         return cfp.load_context(path)
 
 
@@ -57,6 +61,34 @@ class CFPContextTests(unittest.TestCase):
                          context["contribution_types"][1]["description"])
         self.assertEqual(context["version"], "sha256:" + hashlib.sha256(FIXTURE.encode()).hexdigest())
 
+    def test_scope_can_live_on_program_page_while_topics_remain_on_cfp(self):
+        original = load_text(FIXTURE)
+        context = load_text(FIXTURE.replace(OVERVIEW, ""),
+                            "<p>Program schedule, outside the scope.</p>" + OVERVIEW)
+        for field in ("scope", "topics", "contribution_types"):
+            self.assertEqual(context[field], original[field])
+        self.assertNotEqual(context["version"], original["version"])
+        self.assertEqual(load_text(FIXTURE, OVERVIEW + OVERVIEW), original)
+
+    def test_program_scope_update_changes_context_and_version(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "cfp.html"
+            program_path = path.with_name("program.html")
+            path.write_text(FIXTURE.replace(OVERVIEW, ""), encoding="utf-8")
+            program_path.write_text(OVERVIEW, encoding="utf-8")
+            before = cfp.load_context(path)
+            program_path.write_text(OVERVIEW.replace("Incomplete inquiry", "Unsuccessful inquiry"),
+                                    encoding="utf-8")
+            after = cfp.load_context(path)
+        self.assertIn("Unsuccessful inquiry is welcome.", after["scope"])
+        self.assertNotEqual(before["version"], after["version"])
+
+    def test_missing_ambiguous_or_empty_program_scope_fails(self):
+        for program in (None, "<p>No marked scope.</p>", OVERVIEW + OVERVIEW,
+                        '<section id="cfp-overview"><h2>Only a heading</h2><p> </p></section>'):
+            with self.subTest(program=program), self.assertRaises(cfp.CFPContextError):
+                load_text(FIXTURE.replace(OVERVIEW, ""), program)
+
     def test_each_load_uses_current_copy_and_changes_version(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "cfp.html"
@@ -70,6 +102,8 @@ class CFPContextTests(unittest.TestCase):
     def test_incomplete_or_ambiguous_grounding_fails(self):
         variants = [
             FIXTURE.replace('id="cfp-overview"', 'id="another-overview"'),
+            FIXTURE.replace(OVERVIEW, OVERVIEW + OVERVIEW),
+            FIXTURE.replace(OVERVIEW, '<section id="cfp-overview"><p> </p></section>'),
             FIXTURE.replace('id="topic-credit" data-cfp-topic', 'id="topic-credit"'),
             FIXTURE.replace('id="topic-q2"', 'id="other-question"'),
             FIXTURE.replace('critical-perspective"', 'invented-format"'),
