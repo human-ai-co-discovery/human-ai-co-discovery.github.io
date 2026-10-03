@@ -188,7 +188,7 @@ html {
 }
 /* The expand button sits on that white card, so it keeps the light theme's colors. */
 .figure-expand { background-color: rgb(24 72 86); color: #fff; }
-.group:hover .figure-expand { background-color: rgb(176 76 44); }
+[data-dialog-open]:is(:hover, :focus-visible) .figure-expand { background-color: rgb(176 76 44); }
 
 /* AI agent avatar: the robot from Figure 1, on white like the figure (dimmed
    slightly in dark mode); it tilts on hover. */
