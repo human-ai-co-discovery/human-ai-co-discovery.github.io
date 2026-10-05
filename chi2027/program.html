@@ -26,7 +26,7 @@
   <script src="assets/js/tailwind.config.js"></script>
 
   <!-- Tokens and the few rules Tailwind does not cover -->
-  <link rel="stylesheet" href="assets/css/workshop.css?v=20261001-alignment">
+  <link rel="stylesheet" href="assets/css/workshop.css?v=20261005-nav">
 </head>
 <body class="text-ink antialiased font-sans font-normal text-lg sm:text-xl leading-relaxed selection:bg-ember-200 selection:text-tide-900">
   <a class="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[60] focus:rounded-lg focus:bg-tide-900 focus:px-4 focus:py-2 focus:text-paper focus:font-semibold" href="#main">Skip to content</a>
@@ -34,22 +34,22 @@
   <!-- Navigation -->
   <nav id="navbar" data-nav-fade="#title" class="sticky top-0 z-50 bg-[rgb(var(--tide-25)/var(--nav-fill,0))] [&[data-menu-open]]:bg-tide-25" aria-label="Workshop pages">
     <div class="page-container">
-      <div class="flex justify-between h-16 items-center gap-4">
+      <div class="workshop-nav-layout">
         <a href="./" class="flex items-center gap-2.5 min-w-0 font-bold text-tide-900 text-base sm:text-xl leading-tight tracking-tight hover:text-ember-500 hover:underline underline-offset-4 decoration-2 transition-colors">
           <img src="../assets/brand/avatar-teal.svg" alt="" width="28" height="28" class="w-7 h-7 shrink-0 rounded-md">
           <span><span class="whitespace-nowrap">Human-AI Co-Discovery</span> <span class="whitespace-nowrap text-ember-500">@CHI&rsquo;27</span></span>
         </a>
 
-        <div class="hidden min-[1536px]:flex gap-5 text-base font-semibold text-ink-soft whitespace-nowrap">
-          <a href="./" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Home</a>
-          <a href="call-for-participation.html" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Call for Participation</a>
-          <a href="program.html" aria-current="page" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Program</a>
-          <a href="after-workshop.html" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">After the Workshop</a>
-          <a href="speakers.html" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Speakers</a>
-          <a href="organizers.html" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Organizers</a>
-          <a href="discussion.html" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Discussion</a>
+        <div class="workshop-nav-links text-base font-semibold text-ink-soft whitespace-nowrap">
+          <a href="./" class="relative hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Home</a>
+          <a href="call-for-participation.html" class="relative hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Call for Participation</a>
+          <a href="program.html" aria-current="page" class="relative hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Program</a>
+          <a href="speakers.html" class="relative hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Speakers</a>
+          <a href="organizers.html" class="relative hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Organizers</a>
+          <a href="discussion.html" class="relative hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Discussion</a>
+          <a href="after-workshop.html" class="relative hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Follow-up</a>
         </div>
-        <button type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" class="group/menu min-[1536px]:hidden shrink-0 grid place-items-center w-10 h-10 -mr-2 rounded-lg text-tide-900 hover:text-ember-700 hover:bg-tide-50 transition-colors">
+        <button type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" class="workshop-menu-toggle group/menu shrink-0 grid place-items-center w-10 h-10 -mr-2 rounded-lg text-tide-900 hover:text-ember-700 hover:bg-tide-50 transition-colors">
           <i data-lucide="menu" class="w-6 h-6 group-aria-expanded/menu:hidden" aria-hidden="true"></i>
           <i data-lucide="x" class="w-6 h-6 hidden group-aria-expanded/menu:block" aria-hidden="true"></i>
           <span class="sr-only">Menu</span>
@@ -58,15 +58,15 @@
       </div>
 
       <!-- Page links on small screens: a dropdown opened by the menu button -->
-      <div id="mobile-nav" hidden class="min-[1536px]:hidden absolute inset-x-0 top-full bg-tide-25 pb-4">
+      <div id="mobile-nav" hidden class="workshop-mobile-nav absolute inset-x-0 top-full bg-tide-25 pb-4">
         <div class="page-container flex flex-col gap-1 text-base font-semibold text-ink-soft">
           <a href="./" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Home</a>
           <a href="call-for-participation.html" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Call for Participation</a>
           <a href="program.html" aria-current="page" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Program</a>
-          <a href="after-workshop.html" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">After the Workshop</a>
           <a href="speakers.html" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Speakers</a>
           <a href="organizers.html" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Organizers</a>
           <a href="discussion.html" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Discussion</a>
+          <a href="after-workshop.html" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Follow-up</a>
         </div>
       </div>
     </div>
@@ -196,10 +196,32 @@
 
     <section class="mb-20" aria-labelledby="invited-guests-h">
       <h2 id="invited-guests-h" class="text-2xl sm:text-3xl font-bold text-tide-900 mb-8 pb-3 border-b border-rule leading-snug">Invited Guests <span class="font-medium text-ink-soft">(tentative)</span></h2>
-      <div class="prose">
-        <p><a href="speakers.html#daniel" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700">Daniel McDuff</a> will give the keynote and join the panel with <a href="speakers.html#sherry" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700">Sherry Tongshuang Wu</a>, <a href="speakers.html#toby" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700">Toby Jia-Jun Li</a>, and <a href="speakers.html#ai-agent" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700">an AI agent</a>.</p>
-        <p><a href="speakers.html" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700">Speaker profiles and keynote details</a></p>
-      </div>
+      <ul class="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-8">
+        <li class="group flex flex-col items-center text-center">
+          <a href="speakers.html#daniel" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/daniel.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
+          <h4 class="mt-3 font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug text-balance"><a href="speakers.html#daniel" class="hover:underline">Daniel McDuff</a></h4>
+          <p class="text-base text-ink-soft">Google Research</p>
+          <p class="mt-auto pt-2.5"><span class="inline-block rounded-full bg-ember-50 text-ember-700 px-2.5 py-0.5 text-xs font-semibold">Keynote and panel</span></p>
+        </li>
+        <li class="group flex flex-col items-center text-center">
+          <a href="speakers.html#sherry" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/sherry.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
+          <h4 class="mt-3 font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug text-balance"><a href="speakers.html#sherry" class="hover:underline">Sherry Tongshuang Wu</a></h4>
+          <p class="text-base text-ink-soft">Carnegie Mellon University</p>
+          <p class="mt-auto pt-2.5"><span class="inline-block rounded-full bg-tide-50 text-tide-700 px-2.5 py-0.5 text-xs font-semibold">Panel</span></p>
+        </li>
+        <li class="group flex flex-col items-center text-center">
+          <a href="speakers.html#toby" tabindex="-1" aria-hidden="true" class="shrink-0"><img src="../assets/people/toby.jpg" alt="" width="80" height="80" loading="lazy" class="w-20 h-20 rounded-full object-cover object-[center_25%] bg-tide-50 ring-2 ring-surface shadow-[0_0_0_1px_rgb(var(--line))] group-hover:shadow-[0_0_0_2px_rgb(var(--ember-400))] transition-shadow"></a>
+          <h4 class="mt-3 font-bold text-tide-900 group-hover:text-ember-700 transition-colors text-lg leading-snug text-balance"><a href="speakers.html#toby" class="hover:underline">Toby Jia-Jun Li</a></h4>
+          <p class="text-base text-ink-soft">University of Notre Dame</p>
+          <p class="mt-auto pt-2.5"><span class="inline-block rounded-full bg-tide-50 text-tide-700 px-2.5 py-0.5 text-xs font-semibold">Panel</span></p>
+        </li>
+        <li class="flex flex-col items-center text-center">
+          <a href="speakers.html#ai-agent" tabindex="-1" aria-hidden="true"><span class="agent-avatar shrink-0 flex items-end justify-center overflow-hidden w-20 h-20 rounded-full border border-rule" aria-hidden="true"><img src="../assets/people/ai-agent.webp" alt="" width="320" height="320" loading="lazy" decoding="async" class="agent-avatar__img w-[88%] h-auto"></span></a>
+          <h4 class="mt-3 font-bold text-tide-900 text-lg leading-snug text-balance"><a href="speakers.html#ai-agent" class="hover:underline">An AI agent</a></h4>
+          <p class="mt-auto pt-2.5"><span class="inline-block rounded-full bg-tide-50 text-tide-700 px-2.5 py-0.5 text-xs font-semibold">Panel</span></p>
+        </li>
+      </ul>
+      <p class="mt-6"><a href="speakers.html" class="font-semibold text-tide-900 underline decoration-tide-300 underline-offset-4 hover:text-ember-700">Speaker profiles and keynote details</a></p>
     </section>
 
     <section class="mb-20" aria-labelledby="papers-h">
@@ -221,6 +243,6 @@
   </main>
 
   <!-- Main JavaScript -->
-  <script src="assets/js/main.js?v=20261001-gemini"></script>
+  <script src="assets/js/main.js?v=20261005-nav"></script>
 </body>
 </html>

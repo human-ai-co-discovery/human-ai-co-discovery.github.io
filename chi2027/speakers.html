@@ -26,7 +26,7 @@
   <script src="assets/js/tailwind.config.js"></script>
 
   <!-- Tokens and the few rules Tailwind does not cover -->
-  <link rel="stylesheet" href="assets/css/workshop.css?v=20261001-alignment">
+  <link rel="stylesheet" href="assets/css/workshop.css?v=20261005-nav">
   <link rel="stylesheet" href="assets/css/interactive.css?v=20261001-gemini">
 </head>
 <body class="text-ink antialiased font-sans font-normal text-lg sm:text-xl leading-relaxed selection:bg-ember-200 selection:text-tide-900">
@@ -35,22 +35,22 @@
   <!-- Navigation -->
   <nav id="navbar" data-nav-fade="#title" class="sticky top-0 z-50 bg-[rgb(var(--tide-25)/var(--nav-fill,0))] [&[data-menu-open]]:bg-tide-25" aria-label="Workshop pages">
     <div class="page-container">
-      <div class="flex justify-between h-16 items-center gap-4">
+      <div class="workshop-nav-layout">
         <a href="./" class="flex items-center gap-2.5 min-w-0 font-bold text-tide-900 text-base sm:text-xl leading-tight tracking-tight hover:text-ember-500 hover:underline underline-offset-4 decoration-2 transition-colors">
           <img src="../assets/brand/avatar-teal.svg" alt="" width="28" height="28" class="w-7 h-7 shrink-0 rounded-md">
           <span><span class="whitespace-nowrap">Human-AI Co-Discovery</span> <span class="whitespace-nowrap text-ember-500">@CHI&rsquo;27</span></span>
         </a>
 
-        <div class="hidden min-[1536px]:flex gap-5 text-base font-semibold text-ink-soft whitespace-nowrap">
-          <a href="./" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Home</a>
-          <a href="call-for-participation.html" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Call for Participation</a>
-          <a href="program.html" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Program</a>
-          <a href="after-workshop.html" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">After the Workshop</a>
-          <a href="speakers.html" aria-current="page" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Speakers</a>
-          <a href="organizers.html" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Organizers</a>
-          <a href="discussion.html" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Discussion</a>
+        <div class="workshop-nav-links text-base font-semibold text-ink-soft whitespace-nowrap">
+          <a href="./" class="relative hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Home</a>
+          <a href="call-for-participation.html" class="relative hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Call for Participation</a>
+          <a href="program.html" class="relative hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Program</a>
+          <a href="speakers.html" aria-current="page" class="relative hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Speakers</a>
+          <a href="organizers.html" class="relative hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Organizers</a>
+          <a href="discussion.html" class="relative hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Discussion</a>
+          <a href="after-workshop.html" class="relative hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Follow-up</a>
         </div>
-        <button type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" class="group/menu min-[1536px]:hidden shrink-0 grid place-items-center w-10 h-10 -mr-2 rounded-lg text-tide-900 hover:text-ember-700 hover:bg-tide-50 transition-colors">
+        <button type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" class="workshop-menu-toggle group/menu shrink-0 grid place-items-center w-10 h-10 -mr-2 rounded-lg text-tide-900 hover:text-ember-700 hover:bg-tide-50 transition-colors">
           <i data-lucide="menu" class="w-6 h-6 group-aria-expanded/menu:hidden" aria-hidden="true"></i>
           <i data-lucide="x" class="w-6 h-6 hidden group-aria-expanded/menu:block" aria-hidden="true"></i>
           <span class="sr-only">Menu</span>
@@ -59,15 +59,15 @@
       </div>
 
       <!-- Page links on small screens: a dropdown opened by the menu button -->
-      <div id="mobile-nav" hidden class="min-[1536px]:hidden absolute inset-x-0 top-full bg-tide-25 pb-4">
+      <div id="mobile-nav" hidden class="workshop-mobile-nav absolute inset-x-0 top-full bg-tide-25 pb-4">
         <div class="page-container flex flex-col gap-1 text-base font-semibold text-ink-soft">
           <a href="./" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Home</a>
           <a href="call-for-participation.html" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Call for Participation</a>
           <a href="program.html" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Program</a>
-          <a href="after-workshop.html" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">After the Workshop</a>
           <a href="speakers.html" aria-current="page" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Speakers</a>
           <a href="organizers.html" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Organizers</a>
           <a href="discussion.html" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Discussion</a>
+          <a href="after-workshop.html" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Follow-up</a>
         </div>
       </div>
     </div>
@@ -104,6 +104,17 @@
           <h4>About the speaker</h4>
           <p id="bio-daniel">Daniel builds machine learning systems to sense, model, and synthesize human behavior, with a focus on health, physiology, and affective computing. His research spans camera-based physiological measurement, wearable foundation models, and health agents that draw personal and clinical insights from longitudinal sensor data.</p>
         </div>
+        <div class="speaker-research">
+          <details class="mt-6">
+            <summary class="cursor-pointer text-base font-semibold text-tide-900">Selected research</summary>
+            <div class="mt-3">
+              <ul class="research-links">
+                <li><a class="research-link" href="https://arxiv.org/abs/2604.14615v2" target="_blank" rel="noopener noreferrer"><span>An AI Co-Data-Scientist for Prioritizing Candidate Biomarkers from Wearable Sensor Data</span> <small>arXiv preprint · 2026</small></a></li>
+                <li><a class="research-link" href="https://arxiv.org/abs/2508.20148v2" target="_blank" rel="noopener noreferrer"><span>The Anatomy of a Personal Health Agent</span> <small>arXiv preprint · 2025</small></a></li>
+              </ul>
+            </div>
+          </details>
+        </div>
       </article>
     </section>
 
@@ -122,6 +133,17 @@
           </div>
         </div>
           <p id="bio-sherry" class="mt-6">Sherry is an Assistant Professor in the Human-Computer Interaction Institute at Carnegie Mellon University. Her research connects HCI and natural language processing to help people work with imperfect AI through interactive debugging and correction. Her work has been published at ACL and CHI, and in TOCHI and TVCG.</p>
+          <div class="speaker-research">
+            <details class="mt-6">
+              <summary class="cursor-pointer text-base font-semibold text-tide-900">Selected research</summary>
+              <div class="mt-3">
+                <ul class="research-links">
+                  <li><a class="research-link" href="https://doi.org/10.1145/3586183.3606759" target="_blank" rel="noopener noreferrer"><span>Synergi: A Mixed-Initiative System for Scholarly Synthesis and Sensemaking</span> <small>UIST · 2023</small></a></li>
+                  <li><a class="research-link" href="https://arxiv.org/abs/2508.19200v3" target="_blank" rel="noopener noreferrer"><span>The Ramon Llull's Thinking Machine for Automated Ideation</span> <small>arXiv preprint · 2025</small></a></li>
+                </ul>
+              </div>
+            </details>
+          </div>
         </article>
         <article id="toby" class="border-t border-rule pt-10" aria-labelledby="toby-h">
         <div class="flex items-center gap-5">
@@ -134,6 +156,17 @@
           </div>
         </div>
           <p id="bio-toby" class="mt-6">Toby is an Assistant Professor of Computer Science and Engineering at the University of Notre Dame. He leads the SaNDwich Lab and directs the Human-Centered Responsible AI Lab. He designs and studies interactive systems that help people create, configure, and extend AI-powered systems, including human-AI collaboration for the future of work.</p>
+          <div class="speaker-research">
+            <details class="mt-6">
+              <summary class="cursor-pointer text-base font-semibold text-tide-900">Selected research</summary>
+              <div class="mt-3">
+                <ul class="research-links">
+                  <li><a class="research-link" href="https://doi.org/10.1145/3706598.3713708" target="_blank" rel="noopener noreferrer"><span>Supporting Co-Adaptive Machine Teaching through Human Concept Learning and Cognitive Theories</span> <small>CHI · 2025</small></a></li>
+                  <li><a class="research-link" href="https://arxiv.org/abs/2304.07366v4" target="_blank" rel="noopener noreferrer"><span>CollabCoder: A Lower-barrier, Rigorous Workflow for Inductive Collaborative Qualitative Analysis with Large Language Models</span> <small>CHI · 2024</small></a></li>
+                </ul>
+              </div>
+            </details>
+          </div>
         </article>
         <article id="ai-agent" class="border-t border-rule pt-10" aria-labelledby="ai-agent-h">
           <div class="flex items-center gap-5">
@@ -164,6 +197,6 @@
   </main>
 
   <!-- Main JavaScript -->
-  <script src="assets/js/main.js?v=20261001-gemini"></script>
+  <script src="assets/js/main.js?v=20261005-nav"></script>
 </body>
 </html>
