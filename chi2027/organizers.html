@@ -26,7 +26,7 @@
   <script src="assets/js/tailwind.config.js"></script>
 
   <!-- Tokens and the few rules Tailwind does not cover -->
-  <link rel="stylesheet" href="assets/css/workshop.css?v=20261001-alignment">
+  <link rel="stylesheet" href="assets/css/workshop.css?v=20261005-nav">
   <link rel="stylesheet" href="assets/css/interactive.css?v=20261001-gemini">
 </head>
 <body class="text-ink antialiased font-sans font-normal text-lg sm:text-xl leading-relaxed selection:bg-ember-200 selection:text-tide-900">
@@ -35,22 +35,22 @@
   <!-- Navigation -->
   <nav id="navbar" data-nav-fade="#title" class="sticky top-0 z-50 bg-[rgb(var(--tide-25)/var(--nav-fill,0))] [&[data-menu-open]]:bg-tide-25" aria-label="Workshop pages">
     <div class="page-container">
-      <div class="flex justify-between h-16 items-center gap-4">
+      <div class="workshop-nav-layout">
         <a href="./" class="flex items-center gap-2.5 min-w-0 font-bold text-tide-900 text-base sm:text-xl leading-tight tracking-tight hover:text-ember-500 hover:underline underline-offset-4 decoration-2 transition-colors">
           <img src="../assets/brand/avatar-teal.svg" alt="" width="28" height="28" class="w-7 h-7 shrink-0 rounded-md">
           <span><span class="whitespace-nowrap">Human-AI Co-Discovery</span> <span class="whitespace-nowrap text-ember-500">@CHI&rsquo;27</span></span>
         </a>
 
-        <div class="hidden min-[1536px]:flex gap-5 text-base font-semibold text-ink-soft whitespace-nowrap">
-          <a href="./" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Home</a>
-          <a href="call-for-participation.html" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Call for Participation</a>
-          <a href="program.html" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Program</a>
-          <a href="after-workshop.html" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">After the Workshop</a>
-          <a href="speakers.html" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Speakers</a>
-          <a href="organizers.html" aria-current="page" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Organizers</a>
-          <a href="discussion.html" class="relative py-5 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Discussion</a>
+        <div class="workshop-nav-links text-base font-semibold text-ink-soft whitespace-nowrap">
+          <a href="./" class="relative hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Home</a>
+          <a href="call-for-participation.html" class="relative hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Call for Participation</a>
+          <a href="program.html" class="relative hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Program</a>
+          <a href="speakers.html" class="relative hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Speakers</a>
+          <a href="organizers.html" aria-current="page" class="relative hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Organizers</a>
+          <a href="discussion.html" class="relative hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Discussion</a>
+          <a href="after-workshop.html" class="relative hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-ember-400 after:scale-x-0 after:transition-transform [&[aria-current]]:after:scale-x-100">Follow-up</a>
         </div>
-        <button type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" class="group/menu min-[1536px]:hidden shrink-0 grid place-items-center w-10 h-10 -mr-2 rounded-lg text-tide-900 hover:text-ember-700 hover:bg-tide-50 transition-colors">
+        <button type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" class="workshop-menu-toggle group/menu shrink-0 grid place-items-center w-10 h-10 -mr-2 rounded-lg text-tide-900 hover:text-ember-700 hover:bg-tide-50 transition-colors">
           <i data-lucide="menu" class="w-6 h-6 group-aria-expanded/menu:hidden" aria-hidden="true"></i>
           <i data-lucide="x" class="w-6 h-6 hidden group-aria-expanded/menu:block" aria-hidden="true"></i>
           <span class="sr-only">Menu</span>
@@ -59,15 +59,15 @@
       </div>
 
       <!-- Page links on small screens: a dropdown opened by the menu button -->
-      <div id="mobile-nav" hidden class="min-[1536px]:hidden absolute inset-x-0 top-full bg-tide-25 pb-4">
+      <div id="mobile-nav" hidden class="workshop-mobile-nav absolute inset-x-0 top-full bg-tide-25 pb-4">
         <div class="page-container flex flex-col gap-1 text-base font-semibold text-ink-soft">
           <a href="./" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Home</a>
           <a href="call-for-participation.html" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Call for Participation</a>
           <a href="program.html" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Program</a>
-          <a href="after-workshop.html" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">After the Workshop</a>
           <a href="speakers.html" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Speakers</a>
           <a href="organizers.html" aria-current="page" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Organizers</a>
           <a href="discussion.html" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Discussion</a>
+          <a href="after-workshop.html" class="rounded-lg px-3 py-2 hover:bg-tide-50 hover:text-ember-700 transition-colors [&[aria-current]]:text-ember-700 [&[aria-current]]:bg-tide-50">Follow-up</a>
         </div>
       </div>
     </div>
@@ -92,7 +92,7 @@
         <p id="bio-zhihan" class="mt-6">Her research focuses on human-AI co-sensemaking, examining how people interpret complex data and develop their own understanding through interaction with AI. She has built visual analytics tools for exploring children's health through multimodal data and a knowledge-empowered AI assistant for dietary monitoring. She has also proposed student-AI collaborative inquiry for learning.</p>
         <details class="mt-6">
           <summary class="cursor-pointer text-base font-semibold text-tide-900">Selected research</summary>
-          <div class="mt-3"><ul class="research-links"><li><a class="research-link" href="https://doi.org/10.1109/TVCG.2023.3326943" target="_blank" rel="noopener noreferrer"><span>HealthPrism: A Visual Analytics System for Exploring Children&#x27;s Physical and Mental Health Profiles with Multimodal Data</span> <small>IEEE TVCG · 2024</small></a></li><li><a class="research-link" href="https://doi.org/10.1145/3797883" target="_blank" rel="noopener noreferrer"><span>DietGlance: Dietary Monitoring and Personalized Analysis at a Glance with Knowledge-Empowered AI Assistant</span> <small>ACM Transactions on Computing for Healthcare · 2026</small></a></li></ul></div>
+          <div class="mt-3"><ul class="research-links"><li><a class="research-link" href="https://doi.org/10.1109/TVCG.2023.3326943" target="_blank" rel="noopener noreferrer"><span>HealthPrism: A Visual Analytics System for Exploring Children&#x27;s Physical and Mental Health Profiles with Multimodal Data</span> <small>IEEE TVCG · 2024</small></a></li><li><a class="research-link" href="https://doi.org/10.1145/3797883" target="_blank" rel="noopener noreferrer"><span>DietGlance: Dietary Monitoring and Personalized Analysis at a Glance with Knowledge-Empowered AI Assistant</span> <small>ACM Transactions on Computing for Healthcare · 2026</small></a></li><li><a class="research-link" href="https://llm-health-agent-tutorial.github.io/papers/saci-ubicomp-companion-2026.pdf" target="_blank" rel="noopener noreferrer"><span>From AI-as-Shortcut to AI-as-Partner: Student-AI Collaborative Inquiry for Health-Agent Education</span> <small>UbiComp Companion (Education Forum) · 2026</small></a></li></ul></div>
         </details>
       </article>
       <article id="organizer-yifang" class="organizer-profile border-b border-rule pb-12 last:border-0" aria-labelledby="organizer-yifang-h">
@@ -108,7 +108,7 @@
         <p id="bio-yifang" class="mt-6">Her research connects data visualization, human-AI collaboration, and AI agents for scientific discovery and decision-making. She develops systems that help researchers express intent, explore complex information, and guide evolving analyses. Her visual analytics platforms also help analyze the science ecosystem and inform science policy.</p>
         <details class="mt-6">
           <summary class="cursor-pointer text-base font-semibold text-tide-900">Selected research</summary>
-          <div class="mt-3"><ul class="research-links"><li><a class="research-link" href="https://doi.org/10.1038/s43588-025-00906-6" target="_blank" rel="noopener noreferrer"><span>SciSciGPT: advancing human–AI collaboration in the science of science</span> <small>Nature Computational Science · 2026</small></a></li><li><a class="research-link" href="https://arxiv.org/abs/2604.08491v2" target="_blank" rel="noopener noreferrer"><span>Figures as Interfaces: Toward LLM-Native Artifacts for Scientific Discovery</span> <small>arXiv preprint · 2026</small></a></li></ul></div>
+          <div class="mt-3"><ul class="research-links"><li><a class="research-link" href="https://doi.org/10.1038/s43588-025-00906-6" target="_blank" rel="noopener noreferrer"><span>SciSciGPT: advancing human–AI collaboration in the science of science</span> <small>Nature Computational Science · 2026</small></a></li><li><a class="research-link" href="https://arxiv.org/abs/2604.08491v2" target="_blank" rel="noopener noreferrer"><span>Figures as Interfaces: Toward LLM-Native Artifacts for Scientific Discovery</span> <small>arXiv preprint · 2026</small></a></li><li><a class="research-link" href="https://doi.org/10.1145/3772318.3790505" target="_blank" rel="noopener noreferrer"><span>Interaction-Augmented Instruction: Modeling the Synergy of Prompts and Interactions in Human-GenAI Collaboration</span> <small>CHI · 2026</small></a></li></ul></div>
         </details>
       </article>
       <article id="organizer-ruishi" class="organizer-profile border-b border-rule pb-12 last:border-0" aria-labelledby="organizer-ruishi-h">
@@ -124,7 +124,7 @@
         <p id="bio-ruishi" class="mt-6">His research explores how intelligent, interactive interfaces can help people make sense of complex texts and data. He is also interested in how graphics can help people communicate knowledge.</p>
         <details class="mt-6">
           <summary class="cursor-pointer text-base font-semibold text-tide-900">Selected research</summary>
-          <div class="mt-3"><ul class="research-links"><li><a class="research-link" href="https://doi.org/10.1145/3706598.3713881" target="_blank" rel="noopener noreferrer"><span>GistVis: Automatic Generation of Word-scale Visualizations from Data-rich Documents</span> <small>CHI · 2025</small></a></li><li><a class="research-link" href="https://doi.org/10.1145/3772363.3798356" target="_blank" rel="noopener noreferrer"><span>Graphing Inline: Understanding Word-scale Graphics Use in Scientific Papers</span> <small>CHI Extended Abstracts · 2026</small></a></li></ul></div>
+          <div class="mt-3"><ul class="research-links"><li><a class="research-link" href="https://doi.org/10.1145/3706598.3713881" target="_blank" rel="noopener noreferrer"><span>GistVis: Automatic Generation of Word-scale Visualizations from Data-rich Documents</span> <small>CHI · 2025</small></a></li><li><a class="research-link" href="https://doi.org/10.1145/3772363.3798356" target="_blank" rel="noopener noreferrer"><span>Graphing Inline: Understanding Word-scale Graphics Use in Scientific Papers</span> <small>CHI Extended Abstracts · 2026</small></a></li><li><a class="research-link" href="https://doi.org/10.1145/3772318.3790529" target="_blank" rel="noopener noreferrer"><span>MIND: Empowering Mental Health Clinicians with Multimodal Data Insights through a Narrative Dashboard</span> <small>CHI · 2026</small></a></li></ul></div>
         </details>
       </article>
       <article id="organizer-shiyu" class="organizer-profile border-b border-rule pb-12 last:border-0" aria-labelledby="organizer-shiyu-h">
@@ -140,7 +140,7 @@
         <p id="bio-shiyu" class="mt-6">She studies human-centered intelligent systems for sensemaking in everyday and clinical settings. Her interests include how narratives and visual representations help people interpret evidence, and how collaborative learning supports reflection and understanding.</p>
         <details class="mt-6">
           <summary class="cursor-pointer text-base font-semibold text-tide-900">Selected research</summary>
-          <div class="mt-3"><ul class="research-links"><li><a class="research-link" href="https://doi.org/10.1145/3772318.3790529" target="_blank" rel="noopener noreferrer"><span>MIND: Empowering Mental Health Clinicians with Multimodal Data Insights through a Narrative Dashboard</span> <small>CHI · 2026</small></a></li><li><a class="research-link" href="https://doi.org/10.1145/3544549.3585837" target="_blank" rel="noopener noreferrer"><span>How Pairing by Code Similarity Influences Discussions in Peer Learning</span> <small>CHI Extended Abstracts · 2023</small></a></li></ul></div>
+          <div class="mt-3"><ul class="research-links"><li><a class="research-link" href="https://doi.org/10.1145/3772318.3790529" target="_blank" rel="noopener noreferrer"><span>MIND: Empowering Mental Health Clinicians with Multimodal Data Insights through a Narrative Dashboard</span> <small>CHI · 2026</small></a></li><li><a class="research-link" href="https://doi.org/10.1145/3544549.3585837" target="_blank" rel="noopener noreferrer"><span>How Pairing by Code Similarity Influences Discussions in Peer Learning</span> <small>CHI Extended Abstracts · 2023</small></a></li><li><a class="research-link" href="https://doi.org/10.1145/3772363.3798356" target="_blank" rel="noopener noreferrer"><span>Graphing Inline: Understanding Word-scale Graphics Use in Scientific Papers</span> <small>CHI Extended Abstracts · 2026</small></a></li></ul></div>
         </details>
       </article>
       <article id="organizer-rui" class="organizer-profile border-b border-rule pb-12 last:border-0" aria-labelledby="organizer-rui-h">
@@ -156,7 +156,7 @@
         <p id="bio-rui" class="mt-6">Rui's research combines human-AI collaboration and visual analytics to support scientific inquiry and reasoning with complex information. His work examines how interactive representations help people inspect computational processes, assess evidence, and diagnose failures in AI-assisted analysis.</p>
         <details class="mt-6">
           <summary class="cursor-pointer text-base font-semibold text-tide-900">Selected research</summary>
-          <div class="mt-3"><ul class="research-links"><li><a class="research-link" href="https://doi.org/10.1145/3772318.3790815" target="_blank" rel="noopener noreferrer"><span>DiLLS: Interactive Diagnosis of LLM-based Multi-agent Systems via Layered Summary of Agent Behaviors</span> <small>CHI · 2026</small></a></li><li><a class="research-link" href="https://doi.org/10.1002/cl2.70073" target="_blank" rel="noopener noreferrer"><span>SciDaSynth: Interactive Structured Data Extraction From Scientific Literature With Large Language Model</span> <small>Campbell Systematic Reviews · 2025</small></a></li></ul></div>
+          <div class="mt-3"><ul class="research-links"><li><a class="research-link" href="https://doi.org/10.1145/3772318.3790815" target="_blank" rel="noopener noreferrer"><span>DiLLS: Interactive Diagnosis of LLM-based Multi-agent Systems via Layered Summary of Agent Behaviors</span> <small>CHI · 2026</small></a></li><li><a class="research-link" href="https://doi.org/10.1002/cl2.70073" target="_blank" rel="noopener noreferrer"><span>SciDaSynth: Interactive Structured Data Extraction From Scientific Literature With Large Language Model</span> <small>Campbell Systematic Reviews · 2025</small></a></li><li><a class="research-link" href="https://arxiv.org/abs/2604.08491v2" target="_blank" rel="noopener noreferrer"><span>Figures as Interfaces: Toward LLM-Native Artifacts for Scientific Discovery</span> <small>arXiv preprint · 2026</small></a></li></ul></div>
         </details>
       </article>
       <article id="organizer-samuel" class="organizer-profile border-b border-rule pb-12 last:border-0" aria-labelledby="organizer-samuel-h">
@@ -172,7 +172,7 @@
         <p id="bio-samuel" class="mt-6">His research focuses on AI for scientific discovery, including agent-based research workflows and the evaluation of AI judgments about scientific ideas. He studies how human guidance can shape automated research workflows and improve the quality of their outcomes.</p>
         <details class="mt-6">
           <summary class="cursor-pointer text-base font-semibold text-tide-900">Selected research</summary>
-          <div class="mt-3"><ul class="research-links"><li><a class="research-link" href="https://aclanthology.org/2025.findings-emnlp.320/" target="_blank" rel="noopener noreferrer"><span>Agent Laboratory: Using LLM Agents as Research Assistants</span> <small>Findings of EMNLP · 2025</small></a></li><li><a class="research-link" href="https://arxiv.org/abs/2601.07606v1" target="_blank" rel="noopener noreferrer"><span>Proof of Time: A Benchmark for Evaluating Scientific Idea Judgments</span> <small>arXiv preprint · 2026</small></a></li></ul></div>
+          <div class="mt-3"><ul class="research-links"><li><a class="research-link" href="https://aclanthology.org/2025.findings-emnlp.320/" target="_blank" rel="noopener noreferrer"><span>Agent Laboratory: Using LLM Agents as Research Assistants</span> <small>Findings of EMNLP · 2025</small></a></li><li><a class="research-link" href="https://arxiv.org/abs/2601.07606v1" target="_blank" rel="noopener noreferrer"><span>Proof of Time: A Benchmark for Evaluating Scientific Idea Judgments</span> <small>arXiv preprint · 2026</small></a></li><li><a class="research-link" href="https://arxiv.org/abs/2503.18102" target="_blank" rel="noopener noreferrer"><span>AgentRxiv: Towards Collaborative Autonomous Research</span> <small>arXiv preprint · 2025</small></a></li></ul></div>
         </details>
       </article>
       <article id="organizer-chenhao" class="organizer-profile border-b border-rule pb-12 last:border-0" aria-labelledby="organizer-chenhao-h">
@@ -188,7 +188,7 @@
         <p id="bio-chenhao" class="mt-6">His recent work focuses on AI for scientific discovery. His work includes hypothesis generation, AI scientists, and methods for evaluating and verifying scientific research outputs.</p>
         <details class="mt-6">
           <summary class="cursor-pointer text-base font-semibold text-tide-900">Selected research</summary>
-          <div class="mt-3"><ul class="research-links"><li><a class="research-link" href="https://aclanthology.org/2025.acl-long.12/" target="_blank" rel="noopener noreferrer"><span>Literature Meets Data: A Synergistic Approach to Hypothesis Generation</span> <small>ACL · 2025</small></a></li><li><a class="research-link" href="https://arxiv.org/abs/2602.18458v1" target="_blank" rel="noopener noreferrer"><span>The Story is Not the Science: Execution-Grounded Evaluation of Mechanistic Interpretability Research</span> <small>arXiv preprint · 2026</small></a></li></ul></div>
+          <div class="mt-3"><ul class="research-links"><li><a class="research-link" href="https://aclanthology.org/2025.acl-long.12/" target="_blank" rel="noopener noreferrer"><span>Literature Meets Data: A Synergistic Approach to Hypothesis Generation</span> <small>ACL · 2025</small></a></li><li><a class="research-link" href="https://arxiv.org/abs/2602.18458v1" target="_blank" rel="noopener noreferrer"><span>The Story is Not the Science: Execution-Grounded Evaluation of Mechanistic Interpretability Research</span> <small>arXiv preprint · 2026</small></a></li><li><a class="research-link" href="https://aclanthology.org/2024.nlp4science-1.10/" target="_blank" rel="noopener noreferrer"><span>Hypothesis Generation with Large Language Models</span> <small>NLP4Science Workshop · 2024</small></a></li></ul></div>
         </details>
       </article>
       <article id="organizer-orson" class="organizer-profile border-b border-rule pb-12 last:border-0" aria-labelledby="organizer-orson-h">
@@ -204,7 +204,7 @@
         <p id="bio-orson" class="mt-6">His research spans human-AI interaction, ubiquitous computing, and health informatics. He models behavior with everyday sensor data and designs AI agents and explanations to support decisions by individuals and experts. He examines how intelligent interfaces shape people's understanding, reliance, and decision-making, including how these effects vary with expertise.</p>
         <details class="mt-6">
           <summary class="cursor-pointer text-base font-semibold text-tide-900">Selected research</summary>
-          <div class="mt-3"><ul class="research-links"><li><a class="research-link" href="https://doi.org/10.1145/3544548.3581500" target="_blank" rel="noopener noreferrer"><span>XAIR: A Framework of Explainable AI in Augmented Reality</span> <small>CHI · 2023</small></a></li><li><a class="research-link" href="https://doi.org/10.1038/s41591-026-04553-w" target="_blank" rel="noopener noreferrer"><span>Divergent Impacts of Explainable AI for Dermatological Diagnosis on Clinicians versus Lay People</span> <small>Nature Medicine · 2026</small></a></li></ul></div>
+          <div class="mt-3"><ul class="research-links"><li><a class="research-link" href="https://doi.org/10.1145/3544548.3581500" target="_blank" rel="noopener noreferrer"><span>XAIR: A Framework of Explainable AI in Augmented Reality</span> <small>CHI · 2023</small></a></li><li><a class="research-link" href="https://doi.org/10.1038/s41591-026-04553-w" target="_blank" rel="noopener noreferrer"><span>Divergent Impacts of Explainable AI for Dermatological Diagnosis on Clinicians versus Lay People</span> <small>Nature Medicine · 2026</small></a></li><li><a class="research-link" href="https://arxiv.org/abs/2508.20148v2" target="_blank" rel="noopener noreferrer"><span>The Anatomy of a Personal Health Agent</span> <small>arXiv preprint · 2025</small></a></li></ul></div>
         </details>
       </article>
     </div>
@@ -223,6 +223,6 @@
   </main>
 
   <!-- Main JavaScript -->
-  <script src="assets/js/main.js?v=20261001-gemini"></script>
+  <script src="assets/js/main.js?v=20261005-nav"></script>
 </body>
 </html>

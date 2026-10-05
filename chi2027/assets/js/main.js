@@ -26,6 +26,8 @@ const redirectMovedSection = () => {
       '#cfp-overview': 'program.html#cfp-overview',
       '#overview-h': 'program.html#overview-h',
       '#sharing-h': 'after-workshop.html#title',
+      '#at-the-workshop': 'program.html#schedule-h',
+      '#at-workshop-h': 'program.html#schedule-h',
     }[location.hash];
     if (destination) {
       location.replace(destination);
@@ -59,6 +61,7 @@ const setNavHeight = () => {
 };
 setNavHeight();
 window.addEventListener('resize', setNavHeight);
+if (navbar && window.ResizeObserver) new ResizeObserver(setNavHeight).observe(navbar);
 
 // A [data-nav-fade] nav is clear at the top of the page and fills in as the page
 // scrolls, reaching full opacity when the element it names reaches the nav.
@@ -215,7 +218,7 @@ if (menu) {
   document.addEventListener('click', (event) => {
     if (!menu.hidden && !navbar.contains(event.target)) setMenu(false);
   });
-  window.matchMedia('(min-width: 1536px)').addEventListener('change', (event) => {
+  window.matchMedia('(min-width: 480px)').addEventListener('change', (event) => {
     if (event.matches) setMenu(false);
   });
 }
